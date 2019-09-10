@@ -21,7 +21,7 @@ export default {
     }
   },
   methods: {
-    yesView: function() {
+    yesView: function () {
       const _this = this
       _this.isView = !_this.isView
     }
