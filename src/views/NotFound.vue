@@ -1,7 +1,7 @@
 <template>
-	<div class="NotFound">
-		NotFounds
-	</div>
+  <div class="NotFound">
+    NotFounds
+  </div>
 </template>
 
 <script>
