@@ -2,8 +2,10 @@
   <div class="about">
     <h1>This is an about pages</h1>
     <button v-on:click="yesView">click</button><br><br>
-    <Test-Comp v-if="isView"></Test-Comp>
-    <Test-Comp2 v-else></Test-Comp2>
+    <swipe>
+      <swipe-item><Test-Comp/></swipe-item>
+      <swipe-item><Test-Comp2/></swipe-item>
+    </swipe>
   </div>
 </template>
 
