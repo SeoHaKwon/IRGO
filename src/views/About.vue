@@ -1,11 +1,19 @@
 <template>
   <div class="about">
     <h1>This is an about pages</h1>
-    <button v-on:click="yesView">click</button><br><br>
-    <swipe>
+    <div class="btn">
+      <button v-on:click="prevView">PREV</button>
+      <span class="div_center">|</span>
+      <button v-on:click="nextView">NEXT</button>
+    </div>
+    <swipe class="swipe" :options="swipeOptions" ref="slideSwipe">
       <swipe-item><Test-Comp/></swipe-item>
       <swipe-item><Test-Comp2/></swipe-item>
     </swipe>
+    <div>
+      <router-link :to="{ name: 'NotFound'}">tt</router-link><br><br>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -19,18 +27,42 @@ export default {
   },
   data: () => {
     return {
-      isView: false
+      isView: false,
+      swipeOptions: {
+        startSlide: 0,
+        speed: 300,
+        // auto: 4000,
+        continuous: true,
+        disableScroll: false,
+        stopPropagation: false,
+        callback: function (index, slide) { console.log('slide changes') },
+        transitionEnd: function (index, slide) { console.log('slide transition ends') }
+      }
     }
   },
   methods: {
-    yesView: function () {
+    nextView: function () {
       const _this = this
-      _this.isView = !_this.isView
+      _this.$refs.slideSwipe.next()
+    },
+    prevView: function () {
+      const _this = this
+      _this.$refs.slideSwipe.prev()
     }
   }
 }
 </script>
 
 <style scoped>
-
+  .swipe .test {
+    height: 20vh;
+    border: 1px solid gray;
+  }
+  .btn {
+    margin-bottom: 1rem;
+  }
+  .div_center {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 </style>
