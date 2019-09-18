@@ -13,7 +13,7 @@ export default {
   },
   created () {
     console.log(history.state)
-    history.replaceState
+    // history.replaceState
   }
 }
 </script>

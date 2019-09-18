@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home'
+// import VueRouterMiddleware from 'vue-router-middleware'
 
 Vue.use(Router)
+// Vue.use(VueRouterMiddleware, { Router })
 
 export default new Router({
   mode: 'history',
@@ -37,6 +39,16 @@ export default new Router({
       path: '*',
       name: 'NotFound',
       component: () => import('../views/NotFound')
+    },
+    {
+      path: '/require-auth',
+      name: 'require-auth',
+      component: () => import('../views/comp')
+    },
+    {
+      path: '/Capture',
+      name: 'Capture',
+      component: () => import('../views/Capture')
     }
   ]
 })

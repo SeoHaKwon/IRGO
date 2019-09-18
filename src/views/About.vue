@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about pages</h1>
+    <h1>This is IRGO preview</h1>
     <div class="btn">
       <button v-on:click="prevView">PREV</button>
       <span class="div_center">|</span>
@@ -32,7 +32,7 @@ export default {
         startSlide: 0,
         speed: 300,
         // auto: 4000,
-        continuous: true,
+        continuous: false,
         disableScroll: false,
         stopPropagation: false,
         callback: function (index, slide) { console.log('slide changes') },
@@ -55,7 +55,7 @@ export default {
 
 <style scoped>
   .swipe .test {
-    height: 20vh;
+    height: 40vh;
     border: 1px solid gray;
   }
   .btn {

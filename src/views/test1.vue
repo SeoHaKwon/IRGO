@@ -1,6 +1,7 @@
 <template>
   <div class="test">
     {{ contents }}
+    <button>test1</button>
   </div>
 </template>
 
