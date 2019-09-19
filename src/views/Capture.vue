@@ -33,22 +33,11 @@ export default {
           _this.result = (progress.progress * 100).toFixed(0) + '%'
         }).then(result => {
           const Txt = (result.text).replace(/\s/gi, '')
-          if (Txt.indexOf('010-') !== -1) {
-            const TxtNumber = Txt.substr(Txt.indexOf('010-'), 13)
-            _this.result = '당신의 휴대폰 번호는 : ' + TxtNumber + ' 입니다.'
-          } else {
-            if (Txt.indexOf('010.') !== -1) {
-              const TxtNumber = Txt.substr(Txt.indexOf('010.'), 13)
-              _this.result = '당신의 휴대폰 번호는 : ' + TxtNumber + ' 입니다.'
-            } else {
-              _this.result = '빛이 반사되지 않도록 주의해서 다시 찍어주세요'
-              _this.captureImg = ''
-              // _this.logs = result.text
-            }
-          }
-          const emailTxt = Txt.substr(Txt.indexOf('@'))
-          const emailAddress = emailTxt.substring(1, emailTxt.indexOf('.'))
-          _this.result = `${_this.result} , 이메일 도메인주소는 ${emailAddress} 입니다.`
+          // 여기에 Txt 가공 데이터 받아오기
+          this.$store.dispatch('IMGTOTXT', Txt)
+            .then((res) => {
+              _this.result = this.$store.getters.getImgToTxt
+            })
         })
     }
   },

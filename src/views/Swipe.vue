@@ -49,6 +49,9 @@ export default {
       const _this = this
       _this.$refs.slideSwipe.prev()
     }
+  },
+  computed: () => {
+    console.log(history.state)
   }
 }
 </script>
