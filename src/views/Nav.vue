@@ -1,20 +1,36 @@
 <template>
   <div>
-    <test1></test1>
-    <test2></test2>
-    <Bottom-Nav></Bottom-Nav>
+    <Nav-Home v-if="pageSet === 'FirActive'" />
+    <Nav-Search v-else-if="pageSet === 'SecActive'" />
+    <Nav-Push v-else-if="pageSet === 'ThrActive'" />
+    <Nav-Setting v-else />
+    <Bottom-Nav v-on:ComponentsPass="changePage"></Bottom-Nav>
   </div>
 </template>
 
 <script>
-import test1 from '../views/test1'
-import test2 from '../views/test2'
+import NavHome from './NavComponents/Home'
+import NavSearch from './NavComponents/Search'
+import NavPush from './NavComponents/Push'
+import NavSetting from './NavComponents/Setting'
 import BottomNav from '../components/BottomNav'
 export default {
+  data: () => {
+    return {
+      pageSet: 'FirActive'
+    }
+  },
   components: {
-    test1,
-    test2,
+    NavHome,
+    NavSearch,
+    NavPush,
+    NavSetting,
     BottomNav
+  },
+  methods: {
+    changePage(txt) {
+      this.pageSet = txt
+    }
   }
 }
 </script>
