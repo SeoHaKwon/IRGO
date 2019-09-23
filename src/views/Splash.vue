@@ -1,6 +1,11 @@
 <template>
-  <div>
-    this Splash
+  <div class='container'>
+    <div>
+      IR GO
+    </div>
+    <div>
+      @IRKUDOS
+    </div>
   </div>
 </template>
 
@@ -10,6 +15,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  .container {
+    background: linear-gradient( to top, #3974E9, #38CE99);
+    height: 768px;
+    margin: 0;
+  }
 </style>

@@ -28,7 +28,7 @@ export default {
     BottomNav
   },
   methods: {
-    changePage(txt) {
+    changePage (txt) {
       this.pageSet = txt
     }
   }

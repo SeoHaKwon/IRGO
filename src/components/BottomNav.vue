@@ -45,7 +45,7 @@ export default {
         this.$data.data[key] = false
       }
       this.data[txt] = true
-      this.$emit('ComponentsPass',txt)
+      this.$emit('ComponentsPass', txt)
     }
   }
 }
