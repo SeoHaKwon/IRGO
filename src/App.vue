@@ -4,7 +4,9 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/swipe">Swipe</router-link> |
       <router-link to="/capture">Capture</router-link> |
-      <router-link to="/Nav">Nav</router-link>
+      <router-link to="/Nav">Nav</router-link> |
+      <router-link to="/Splash">Splash</router-link> |
+      <router-link to="/fPrint">fPrint</router-link>
     </div>
     <transition name='fade' mode='out-in' v-on:beforeLeave='beforeLeave' v-on:enter='enter' v-on:afterEnter='afterEnter'>
       <router-view/>

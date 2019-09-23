@@ -49,6 +49,16 @@ export default new Router({
       path: '/Nav',
       name: 'Nav',
       component: Views.Nav
+    },
+    {
+      path: '/Splash',
+      name: 'Splash',
+      component: Views.Splash
+    },
+    {
+      path: '/fPrint',
+      name: 'fPrint',
+      component: Views.fPrint
     }
   ]
 })
