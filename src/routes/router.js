@@ -13,7 +13,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Views.Home
+      component: () => import('../views/Home')
     },
     {
       path: '/swipe',
@@ -26,29 +26,34 @@ export default new Router({
         {
           path: 'test',
           name: 'test',
-          component: () => import('../views/test1')
+          component: Views.test1
         },
         {
           path: 'test2',
           name: 'test2',
-          component: () => import('../views/test2')
+          component: Views.test2
         }
       ]
     },
     {
       path: '*',
       name: 'NotFound',
-      component: () => import('../views/NotFound')
+      component: () => Views.NotFound
     },
     {
       path: '/require-auth',
       name: 'require-auth',
-      component: () => import('../views/Comp')
+      component: () => Views.Comp
     },
     {
       path: '/Capture',
       name: 'Capture',
-      component: () => import('../views/Capture')
+      component: Views.Capture
+    },
+    {
+      path: '/Nav',
+      name: 'Nav',
+      component: Views.Nav
     }
   ]
 })
