@@ -41,11 +41,6 @@ export default new Router({
       component: () => Views.NotFound
     },
     {
-      path: '/require-auth',
-      name: 'require-auth',
-      component: () => Views.Comp
-    },
-    {
       path: '/Capture',
       name: 'Capture',
       component: Views.Capture
