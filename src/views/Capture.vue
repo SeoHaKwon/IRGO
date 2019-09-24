@@ -11,10 +11,6 @@
     <div class="warning_contents">
       <span class="warning">※빛이 반사되지 않도록 촬영 부탁드리겠습니다.</span>
     </div>
-    <div class="contents">
-      현재 핸드폰 번호는 010- 혹은 010. 으로 시작하는 번호만 가져올 수 있습니다.<br>
-      그 외의 자주 보이는 형식이 있으시면 의견주시면 검토 후 반영하겠습니다!
-    </div>
   </div>
 </template>
 
@@ -39,9 +35,10 @@ export default {
         .progress(progress => {
           _this.result = (progress.progress * 100).toFixed(0) + '%'
         }).then(result => {
-          const Txt = (result.text).replace(/\s/gi, '')
+          const arrText = result.words
+          console.log(arrText)
           // 여기에 Txt 가공 데이터 받아오기
-          this.$store.dispatch('IMGTOTXT', Txt)
+          this.$store.dispatch('IMGTOTXT', arrText)
             .then((res) => {
               _this.result = this.$store.getters.getImgToTxt
             })
@@ -59,9 +56,6 @@ export default {
 <style scoped>
   .warning_contents {
     margin-top: 20px;
-  }
-  .contents {
-    margin-top:20px;
   }
   .warning {
     color: red;

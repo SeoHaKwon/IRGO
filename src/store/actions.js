@@ -1,5 +1,5 @@
 export default {
-  async IMGTOTXT ({ commit }, Txt) {
-    commit('SET_IMGTOTXT', Txt)
+  async IMGTOTXT ({ commit }, arrText) {
+    commit('SET_IMGTOTXT', arrText)
   }
 }
