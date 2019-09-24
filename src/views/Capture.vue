@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { TesseractWorker } from 'tesseract.js'
+import { TesseractWorker } from 'tesseract.js/src'
 
 export default {
   data: () => {
