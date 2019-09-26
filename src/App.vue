@@ -1,12 +1,14 @@
 <template>
   <div id="app">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/swipe">Swipe</router-link> |
       <router-link to="/capture">Capture</router-link> |
       <router-link to="/Nav">Nav</router-link> |
       <router-link to="/Splash">Splash</router-link> |
-      <router-link to="/fPrint">fPrint</router-link>
+      <router-link to="/fPrint">fPrint</router-link> |
+      <router-link to="/getYoutube">youtube</router-link>
     </div>
     <transition name='component-fade' mode='out-in'>
       <router-view></router-view>

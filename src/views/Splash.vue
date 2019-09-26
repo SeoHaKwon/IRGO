@@ -23,6 +23,10 @@ export default {
     background: linear-gradient( to top, #3974E9, #38CE99);
     height: 768px;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .ment {
     font-size: 0.25em;
@@ -32,13 +36,8 @@ export default {
     font-size: 3.5em;
     color: white;
     font-weight: 600;
-    padding-top:60%;
   }
   .compname {
-    top: 110%;
-    left: 50%;
-    position:absolute;
-    transform: translateX(-50%) translateY(-50%);
     color: white;
   }
 </style>

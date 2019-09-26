@@ -7,6 +7,7 @@ import test2 from './test2'
 import Nav from './Nav'
 import fPrint from './fPrint'
 import Splash from './Splash'
+import getYoutube from './getYoutube'
 
 export default {
   Home,
@@ -17,5 +18,6 @@ export default {
   test2,
   Nav,
   fPrint,
-  Splash
+  Splash,
+  getYoutube
 }

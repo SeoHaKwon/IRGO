@@ -59,6 +59,11 @@ export default new Router({
       path: '/fPrint',
       name: 'fPrint',
       component: Views.fPrint
+    },
+    {
+      path: '/getYoutube',
+      name: 'getYoutube',
+      component: Views.getYoutube
     }
   ]
 })
