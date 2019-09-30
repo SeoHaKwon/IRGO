@@ -7,8 +7,8 @@
       <router-link to="/capture">Capture</router-link> |
       <router-link to="/Nav">Nav</router-link> |
       <router-link to="/Splash">Splash</router-link> |
-      <router-link to="/fPrint">fPrint</router-link> |
-      <router-link to="/getYoutube">youtube</router-link>
+      <router-link to="/getYoutube">youtube</router-link> |
+      <router-link to="/ocr">OCR</router-link>
     </div>
     <transition name='component-fade' mode='out-in'>
       <router-view></router-view>

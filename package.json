@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -53,5 +54,8 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "optionalDependencies": {
+    "fsevent": "*"
+  }
 }

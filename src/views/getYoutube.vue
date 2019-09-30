@@ -5,7 +5,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon3">https://youtu.be/</span>
       </div>
-      <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="url">
+      <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" v-model="url" placeholder="youtube 영상주소 입력해주세요">
       <div class="input-group-append">
         <button class="btn btn-outline-secondary" type="button" v-on:click="getCont">{{ content }}</button>
       </div>
@@ -14,7 +14,9 @@
       채널이름: {{ chTitle }} <br>
       제목: {{ title }} <br>
       업로드날짜: {{ upload_date }} <br>
-      썸네일 : <img v-bind:src='thumbnail.url' v-bind:width="thumbnail.width" v-bind:height="thumbnail.height"/>
+      썸네일 : <a v-bind:href="'https://youtu.be/'+ url">
+                <img v-bind:src='thumbnail.url' v-bind:width="thumbnail.width" v-bind:height="thumbnail.height" v-bind:class="{'isMobile': isMobile}"/>
+              </a>
     </div>
   </div>
 </template>
@@ -24,39 +26,20 @@ export default {
   data: () => {
     return {
       content: 'GETINFO',
-      url: 'ctGmZytmeDE',
+      url: '',
       title: '',
       chTitle: '',
       thumbnail: '',
-      upload_date: ''
+      upload_date: '',
+      isMobile: false
     }
   },
   methods: {
-    getConts () {
-      const _this = this
-      // const request = require('request')
-      var config = {
-        headers: {
-          'Access-Control-Allow-Credentials': true,
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,POST',
-          'Access-Control-Max-Age': 3600,
-          'Access-Control-Allow-Headers': 'Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization'
-        }
-      }
-      var url = 'http://youtube.com/get_video_info?video_id=' + _this.url
-      // request(url, function (error, res, body) {
-      //   console.log(body)
-      //   console.log(error)
-      //   console.log(res)
-      // })
-      _this.$http.get(`${url}`, config)
-        .then((result) => {
-          console.log(result)
-        })
-    },
     getCont () {
       const _this = this
+      if (_this.url.indexOf('https://youtu.be/') !== -1) {
+        _this.url = _this.url.replace('https://youtu.be/', '')
+      }
       const baseURI = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${_this.url} &key=AIzaSyCexoo-7gtZ-8anR_KA7wap-oG9KQCGt2A`
       _this.$http.get(`${baseURI}`)
         .then((res) => {
@@ -74,8 +57,12 @@ export default {
 
 <style>
   .composer {
-    width: 50%;
+    width: 100%;
     text-align:center;
     margin: auto auto;
+  }
+  img.phone {
+    width: 70%;
+    height: auto;
   }
 </style>

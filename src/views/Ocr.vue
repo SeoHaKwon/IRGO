@@ -15,40 +15,29 @@
 </template>
 
 <script>
-import { TesseractWorker } from 'tesseract.js/src'
-
+import { PythonShell } from 'python-shell'
 export default {
   data: () => {
     return {
-      captureImg: '',
-      error: null,
-      result: '',
-      logs: ''
+      image: '',
+      logs: '',
+      result: ''
     }
   },
   methods: {
-    changeImg: function (e) {
-      const _this = this
-      _this.logs = ''
-      const worker = new TesseractWorker()
-      worker.recognize(e.target.files[0])
-        .progress(progress => {
-          _this.result = (progress.progress * 100).toFixed(0) + '%'
-        }).then(result => {
-          const arrText = result.words
-          console.log(arrText)
-          // 여기에 Txt 가공 데이터 받아오기
-          this.$store.dispatch('IMGTOTXT', arrText)
-            .then((res) => {
-              _this.result = this.$store.getters.getImgToTxt
-            })
-        })
+    changeImg (e) {
+      let Options = {
+        mode: 'text',
+        pythonPath: '',
+        pythonOptions: ['-u'],
+        scriptPath: '../utils',
+        args: [e.target.value, e.target.files[0].name]
+      }
+      PythonShell.run('OCR.py', Options, function (err, results) {
+        if (err) throw err
+        console.log(results)
+      })
     }
-  },
-  errorCaptured (err, vm, info) {
-    this.error = `${err.stack}\n\nfound in ${info} of component`
-    console.log(this.error)
-    return false
   }
 }
 </script>
@@ -91,7 +80,7 @@ export default {
   }
   .filebox.primary label {
     color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4;
+    background-color: #f16514;
+    border-color: #d16e34;
   }
 </style>

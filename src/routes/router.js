@@ -56,14 +56,14 @@ export default new Router({
       component: Views.Splash
     },
     {
-      path: '/fPrint',
-      name: 'fPrint',
-      component: Views.fPrint
-    },
-    {
       path: '/getYoutube',
       name: 'getYoutube',
       component: Views.getYoutube
+    },
+    {
+      path: '/ocr',
+      name: 'ocr',
+      component: Views.Ocr
     }
   ]
 })
