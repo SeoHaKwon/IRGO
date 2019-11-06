@@ -1,18 +1,33 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  	<!-- 메인 -->
+  	<HomeMainVisual />
+
+  	<!-- 메인 인포 -->
+  	<HomeMainInformation />
+
+  	<!-- 스케줄 -->
+  	<HomeSchedule />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HomeMainVisual from '@/components/HomeMainVisual.vue'
+import HomeMainInformation from '@/components/HomeMainInformation.vue'
+import HomeSchedule from '@/components/HomeSchedule.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    HomeMainVisual,
+    HomeMainInformation,
+    HomeSchedule
   }
 }
 </script>
+<style lang="scss">
+.contaner {
+	width: 1150px;
+	margin: 0 auto;
+}
+</style>

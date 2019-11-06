@@ -1,31 +1,32 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app">    
+    <NavigationBar />
+    <router-view />
   </div>
 </template>
+<script>
+// @ is an alias to /src
+import NavigationBar from '@/components/NavigationBar.vue'
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+export default {
+  name: 'app',
+  components: {
+    NavigationBar
+  }
 }
-#nav {
-  padding: 30px;
-}
+</script>
+<style lang="scss">
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+* {
+  font-family: 'Nanum Gothic';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.flex-lefet-center {
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 </style>
