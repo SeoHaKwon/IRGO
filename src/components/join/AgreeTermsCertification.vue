@@ -102,7 +102,6 @@
                 <div class="user-phone-certification">
                     <h5>휴대폰 번호</h5>
                     <div
-                        v-if="!userPhoneCertification"  
                         class="phone-request"
                     >
                         <div class="user-phone-input">
@@ -124,6 +123,7 @@
                             />
                         </div>
                         <button 
+                            v-if="!userPhoneCertification" 
                             type="button"
                             @click="phoneRequest()"
                         >
@@ -134,11 +134,14 @@
                         v-if="userPhoneCertification" 
                         class="phone-response"
                     >
+                        <h5>
+                            인증번호
+                        </h5>
                         <input                                
                             type="number"
                             class="form-control"
                         />
-                        <h6 class="phone-response">
+                        <h6 class="phone-response-time">
                             2:56
                         </h6>
                         <button 
@@ -154,6 +157,7 @@
     </div>
 </template>
 <script>
+
 export default {
     name: 'AgreeTermsCertification',
     components: {
@@ -200,8 +204,8 @@ export default {
     },
     methods: {
         phoneCertificationComplete() {
-            this.isAgreeCertification = false;
-            this.isUserType = true;
+            this.$store.commit('setIsAgreeCertification', false);
+            this.$store.commit('setIsUserType', true);
         },
         agreeBoxToggle() {
             this.openAgreeBox ? this.openAgreeBox = false : this.openAgreeBox = true;            
@@ -261,27 +265,6 @@ export default {
     .user-information {
         margin-top: 26px;
 
-        .user-form-text,
-        .user-phone-certification,
-        .user-form-radio {
-            font-size: 16px;
-            letter-spacing: -0.005em;
-            color: #8E8E93;
-            margin-bottom: 32px;
-        }
-        
-        .form-control {
-            appearance: none;
-            outline: 0;
-            box-shadow: none;
-            padding-top: 11px;
-            padding-bottom: 17px;
-            border: 0;
-            width: 100%;
-            font-size: 16px;
-            border-bottom: 0.5px solid #D1D1D6;
-        }
-        
         .user-genger {
             margin-top: 8px;
             display: flex;
@@ -330,6 +313,9 @@ export default {
                 }
                 
             }
+            .phone-response{
+                margin-top: 43px;
+            }
             .phone-response,
             .phone-request {
                 & button {
@@ -343,8 +329,7 @@ export default {
                     margin-top: 33px;
                     border: 0;
                 }
-
-                .phone-response {
+                .phone-response-time {
                     font-size: 12px;
                     text-align: right;
                     letter-spacing: -0.005em;
