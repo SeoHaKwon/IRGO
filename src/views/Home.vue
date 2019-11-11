@@ -9,7 +9,8 @@
   	<!-- 스케줄 -->
   	<HomeSchedule />
 
-  	<!-- <HomePerformance /> -->
+	<!-- 실적발표 -->
+  	<HomePerformance />
   </div>
 </template>
 
@@ -17,7 +18,7 @@
 import HomeMainVisual from '@/components/HomeMainVisual.vue'
 import HomeMainInformation from '@/components/HomeMainInformation.vue'
 import HomeSchedule from '@/components/HomeSchedule.vue'
-// import HomePerformance from '@/components/HomePerformance.vue'
+import HomePerformance from '@/components/HomePerformance.vue'
 
 export default {
   name: 'home',
@@ -25,7 +26,7 @@ export default {
     HomeMainVisual,
     HomeMainInformation,
     HomeSchedule,
-    // HomePerformance
+    HomePerformance
   }
 }
 </script>
