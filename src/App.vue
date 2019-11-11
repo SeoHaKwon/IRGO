@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <template v-if="isMobile">
+    <template v-if="isMobile === false && $route.fullPath === '/'">
       <NavigationBar />
     </template>
     <router-view />
@@ -31,12 +31,13 @@ export default {
   methods: {
   },
   created() {
-    // 임시로 Route가 메인이 아니면 모바일이라고 해놓았습니다.
-    if (this.$route.fullPath !== '/') {
-      this.isMobile = true;
-    }
   },
   mounted() {
+    console.log(this.$route.fullPath);
+    // 임시로 Route가 메인이 아니면 모바일이라고 해놓았습니다.
+    if (this.$route.fullPath === 'join') {
+      this.isMobile = true;
+    }
   },
 }
 </script>

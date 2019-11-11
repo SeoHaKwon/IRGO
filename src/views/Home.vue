@@ -8,6 +8,8 @@
 
   	<!-- 스케줄 -->
   	<HomeSchedule />
+
+  	<!-- <HomePerformance /> -->
   </div>
 </template>
 
@@ -15,13 +17,15 @@
 import HomeMainVisual from '@/components/HomeMainVisual.vue'
 import HomeMainInformation from '@/components/HomeMainInformation.vue'
 import HomeSchedule from '@/components/HomeSchedule.vue'
+// import HomePerformance from '@/components/HomePerformance.vue'
 
 export default {
   name: 'home',
   components: {
     HomeMainVisual,
     HomeMainInformation,
-    HomeSchedule
+    HomeSchedule,
+    // HomePerformance
   }
 }
 </script>
