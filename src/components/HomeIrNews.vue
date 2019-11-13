@@ -11,6 +11,7 @@
             />
           </h5>
           <div class="performance-Ir-new-title">
+            <h4>카테고리</h4>
             <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
             <h5>19. 10. 20</h5>
           </div>
@@ -21,22 +22,7 @@
         </li>
         <li>
           <div class="performance-Ir-new-title">
-            <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
-            <h5>19. 10. 20</h5>
-          </div>
-          <img 
-            width="30px" 
-            src="../assets/img/ic_IR_new_arrow.png" 
-          />
-        </li>
-        <li>
-          <h5>
-            <img 
-              width="120px" 
-              src="../assets/img/img_IR_news_test.png" 
-            />
-          </h5>
-          <div class="performance-Ir-new-title">
+            <h4>카테고리</h4>
             <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
             <h5>19. 10. 20</h5>
           </div>
@@ -53,6 +39,24 @@
             />
           </h5>
           <div class="performance-Ir-new-title">
+            <h4>카테고리</h4>
+            <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
+            <h5>19. 10. 20</h5>
+          </div>
+          <img 
+            width="30px" 
+            src="../assets/img/ic_IR_new_arrow.png" 
+          />
+        </li>
+        <li>
+          <h5>
+            <img 
+              width="120px" 
+              src="../assets/img/img_IR_news_test.png" 
+            />
+          </h5>
+          <div class="performance-Ir-new-title">
+            <h4>카테고리</h4>
             <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
             <h5>19. 10. 20</h5>
           </div>
@@ -63,6 +67,7 @@
         </li>
         <li>
           <div class="performance-Ir-new-title">
+            <h4>카테고리</h4>
             <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
             <h5>19. 10. 20</h5>
           </div>

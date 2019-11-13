@@ -3,7 +3,9 @@
     <template v-if="isMobile === false && $route.fullPath === '/'">
       <NavigationBar />
     </template>
-    <router-view />
+    <div class="global-body">
+      <router-view />
+    </div>
   </div>
 </template>
 <script>
@@ -43,6 +45,7 @@ export default {
 </script>
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&display=swap&subset=korean');
+@import "@/style/_variables.scss";
 
 * {
   font-family: 'Noto Sans KR', sans-serif;
@@ -55,6 +58,9 @@ input {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+}
+.global-body {
+  margin-top: $global-margin-top;
 }
 .flex-lefet-center {
   display: flex;

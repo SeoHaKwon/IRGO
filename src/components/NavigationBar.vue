@@ -50,7 +50,16 @@
   </div>
 </template>
 <style lang="scss">
+@import "@/style/_variables.scss";
+
 .NavigationBar {
+  position: fixed;
+  top: 0;
+  lef: 0;
+  width: 100%;
+  background: #ffffff;
+  z-index: 1500;
+
   header {
     width: 1150px;
     margin: 0 auto;
@@ -82,7 +91,7 @@
         }
 
         &.active {
-          border-color: #DF1152;
+          border-color: $brand-color;
         }
       }
     }
