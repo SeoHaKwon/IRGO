@@ -9,7 +9,7 @@
 	  			</h2>
 	  			<h3 class="total-price">
 	  				<img 
-		  				width="20x" 
+		  				width="15px" 
 		  				src="../assets/img/ic_main_visual_icon_01.png"
 	  				 />
 	  				<span>130,750</span>
@@ -23,7 +23,7 @@
 	  			</h5>
   			</div>
   			<h4 class="company-info">
-  				<img width="30px" src="../assets/img/ic_main_visual_icon_03.png" />
+  				<img width="20px" src="../assets/img/ic_main_visual_icon_03.png" />
   				LG디스플레 보통주
   			</h4>
   		</div>
@@ -86,6 +86,51 @@
 					margin-right: 5px;
 				}
 			}
+		}
+		@media ( max-width: 1149px ) {
+			.company-info,
+			.data-info {
+				display: block;
+			}
+			.data-info {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-basis: 100%;
+				border-right: 0;
+				padding-bottom: 15px;
+				border-bottom: 1px solid #E6E6E6;
+			}
+			.company-info {
+				padding-left: 0;
+				margin-top: 15px;
+				display: flex;
+				align-items: center;
+				justify-content: left;
+				font-size: 15px;
+
+				img {
+					margin-right: 15px;
+				}
+			}
+		  .home-information {
+		  	width: 100% !important;
+		  	padding: 20px;
+		  	display: block;
+
+		  	& .title {
+		  		font-size: 15px;
+		  		margin-right: 10px;
+		  	}
+		  	.total-price {
+		  		font-size: 15px;
+		  	}
+		  	.stock-up {
+		  		padding-right: 10px;
+		  		margin-right: 0;
+		  		border-right: 0;
+		  	}
+		  }
 		}
 	}
 }

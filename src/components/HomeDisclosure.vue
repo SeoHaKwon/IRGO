@@ -133,5 +133,51 @@ export default {
   .ic_disclosure-arrow {
     transform: rotate(0);
   }
+
+  @media ( max-width: 1149px ) {
+    background: #F8F8FA;
+    padding: 30px 15px;
+
+    h2 {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 15px 0;
+      border-bottom: 2px solid #000;
+    }
+    .performance-Ir-new {
+
+      & li {
+        padding: 20px;
+        border-bottom: 1px solid #E6E6E6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & img {
+          flex-basis: 30px;
+          display: none;
+        }
+        .performance-Ir-new-title {
+          flex-basis: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-right: 0;
+
+          & h4 {
+            font-size: 15px;
+          }
+          & h5 {
+            color: #bbb;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+    .ic_disclosure-arrow {
+      transform: rotate(0);
+    }
+  }
 }
 </style>

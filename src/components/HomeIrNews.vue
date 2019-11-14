@@ -6,7 +6,7 @@
         <li>
           <h5>
             <img 
-              width="120px" 
+              width="60px" 
               src="../assets/img/img_IR_news_test.png" 
             />
           </h5>
@@ -17,6 +17,7 @@
           </div>
           <img 
             width="30px" 
+            class="ir-arrow"
             src="../assets/img/ic_IR_new_arrow.png" 
           />
         </li>
@@ -28,13 +29,14 @@
           </div>
           <img 
             width="30px" 
+            class="ir-arrow"
             src="../assets/img/ic_IR_new_arrow.png" 
           />
         </li>
         <li>
           <h5>
             <img 
-              width="120px" 
+              width="60px" 
               src="../assets/img/img_IR_news_test.png" 
             />
           </h5>
@@ -45,13 +47,14 @@
           </div>
           <img 
             width="30px" 
+            class="ir-arrow"
             src="../assets/img/ic_IR_new_arrow.png" 
           />
         </li>
         <li>
           <h5>
             <img 
-              width="120px" 
+              width="60px" 
               src="../assets/img/img_IR_news_test.png" 
             />
           </h5>
@@ -62,6 +65,7 @@
           </div>
           <img 
             width="30px" 
+            class="ir-arrow"
             src="../assets/img/ic_IR_new_arrow.png" 
           />
         </li>
@@ -73,6 +77,7 @@
           </div>
           <img 
             width="30px" 
+            class="ir-arrow"
             src="../assets/img/ic_IR_new_arrow.png" 
           />
         </li>
@@ -127,7 +132,7 @@ export default {
         font-size: 30px;
         color: #ddd;
       }
-      & img {
+      & img.ir-arrow {
         margin-right: 35px;
         flex-basis: 30px;
       }
@@ -140,6 +145,51 @@ export default {
         & h5 {
           color: #bbb;
           font-size: 16px;
+        }
+      }
+    }
+  }
+
+  @media ( max-width: 1149px ) {
+    padding: 30px 15px;
+
+    h2 {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 15px 0;
+      border-bottom: 2px solid #000;
+    }
+    .performance-Ir-new {
+
+      & li {
+        padding: 20px 15px;
+        border-bottom: 1px solid #E6E6E6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & h5 {
+          flex-basis: 13px;
+          font-size: 30px;
+          color: #ddd;
+        }
+        & img.ir-arrow {
+          margin-right: 20px;
+          flex-basis: 30px;
+          display: none;
+        }
+        .performance-Ir-new-title {
+          flex-basis: calc(100% - 60px);
+          padding-left: 15px;
+
+          & h4 {
+            font-size: 12px;
+          }
+          & h5 {
+            color: #bbb;
+            font-size: 11px;
+          }
         }
       }
     }

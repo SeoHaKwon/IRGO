@@ -22,7 +22,7 @@
         </h5>
         <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
         <img 
-          width="30px" 
+          width="20px" 
           src="../assets/img/ic_performanve_FAQ_arror.png" 
         />
       </li>
@@ -32,7 +32,7 @@
         </h5>
         <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
         <img 
-          width="30px" 
+          width="20px" 
           src="../assets/img/ic_performanve_FAQ_arror.png" 
         />
       </li>
@@ -42,7 +42,7 @@
         </h5>
         <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
         <img 
-          width="30px" 
+          width="20px" 
           src="../assets/img/ic_performanve_FAQ_arror.png" 
         />
       </li>
@@ -52,7 +52,7 @@
         </h5>
         <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
         <img 
-          width="30px" 
+          width="20px" 
           src="../assets/img/ic_performanve_FAQ_arror.png" 
         />
       </li>
@@ -62,7 +62,7 @@
         </h5>
         <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
         <img 
-          width="30px" 
+          width="20px" 
           src="../assets/img/ic_performanve_FAQ_arror.png" 
         />
       </li>
@@ -72,7 +72,7 @@
         </h5>
         <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
         <img 
-          width="30px" 
+          width="20px" 
           src="../assets/img/ic_performanve_FAQ_arror.png" 
         />
       </li>
@@ -135,41 +135,36 @@ export default {
       }
     }
   }
-  .home-more-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    margin-top: 50px;
 
-    & button {
-        display: flex;
-        justify-content: center;
-        align-items: center; 
-        appearance: none;
-        border: 2px solid #ddd;
-        border-radius: 100px;
-        padding: 15px;
-        text-align: center;
-        width: 200px;
-        
-        & h6 {
-          font-size: 15px;
-          color: #ddd;
-          font-weight: bold;
-        }
-
-        & img {
-          transform: rotate(90deg);
-          margin-left: 5px;
-      }
+  @media ( max-width: 1149px ) {
+    h3 {
+      font-size: 20px;
+      margin-top: 30px;
+      padding: 30px 0;
     }
+    .performance-FAQ {
+      & li {
+        padding: 15px;
+        border-bottom: 1px solid #E6E6E6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-    &.top-btn {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      margin-top: 0;
-      transform: translate(0, -50%);
+        & h5 {
+          flex-basis: 20px;
+          font-size: 20px;
+          color: #ddd;
+        }
+        & h4 {
+          flex-basis: calc(100% - 20px);
+          padding-left: 10px;
+          font-size: 13px;
+        }
+        & img {
+          flex-basis: 20px;
+          display: none;
+        }
+      }
     }
   }
 }

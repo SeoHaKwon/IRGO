@@ -94,5 +94,57 @@
 			}
 		}
 	}
+	@media ( max-width: 1149px ) {
+		padding: 30px 20px;
+
+		.schedule-container {
+			width: 100%;
+			display: block;
+
+			& .title {
+				font-size: 18px;
+			}
+
+			.schedule-list {
+				margin-top: 30px;
+
+				& li {
+					list-style: none;
+					display: block;
+					margin-bottom: 25px;
+					border-left: 3px solid #DF1152;
+					position: relative;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+
+					.item-date {
+						padding-left: 10px;
+						border-left: 0;
+						font-size: 10px;
+					}
+					.item-title {
+						padding-left: 10px;
+						font-size: 12px;
+					}
+					.item-button {
+						width: 117px;
+					    font-size: 10px;
+					    border-radius: 20px;
+					    position: absolute;
+					    top: 50%;
+					    right: 0;
+					    transform: translate(0, -50%);
+					    padding: 2px;
+
+						img {
+							margin-left: 3px;
+						}
+					}
+				}
+			}
+		}
+	}
 }
 </style>

@@ -51,15 +51,17 @@ export default {
 }
 </script>
 <style lang="scss">
+
 .contaner {
 	width: 1150px;
 	margin: 0 auto;
 }
+
 .home-more-btn {
   display: flex;
   justify-content: center;
   align-items: center; 
-  margin-top: 50px;
+  margin-top: 30px;
 
   & button {
       display: flex;
@@ -68,13 +70,13 @@ export default {
       appearance: none;
       border: 2px solid #ddd;
       border-radius: 100px;
-      padding: 15px;
+      padding: 5px 15px;
       text-align: center;
-      width: 200px;
+      width: 110px;
       background: transparent;
       
       & h6 {
-        font-size: 15px;
+        font-size: 13px;
         color: #ddd;
         font-weight: bold;
       }
@@ -91,6 +93,12 @@ export default {
     right: 0;
     margin-top: 0;
     transform: translate(0, -50%);
+  }
+}
+
+@media ( max-width: 1149px ) {
+  .contaner {
+  	width: 100%;
   }
 }
 </style>

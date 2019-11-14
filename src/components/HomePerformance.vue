@@ -34,5 +34,18 @@ export default {
     font-size: 36px;
     font-weight: bold;
   }
+  @media ( max-width: 1149px ) {
+    padding: 30px 15px;
+
+    .contaner {
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
 }
 </style>

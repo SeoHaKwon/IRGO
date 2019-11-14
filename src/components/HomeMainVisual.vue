@@ -22,5 +22,15 @@
 			font-size: 40px;
 		}
 	}
+
+	@media ( max-width: 1149px ) {
+	  .home-main-visual {
+	  	height: 250px;
+	  	& h2 {
+	  		color: #ffffff;
+	  		font-size: 24px;
+	  	}
+	  }
+	}
 }
 </style>

@@ -32,7 +32,7 @@
           <li>
             <a>2019 2분기 실적자료</a>
             <img 
-              width="40px"
+              width="20px"
               src="../assets/img/ic_performanve_arrow.png"
             />
           </li>
@@ -40,7 +40,7 @@
             <div class="performance-contents-itme">
               <a>2019 2분기 실적자료</a>
               <img 
-                width="40px"
+                width="20px"
                 src="../assets/img/ic_performanve_arrow.png"
               />
               
@@ -48,7 +48,7 @@
             <div class="performance-contents-itme">
               <a>2019 2분기 실적자료</a>
               <img 
-                width="40px"
+                width="20px"
                 src="../assets/img/ic_performanve_arrow.png"
               />
             </div>
@@ -57,7 +57,7 @@
             <div class="performance-contents-itme">
               <a>2019 2분기 실적자료</a>
               <img 
-                width="40px"
+                width="20px"
                 src="../assets/img/ic_performanve_arrow.png"
               />
               
@@ -65,7 +65,7 @@
             <div class="performance-contents-itme">
               <a>2019 2분기 실적자료</a>
               <img 
-                width="40px"
+                width="20px"
                 src="../assets/img/ic_performanve_arrow.png"
               />
             </div>
@@ -168,6 +168,72 @@ export default {
       }
     }
   }
+  @media ( max-width: 1149px ) {
+    .performance-group {
+      margin-top: 20px;
 
+      h3 {
+        display: none;
+      }
+      .performance-group-tab {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & li {
+          padding: 15px 0;
+          font-size: 14px;
+        } 
+      }
+    }
+    .performance-contents {
+      display: block;
+      justify-content: inherit;
+      margin-top: 30px;
+
+      & .performance-contents-itme {
+        flex-basis: calc(50% - 20px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      & .contents-image {
+        width: 90%;
+        height: 200px;
+        background: url('../assets/img/dumy.png') left center no-repeat / cover;
+        position: relative;
+
+        & .contents-image-content {
+          position: absolute;
+          height: 80%;
+          width: 50%;
+          bottom: 0;
+          right: -20px;
+          background: url('../assets/img/dumy_2.png') left center no-repeat / cover;
+          padding: 20px;
+          color: #ffffff;
+          font-size: 16px;
+        }
+      }
+      & ul {
+        width: 100%;
+        border-top: 2px solid #000;
+        margin-left: 0;
+        margin-top: 30px;
+        
+        & li {
+          list-style: none;
+          padding: 20px 0;
+          border-bottom: 1px solid #e6e6e6;
+          font-size: 13px;
+          font-weight: 500;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    }
+  }
 }
 </style>

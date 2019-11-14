@@ -84,5 +84,53 @@ export default {
     font-size: 13px;
     opacity: 0.5;
   }
+
+  @media ( max-width: 1149px ) {
+    background: #2F2F2F;
+    padding: 60px 15px;
+
+    .footer-container {
+      width: 100%;
+      margin: 0 auto;
+      color: #ffffff;
+    }
+
+    .footer-informaition-contents {
+      flex-basis: 50%;
+      display: flex;
+      justify-content: left;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 0
+
+
+    }
+
+    .footer-informaition {
+      display: block;
+      justify-content: space-between;
+
+      & .title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 20px;
+        flex-basis: 30%;
+      }
+      & .description {
+        font-size: 18px;
+        margin-right: 20px;
+
+        & h6 {
+          margin-bottom: 20px;
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .footer-copy-right {
+      font-size: 11px;
+      opacity: 0.5;
+    }
+  }
 }
 </style>
