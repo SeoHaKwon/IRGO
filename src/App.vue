@@ -6,16 +6,21 @@
     <div class="global-body">
       <router-view />
     </div>
+    <template v-if="isMobile === false && $route.fullPath === '/'">
+      <footerBody />
+    </template>
   </div>
 </template>
 <script>
 // @ is an alias to /src
 import NavigationBar from '@/components/NavigationBar.vue'
+import FooterBody from '@/components/FooterBody.vue'
 
 export default {
   name: 'app',
   components: {
-    NavigationBar
+    NavigationBar,
+    FooterBody
   },
   data() {
       return {

@@ -20,19 +20,15 @@
         </li>
       </ul>
       <div class="performance-contents">
-        <img 
-          class="contents-image"
-          width="50%"
-          src="../assets/img/img_performace_images.png"
-        />
+        <div class="contents-image">
+          <div 
+            class="contents-image-content"
+          >
+            2019년 2분기 <br />
+            실적 설명회
+          </div>
+        </div>
         <ul>
-          <li class="active">
-            <a>2019 2분기 실적자료</a>
-            <img 
-              width="40px"
-              src="../assets/img/ic_performanve_arrow.png"
-            />
-          </li>
           <li>
             <a>2019 2분기 실적자료</a>
             <img 
@@ -41,11 +37,38 @@
             />
           </li>
           <li>
-            <a>2019 2분기 실적자료</a>
-            <img 
-              width="40px"
-              src="../assets/img/ic_performanve_arrow.png"
-            />
+            <div class="performance-contents-itme">
+              <a>2019 2분기 실적자료</a>
+              <img 
+                width="40px"
+                src="../assets/img/ic_performanve_arrow.png"
+              />
+              
+            </div>
+            <div class="performance-contents-itme">
+              <a>2019 2분기 실적자료</a>
+              <img 
+                width="40px"
+                src="../assets/img/ic_performanve_arrow.png"
+              />
+            </div>
+          </li>
+          <li>
+            <div class="performance-contents-itme">
+              <a>2019 2분기 실적자료</a>
+              <img 
+                width="40px"
+                src="../assets/img/ic_performanve_arrow.png"
+              />
+              
+            </div>
+            <div class="performance-contents-itme">
+              <a>2019 2분기 실적자료</a>
+              <img 
+                width="40px"
+                src="../assets/img/ic_performanve_arrow.png"
+              />
+            </div>
           </li>
         </ul>
       </div>
@@ -100,17 +123,38 @@ export default {
     justify-content: space-between;
     margin-top: 60px;
 
+    & .performance-contents-itme {
+      flex-basis: calc(50% - 20px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     & .contents-image {
       flex-basis: 50%;
       flex-shrink: 0;
       width: 50%;
+      background: url('../assets/img/dumy.png') left center no-repeat / cover;
+      position: relative;
+
+      & .contents-image-content {
+        position: absolute;
+        height: 90%;
+        width: 50%;
+        bottom: 0;
+        right: -20px;
+        background: url('../assets/img/dumy_2.png') left center no-repeat / cover;
+        padding: 45px;
+        color: #ffffff;
+        font-size: 30px;
+      }
     }
     & ul {
       flex-basis: 50%;
       flex-shrink: 0;
       width: 50%;
       border-top: 2px solid #000;
-      margin-left: 40px;
+      margin-left: 60px;
       
       & li {
         list-style: none;

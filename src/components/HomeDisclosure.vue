@@ -71,8 +71,9 @@
           >
           <h6>more</h6>
           <img 
+            class="ic_disclosure-arrow"
             width="20px" 
-            src="../assets/img/ic_performanve_FAQ_arror.png" 
+            src="../assets/img/ic_disclosure.png" 
           />
         </button>
       </div>
@@ -128,6 +129,9 @@ export default {
         }
       }
     }
+  }
+  .ic_disclosure-arrow {
+    transform: rotate(0);
   }
 }
 </style>

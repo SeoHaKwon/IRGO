@@ -20,6 +20,9 @@
 
   	<!-- 공시 -->
   	<HomeDisclosure />
+
+	<!-- 주주 현황 -->
+  	<HomeShareholderStatus />
   </div>
 </template>
 
@@ -31,6 +34,7 @@ import HomePerformance from '@/components/HomePerformance.vue'
 import HomeIrNews from '@/components/HomeIrNews.vue'
 import HomeManagementReport from '@/components/HomeManagementReport.vue'
 import HomeDisclosure from '@/components/HomeDisclosure.vue'
+import HomeShareholderStatus from '@/components/HomeShareholderStatus.vue'
 
 export default {
   name: 'home',
@@ -41,7 +45,8 @@ export default {
     HomePerformance,
     HomeIrNews,
     HomeManagementReport,
-    HomeDisclosure
+    HomeDisclosure,
+    HomeShareholderStatus
   }
 }
 </script>
