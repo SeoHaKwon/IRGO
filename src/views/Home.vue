@@ -70,9 +70,9 @@ export default {
       appearance: none;
       border: 2px solid #ddd;
       border-radius: 100px;
-      padding: 5px 15px;
+      padding: 15px;
       text-align: center;
-      width: 110px;
+      width: 200px;
       background: transparent;
       
       & h6 {
@@ -99,6 +99,45 @@ export default {
 @media ( max-width: 1149px ) {
   .contaner {
   	width: 100%;
+  }
+
+  .home-more-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 30px;
+
+    & button {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        appearance: none;
+        border: 2px solid #ddd;
+        border-radius: 100px;
+        padding: 5px 15px;
+        text-align: center;
+        width: 110px;
+        background: transparent;
+        
+        & h6 {
+          font-size: 13px;
+          color: #ddd;
+          font-weight: bold;
+        }
+
+        & img {
+          transform: rotate(90deg);
+          margin-left: 5px;
+      }
+    }
+
+    &.top-btn {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: 0;
+      transform: translate(0, -50%);
+    }
   }
 }
 </style>

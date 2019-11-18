@@ -1,12 +1,18 @@
 <template>
   <div id="app">
-    <template v-if="isMobile === false && $route.fullPath === '/'">
-      <!-- <NavigationBar /> -->
+    <template v-if="!isMobile">
+      <NavigationBar />
     </template>
-    <div class="global-body">
+    <template v-else>
+      <MobileNavigaterBar />
+    </template>
+    <div 
+      :class="{'global-body': !isMobile}"
+      :class="{'mobile-global-body': !isMobile && $route.fullPath !== 'join'}"
+    >
       <router-view />
     </div>
-    <template v-if="isMobile === false && $route.fullPath === '/'">
+    <template v-if="$route.fullPath !== 'join'">
       <footerBody />
     </template>
   </div>
@@ -14,12 +20,14 @@
 <script>
 // @ is an alias to /src
 import NavigationBar from '@/components/NavigationBar.vue'
+import MobileNavigaterBar from '@/components/MobileNavigaterBar.vue'
 import FooterBody from '@/components/FooterBody.vue'
 
 export default {
   name: 'app',
   components: {
     NavigationBar,
+    MobileNavigaterBar,
     FooterBody
   },
   data() {
@@ -40,8 +48,12 @@ export default {
   created() {
   },
   mounted() {
-    // 임시로 Route가 메인이 아니면 모바일이라고 해놓았습니다.
-    if (this.$route.fullPath === 'join') {
+    const filter = 'win16|win32|win64|mac|macintel';
+    const _web = filter.indexOf(navigator.platform.toLowerCase()) < 0 !== true;
+    const _iOS = navigator.userAgent.match(/iPhone|iPad|iPod/i) !== null;
+    const _android = navigator.userAgent.match(/Android/i) !== null;
+
+    if (_iOS || _android || ((_iOS || _android) && _web)) {
       this.isMobile = true;
     }
   },
@@ -65,6 +77,9 @@ input {
 }
 .global-body {
   margin-top: $global-margin-top;
+}
+.mobile-global-body {
+  margin-top: $mobile-global-margin-top;
 }
 .flex-lefet-center {
   display: flex;

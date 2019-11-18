@@ -218,8 +218,5 @@ export default {
         }
     }
 
-    @media ( max-width: 1149px ) {
-      
-    }
 }
 </style>

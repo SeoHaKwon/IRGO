@@ -150,7 +150,7 @@ export default {
       }
     }
     & ul {
-      flex-basis: 50%;
+      flex-basis: calc(50% - 60px);
       flex-shrink: 0;
       width: 50%;
       border-top: 2px solid #000;
