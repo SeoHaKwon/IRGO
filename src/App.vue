@@ -7,7 +7,7 @@
       <MobileNavigaterBar />
     </div>
     <div 
-      :class="{'global-body': !isMobile, 'mobile-global-body': !isMobile && $route.fullPath !== '/join'}"
+      :class="{'global-body': !isMobile && $route.fullPath !== '/join', 'mobile-global-body': !isMobile && $route.fullPath !== '/join'}"
     >
       <router-view />
     </div>
