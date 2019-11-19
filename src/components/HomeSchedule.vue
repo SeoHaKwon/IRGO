@@ -94,7 +94,24 @@
 			}
 		}
 	}
-	@media ( max-width: 1149px ) {
+	@media (min-width: 900px) and (max-width: 1149px) {
+	  .schedule-container {
+	  	width: 900px;
+	  }
+	  .schedule-list {
+	  	flex-basis: 75%;
+
+	  	& li {
+	  		.item-date {
+	  			padding-left: 20px;
+	  			border-left: 3px solid #DF1152;
+	  			flex-basis: 20% !important;
+	  			color: #ccc;
+	  		}
+	  	}
+	  }
+	}
+	@media ( max-width: 899px ) {
 		padding: 30px 20px;
 
 		.schedule-container {

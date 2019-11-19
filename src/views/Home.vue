@@ -95,10 +95,14 @@ export default {
     transform: translate(0, -50%);
   }
 }
-
-@media ( max-width: 1149px ) {
+@media (min-width: 900px) and (max-width: 1149px) {
   .contaner {
-  	width: 100%;
+    width: 900px !important;
+  }
+}
+@media ( max-width: 899px ) {
+  .contaner {
+    width: 100%;
   }
 
   .home-more-btn {

@@ -152,7 +152,7 @@ export default {
       } 
     }
 
-    @media ( max-width: 1149px ) {
+    @media ( max-width: 899px ) {
       padding: 30px 15px;
 
       h2 {

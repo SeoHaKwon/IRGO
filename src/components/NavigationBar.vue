@@ -105,5 +105,32 @@
       }
     }
   }
+  @media (min-width: 900px) and (max-width: 1149px) {
+    header {
+      width: 900px;
+    }
+    .header-navigation {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+
+      & li {
+        list-style: none;
+        padding: 30px 0 !important;
+        margin: 0 15px !important;
+        border-bottom: 5px solid transparent;
+
+        & a {
+          color: #444;
+          text-decoration: none;
+          font-weight: bold;
+        }
+
+        &.active {
+          border-color: $brand-color;
+        }
+      }
+    }
+  }
 }
 </style>

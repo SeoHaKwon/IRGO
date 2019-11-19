@@ -84,8 +84,12 @@ export default {
     font-size: 13px;
     opacity: 0.5;
   }
-
-  @media ( max-width: 1149px ) {
+  @media (min-width: 900px) and (max-width: 1149px) {
+    .footer-container {
+      width: 900px;
+    }
+  }
+  @media ( max-width: 899px ) {
     background: #2F2F2F;
     padding: 60px 15px;
 

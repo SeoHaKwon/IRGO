@@ -134,7 +134,7 @@ export default {
     transform: rotate(0);
   }
 
-  @media ( max-width: 1149px ) {
+  @media ( max-width: 899px ) {
     background: #F8F8FA;
     padding: 30px 15px;
 

@@ -22,8 +22,8 @@
 			font-size: 40px;
 		}
 	}
-
-	@media ( max-width: 1149px ) {
+	
+	@media ( max-width: 899px ) {
 	  .home-main-visual {
 	  	height: 250px;
 	  	& h2 {

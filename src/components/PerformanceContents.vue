@@ -168,7 +168,7 @@ export default {
       }
     }
   }
-  @media ( max-width: 1149px ) {
+  @media ( max-width: 899px ) {
     .performance-group {
       margin-top: 20px;
 

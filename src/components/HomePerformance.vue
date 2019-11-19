@@ -34,7 +34,7 @@ export default {
     font-size: 36px;
     font-weight: bold;
   }
-  @media ( max-width: 1149px ) {
+  @media ( max-width: 899px ) {
     padding: 30px 15px;
 
     .contaner {

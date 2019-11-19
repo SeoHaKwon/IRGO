@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <template v-if="!isMobile">
+    <div class="desktop-header">
       <NavigationBar />
-    </template>
-    <template v-else>
+    </div>
+    <div class="mobile-header">
       <MobileNavigaterBar />
-    </template>
+    </div>
     <div 
       :class="{'global-body': !isMobile, 'mobile-global-body': !isMobile && $route.fullPath !== 'join'}"
     >
@@ -159,6 +159,20 @@ input {
         color: #ffffff;
         border-color: transparent;
     }
+  }
+}
+.mobile-header {
+  display: none;
+}
+.desktop-header {
+  display: block;
+}
+@media (max-width: 899px) {
+  .mobile-header {
+    display: block;
+  }
+  .desktop-header {
+    display: none;
   }
 }
 </style>

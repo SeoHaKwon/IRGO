@@ -276,7 +276,7 @@ export default {
     }
   }
 
-  @media ( max-width: 1149px ) {
+  @media ( max-width: 899px ) {
     padding: 30px 15px;
 
     h2 {
@@ -299,6 +299,8 @@ export default {
 
       & .grafs {
           padding-top: 40px;
+          padding-left: 60px;
+          padding-right: 60px;
           flex-basis: calc(50% - 20px);
           flex-shrink: 0;
           border-top: 2px solid #000000;

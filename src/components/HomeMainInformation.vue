@@ -55,7 +55,7 @@
 		.home-information {
 			width: 1150px;
 			margin: 0 auto;
-			padding: 65px 0;
+			padding: 40px 0;
 			display: flex;
 			justify-content: left;
 			align-items: center;
@@ -87,7 +87,13 @@
 				}
 			}
 		}
-		@media ( max-width: 1149px ) {
+
+		@media (min-width: 900px) and (max-width: 1149px) {
+			  .home-information {
+	  			width: 900px;
+  			}
+		}
+		@media ( max-width: 899px ) {
 			.company-info,
 			.data-info {
 				display: block;
