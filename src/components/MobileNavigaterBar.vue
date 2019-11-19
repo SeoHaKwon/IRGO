@@ -6,19 +6,17 @@
       </div>
       <div class="header-navigation-box">
         <div class="header-mobile-icon">
-          <a href="/join">
+          <router-link to="/join">
             <img width="20px" src="../assets/img/ic_android.png" />  
-          </a>
-          <a href="/join">
+          </router-link>
+          <router-link to="/join">
             <img width="20px" src="../assets/img/ic_google_play.png" />
-          </a>
-          <a href="javascript: void(0)">
-            <img 
-              width="25px" 
-              src="../assets/img/ic_mogile_menu.png"
-              @click="headerMenuBtn(true)"
-              />
-          </a>
+          </router-link>
+        <img 
+          width="25px" 
+          src="../assets/img/ic_mogile_menu.png"
+          @click="headerMenuBtn(true)"
+          />
         </div>
       </div>
     </header>

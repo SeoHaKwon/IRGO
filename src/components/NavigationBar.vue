@@ -38,12 +38,12 @@
           </li>
         </ul>
         <div class="header-mobile-icon">
-          <a href="/join">
+          <router-link to="/join">
             <img width="20px" src="../assets/img/ic_android.png" />  
-          </a>
-          <a href="/join">
+          </router-link>
+          <router-link to="/join">
             <img width="20px" src="../assets/img/ic_google_play.png" />
-          </a>
+          </router-link>
         </div>
       </div>
     </header>
