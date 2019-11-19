@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <div class="desktop-header">
+    <div class="desktop-header" v-if="$route.fullPath !== '/join'">
       <NavigationBar />
     </div>
-    <div class="mobile-header">
+    <div class="mobile-header" v-if="$route.fullPath !== '/join'">
       <MobileNavigaterBar />
     </div>
     <div 
-      :class="{'global-body': !isMobile, 'mobile-global-body': !isMobile && $route.fullPath !== 'join'}"
+      :class="{'global-body': !isMobile, 'mobile-global-body': !isMobile && $route.fullPath !== '/join'}"
     >
       <router-view />
     </div>
-    <template v-if="$route.fullPath !== 'join'">
+    <template v-if="$route.fullPath !== '/join'">
       <footerBody />
     </template>
   </div>
@@ -32,6 +32,7 @@ export default {
   data() {
       return {
         isMobile: false,
+        fullPath: ''
       };
   },
   props: [
@@ -55,7 +56,8 @@ export default {
     if (_iOS || _android || ((_iOS || _android) && _web)) {
       this.isMobile = true;
     }
-  },
+    this.fullPath = this.$route.fullPath
+  }
 }
 </script>
 <style lang="scss">
