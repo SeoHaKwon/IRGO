@@ -6,10 +6,10 @@
       </div>
       <div class="header-navigation-box">
         <div class="header-mobile-icon">
-          <a href="javascript: void(0)">
+          <a href="/join">
             <img width="20px" src="../assets/img/ic_android.png" />  
           </a>
-          <a href="javascript: void(0)">
+          <a href="/join">
             <img width="20px" src="../assets/img/ic_google_play.png" />
           </a>
           <a href="javascript: void(0)">
