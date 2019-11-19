@@ -12,11 +12,13 @@
           <router-link to="/join">
             <img width="20px" src="../assets/img/ic_google_play.png" />
           </router-link>
-        <img 
-          width="25px" 
-          src="../assets/img/ic_mogile_menu.png"
-          @click="headerMenuBtn(true)"
-          />
+          <a href="javascript: void(0)">
+            <img 
+              width="25px" 
+              src="../assets/img/ic_mogile_menu.png"
+              @click="headerMenuBtn(true)"
+              />
+          </a>
         </div>
       </div>
     </header>
