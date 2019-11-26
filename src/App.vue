@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <div class="desktop-header" v-if="$route.fullPath !== '/join'">
+    <!-- <div class="desktop-header" v-if="$route.fullPath !== '/join'">
       <NavigationBar />
     </div>
     <div class="mobile-header" v-if="$route.fullPath !== '/join'">
       <MobileNavigaterBar />
-    </div>
+    </div> -->
     <div 
       :class="{'global-body': !isMobile && $route.fullPath !== '/join', 'mobile-global-body': !isMobile && $route.fullPath !== '/join'}"
     >

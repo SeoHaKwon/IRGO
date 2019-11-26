@@ -3,26 +3,23 @@
   	<!-- 메인 -->
   	<HomeMainVisual />
 
-  	<!-- 메인 인포 -->
-  	<HomeMainInformation />
-
   	<!-- 스케줄 -->
   	<HomeSchedule />
 
-	<!-- 실적발표 -->
-  	<HomePerformance />
+  	<!-- 실적발표 -->
+    <HomePerformance />
 
 	<!-- IR 뉴스 -->
-  	<HomeIrNews />
+  	<!-- <HomeIrNews /> -->
 
 	<!-- 경영 보고서 -->
-  	<HomeManagementReport />
+  	<!-- <HomeManagementReport /> -->
 
   	<!-- 공시 -->
-  	<HomeDisclosure />
+  	<!-- <HomeDisclosure /> -->
 
 	<!-- 주주 현황 -->
-  	<HomeShareholderStatus />
+  	<!-- <HomeShareholderStatus /> -->
   </div>
 </template>
 
@@ -95,6 +92,37 @@ export default {
     transform: translate(0, -50%);
   }
 }
+
+.select-warp {
+    width: 200px;
+    position: relative;
+
+    & select {
+        background: #FAFAFA;
+        border-radius: 4px;
+        padding: 10px 20px;
+        font-weight: bold;
+        font-size: 21px;
+        align-items: center;
+        color: #1B1D20;
+        -webkit-appearance: none;
+        -moz-appearance:none;
+        appearance:none;
+        width: 100%;
+        position: relative;
+    }
+
+    .select-arrow {
+        transform: rotate(180deg);
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        margin-top: -12px;
+        z-index: 2;
+    }
+}
+
+
 @media (min-width: 900px) and (max-width: 1149px) {
   .contaner {
     width: 900px !important;

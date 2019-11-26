@@ -1,7 +1,5 @@
 <template>
   <div class="PerformanceContents">
-    <div class="performance-group">
-      <h3>실적발표자료</h3>
       <ul class="performance-group-tab">
         <li class="active">
           <a>19.2Q</a>
@@ -19,60 +17,92 @@
           <a>18.2Q</a>
         </li>
       </ul>
-      <div class="performance-contents">
-        <div class="contents-image">
-          <div 
-            class="contents-image-content"
-          >
-            2019년 2분기 <br />
-            실적 설명회
-          </div>
+        <div class="performance-select">
+            <div class="select-warp">
+                <select>
+                    <option>2019.2Q</option>
+                    <option>2019.2Q</option>
+                    <option>2019.2Q</option>
+                    <option>2019.2Q</option>
+                </select>
+                <div class="select-arrow">▲</div>
+            </div>
         </div>
-        <ul>
-          <li>
-            <a>2019 2분기 실적자료</a>
-            <img 
-              width="20px"
-              src="../assets/img/ic_performanve_arrow.png"
-            />
-          </li>
-          <li>
-            <div class="performance-contents-itme">
-              <a>2019 2분기 실적자료</a>
-              <img 
-                width="20px"
-                src="../assets/img/ic_performanve_arrow.png"
-              />
-              
+        <div class="performance-contents container">
+            <div class="performance-main">
+                <div class="main-title">
+                    <h2 class="title">
+                        2019년 2분기 <br/>
+                        실적발표
+                    </h2>
+                    <div class="download">
+                        <img 
+                            src="../assets/img/ic_file_download.png"
+                        />
+                    </div>
+                </div>
+                <div>
+                    <img 
+                        width="100%"
+                        src="../assets/img/performance_main_image.png"
+                    />                    
+                </div>
             </div>
-            <div class="performance-contents-itme">
-              <a>2019 2분기 실적자료</a>
-              <img 
-                width="20px"
-                src="../assets/img/ic_performanve_arrow.png"
-              />
+            <div class="performance-info">
+                <ul>
+                    <li>
+                        <h5>보도자료(Press Release)</h5>
+                        <h6>
+                            <img
+                            width="30px"
+                             src="../assets/img/ic_file_download.png"
+                            />
+                            <span class="data-type">PDF</span>
+                        </h6>
+                    </li>
+                    <li>
+                        <h5>웹캐스팅</h5>
+                        <h6>
+                            <img
+                            width="25px"
+                             src="../assets/img/ic_arrow_forward.png"
+                            />
+                            <span class="data-type">URL</span>
+                        </h6>
+                    </li>
+                    <li>
+                        <h5>컨퍼런스콜</h5>
+                        <h6>
+                            <img
+                            width="25px"
+                             src="../assets/img/ic_arrow_forward.png"
+                            />
+                            <span class="data-type">URL</span>
+                        </h6>
+                    </li>
+                    <li>
+                        <h5>스크립트</h5>
+                        <h6>
+                            <img
+                            width="30px"
+                             src="../assets/img/ic_file_download.png"
+                            />
+                            <span class="data-type">PDF</span>
+                        </h6>
+                    </li>
+                    <li>
+                        <h5>Factsheet</h5>
+                        <h6>
+                            <img
+                            width="30px"
+                             src="../assets/img/ic_file_download.png"
+                            />
+                            <span class="data-type">XLS</span>
+                        </h6>
+                    </li>
+                </ul>
             </div>
-          </li>
-          <li>
-            <div class="performance-contents-itme">
-              <a>2019 2분기 실적자료</a>
-              <img 
-                width="20px"
-                src="../assets/img/ic_performanve_arrow.png"
-              />
-              
-            </div>
-            <div class="performance-contents-itme">
-              <a>2019 2분기 실적자료</a>
-              <img 
-                width="20px"
-                src="../assets/img/ic_performanve_arrow.png"
-              />
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+        </div>
   </div>
 </template>
 
@@ -85,155 +115,195 @@ export default {
 }
 </script>
 <style lang="scss">
-.PerformanceContents {
-  .performance-group {
-    margin-top: 120px;
+@import "@/style/_variables.scss";
 
-    h3 {
-      font-size: 30px;
-      text-align: center;
-      margin-top: 12px;
+.PerformanceContents {
+  
+  .performance-select {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+    .performance-contents {
+        background: #F2F2F2;
+        padding: 50px;
+        margin-top: 53px;
+        display: flex;
+        justify-content: space-between;
+
+        .performance-main {
+            flex-basis: 50%;
+            padding-right: 50px;
+            .main-title {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 30px;
+
+                & .title {
+                    font-size: 34px;
+                    font-weight: normal;
+                    text-decoration-line: underline;
+                    color: #1B1D20;
+                }
+
+                .download {
+                    background: #FFFFFF;
+                    border: 1px solid #D2D3D3;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    padding: 15px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 92px;
+                    height: 92px;
+                }
+            }
+        }
+        .performance-info {
+            flex-basis: 50%;
+            padding-left: 50px;
+            ul {
+                list-style: none;
+
+                li {
+                    padding-bottom: 33px;
+                    border-bottom: 1px solid #999;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 33px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    & h5 {
+                        font-size: 21px;
+                        letter-spacing: -0.5px;
+                        color: #1B1D20;
+                    }
+                    & h6 {
+                        display: flex;
+                        align-items: center;
+                        font-size: 21px;
+                        letter-spacing: -0.5px;
+                        color: $brand-color;
+                    }
+                }
+            }
+        }
+    }
+  @media ( max-width: 899px ) {
+    .performance-select {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      display: none;
     }
     .performance-group-tab {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      & li {
+        padding: 0 16px;
         list-style: none;
-        flex-basis: 20%;
-        width: 20%;
-        flex-shrink: 0;
-        padding: 25px 0;
-        text-align: center;
-        font-size: 16px;
-        color: #bbb;
-        border-bottom: 2px solid #bbb;
-        cursor: pointer;
-
-        &.active {
-          color: #000;
-          border-bottom: 2px solid #000;
-        }
-      } 
-    }
-  }
-  .performance-contents {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 60px;
-
-    & .performance-contents-itme {
-      flex-basis: calc(50% - 20px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    & .contents-image {
-      flex-basis: 50%;
-      flex-shrink: 0;
-      width: 50%;
-      background: url('../assets/img/dumy.png') left center no-repeat / cover;
-      position: relative;
-
-      & .contents-image-content {
-        position: absolute;
-        height: 90%;
-        width: 50%;
-        bottom: 0;
-        right: -20px;
-        background: url('../assets/img/dumy_2.png') left center no-repeat / cover;
-        padding: 45px;
-        color: #ffffff;
-        font-size: 30px;
-      }
-    }
-    & ul {
-      flex-basis: calc(50% - 60px);
-      flex-shrink: 0;
-      width: 50%;
-      border-top: 2px solid #000;
-      margin-left: 60px;
-      
-      & li {
-        list-style: none;
-        padding: 50px 0;
-        border-bottom: 1px solid #e6e6e6;
-        font-size: 16px;
-        font-weight: 500;
         display: flex;
         justify-content: space-between;
         align-items: center;
-      }
-    }
-  }
-  @media ( max-width: 899px ) {
-    .performance-group {
-      margin-top: 20px;
-
-      h3 {
-        display: none;
-      }
-      .performance-group-tab {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        & li {
-          padding: 15px 0;
-          font-size: 14px;
-        } 
-      }
-    }
-    .performance-contents {
-      display: block;
-      justify-content: inherit;
-      margin-top: 30px;
-
-      & .performance-contents-itme {
-        flex-basis: calc(50% - 20px);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      & .contents-image {
-        width: 90%;
-        height: 200px;
-        background: url('../assets/img/dumy.png') left center no-repeat / cover;
-        position: relative;
-
-        & .contents-image-content {
-          position: absolute;
-          height: 80%;
-          width: 50%;
-          bottom: 0;
-          right: -20px;
-          background: url('../assets/img/dumy_2.png') left center no-repeat / cover;
-          padding: 20px;
-          color: #ffffff;
-          font-size: 16px;
-        }
-      }
-      & ul {
-        width: 100%;
-        border-top: 2px solid #000;
-        margin-left: 0;
         margin-top: 30px;
-        
-        & li {
-          list-style: none;
-          padding: 20px 0;
-          border-bottom: 1px solid #e6e6e6;
-          font-size: 13px;
-          font-weight: 500;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+
+        li {
+            flex-basis: calc(20% - 11px);
+            font-size: 18px;
+            letter-spacing: -0.24px;
+            color: #8E8E93;
+            padding-bottom: 13px;
+            border-bottom: 2px solid transparent;
+
+            &.active {
+                color: #313439;
+                border-bottom: 2px solid #313439;
+            }
         }
-      }
     }
+
+      .performance-contents {
+          width: 100%;
+          margin: 0 auto;
+          background: #F2F2F2;
+          padding: 30px 16px;
+          margin-top: 0;
+          display: block;
+          justify-content: space-between;
+
+          .performance-main {
+              flex-basis: 50%;
+              padding-right: 0;
+              .main-title {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 30px;
+
+                  & .title {
+                      font-size: 22px;
+                      font-weight: normal;
+                      text-decoration-line: underline;
+                      color: #1B1D20;
+                  }
+
+                  .download {
+                      background: #FFFFFF;
+                      border: 1px solid #D2D3D3;
+                      box-sizing: border-box;
+                      border-radius: 4px;
+                      padding: 15px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      width: 64px;
+                      height: 64px;
+                  }
+              }
+          }
+          .performance-info {
+              flex-basis: 50%;
+              padding-left: 0;
+              margin-top: 27px;
+              ul {
+                  list-style: none;
+
+                  li {
+                      padding-bottom: 20px;
+                      border-bottom: 1px solid #999;
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      margin-bottom: 20px;
+
+                      &:last-child {
+                          margin-bottom: 0;
+                      }
+
+                      & h5 {
+                          font-size: 16px;
+                          letter-spacing: -0.5px;
+                          color: #1B1D20;
+                      }
+                      & h6 {
+                          display: flex;
+                          align-items: center;
+                          font-size: 21px;
+                          letter-spacing: -0.5px;
+                          color: $brand-color;
+
+                          .data-type {
+                            display: none;
+                        }
+                      }
+                  }
+              }
+          }
+      }
   }
 }
 </style>
