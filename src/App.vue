@@ -19,9 +19,13 @@
 </template>
 <script>
 // @ is an alias to /src
+import Vue from 'vue'
+
+Vue.component('modal-desktop', ModalDesktop);
 import NavigationBar from '@/components/NavigationBar.vue'
 import MobileNavigaterBar from '@/components/MobileNavigaterBar.vue'
 import FooterBody from '@/components/FooterBody.vue'
+import ModalDesktop from '@/components/ModalDesktop.vue'
 
 export default {
   name: 'app',
@@ -72,6 +76,66 @@ export default {
   box-sizing: border-box;
   font-weight: inherit;
   text-decoration: none;
+}
+.modal-map {
+    font-size: 14px;
+    text-align: center;
+    color: #8E8E93;
+    opacity: 0.87;
+}
+.social-sns {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    & img {
+        margin-left: 10px;
+    }
+}
+.social-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 130px;
+
+    .date {
+        font-size: 14px;
+        color: #8E8E93;
+    }
+}
+.IR-modal-list {
+    list-style: none;
+    margin-top: 50px;
+
+    li {
+        padding: 26px;
+        border-top: 1px solid #1B1D20;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        &:last-child {
+            border-bottom: 1px solid #1B1D20;
+        }
+
+        img {
+            margin-right: 20px;
+        }
+        h5 {
+            margin-right: 50px;
+        }
+        h4 {
+        }
+    }
+}
+.modal-desktop-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+
+  & img {
+    cursor: pointer;
+  }
 }
 input {
   -webkit-appearance: none;
@@ -172,12 +236,37 @@ input {
 .desktop-header {
   display: block;
 }
+.modal-mobile-header {
+  display: none;
+}
 @media (max-width: 899px) {
   .mobile-header {
     display: block;
   }
   .desktop-header {
     display: none;
+  }
+  .social-info {
+    display: none;
+  }
+  .modal-map {
+    display: none;
+  }
+  .modal-desktop-close {
+    display: none;
+  }
+  .modal-mobile-header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 9px;
+    color: $brand-color;
+    border-bottom: 1px solid #1B1D20;
+    margin: 0 -16px;
+
+    img {
+      margin-right: 10px;
+    }
   }
 }
 </style>
