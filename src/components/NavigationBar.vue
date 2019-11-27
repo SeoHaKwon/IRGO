@@ -91,8 +91,13 @@
 
       & li {
         list-style: none;
-        padding: 26px 0;
+        padding: 26px 0 22px 0;
         margin: 0 13px;
+        border-bottom: 4px solid transparent;
+
+        &.active {
+          border-bottom: 4px solid $brand-color;
+        }
 
         & a {
           font-size: 16px;

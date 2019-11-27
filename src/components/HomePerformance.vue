@@ -8,17 +8,25 @@
     <PerformanceContents
       :datas="type_A"
     />
-    <PerformanceContents
-      :datas="type_B"
-    />
+    <div style="margin-top: 40px">
+      <PerformanceContents
+        :datas="type_B"
+      />
+    </div>
   <!-- FAQ -->
     <PerformanceFAQ />
+
+    <div style="margin-top: 40px">
+      <PerformanceFAQTypeB />
+    </div>
+
   </div>
 </template>
 
 <script>
 import PerformanceContents from '@/components/PerformanceContents.vue'
 import PerformanceFAQ from '@/components/PerformanceFAQ.vue'
+import PerformanceFAQTypeB from '@/components/PerformanceFAQTypeB.vue'
 
 export default {
   name: 'HomePerformance',
@@ -72,7 +80,8 @@ export default {
   },
   components: {
     PerformanceContents,
-    PerformanceFAQ
+    PerformanceFAQ,
+    PerformanceFAQTypeB
   }
 }
 </script>
