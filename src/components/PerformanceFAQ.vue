@@ -83,10 +83,10 @@
         type="button"
         class=""
       >
-      <h6>more</h6>
+      <h6>더보기</h6>
       <img 
-        width="20px" 
-        src="../assets/img/ic_performanve_FAQ_arror.png" 
+        width="12px" 
+        src="../assets/img/more_arrow.png" 
       />
     </button>
     </div>

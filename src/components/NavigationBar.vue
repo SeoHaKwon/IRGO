@@ -18,12 +18,17 @@
           </li>
           <li>
             <a href="javascript: void(0)">
-              경영보고
+              경영보고서
             </a>
           </li>
           <li>
             <a href="javascript: void(0)">
-              재무재표
+              재무정보
+            </a>
+          </li>
+          <li>
+            <a href="javascript: void(0)">
+              공시
             </a>
           </li>
           <li>
@@ -33,16 +38,16 @@
           </li>
           <li>
             <a href="javascript: void(0)">
-              CONTANT
+              IR Contact
             </a>
           </li>
         </ul>
         <div class="header-mobile-icon">
+
           <router-link to="/join">
-            <img width="20px" src="../assets/img/ic_android.png" />  
-          </router-link>
-          <router-link to="/join">
-            <img width="20px" src="../assets/img/ic_google_play.png" />
+            <div class="app-join">
+              앱 다운로드
+            </div>
           </router-link>
         </div>
       </div>
@@ -67,7 +72,13 @@
     justify-content: space-between;
     align-items: center;
 
+    .header-logo {
+      flex-basis: 155px;
+    }
+
     .header-navigation-box {
+      flex-basis: calc(100% - 155px);
+      padding-left: 10%;
       display: flex;
       justify-content: left;
       align-items: center;
@@ -80,54 +91,49 @@
 
       & li {
         list-style: none;
-        padding: 40px 0;
-        margin: 0 30px;
-        border-bottom: 5px solid transparent;
+        padding: 26px 0;
+        margin: 0 13px;
 
         & a {
-          color: #444;
+          font-size: 16px;
+          text-align: center;
+          color: #545454;
           text-decoration: none;
-          font-weight: bold;
-        }
-
-        &.active {
-          border-color: $brand-color;
         }
       }
     }
-    .header-mobile-icon {
-      padding-left: 30px;
-      line-height: 0;
-      border-left: 1px solid #E6E6E6;
-
-      & img:first-child  {
-        margin-right: 30px;
-      }
+    .app-join {
+      background: #E91E63;
+      border-radius: 4px;
+      width: 140px;
+      margin-left: 20%;
+      text-decoration: none;
+      text-align: center;
+      color: #fff;
+      font-size: 14px;
+      padding: 5px 20px;
     }
   }
   @media (min-width: 900px) and (max-width: 1149px) {
     header {
       width: 900px;
-    }
-    .header-navigation {
-      display: flex;
-      justify-content: left;
-      align-items: center;
 
-      & li {
-        list-style: none;
-        padding: 30px 0 !important;
-        margin: 0 15px !important;
-        border-bottom: 5px solid transparent;
+      .header-navigation {
+        display: flex;
+        justify-content: left;
+        align-items: center;
 
-        & a {
-          color: #444;
-          text-decoration: none;
-          font-weight: bold;
-        }
+        & li {
+          list-style: none;
+          padding: 26px 0;
+          margin: 0 13px;
 
-        &.active {
-          border-color: $brand-color;
+          & a {
+            font-size: 13px;
+            text-align: center;
+            color: #545454;
+            text-decoration: none;
+          }
         }
       }
     }

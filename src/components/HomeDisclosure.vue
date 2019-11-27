@@ -1,83 +1,53 @@
 <template>
-  <div class="HomeDisclosure">
-    <div class="contaner">
-      <h2>공시</h2>
-      <ul class="performance-Ir-new">
+  <div class="HomeDisclosure contaner">
+    <h2 class="section-title">공시</h2>
+    <h3 class="section-sube">
+      Disclosure
+    </h3>
+    <ul class="disclosure-info">
         <li>
-          <div class="performance-Ir-new-title">
-            <h4>전환가액의조정</h4>
-            <h5>19. 10. 20</h5>
-          </div>
-          <img 
-            width="30px" 
-            src="../assets/img/ic_IR_new_arrow.png" 
-          />
+            <h5>신주인수권행사가액의조정</h5>
+            <h6>
+                2019년 10월 10일
+            </h6>
         </li>
         <li>
-          <div class="performance-Ir-new-title">
-            <h4>전환가액의조정</h4>
-            <h5>19. 10. 20</h5>
-          </div>
-          <img 
-            width="30px" 
-            src="../assets/img/ic_IR_new_arrow.png" 
-          />
+            <h5>기업설명회(IR)개최(안내공시)</h5>
+            <h6>
+                2019년 10월 10일
+            </h6>
         </li>
         <li>
-          <div class="performance-Ir-new-title">
-            <h4>전환가액의조정</h4>
-            <h5>19. 10. 20</h5>
-          </div>
-          <img 
-            width="30px" 
-            src="../assets/img/ic_IR_new_arrow.png" 
-          />
+            <h5>연결재무제표기준영업(잠정)실적(공정공시)</h5>
+            <h6>
+                2019년 10월 10일
+            </h6>
         </li>
         <li>
-          <div class="performance-Ir-new-title">
-            <h4>전환가액의조정</h4>
-            <h5>19. 10. 20</h5>
-          </div>
-          <img 
-            width="30px" 
-            src="../assets/img/ic_IR_new_arrow.png" 
-          />
+            <h5>대규모기업집단현황공시[분기별공시(개별회사용)]</h5>
+            <h6>
+                2019년 10월 10일
+            </h6>
         </li>
         <li>
-          <div class="performance-Ir-new-title">
-            <h4>전환가액의조정</h4>
-            <h5>19. 10. 20</h5>
-          </div>
-          <img 
-            width="30px" 
-            src="../assets/img/ic_IR_new_arrow.png" 
-          />
+            <h5>특수관계인에대한영업양도</h5>
+            <h6>
+                2019년 10월 10일
+            </h6>
         </li>
-        <li>
-          <div class="performance-Ir-new-title">
-            <h4>전환가액의조정</h4>
-            <h5>19. 10. 20</h5>
-          </div>
-          <img 
-            width="30px" 
-            src="../assets/img/ic_IR_new_arrow.png" 
-          />
-        </li>
-      </ul>
-      <div class="home-more-btn">
-          <button
-            type="button"
-            class=""
-          >
-          <h6>more</h6>
-          <img 
-            class="ic_disclosure-arrow"
-            width="20px" 
-            src="../assets/img/ic_disclosure.png" 
-          />
-        </button>
-      </div>
-    </div>  	
+    </ul>
+    <div class="home-more-btn">
+      <button
+        type="button"
+        class=""
+      >
+      <h6>더보기</h6>
+      <img 
+        width="12px" 
+        src="../assets/img/more_arrow.png" 
+      />
+      </button>
+    </div>
   </div>
 </template>
 
@@ -91,92 +61,70 @@ export default {
 </script>
 <style lang="scss">
 .HomeDisclosure {
-  background: #F8F8FA;
-  padding: 120px 0;
+  padding: 80px 0;
 
-  h2 {
-    text-align: center;
-    font-size: 36px;
-    font-weight: bold;
-    padding: 25px 0;
-    border-bottom: 2px solid #000;
-  }
-  .performance-Ir-new {
+  .disclosure-info {
+      margin-top: 70px;
+      list-style: none;
 
-    & li {
-      padding: 35px;
-      border-bottom: 1px solid #E6E6E6;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      & img {
-        flex-basis: 30px;
-      }
-      .performance-Ir-new-title {
-        flex-basis: calc(100% - 30px);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-right: 30px;
-
-        & h4 {
-          font-size: 18px;
-        }
-        & h5 {
-          color: #bbb;
-          font-size: 16px;
-        }
-      }
-    }
-  }
-  .ic_disclosure-arrow {
-    transform: rotate(0);
-  }
-
-  @media ( max-width: 899px ) {
-    background: #F8F8FA;
-    padding: 30px 15px;
-
-    h2 {
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-      padding: 15px 0;
-      border-bottom: 2px solid #000;
-    }
-    .performance-Ir-new {
-
-      & li {
-        padding: 20px;
-        border-bottom: 1px solid #E6E6E6;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        & img {
-          flex-basis: 30px;
-          display: none;
-        }
-        .performance-Ir-new-title {
-          flex-basis: 100%;
+      li {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding-right: 0;
+          padding: 40px 20px;
+          border-bottom: 1px solid #1B1D20;
 
-          & h4 {
-            font-size: 15px;
+          &:first-child {
+              border-top: 1px solid #1B1D20;
           }
-          & h5 {
-            color: #bbb;
-            font-size: 13px;
+
+          h5 {
+              font-size: 21px;
+              letter-spacing: -0.5px;
+              color: #1B1D20;
           }
-        }
+          h6 {
+              ont-size: 12px;
+              text-align: right;
+              letter-spacing: -0.5px; 
+              color: #8E8E93;
+          }
       }
-    }
-    .ic_disclosure-arrow {
-      transform: rotate(0);
+  }
+
+  @media ( max-width: 899px ) {
+    padding: 40px 0;
+    border-top: 8px solid #EFEFF4;
+
+    .disclosure-info {
+        margin-top: 70px;
+        list-style: none;
+        padding: 0 16px;
+
+        li {
+            display: block;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #1B1D20;
+
+            &:first-child {
+                border-top: 1px solid #1B1D20;
+            }
+
+            h5 {
+                font-size: 16px;
+                letter-spacing: -0.5px;
+                color: #1B1D20;
+            }
+            h6 {
+                ont-size: 10px;
+                text-align: left;
+                letter-spacing: -0.5px; 
+                color: #8E8E93;
+                margin-top: 7px;
+            }
+        }
     }
   }
 }

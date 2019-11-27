@@ -1,100 +1,76 @@
 <template>
-  <div class="HomeIrNews">
-    <div class="contaner">
-      <h2>IR News</h2>
-      <ul class="performance-Ir-new">
+  <div class="HomeIrNews contaner">
+    <h2 class="section-title">IR News</h2>
+    <h3 class="section-sube">
+      Briefing & Press Release
+    </h3>
+    <ul class="ir-news-content">
         <li>
-          <h5>
-            <img 
-              width="60px" 
-              src="../assets/img/img_IR_news_test.png" 
-            />
-          </h5>
-          <div class="performance-Ir-new-title">
-            <h4>카테고리</h4>
-            <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
-            <h5>19. 10. 20</h5>
-          </div>
-          <img 
-            width="30px" 
-            class="ir-arrow"
-            src="../assets/img/ic_IR_new_arrow.png" 
-          />
+            <div class="information">
+                <h5>IR브리핑</h5>
+                <h4>[주담톡톡 Q] LG디스플레이의 사업계획에 대한 주주님들의 질문에 답변해드립니다</h4>
+                <h6>2019년 10월 10일</h6>
+            </div>
         </li>
         <li>
-          <div class="performance-Ir-new-title">
-            <h4>카테고리</h4>
-            <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
-            <h5>19. 10. 20</h5>
-          </div>
-          <img 
-            width="30px" 
-            class="ir-arrow"
-            src="../assets/img/ic_IR_new_arrow.png" 
-          />
+            <div class="image">
+                <img
+                    width="100%"
+                    src="../assets/img/ir_image_01.png"
+                />
+            </div>
+            <div class="information">
+                <h5>IR브리핑</h5>
+                <h4>[주담톡톡 Q] LG디스플레이의 사업계획에 대한 주주님들의 질문에 답변해드립니다</h4>
+                <h6>2019년 10월 10일</h6>
+            </div>
         </li>
         <li>
-          <h5>
-            <img 
-              width="60px" 
-              src="../assets/img/img_IR_news_test.png" 
-            />
-          </h5>
-          <div class="performance-Ir-new-title">
-            <h4>카테고리</h4>
-            <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
-            <h5>19. 10. 20</h5>
-          </div>
-          <img 
-            width="30px" 
-            class="ir-arrow"
-            src="../assets/img/ic_IR_new_arrow.png" 
-          />
+            <div class="image">
+                <img
+                    width="100%"
+                    src="../assets/img/ir_image_02.png"
+                />
+            </div>
+            <div class="information">
+                <h5>IR브리핑</h5>
+                <h4>[주담톡톡 Q] LG디스플레이의 사업계획에 대한 주주님들의 질문에 답변해드립니다</h4>
+                <h6>2019년 10월 10일</h6>
+            </div>
         </li>
         <li>
-          <h5>
-            <img 
-              width="60px" 
-              src="../assets/img/img_IR_news_test.png" 
-            />
-          </h5>
-          <div class="performance-Ir-new-title">
-            <h4>카테고리</h4>
-            <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
-            <h5>19. 10. 20</h5>
-          </div>
-          <img 
-            width="30px" 
-            class="ir-arrow"
-            src="../assets/img/ic_IR_new_arrow.png" 
-          />
+            <div class="information">
+                <h5>IR브리핑</h5>
+                <h4>[주담톡톡 Q] LG디스플레이의 사업계획에 대한 주주님들의 질문에 답변해드립니다</h4>
+                <h6>2019년 10월 10일</h6>
+            </div>
         </li>
         <li>
-          <div class="performance-Ir-new-title">
-            <h4>카테고리</h4>
-            <h4>일반조명용 올레드 사업을 철수한다고 하던데 진행배경과 향후 전략이 어떻게 되는지 궁급합니다.</h4>
-            <h5>19. 10. 20</h5>
-          </div>
-          <img 
-            width="30px" 
-            class="ir-arrow"
-            src="../assets/img/ic_IR_new_arrow.png" 
-          />
+            <div class="image">
+                <img
+                    width="100%"
+                    src="../assets/img/ir_image_03.png"
+                />
+            </div>
+            <div class="information">
+                <h5>IR브리핑</h5>
+                <h4>[주담톡톡 Q] LG디스플레이의 사업계획에 대한 주주님들의 질문에 답변해드립니다</h4>
+                <h6>2019년 10월 10일</h6>
+            </div>
         </li>
-      </ul>
-      <div class="home-more-btn">
-          <button
-            type="button"
-            class=""
-          >
-          <h6>more</h6>
-          <img 
-            width="20px" 
-            src="../assets/img/ic_performanve_FAQ_arror.png" 
-          />
-        </button>
-      </div>
-    </div>  	
+    </ul>
+    <div class="home-more-btn">
+      <button
+        type="button"
+        class=""
+      >
+      <h6>더보기</h6>
+      <img 
+        width="12px" 
+        src="../assets/img/more_arrow.png" 
+      />
+      </button>
+    </div>
   </div>
 </template>
 
@@ -107,92 +83,102 @@ export default {
 }
 </script>
 <style lang="scss">
+@import "@/style/_variables.scss";
 .HomeIrNews {
-  background: #F8F8FA;
-  padding: 120px 0;
+    padding: 50px 0;
 
-  h2 {
-    text-align: center;
-    font-size: 36px;
-    font-weight: bold;
-    padding: 25px 0;
-    border-bottom: 2px solid #000;
-  }
-  .performance-Ir-new {
+    .ir-news-content {
+        margin-top: 70px;
+        list-style: none;
 
-    & li {
-      padding: 35px;
-      border-bottom: 1px solid #E6E6E6;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+        li {
+            padding-top: 70px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #1B1D20;
+            display: flex;
+            justify-content: space-between;
 
-      & h5 {
-        flex-basis: 120px;
-        font-size: 30px;
-        color: #ddd;
-      }
-      & img.ir-arrow {
-        margin-right: 35px;
-        flex-basis: 30px;
-      }
-      .performance-Ir-new-title {
-        flex-basis: calc(100% - 150px);
+            &:first-child {
+                border-top: 1px solid #1B1D20;
+            }
 
-        & h4 {
-          font-size: 18px;
+            & .image {
+                flex-basis: 274px;
+                flex-shrink: 0;
+            }
+            & .information {
+                flex-basis: calc(100% - 274px);
+                padding-left: 41px;
+
+                & h5 {
+                    color: $brand-color;
+                    font-weight: bold;
+                    font-size: 16px;
+                }
+                & h4 {
+                    font-size: 21px;
+                    letter-spacing: -0.5px;
+                    color: #1B1D20;
+                    margin-top: 14px;
+                }
+                & h6 {
+                    font-size: 12px;
+                    letter-spacing: -0.5px;
+                    color: #8E8E93;
+                    margin-top: 22px;
+                }
+            }
         }
-        & h5 {
-          color: #bbb;
-          font-size: 16px;
-        }
-      }
     }
-  }
 
-  @media ( max-width: 899px ) {
-    padding: 30px 15px;
+    @media ( max-width: 899px ) {
+        padding: 44px 0;
+        border-top: 8px solid #EFEFF4;
 
-    h2 {
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-      padding: 15px 0;
-      border-bottom: 2px solid #000;
+        .ir-news-content {
+            margin-top: 30px;
+            list-style: none;
+            padding: 0 16px;
+
+            li {
+                padding-top: 30px;
+                padding-bottom: 20px;
+                border-top: 1px solid #1B1D20;
+                border-bottom: 1px solid #1B1D20;
+                display: block;
+                justify-content: space-between;
+
+                & .image {
+                    height: 138px;
+                    overflow: hidden;
+                    flex-basis: 274px;
+                    flex-shrink: 0;
+                    margin-bottom: 14px;
+                }
+                & .information {
+                    flex-basis: calc(100% - 274px);
+                    padding-left: 0;
+
+                    & h5 {
+                        color: $brand-color;
+                        font-weight: bold;
+                        font-size: 10px;
+                    }
+                    & h4 {
+                        font-size: 16px;
+                        letter-spacing: -0.5px;
+                        color: #1B1D20;
+                        margin-top: 14px;
+                    }
+                    & h6 {
+                        font-size: 10px;
+                        letter-spacing: -0.5px;
+                        color: #8E8E93;
+                        margin-top: 22px;
+                    }
+                }
+            }
+        }
     }
-    .performance-Ir-new {
-
-      & li {
-        padding: 20px 15px;
-        border-bottom: 1px solid #E6E6E6;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        & h5 {
-          flex-basis: 13px;
-          font-size: 30px;
-          color: #ddd;
-        }
-        & img.ir-arrow {
-          margin-right: 20px;
-          flex-basis: 30px;
-          display: none;
-        }
-        .performance-Ir-new-title {
-          flex-basis: calc(100% - 60px);
-          padding-left: 15px;
-
-          & h4 {
-            font-size: 12px;
-          }
-          & h5 {
-            color: #bbb;
-            font-size: 11px;
-          }
-        }
-      }
-    }
-  }
 }
 </style>

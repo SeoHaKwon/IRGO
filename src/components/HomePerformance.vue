@@ -36,49 +36,13 @@ export default {
     justify-content: flex-end;
   }
 
-  .section-title {
-    padding-top: 36px;
-    font-weight: bold;
-    font-size: 46px;
-    color: #1B1D20;
-    position: relative;
-
-    &::after {
-      width: 20000px;
-      height: 2px;
-      background: #1B1D20;
-      position: absolute;
-      left: 0;
-      top: 0;
-      display: block;
-      content: '';
-    }
-  }
-
-  .section-sube {
-    font-size: 16px;
-    color: #8E8E93;
-  }
-
   @media ( max-width: 899px ) {
     padding: 50px 0;
 
-    .section-title {
-        padding: 0 16px;
-      font-weight: bold;
-      font-size: 32px;
-      color: #1B1D20;
-      position: relative;
-
-      &::after {
-        display: none;
-      }
-    }
-
-    .section-sube {
-    padding: 0 16px;
-      font-size: 16px;
-      color: #8E8E93;
+    .performance-select {
+      display: none;
+      align-items: center;
+      justify-content: flex-end;
     }
 
     .performance-group-tab {

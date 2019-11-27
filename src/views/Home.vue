@@ -1,25 +1,34 @@
 <template>
   <div class="home">
-  	<!-- 메인 -->
-  	<HomeMainVisual />
+    	<!-- 메인 -->
+    	<HomeMainVisual />
 
-  	<!-- 스케줄 -->
-  	<HomeSchedule />
+    	<!-- 스케줄 -->
+    	<HomeSchedule />
 
-  	<!-- 실적발표 -->
-    <HomePerformance />
+    	<!-- 실적발표 -->
+        <HomePerformance />
 
-	<!-- IR 뉴스 -->
-  	<!-- <HomeIrNews /> -->
+        <!-- IR 뉴스 -->
+        <HomeIrNews />
 
-	<!-- 경영 보고서 -->
-  	<!-- <HomeManagementReport /> -->
+        <!-- 경영 보고서 -->
+        <HomeManagementReport />
 
-  	<!-- 공시 -->
-  	<!-- <HomeDisclosure /> -->
+        <!-- 재무 정보 -->
+        <HomeFinanceInfo />
 
-	<!-- 주주 현황 -->
-  	<!-- <HomeShareholderStatus /> -->
+        <!-- 공시 -->
+        <HomeDisclosure />
+
+        <!-- 주주 현황 -->
+        <HomeShareholderStatus />
+
+        <!-- IR CONTANT -->
+        <HomeIRContact />
+
+        <!-- APP BANNER -->
+        <HomeAppBanner />
   </div>
 </template>
 
@@ -30,8 +39,13 @@ import HomeSchedule from '@/components/HomeSchedule.vue'
 import HomePerformance from '@/components/HomePerformance.vue'
 import HomeIrNews from '@/components/HomeIrNews.vue'
 import HomeManagementReport from '@/components/HomeManagementReport.vue'
+import HomeFinanceInfo from '@/components/HomeFinanceInfo.vue'
 import HomeDisclosure from '@/components/HomeDisclosure.vue'
 import HomeShareholderStatus from '@/components/HomeShareholderStatus.vue'
+import HomeIRContact from '@/components/HomeIRContact.vue'
+import HomeAppBanner from '@/components/HomeAppBanner.vue'
+
+
 
 export default {
   name: 'home',
@@ -42,8 +56,11 @@ export default {
     HomePerformance,
     HomeIrNews,
     HomeManagementReport,
+    HomeFinanceInfo,
     HomeDisclosure,
-    HomeShareholderStatus
+    HomeShareholderStatus,
+    HomeIRContact,
+    HomeAppBanner
   }
 }
 </script>
@@ -53,33 +70,36 @@ export default {
 	width: 1150px;
 	margin: 0 auto;
 }
+.performance-group-tab {
+    display: none;
+}
 
 .home-more-btn {
   display: flex;
   justify-content: center;
   align-items: center; 
-  margin-top: 30px;
+  margin-top: 45px;
 
   & button {
       display: flex;
       justify-content: center;
       align-items: center; 
       appearance: none;
-      border: 2px solid #ddd;
-      border-radius: 100px;
       padding: 15px;
       text-align: center;
       width: 200px;
-      background: transparent;
+
+      background: #FFFFFF;
+      border: 1px solid #C7C7CC;
+      border-radius: 4px;
       
       & h6 {
-        font-size: 13px;
-        color: #ddd;
+        font-size: 16px;
+        color: #8E8E93;
         font-weight: bold;
       }
 
       & img {
-        transform: rotate(90deg);
         margin-left: 5px;
     }
   }
@@ -122,6 +142,30 @@ export default {
     }
 }
 
+.section-title {
+  padding-top: 36px;
+  font-weight: bold;
+  font-size: 46px;
+  color: #1B1D20;
+  position: relative;
+
+  &::after {
+    width: 20000px;
+    height: 2px;
+    background: #1B1D20;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    content: '';
+  }
+}
+
+.section-sube {
+  font-size: 16px;
+  color: #8E8E93;
+}
+
 
 @media (min-width: 900px) and (max-width: 1149px) {
   .contaner {
@@ -132,44 +176,81 @@ export default {
   .contaner {
     width: 100%;
   }
+  .HomeAppBanner {
+    display: none;
+  }
+
+  .section-title {
+      padding: 0 16px;
+    font-weight: bold;
+    font-size: 32px;
+    color: #1B1D20;
+    position: relative;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .section-sube {
+  padding: 0 16px;
+    font-size: 16px;
+    color: #8E8E93;
+  }
 
   .home-more-btn {
     display: flex;
     justify-content: center;
     align-items: center; 
-    margin-top: 30px;
+    margin-top: 12px;
 
     & button {
         display: flex;
         justify-content: center;
         align-items: center; 
         appearance: none;
-        border: 2px solid #ddd;
-        border-radius: 100px;
-        padding: 5px 15px;
+        padding: 15px;
         text-align: center;
-        width: 110px;
+        width: 200px;
+
         background: transparent;
+        border: 0;
+        border-radius: 4px;
         
         & h6 {
-          font-size: 13px;
-          color: #ddd;
-          font-weight: bold;
+          font-size: 12px;
+          color: #8E8E93;
+          font-weight: normal;
         }
 
         & img {
-          transform: rotate(90deg);
           margin-left: 5px;
+          width: 10px !important;
       }
     }
+  }
+  .performance-group-tab {
+      padding: 0 16px;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 30px;
 
-    &.top-btn {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      margin-top: 0;
-      transform: translate(0, -50%);
-    }
+      li {
+          flex-basis: calc(20% - 11px);
+          font-size: 18px;
+          letter-spacing: -0.24px;
+          color: #8E8E93;
+          padding-bottom: 13px;
+          border-bottom: 2px solid transparent;
+          text-align: center;
+
+          &.active {
+              color: #313439;
+              border-bottom: 2px solid #313439;
+          }
+      }
   }
 }
 </style>

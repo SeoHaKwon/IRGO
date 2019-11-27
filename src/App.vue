@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-    <!-- <div class="desktop-header" v-if="$route.fullPath !== '/join'">
+    <div class="desktop-header" v-if="$route.fullPath !== '/join'">
       <NavigationBar />
     </div>
     <div class="mobile-header" v-if="$route.fullPath !== '/join'">
       <MobileNavigaterBar />
-    </div> -->
+    </div>
     <div 
       :class="{'global-body': !isMobile && $route.fullPath !== '/join', 'mobile-global-body': !isMobile && $route.fullPath !== '/join'}"
+      style="overflow: hidden"
     >
       <router-view />
     </div>
@@ -70,6 +71,7 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-weight: inherit;
+  text-decoration: none;
 }
 input {
   -webkit-appearance: none;
@@ -78,6 +80,7 @@ input {
 }
 .global-body {
   margin-top: $global-margin-top;
+  overflow: hidden;
 }
 .mobile-global-body {
   margin-top: $mobile-global-margin-top;

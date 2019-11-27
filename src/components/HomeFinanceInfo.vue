@@ -1,12 +1,40 @@
 <template>
-  <div class="HomeManagementReport contaner">
-    <h2 class="section-title">경영보고서</h2>
+  <div class="HomeFinanceInfo contaner">
+    <h2 class="section-title">재무정보</h2>
     <h3 class="section-sube">
-      Documents & Report
+      Financial Statements
     </h3>
-    <ul class="management-report">
+    <ul class="performance-group-tab">
+      <li class="active">
+        <a>19.2Q</a>
+      </li>
+      <li>
+        <a>19.1Q</a>
+      </li>
+      <li>
+        <a>18.4Q</a>
+      </li>
+      <li>
+        <a>18.3Q</a>
+      </li>
+      <li>
+        <a>18.2Q</a>
+      </li>
+    </ul>
+      <div class="finance-select">
+          <div class="select-warp">
+              <select>
+                  <option>2019.2Q</option>
+                  <option>2019.2Q</option>
+                  <option>2019.2Q</option>
+                  <option>2019.2Q</option>
+              </select>
+              <div class="select-arrow">▲</div>
+          </div>
+      </div>
+    <ul class="finance-info">
         <li>
-            <h5>정관</h5>
+            <h5>재무상태표</h5>
             <h6>
                 <img
                     width="30px"
@@ -16,7 +44,7 @@
             </h6>
         </li>
         <li>
-            <h5>공시정보관리규정</h5>
+            <h5>손익계산서</h5>
             <h6>
                 <img
                     width="30px"
@@ -26,47 +54,7 @@
             </h6>
         </li>
         <li>
-            <h5>기업지배구조보고서</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>주주총회결과 (2019년)</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>사업보고서 (2019년)</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>지속가능경영보고서 (2018년)</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>연차보고서 (2018년)</h5>
+            <h5>현금흐름표</h5>
             <h6>
                 <img
                     width="30px"
@@ -82,18 +70,24 @@
 <script>
 
 export default {
-  name: 'HomeManagementReport',
+  name: 'HomeFinanceInfo',
   components: {
   }
 }
 </script>
 <style lang="scss">
 @import "@/style/_variables.scss";
-.HomeManagementReport {
+.HomeFinanceInfo {
     padding: 120px 0;
 
-    .management-report {
-        margin-top: 70px;
+    .finance-select {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 13px;
+    }
+
+    .finance-info {
+        margin-top: 53px;
         list-style: none;
 
         li {
@@ -123,10 +117,18 @@ export default {
     }
 
     @media ( max-width: 899px ) {
-    padding: 44px 0;
-    border-top: 8px solid #EFEFF4;
-      .management-report {
-          margin-top: 40px;
+        padding: 44px 0;
+        border-top: 8px solid #EFEFF4;
+
+        .finance-select {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 13px;
+            display: none;
+        }
+
+      .finance-info {
+          margin-top: 0;
           list-style: none;
           padding: 0 16px;
 
@@ -138,7 +140,7 @@ export default {
               border-bottom: 1px solid #1B1D20;
 
               &:first-child {
-                  border-top: 1px solid #1B1D20;
+                  border-top: 0;
               }
 
               h5 {
