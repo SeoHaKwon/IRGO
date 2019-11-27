@@ -220,7 +220,14 @@ export default {
   },
   methods: {
       clickModal(isOpen) {
-            this.isIRModal = isOpen;
+        const globalBody = document.getElementsByTagName('html')[0];
+        
+        if (isOpen) {
+          globalBody.style.overflow = 'hidden'
+        } else {
+          globalBody.style.overflow = 'inherit'
+        }
+        this.isIRModal = isOpen;
       },
   }
 }
