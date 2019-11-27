@@ -142,6 +142,9 @@ input {
      -moz-appearance: none;
           appearance: none;
 }
+.overflow-hidden {
+  overflow: hidden;
+}
 .global-body {
   margin-top: $global-margin-top;
   overflow: hidden;

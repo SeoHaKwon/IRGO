@@ -127,14 +127,24 @@ export default {
   },
   methods: {
       clickModal(isOpen) {
-            this.isIRModal = isOpen;
+      	const globalBody = document.getElementsByTagName('html')[0];
+      	
+      	if (isOpen) {
+      		globalBody.style.overflow = 'hidden'
+      	} else {
+      		globalBody.style.overflow = 'inherit'
+      	}
+
+        this.isIRModal = isOpen;
       },
   }
 }
 </script>
 <style lang="scss">
 @import "@/style/_variables.scss";
-
+.overflow-hidden {
+  overflow: hidden;
+}
 .HomeSchedule {
 	background: #F2F2F2;
 	
