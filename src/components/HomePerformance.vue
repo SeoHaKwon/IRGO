@@ -5,7 +5,12 @@
       Quarter Earnings Results
     </h3>
     <!-- 실적발표 -->
-    <PerformanceContents />
+    <PerformanceContents
+      :datas="type_A"
+    />
+    <PerformanceContents
+      :datas="type_B"
+    />
   <!-- FAQ -->
     <PerformanceFAQ />
   </div>
@@ -17,6 +22,54 @@ import PerformanceFAQ from '@/components/PerformanceFAQ.vue'
 
 export default {
   name: 'HomePerformance',
+  data() {
+    return {
+      type_A: [
+        {
+         title: '보도자료(Press Release)',
+          url: '../assets/img/ic_file_download.png',
+          type: 'PDF'
+        },
+        {
+         title: '웹캐스팅',
+          url: '../assets/img/ic_arrow_forward.png',
+          type: 'URL'
+        },
+        {
+         title: '컨퍼런스콜',
+          url: '../assets/img/ic_arrow_forward.png',
+          type: 'URL'
+        },
+        {
+         title: '스크립트',
+          url: '../assets/img/ic_file_download.png',
+          type: 'PDF'
+        },
+        {
+         title: 'Factsheet',
+          url: '../assets/img/ic_file_download.png',
+          type: 'XLS'
+        },
+      ],
+      type_B: [
+        {
+         title: '컨퍼런스콜',
+          url: '../assets/img/ic_arrow_forward.png',
+          type: 'URL'
+        },
+        {
+         title: '스크립트',
+          url: '../assets/img/ic_file_download.png',
+          type: 'PDF'
+        },
+        {
+         title: 'Factsheet',
+          url: '../assets/img/ic_file_download.png',
+          type: 'XLS'
+        },
+      ]
+    }
+  },
   components: {
     PerformanceContents,
     PerformanceFAQ

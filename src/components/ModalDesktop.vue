@@ -69,7 +69,7 @@ export default {
 
 
         .modal-wrapper {
-            width: 80%;
+            width: 1000px;
             padding: 90px 118px;
             border: 1px solid #C7C7CC;
             border-radius: 6px;
@@ -77,6 +77,19 @@ export default {
             max-height: 90%;
             overflow-y: auto;
             position: relative;
+        }
+
+        @media (min-width: 900px) and (max-width: 1149px) {
+          .modal-wrapper {
+              width: 70%;
+              padding: 90px 118px;
+              border: 1px solid #C7C7CC;
+              border-radius: 6px;
+              background: #fff;
+              max-height: 90%;
+              overflow-y: auto;
+              position: relative;
+          }
         }
 
         @media ( max-width: 899px ) {

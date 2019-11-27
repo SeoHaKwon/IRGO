@@ -30,7 +30,10 @@
         </div>
         <div class="performance-contents container">
             <div class="performance-main">
-                <div class="main-title">
+                <div 
+                  v-if="datas.length > 3"
+                  class="main-title"
+                >
                     <h2 class="title">
                         2019년 2분기 <br/>
                         실적발표
@@ -48,56 +51,38 @@
                     />                    
                 </div>
             </div>
-            <div class="performance-info">
+            <div 
+              class="performance-info"
+            >
+              <div 
+                class="main-title"
+                v-if="datas.length < 4"
+              >
+                  <h2 class="title">
+                      2019년 2분기 <br/>
+                      실적발표
+                  </h2>
+                  <div class="download">
+                      <img 
+                          src="../assets/img/ic_file_download.png"
+                      />
+                  </div>
+              </div>
                 <ul>
-                    <li>
-                        <h5>보도자료(Press Release)</h5>
+                    <li v-for="data in datas">
+                        <h5>{{ data.title }}</h5>
                         <h6>
                             <img
+                              v-if="data.type === 'URL'"
                             width="30px"
-                             src="../assets/img/ic_file_download.png"
-                            />
-                            <span class="data-type">PDF</span>
-                        </h6>
-                    </li>
-                    <li>
-                        <h5>웹캐스팅</h5>
-                        <h6>
-                            <img
-                            width="25px"
                              src="../assets/img/ic_arrow_forward.png"
                             />
-                            <span class="data-type">URL</span>
-                        </h6>
-                    </li>
-                    <li>
-                        <h5>컨퍼런스콜</h5>
-                        <h6>
                             <img
-                            width="25px"
-                             src="../assets/img/ic_arrow_forward.png"
-                            />
-                            <span class="data-type">URL</span>
-                        </h6>
-                    </li>
-                    <li>
-                        <h5>스크립트</h5>
-                        <h6>
-                            <img
+                              v-else
                             width="30px"
                              src="../assets/img/ic_file_download.png"
                             />
-                            <span class="data-type">PDF</span>
-                        </h6>
-                    </li>
-                    <li>
-                        <h5>Factsheet</h5>
-                        <h6>
-                            <img
-                            width="30px"
-                             src="../assets/img/ic_file_download.png"
-                            />
-                            <span class="data-type">XLS</span>
+                            <span class="data-type">{{ data.type }}</span>
                         </h6>
                     </li>
                 </ul>
@@ -110,6 +95,9 @@
 
 export default {
   name: 'PerformanceContents',
+  props: [
+    'datas'
+  ],
   components: {
   }
 }
@@ -135,31 +123,31 @@ export default {
         .performance-main {
             flex-basis: 50%;
             padding-right: 50px;
-            .main-title {
+        }
+        .main-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+
+            & .title {
+                font-size: 34px;
+                font-weight: normal;
+                text-decoration-line: underline;
+                color: #1B1D20;
+            }
+
+            .download {
+                background: #FFFFFF;
+                border: 1px solid #D2D3D3;
+                box-sizing: border-box;
+                border-radius: 4px;
+                padding: 15px;
                 display: flex;
-                justify-content: space-between;
+                justify-content: center;
                 align-items: center;
-                margin-bottom: 30px;
-
-                & .title {
-                    font-size: 34px;
-                    font-weight: normal;
-                    text-decoration-line: underline;
-                    color: #1B1D20;
-                }
-
-                .download {
-                    background: #FFFFFF;
-                    border: 1px solid #D2D3D3;
-                    box-sizing: border-box;
-                    border-radius: 4px;
-                    padding: 15px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 92px;
-                    height: 92px;
-                }
+                width: 92px;
+                height: 92px;
             }
         }
         .performance-info {
@@ -202,28 +190,6 @@ export default {
       align-items: center;
       justify-content: flex-end;
       display: none;
-    }
-    .performance-group-tab {
-        padding: 0 16px;
-        list-style: none;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 30px;
-
-        li {
-            flex-basis: calc(20% - 11px);
-            font-size: 18px;
-            letter-spacing: -0.24px;
-            color: #8E8E93;
-            padding-bottom: 13px;
-            border-bottom: 2px solid transparent;
-
-            &.active {
-                color: #313439;
-                border-bottom: 2px solid #313439;
-            }
-        }
     }
 
       .performance-contents {
