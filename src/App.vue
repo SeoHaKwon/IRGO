@@ -130,8 +130,8 @@ export default {
 }
 .modal-desktop-close {
   position: absolute;
-  right: 20px;
-  top: 20px;
+  right: 50px;
+  top: 70px;
 
   & img {
     cursor: pointer;

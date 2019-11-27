@@ -63,32 +63,28 @@ export default {
         height: 100%;
         background: rgba(255, 255, 255, 0.9);
         z-index: 9999999;
-        display: flex;
-        justify-content: center;
-        align-items: center; 
+        display: block;
+        padding: 70px 0;
+        overflow-y: auto;
 
 
         .modal-wrapper {
+            margin: 0 auto;
             width: 1000px;
             padding: 90px 118px;
             border: 1px solid #C7C7CC;
             border-radius: 6px;
             background: #fff;
-            max-height: 90%;
-            overflow-y: auto;
-            position: relative;
         }
 
         @media (min-width: 900px) and (max-width: 1149px) {
           .modal-wrapper {
-              width: 70%;
-              padding: 90px 118px;
-              border: 1px solid #C7C7CC;
-              border-radius: 6px;
-              background: #fff;
-              max-height: 90%;
-              overflow-y: auto;
-              position: relative;
+              margin: 0 auto;
+                width: 70%;
+                padding: 90px 118px;
+                border: 1px solid #C7C7CC;
+                border-radius: 6px;
+                background: #fff;
           }
         }
 
@@ -101,8 +97,8 @@ export default {
             background: rgba(255, 255, 255, 1);
             z-index: 9999999;
             display: block;
-            justify-content: center;
-            align-items: center; 
+            padding: 0;
+            overflow-y: auto;
 
 
             .modal-wrapper {
