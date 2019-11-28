@@ -129,7 +129,7 @@ export default {
     }
 }
 .modal-desktop-close {
-  position: absolute;
+  position: fixed;
   right: 50px;
   top: 70px;
 
@@ -265,7 +265,12 @@ input {
     padding: 9px;
     color: $brand-color;
     border-bottom: 1px solid #1B1D20;
-    margin: 0 -16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 9999999999;
 
     img {
       margin-right: 10px;
