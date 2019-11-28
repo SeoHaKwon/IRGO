@@ -200,37 +200,6 @@ export default {
           margin-top: 0;
           display: block;
           justify-content: space-between;
-
-          .performance-main {
-              flex-basis: 50%;
-              padding-right: 0;
-              .main-title {
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 30px;
-
-                  & .title {
-                      font-size: 22px;
-                      font-weight: normal;
-                      text-decoration-line: underline;
-                      color: #1B1D20;
-                  }
-
-                  .download {
-                      background: #FFFFFF;
-                      border: 1px solid #D2D3D3;
-                      box-sizing: border-box;
-                      border-radius: 4px;
-                      padding: 15px;
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      width: 64px;
-                      height: 64px;
-                  }
-              }
-          }
           .performance-info {
               flex-basis: 50%;
               padding-left: 0;
@@ -269,6 +238,62 @@ export default {
                   }
               }
           }
+      }
+      .performance-main {
+          flex-basis: 50%;
+          padding-right: 0 !important;
+          .main-title {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 30px;
+
+              & .title {
+                  font-size: 22px !important;
+                  font-weight: normal;
+                  text-decoration-line: underline;
+                  color: #1B1D20;
+              }
+
+              .download {
+                  background: #FFFFFF;
+                  border: 1px solid #D2D3D3;
+                  box-sizing: border-box;
+                  border-radius: 4px;
+                  padding: 15px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 64px;
+                  height: 64px;
+              }
+          }
+      }
+  }
+  .main-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+
+      & .title {
+          font-size: 22px !important;
+          font-weight: normal;
+          text-decoration-line: underline;
+          color: #1B1D20;
+      }
+
+      .download {
+          background: #FFFFFF;
+          border: 1px solid #D2D3D3;
+          box-sizing: border-box;
+          border-radius: 4px;
+          padding: 15px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 64px !important;
+          height: 64px !important;
       }
   }
 }

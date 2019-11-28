@@ -9,7 +9,7 @@
         v-for="data in datas"
       >
         <div class="FAQ-header">
-          <h6 class="number">{{ data.id }}</h6>
+          <h6 class="number">{{ data.id }}dd</h6>
           <h6 class="title">{{ data.title }}</h6>
           <img 
           class="arrow"
