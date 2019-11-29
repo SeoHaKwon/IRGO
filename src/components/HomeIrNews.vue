@@ -214,8 +214,7 @@ export default {
         list-style: none;
 
         li {
-            padding: 34px 0;
-            border-bottom: 1px solid #1B1D20;
+            padding-top: 40px;
             display: flex;
             justify-content: space-between;
             cursor: pointer;
@@ -226,11 +225,14 @@ export default {
 
             & .image {
                 flex-basis: 274px;
+                margin-right: 40px;
                 flex-shrink: 0;
+                border-bottom: 1px solid transparent;
             }
             & .information {
-                flex-basis: calc(100% - 274px);
-                padding-left: 41px;
+                padding: 34px 15px;
+                border-bottom: 1px solid #1B1D20;
+                flex: 1;
 
                 & h5 {
                     color: $brand-color;
@@ -392,8 +394,7 @@ export default {
             padding: 0 16px;
 
             li {
-                padding: 30px 0;
-                border-bottom: 1px solid #1B1D20;
+                padding: 30px 0 0 0;
                 display: block;
                 justify-content: space-between;
 
@@ -403,10 +404,11 @@ export default {
                     flex-basis: 274px;
                     flex-shrink: 0;
                     margin-bottom: 14px;
+                    margin-right: 0;
                 }
                 & .information {
                     flex-basis: calc(100% - 274px);
-                    padding-left: 0;
+                    padding: 0 0 30px 0;
 
                     & h5 {
                         color: $brand-color;
