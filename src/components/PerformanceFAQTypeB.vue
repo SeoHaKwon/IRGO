@@ -9,7 +9,7 @@
         v-for="data in datas"
       >
         <div class="FAQ-header">
-          <h6 class="number">{{ data.id }}dd</h6>
+          <h6 class="number">{{ data.id }}</h6>
           <h6 class="title">{{ data.title }}</h6>
           <img 
           class="arrow"
@@ -165,7 +165,7 @@ export default {
       list-style: none;
 
       li {
-        padding: 40px;
+        padding: 34px;
         border-bottom: 1px solid #1B1D20;
         
 
@@ -200,7 +200,6 @@ export default {
         }
 
         .number {
-          display: inline-block;
           width: 36px;
           flex-basis: 36px;
           height: 36px;
@@ -211,6 +210,9 @@ export default {
           letter-spacing: -0.5px;
           color: #1B1D20;
           border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
         .title {
           flex-basis: calc(100% - 68px);
@@ -239,7 +241,7 @@ export default {
       list-style: none;
 
       li {
-        padding: 15px;
+        padding: 30px 15px;
         border-bottom: 1px solid #1B1D20;
         
 
@@ -274,7 +276,9 @@ export default {
         }
 
         .number {
-          display: inline-block;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           width: 24px;
           flex-basis: 24px;
           height: 24px;

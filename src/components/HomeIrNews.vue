@@ -214,8 +214,7 @@ export default {
         list-style: none;
 
         li {
-            padding-top: 70px;
-            padding-bottom: 30px;
+            padding: 34px 0;
             border-bottom: 1px solid #1B1D20;
             display: flex;
             justify-content: space-between;
@@ -297,7 +296,6 @@ export default {
 
         li {
             padding: 26px;
-            border-top: 1px solid #1B1D20;
             display: flex;
             justify-content: left;
             align-items: center;
@@ -394,9 +392,7 @@ export default {
             padding: 0 16px;
 
             li {
-                padding-top: 30px;
-                padding-bottom: 20px;
-                border-top: 1px solid #1B1D20;
+                padding: 30px 0;
                 border-bottom: 1px solid #1B1D20;
                 display: block;
                 justify-content: space-between;

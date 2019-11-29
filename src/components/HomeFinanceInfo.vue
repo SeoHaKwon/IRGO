@@ -94,7 +94,7 @@ export default {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 40px 20px;
+            padding: 34px 20px;
             border-bottom: 1px solid #1B1D20;
 
             &:first-child {

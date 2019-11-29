@@ -254,7 +254,7 @@ export default {
             justify-content: space-between;
             border-bottom: 1px solid #1B1D20;
             margin-top: 34px;
-            padding: 34px 0;
+            padding: 30px 0;
 
             &:first-child {
                 border-top: 1px solid #1B1D20;
