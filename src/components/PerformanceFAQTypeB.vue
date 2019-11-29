@@ -236,6 +236,9 @@ export default {
     }
 
     @media ( max-width: 899px ) {
+    padding: 44px 0;
+    border-top: 8px solid #EFEFF4;
+
     .FAQ-type-B {
       padding: 44px 16px;
       list-style: none;
