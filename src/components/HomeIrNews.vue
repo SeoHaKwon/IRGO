@@ -9,9 +9,9 @@
             @click="clickModal(true)"
         >
             <div class="information">
-                <h5>IR브리핑</h5>
+                <h5 class="PC">IR브리핑</h5>
                 <h4>[주담톡톡 Q] LG디스플레이의 사업계획에 대한 주주님들의 질문에 답변해드립니다</h4>
-                <h6>2019년 10월 10일</h6>
+                <h6><span class="mobile">IR브리핑</span>2019년 10월 10일</h6>
             </div>
         </li>
         <li
@@ -24,9 +24,9 @@
                 />
             </div>
             <div class="information">
-                <h5>IR브리핑</h5>
+                <h5 class="PC">IR브리핑</h5>
                 <h4>[주담톡톡 Q] LG디스플레이의 사업계획에 대한 주주님들의 질문에 답변해드립니다</h4>
-                <h6>2019년 10월 10일</h6>
+                <h6><span class="mobile">IR브리핑</span>2019년 10월 10일</h6>
             </div>
         </li>
         <li
@@ -39,18 +39,18 @@
                 />
             </div>
             <div class="information">
-                <h5>IR브리핑</h5>
+                <h5 class="PC">IR브리핑</h5>
                 <h4>[주담톡톡 Q] LG디스플레이의 사업계획에 대한 주주님들의 질문에 답변해드립니다</h4>
-                <h6>2019년 10월 10일</h6>
+                <h6><span class="mobile">IR브리핑</span>2019년 10월 10일</h6>
             </div>
         </li>
         <li
             @click="clickModal(true)"
         >
             <div class="information">
-                <h5>IR브리핑</h5>
+                <h5 class="PC">IR브리핑</h5>
                 <h4>[주담톡톡 Q] LG디스플레이의 사업계획에 대한 주주님들의 질문에 답변해드립니다</h4>
-                <h6>2019년 10월 10일</h6>
+                <h6><span class="mobile">IR브리핑</span>2019년 10월 10일</h6>
             </div>
         </li>
         <li
@@ -63,9 +63,9 @@
                 />
             </div>
             <div class="information">
-                <h5>IR브리핑</h5>
+                <h5 class="PC">IR브리핑</h5>
                 <h4>[주담톡톡 Q] LG디스플레이의 사업계획에 대한 주주님들의 질문에 답변해드립니다</h4>
-                <h6>2019년 10월 10일</h6>
+                <h6><span class="mobile">IR브리핑</span>2019년 10월 10일</h6>
             </div>
         </li>
     </ul>
@@ -234,7 +234,7 @@ export default {
                 border-bottom: 1px solid $border-color;
                 flex: 1;
 
-                & h5 {
+                & h5.PC {
                     color: $brand-color;
                     font-weight: bold;
                     font-size: 16px;
@@ -252,6 +252,10 @@ export default {
                     letter-spacing: -0.5px;
                     color: #8E8E93;
                     margin-top: 22px;
+
+                    & span {
+                        display: none;
+                    }
                 }
             }
         }
@@ -396,26 +400,29 @@ export default {
             padding: 0 16px;
 
             li {
-                padding-top: 30px;
-                padding-bottom: 20px;
-                border-top: 1px solid $border-color;
+                padding: 40px 0;
                 border-bottom: 1px solid $border-color;
-                display: block;
+                display: flex;
                 justify-content: space-between;
 
+                &:first-child {
+                    border-top: 1px solid $border-color;
+                }
+
                 & .image {
-                    height: 138px;
                     overflow: hidden;
-                    flex-basis: 274px;
+                    flex-basis: 30%;
                     flex-shrink: 0;
                     margin-bottom: 14px;
-                    margin-right: 0;
+                    margin-right: 20px;
                 }
                 & .information {
                     flex-basis: calc(100% - 274px);
-                    padding: 0 0 30px 0;
+                    padding: 0;
+                    border-bottom: 0;
 
-                    & h5 {
+                    & h5.PC {
+                        display: none;
                         color: $brand-color;
                         font-weight: bold;
                         font-size: 10px;
@@ -424,13 +431,22 @@ export default {
                         font-size: 16px;
                         letter-spacing: -0.5px;
                         color: $font-color-base;
-                        margin-top: 14px;
+                        margin-top: 0;
+                        height: 50px;
                     }
                     & h6 {
                         font-size: 10px;
                         letter-spacing: -0.5px;
                         color: #8E8E93;
-                        margin-top: 22px;
+                        margin-top: 15px;
+
+                        & span {
+                            display: inline;
+                            color: $brand-color;
+                            font-weight: bold;
+                            font-size: 10px;
+                            margin-right: 10px;
+                        }
                     }
                 }
             }
