@@ -102,6 +102,7 @@ export default {
             align-items: center;
             padding: 40px 20px;
             border-bottom: 1px solid $border-color;
+            height: 120px;
 
             &:first-child {
                 border-top: 1px solid $border-color;
