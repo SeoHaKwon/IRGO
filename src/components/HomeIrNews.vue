@@ -17,12 +17,10 @@
         <li
             @click="clickModal(true)"
         >
-            <div class="image">
-                <img
-                    width="100%"
-                    src="../assets/img/ir_image_01.png"
-                />
-            </div>
+            <img
+                class="image"
+                src="../assets/img/ir_image_01.png"
+            />
             <div class="information">
                 <h5 class="PC">IR브리핑</h5>
                 <h4>[주담톡톡 Q] LG디스플레이의 사업계획에 대한 주주님들의 질문에 답변해드립니다</h4>
@@ -32,12 +30,10 @@
         <li
             @click="clickModal(true)"
         >
-            <div class="image">
-                <img
-                    width="100%"
-                    src="../assets/img/ir_image_02.png"
-                />
-            </div>
+            <img
+                class="image"
+                src="../assets/img/ir_image_01.png"
+            />
             <div class="information">
                 <h5 class="PC">IR브리핑</h5>
                 <h4>[주담톡톡 Q] LG디스플레이의 사업계획에 대한 주주님들의 질문에 답변해드립니다</h4>
@@ -56,12 +52,10 @@
         <li
             @click="clickModal(true)"
         >
-            <div class="image">
-                <img
-                    width="100%"
-                    src="../assets/img/ir_image_03.png"
-                />
-            </div>
+            <img
+                class="image"
+                src="../assets/img/ir_image_01.png"
+            />
             <div class="information">
                 <h5 class="PC">IR브리핑</h5>
                 <h4>[주담톡톡 Q] LG디스플레이의 사업계획에 대한 주주님들의 질문에 답변해드립니다</h4>
@@ -412,6 +406,7 @@ export default {
                 & .image {
                     overflow: hidden;
                     flex-basis: 30%;
+                    width: 30%;
                     flex-shrink: 0;
                     margin-bottom: 0;
                     margin-right: 20px;
