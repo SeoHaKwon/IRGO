@@ -60,11 +60,12 @@ export default {
 }
 </script>
 <style lang="scss">
+@import "@/style/_variables.scss";
 .HomeDisclosure {
-  padding: 80px 0;
+  padding-top: 200px;
 
   .disclosure-info {
-      margin-top: 70px;
+      margin-top: 106px;
       list-style: none;
 
       li {
@@ -72,16 +73,16 @@ export default {
           justify-content: space-between;
           align-items: center;
           padding: 40px 20px;
-          border-bottom: 1px solid #1B1D20;
+          border-bottom: 1px solid $border-color;
 
           &:first-child {
-              border-top: 1px solid #1B1D20;
+              border-top: 1px solid $border-color;
           }
 
           h5 {
               font-size: 21px;
               letter-spacing: -0.5px;
-              color: #1B1D20;
+              color: $font-color-base;
           }
           h6 {
               ont-size: 12px;
@@ -106,16 +107,16 @@ export default {
             justify-content: space-between;
             align-items: center;
             padding: 20px;
-            border-bottom: 1px solid #1B1D20;
+            border-bottom: 1px solid $border-color;
 
             &:first-child {
-                border-top: 1px solid #1B1D20;
+                border-top: 1px solid $border-color;
             }
 
             h5 {
                 font-size: 16px;
                 letter-spacing: -0.5px;
-                color: #1B1D20;
+                color: $font-color-base;
             }
             h6 {
                 ont-size: 10px;

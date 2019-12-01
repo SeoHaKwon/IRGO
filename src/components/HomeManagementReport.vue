@@ -90,10 +90,10 @@ export default {
 <style lang="scss">
 @import "@/style/_variables.scss";
 .HomeManagementReport {
-    padding: 120px 0;
+    padding-top: 185px;
 
     .management-report {
-        margin-top: 70px;
+        margin-top: 106px;
         list-style: none;
 
         li {
@@ -101,16 +101,16 @@ export default {
             justify-content: space-between;
             align-items: center;
             padding: 40px 20px;
-            border-bottom: 1px solid #1B1D20;
+            border-bottom: 1px solid $border-color;
 
             &:first-child {
-                border-top: 1px solid #1B1D20;
+                border-top: 1px solid $border-color;
             }
 
             h5 {
                 font-size: 21px;
                 letter-spacing: -0.5px;
-                color: #1B1D20;
+                color: $font-color-base;
             }
             h6 {
                 font-size: 18px;
@@ -135,16 +135,16 @@ export default {
               justify-content: space-between;
               align-items: center;
               padding: 30px 15px;
-              border-bottom: 1px solid #1B1D20;
+              border-bottom: 1px solid $border-color;
 
               &:first-child {
-                  border-top: 1px solid #1B1D20;
+                  border-top: 1px solid $border-color;
               }
 
               h5 {
                   font-size: 16px;
                   letter-spacing: -0.5px;
-                  color: #1B1D20;
+                  color: $font-color-base;
               }
               h6 {
                   font-size: 18px;

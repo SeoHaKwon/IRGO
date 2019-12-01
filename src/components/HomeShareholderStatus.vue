@@ -274,30 +274,30 @@ export default {
 }
 </script>
 <style lang="scss">
-
+@import "@/style/_variables.scss";
 .HomeShareholderStatus {
-  padding: 120px 0;
+  padding-top: 185px;
 
   .shareholder-data,
   .shareholder-group {
-    margin-top: 70px;
+    margin-top: 106px;
 
     .shareholder-group-title {
         font-size: 32px;
-        color: #1B1D20;
-        border-bottom: 1px solid #1B1D20;
+        color: $font-color-base;
+        border-bottom: 1px solid $border-color;
         padding-bottom: 42px;
     }
     .shareholder-data-title {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px solid #1B1D20;
+        border-bottom: 1px solid $border-color;
         padding-bottom: 42px;
 
         span {
             font-size: 32px;
-            color: #1B1D20;
+            color: $font-color-base;
         }
     }
     .shareholder-group-items {
@@ -322,7 +322,7 @@ export default {
                 thead,
                 tbody,
                 tfoot{
-                    border-bottom: 1px solid #1B1D20;
+                    border-bottom: 1px solid $border-color;
                 }
 
                 thead tr td {
@@ -338,7 +338,7 @@ export default {
                 tbody tr td ,
                 tfoot tr td {
                     font-size: 19px;
-                    color: #1B1D20;
+                    color: $font-color-base;
                     padding: 20px 15px;
                     text-align: right;
 
@@ -364,7 +364,7 @@ export default {
 
            thead,
            tfoot{
-               border-bottom: 1px solid #1B1D20;
+               border-bottom: 1px solid $border-color;
            }
 
            thead tr td {
@@ -378,7 +378,7 @@ export default {
                }
            }
            tbody tr td {
-            border-bottom: 1px solid #1B1D20;
+            border-bottom: 1px solid $border-color;
            }
            tbody tr:last-child td {
             border-bottom: 0;
@@ -386,7 +386,7 @@ export default {
            tbody tr td ,
            tfoot tr td {
                font-size: 19px;
-               color: #1B1D20;
+               color: $font-color-base;
                padding: 20px 15px;
                text-align: right;
 
@@ -437,7 +437,7 @@ export default {
 
           .shareholder-group-title {
               font-size: 22px;
-              color: #1B1D20;
+              color: $font-color-base;
               border-bottom: 0;
               padding-bottom: 0;
               padding: 0 16px;
@@ -451,7 +451,7 @@ export default {
 
               span {
                   font-size: 22px;
-                  color: #1B1D20;
+                  color: $font-color-base;
               }
           }
           .shareholder-group-items {
@@ -478,7 +478,7 @@ export default {
                       thead,
                       tbody,
                       tfoot{
-                          border-bottom: 1px solid #1B1D20;
+                          border-bottom: 1px solid $border-color;
                       }
 
                       thead tr td {
@@ -494,7 +494,7 @@ export default {
                       tbody tr td ,
                       tfoot tr td {
                           font-size: 14px;
-                          color: #1B1D20;
+                          color: $font-color-base;
                           padding: 20px 10px;
                           text-align: right;
 
@@ -521,7 +521,7 @@ export default {
 
                  thead,
                  tfoot{
-                     border-bottom: 1px solid #1B1D20;
+                     border-bottom: 1px solid $border-color;
                  }
 
                  thead tr td {
@@ -535,7 +535,7 @@ export default {
                      }
                  }
                  tbody tr td {
-                  border-bottom: 1px solid #1B1D20;
+                  border-bottom: 1px solid $border-color;
                  }
                  tbody tr:last-child td {
                   border-bottom: 0;
@@ -543,7 +543,7 @@ export default {
                  tbody tr td ,
                  tfoot tr td {
                      font-size: 14px;
-                     color: #1B1D20;
+                     color: $font-color-base;
                      padding: 20px 10px;
                      text-align: right;
 

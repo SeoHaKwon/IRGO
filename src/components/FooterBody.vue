@@ -22,6 +22,7 @@ export default {
 }
 </script>
 <style lang="scss">
+@import "@/style/_variables.scss";
 .FooterBody { 
   padding: 60px 0;
   width: 1150px;
@@ -51,7 +52,7 @@ export default {
         width: 100%;
         margin: 0 auto;
         margin-top: 75px;
-        border-top: 1px solid #313439;
+        border-top: 1px solid $border-color;
 
         h3 {
           font-size: 14px;

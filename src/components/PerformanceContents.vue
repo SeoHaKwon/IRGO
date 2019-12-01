@@ -134,7 +134,7 @@ export default {
                 font-size: 34px;
                 font-weight: normal;
                 text-decoration-line: underline;
-                color: #1B1D20;
+                color: $font-color-base;
             }
 
             .download {
@@ -166,12 +166,13 @@ export default {
 
                     &:last-child {
                         margin-bottom: 0;
+                        border-bottom: 0;
                     }
 
                     & h5 {
                         font-size: 21px;
                         letter-spacing: -0.5px;
-                        color: #1B1D20;
+                        color: $font-color-base;
                     }
                     & h6 {
                         display: flex;
@@ -214,7 +215,7 @@ export default {
                       font-size: 22px;
                       font-weight: normal;
                       text-decoration-line: underline;
-                      color: #1B1D20;
+                      color: $font-color-base;
                   }
 
                   .download {
@@ -253,7 +254,7 @@ export default {
                       & h5 {
                           font-size: 16px;
                           letter-spacing: -0.5px;
-                          color: #1B1D20;
+                          color: $font-color-base;
                       }
                       & h6 {
                           display: flex;

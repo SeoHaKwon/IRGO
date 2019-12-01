@@ -207,22 +207,21 @@ export default {
 <style lang="scss">
 @import "@/style/_variables.scss";
 .HomeIrNews {
-    padding: 50px 0;
+    padding-top: 200px;
 
     .ir-news-content {
-        margin-top: 70px;
+        margin-top: 106px;
         list-style: none;
 
         li {
-            padding-top: 70px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid #1B1D20;
+            padding: 40px 0;
+            border-bottom: 1px solid $border-color;
             display: flex;
             justify-content: space-between;
             cursor: pointer;
 
             &:first-child {
-                border-top: 1px solid #1B1D20;
+                border-top: 1px solid $border-color;
             }
 
             & .image {
@@ -241,8 +240,10 @@ export default {
                 & h4 {
                     font-size: 21px;
                     letter-spacing: -0.5px;
-                    color: #1B1D20;
+                    color: $font-color-base;
                     margin-top: 14px;
+                    height: 64px;
+                    overflow: hidden;
                 }
                 & h6 {
                     font-size: 12px;
@@ -264,7 +265,7 @@ export default {
         font-weight: bold;
         font-size: 34px;
         letter-spacing: -0.5px;
-        color: #1B1D20;
+        color: $font-color-base;
         margin-top: 17px;
     }
     
@@ -297,13 +298,13 @@ export default {
 
         li {
             padding: 26px;
-            border-top: 1px solid #1B1D20;
+            border-top: 1px solid $border-color;
             display: flex;
             justify-content: left;
             align-items: center;
 
             &:last-child {
-                border-bottom: 1px solid #1B1D20;
+                border-bottom: 1px solid $border-color;
             }
 
             img {
@@ -327,7 +328,7 @@ export default {
             font-weight: bold;
             font-size: 22px;
             letter-spacing: -0.5px;
-            color: #1B1D20;
+            color: $font-color-base;
             margin-top: 8px;
         }
         
@@ -358,17 +359,16 @@ export default {
         .IR-modal-list {
             list-style: none;
             margin-top: 30px;
-            display: none;
 
             li {
                 padding: 26px;
-                border-top: 1px solid #1B1D20;
+                border-top: 1px solid $border-color;
                 display: flex;
                 justify-content: left;
                 align-items: center;
 
                 &:last-child {
-                    border-bottom: 1px solid #1B1D20;
+                    border-bottom: 1px solid $border-color;
                 }
 
                 img {
@@ -396,8 +396,8 @@ export default {
             li {
                 padding-top: 30px;
                 padding-bottom: 20px;
-                border-top: 1px solid #1B1D20;
-                border-bottom: 1px solid #1B1D20;
+                border-top: 1px solid $border-color;
+                border-bottom: 1px solid $border-color;
                 display: block;
                 justify-content: space-between;
 
@@ -420,7 +420,7 @@ export default {
                     & h4 {
                         font-size: 16px;
                         letter-spacing: -0.5px;
-                        color: #1B1D20;
+                        color: $font-color-base;
                         margin-top: 14px;
                     }
                     & h6 {

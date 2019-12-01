@@ -15,6 +15,26 @@
     <template v-if="$route.fullPath !== '/join'">
       <footerBody />
     </template>
+    <div 
+      v-if="isAppDownloadModal"
+      class="app-download-modal"
+    >
+      <div class="content">
+        <h3>주주와 함께하는 LG디스플레이</h3>
+        <h4>LG디스플레이 IR앱에서 투자정보/소식을 받아보고, <br /> IR담당자와 소통할 수 있습니다.</h4>
+        <div 
+          class="app-download-btn"
+          @click="appDownloadModalClose()"
+          >
+            앱 다운로드
+          </div>
+        <h5
+          @click="appDownloadModalClose()"
+        >
+          모바일 웹에서 계속보기
+        </h5>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -37,7 +57,8 @@ export default {
   data() {
       return {
         isMobile: false,
-        fullPath: ''
+        fullPath: '',
+        isAppDownloadModal: true,
       };
   },
   props: [
@@ -49,6 +70,9 @@ export default {
   watch: {
   },
   methods: {
+    appDownloadModalClose() {
+      this.isAppDownloadModal = false;
+    }
   },
   created() {
   },
@@ -109,13 +133,13 @@ export default {
 
     li {
         padding: 26px;
-        border-top: 1px solid #1B1D20;
+        border-top: 1px solid $border-color;
         display: flex;
         justify-content: left;
         align-items: center;
 
         &:last-child {
-            border-bottom: 1px solid #1B1D20;
+            border-bottom: 1px solid $border-color;
         }
 
         img {
@@ -242,7 +266,63 @@ input {
 .modal-mobile-header {
   display: none;
 }
+.app-download-modal {
+  display: none;
+}
 @media (max-width: 899px) {
+  .app-download-modal {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    left: 0;
+    top: 0;
+    z-index: 10000000000;
+
+    .content {
+      padding: 47px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border-radius: 10px 10px 0 0;
+      background: #fff;
+      width: 100%;
+      text-align: center;
+
+      h3 {
+        font-size: 20px;
+        letter-spacing: -0.005em;
+        color: #313439;
+        font-weight: bold;
+      }
+      h4 {
+        font-size: 12px;
+        letter-spacing: -0.005em;
+        color: #545454;
+        margin-top: 8px;
+      }
+      .app-download-btn {
+        background: $brand-color;
+        padding: 11px 0;
+        width: 100%;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 16px;
+        color: #fff;
+        margin-top: 26px;
+        cursor: pointer;
+      }
+      h5 {
+        font-size: 16px;
+        letter-spacing: -0.005em;
+        color: #8E8E93;
+        margin-top: 13px;
+        cursor: pointer;
+      }
+
+    }
+  }
   .mobile-header {
     display: block;
   }
@@ -264,7 +344,7 @@ input {
     align-items: center;
     padding: 9px;
     color: $brand-color;
-    border-bottom: 1px solid #1B1D20;
+    border-bottom: 1px solid $border-color;
     margin: 0 -16px;
 
     img {

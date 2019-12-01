@@ -159,18 +159,19 @@ export default {
 }
 </script>
 <style lang="scss">
+@import "@/style/_variables.scss";
 .PerformanceFAQTypeB {
     .FAQ-type-B {
-      padding: 140px 0;
+      padding-top: 106px;
       list-style: none;
 
       li {
         padding: 40px;
-        border-bottom: 1px solid #1B1D20;
+        border-bottom: 1px solid $border-color;
         
 
         &:first-child {
-          border-top: 1px solid #1B1D20;
+          border-top: 1px solid $border-color;
         }
 
         .FAQ-header {
@@ -189,7 +190,7 @@ export default {
             font-weight: bold;
             font-size: 19px;
             letter-spacing: -0.5px;
-            color: #1B1D20;
+            color: $font-color-base;
           }
           .info-description {
             font-size: 16px;
@@ -200,16 +201,18 @@ export default {
         }
 
         .number {
-          display: inline-block;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           width: 36px;
           flex-basis: 36px;
           height: 36px;
           flex-shrink: 0;
-          border: 3px solid #1B1D20;
+          border: 2px solid $font-color-base;
           font-size: 20px;
           text-align: center;
           letter-spacing: -0.5px;
-          color: #1B1D20;
+          color: $font-color-base;
           border-radius: 50%;
         }
         .title {
@@ -218,7 +221,7 @@ export default {
           font-weight: bold;
           font-size: 26px;
           letter-spacing: -0.5px;
-          color: #1B1D20;
+          color: $font-color-base;
         }
         .arrow {
           width: 32px;
@@ -240,11 +243,11 @@ export default {
 
       li {
         padding: 15px;
-        border-bottom: 1px solid #1B1D20;
+        border-bottom: 1px solid $border-color;
         
 
         &:first-child {
-          border-top: 1px solid #1B1D20;
+          border-top: 1px solid $border-color;
         }
 
         .FAQ-header {
@@ -263,7 +266,7 @@ export default {
             font-weight: bold;
             font-size: 14px;
             letter-spacing: -0.5px;
-            color: #1B1D20;
+            color: $font-color-base;
           }
           .info-description {
             font-size: 14px;
@@ -279,11 +282,11 @@ export default {
           flex-basis: 24px;
           height: 24px;
           flex-shrink: 0;
-          border: 3px solid #1B1D20;
+          border: 3px solid $border-color;
           font-size: 14px;
           text-align: center;
           letter-spacing: -0.5px;
-          color: #1B1D20;
+          color: $font-color-base;
           border-radius: 50%;
         }
         .title {
@@ -292,7 +295,7 @@ export default {
           font-weight: bold;
           font-size: 18px;
           letter-spacing: -0.5px;
-          color: #1B1D20;
+          color: $font-color-base;
         }
         .arrow {
           width: 24px;

@@ -42,14 +42,14 @@
             </a>
           </li>
         </ul>
-        <div class="header-mobile-icon">
+      </div>
+      <div class="header-mobile-icon">
 
-          <router-link to="/join">
-            <div class="app-join">
-              앱 다운로드
-            </div>
-          </router-link>
-        </div>
+        <router-link to="/join">
+          <div class="app-join">
+            앱 다운로드
+          </div>
+        </router-link>
       </div>
     </header>
   </div>
@@ -64,6 +64,7 @@
   width: 100%;
   background: #ffffff;
   z-index: 1500;
+  border-bottom: 1px solid $border-color;
 
   header {
     width: 1150px;

@@ -124,10 +124,9 @@
             </div>
             <h5 class="modal-map">Investor Relations > 실적발표(FAQ)</h5>
             <h5 class="FAQ-modal-question">
-                <img
-                    width="53px"
-                    src="../assets/img/question.png"
-                />
+                <div class="quest-anser-icon">
+                  Q
+                </div>
                 설훈 주주님의 질문입니다.
             </h5>
             <h5 class="FAQ-modal-title">
@@ -153,10 +152,9 @@
                 </div>
             </div>
             <h5 class="FAQ-modal-anser">
-                <img
-                    width="53px"
-                    src="../assets/img/anser.png"
-                />
+                <div class="quest-anser-icon anser">
+                  A
+                </div>
                 2019년 10월 10일
             </h5>
             <h4
@@ -233,6 +231,7 @@ export default {
 }
 </script>
 <style lang="scss">
+@import "@/style/_variables.scss";
 .PerformanceFAQ {
     .FAQ-title {
         display: flex;
@@ -242,7 +241,7 @@ export default {
 
         & h4 {
             font-size: 32px;
-            color: #1B1D20;
+            color: $font-color-base;
         }
     }
 
@@ -252,12 +251,12 @@ export default {
         li {
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid #1B1D20;
-            margin-top: 34px;
-            padding: 34px 0;
+            border-bottom: 1px solid $border-color;
+            padding: 40px 0;
 
             &:first-child {
-                border-top: 1px solid #1B1D20;
+                border-top: 1px solid $border-color;
+                margin-top: 34px;
             }
 
             & h5 {
@@ -273,7 +272,7 @@ export default {
                 & h4 {
                     font-size: 21px;
                     letter-spacing: -0.5px;
-                    color: #1B1D20;
+                    color: $font-color-base;
                 }
                 & h6 {
                     font-size: 12px;
@@ -299,7 +298,7 @@ export default {
 
           & h4 {
               font-size: 32px;
-              color: #1B1D20;
+              color: $font-color-base;
           }
       }
       .performance-FAQ {
@@ -308,7 +307,7 @@ export default {
           li {
               display: flex;
               justify-content: space-between;
-              border-bottom: 1px solid #1B1D20;
+              border-bottom: 1px solid $border-color;
               margin-top: 34px;
               margin: 0 21px;
               cursor: pointer;
@@ -331,7 +330,7 @@ export default {
                   & h4 {
                       font-size: 16px;
                       letter-spacing: -0.5px;
-                      color: #1B1D20;
+                      color: $font-color-base;
                   }
                   & h6 {
                       font-size: 10px;
@@ -347,7 +346,7 @@ export default {
     }
     .FAQ-modal-anser {
       padding-top: 60px;
-      border-top: 1px solid #1B1D20;
+      border-top: 1px solid $border-color;
     }
     .FAQ-modal-anser,
     .FAQ-modal-question {
@@ -360,8 +359,23 @@ export default {
         opacity: 0.87;
         margin-top: 60px;
 
-        img {
-          margin-right: 17px;
+        .quest-anser-icon {
+          margin-right: 7px;
+          border: 2px solid #8E8E93;
+          color: #8E8E93;
+          width: 52px;
+          height: 52px;
+          line-height: 52px;
+          font-size: 25px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &.anser {
+            border: 2px solid $brand-color;
+            color: $brand-color;
+          }
         }
       }
       .FAQ-modal-title {
@@ -369,7 +383,7 @@ export default {
           font-size: 34px;
           margin-top: 18px;
           letter-spacing: -0.5px;
-          color: #1B1D20;
+          color: $font-color-base;
       }
       .IR-main-description {
           margin-top: 57px;
@@ -420,7 +434,7 @@ export default {
 
       .FAQ-modal-anser {
         padding-top: 21px;
-        border-top: 1px solid #1B1D20;
+        border-top: 1px solid $border-color;
       }
       .FAQ-modal-anser,
       .FAQ-modal-question {
@@ -443,7 +457,7 @@ export default {
             font-size: 22px;
             margin-top: 25px;
             letter-spacing: -0.5px;
-            color: #1B1D20;
+            color: $font-color-base;
         }
         .IR-main-description {
             margin-top: 57px;

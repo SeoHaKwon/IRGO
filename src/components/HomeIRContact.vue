@@ -66,15 +66,15 @@ export default {
 }
 </script>
 <style lang="scss">
-
+@import "@/style/_variables.scss";
 .HomeIRContact {
-    padding: 120px 0;
+    padding: 200px 0;
     .ir-contact-contents {
         display: flex;
         align-items: center;
         font-size: 16px;
         letter-spacing: -0.5px;
-        color: #1B1D20;
+        color: $font-color-base;
         margin-top: 10px;
 
         .title {
@@ -106,7 +106,7 @@ export default {
             align-items: center;
             font-size: 16px;
             letter-spacing: -0.5px;
-            color: #1B1D20;
+            color: $font-color-base;
             margin-top: 10px;
             padding: 0 16px;
 

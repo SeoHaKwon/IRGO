@@ -159,7 +159,7 @@ export default {
 			font-weight: bold;
 			font-size: 32px;
 			line-height: 42px;
-			color: #1B1D20;
+			color: $font-color-base;
 			flex-basis: 150px;
 		}
 
@@ -184,7 +184,7 @@ export default {
 				}
 
 				.item-title {
-					color: #1B1D20;
+					color: $font-color-base;
 					opacity: 0.87;
 					font-size: 21px;
 				}
@@ -214,7 +214,7 @@ export default {
 	  		font-weight: bold;
 	  		font-size: 20px;
 	  		line-height: 42px;
-	  		color: #1B1D20;
+	  		color: $font-color-base;
 	  		flex-basis: 150px;
 	  	}
 
@@ -240,7 +240,7 @@ export default {
 	  			}
 
 	  			.item-title {
-	  				color: #1B1D20;
+	  				color: $font-color-base;
 	  				opacity: 0.87;
 	  				font-size: 16px;
 	  			}
@@ -263,7 +263,7 @@ export default {
 		font-weight: bold;
 		font-size: 34px;
 		letter-spacing: -0.5px;
-		color: #1B1D20;
+		color: $font-color-base;
 		margin-top: 18px;
 	}
 	.schedule-table {
@@ -274,15 +274,15 @@ export default {
 
 		.title {
 			padding-top: 12px;
-			border-top: 1px solid #D1D2D2;
+			border-top: 1px solid $border-color;
 			flex-basis: calc(20% - 18px);
 			font-size: 18px;
 			letter-spacing: -0.2px;
-			color: #1B1D20;
+			color: $font-color-base;
 		}
 		.description {
 			padding-top: 12px;
-			border-top: 1px solid #D1D2D2;
+			border-top: 1px solid $border-color;
 			flex-basis: calc(80% - 18px);
 			font-size: 18px;
 			letter-spacing: -0.5px;
@@ -310,7 +310,7 @@ export default {
 			font-weight: bold;
 			font-size: 22px;
 			letter-spacing: -0.5px;
-			color: #1B1D20;
+			color: $font-color-base;
 			margin-top: 13px;
 		}
 		.schedule-table {
@@ -325,7 +325,7 @@ export default {
 				flex-basis: calc(20% - 18px);
 				font-size: 16px;
 				letter-spacing: -0.2px;
-				color: #1B1D20;
+				color: $font-color-base;
 			}
 			.description {
 				padding-top: 12px;

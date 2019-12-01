@@ -87,7 +87,7 @@ export default {
 </script>
 <style lang="scss">
 .HomePerformance {
-  padding: 130px 0;
+  padding-top: 200px;
   .performance-group-tab {
     display: none;
     }

@@ -65,7 +65,7 @@ export default {
 }
 </script>
 <style lang="scss">
-
+@import "@/style/_variables.scss";
 .contaner {
 	width: 1150px;
 	margin: 0 auto;
@@ -90,7 +90,7 @@ export default {
       width: 200px;
 
       background: #FFFFFF;
-      border: 1px solid #C7C7CC;
+      border: 1px solid $border-color;
       border-radius: 4px;
       
       & h6 {
@@ -124,7 +124,7 @@ export default {
         font-weight: bold;
         font-size: 21px;
         align-items: center;
-        color: #1B1D20;
+        color: $font-color-base;
         -webkit-appearance: none;
         -moz-appearance:none;
         appearance:none;
@@ -146,13 +146,13 @@ export default {
   padding-top: 36px;
   font-weight: bold;
   font-size: 46px;
-  color: #1B1D20;
+  color: $font-color-base;
   position: relative;
 
   &::after {
     width: 20000px;
     height: 2px;
-    background: #1B1D20;
+    background: $font-color-base;
     position: absolute;
     left: 0;
     top: 0;
@@ -184,7 +184,7 @@ export default {
       padding: 0 16px;
     font-weight: bold;
     font-size: 32px;
-    color: #1B1D20;
+    color: $font-color-base;
     position: relative;
 
     &::after {
@@ -248,7 +248,7 @@ export default {
 
           &.active {
               color: #313439;
-              border-bottom: 2px solid #313439;
+              border-bottom: 2px solid $border-color;
           }
       }
   }

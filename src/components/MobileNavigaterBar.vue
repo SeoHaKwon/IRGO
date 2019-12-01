@@ -96,6 +96,7 @@ export default {
   width: 100vw;
   background: #ffffff;
   z-index: 1500;
+  border-bottom: 1px solid $border-color;
 
   header {
     padding: 16px;

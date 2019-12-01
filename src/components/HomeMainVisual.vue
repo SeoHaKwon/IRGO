@@ -26,6 +26,7 @@
 </template>
 
 <style lang="scss">
+@import "@/style/_variables.scss";
 .HomeMainVisual {
 	.home-main-visual {
 		background: url('../assets/img/img_main_visual.png') no-repeat center center / cover;
@@ -43,9 +44,9 @@
 
 			.main-information {
 				width: 274px;
-				background: #1B1D20;
+				background: $font-color-base;
 				opacity: 0.9;
-				padding: 43px 36px 15px 36px;
+				padding: 43px 36px 30px 36px;
 				position: absolute;
 				bottom: 0;
 				right: 0;
@@ -105,7 +106,7 @@
 
 	  		.main-information {
 	  			width: 100%;
-	  			background: #1B1D20;
+	  			background: $font-color-base;
 	  			opacity: 0.9;
 	  			padding: 13px 20px;
 	  			position: relative;
