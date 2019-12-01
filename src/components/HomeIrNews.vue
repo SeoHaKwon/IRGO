@@ -215,7 +215,6 @@ export default {
 
         li {
             padding: 40px 0;
-            border-bottom: 1px solid $border-color;
             display: flex;
             justify-content: space-between;
             cursor: pointer;
@@ -231,8 +230,8 @@ export default {
                 border-bottom: 1px solid transparent;
             }
             & .information {
-                padding: 34px 15px;
-                border-bottom: 1px solid #1B1D20;
+                padding-bottom: 34px;
+                border-bottom: 1px solid $border-color;
                 flex: 1;
 
                 & h5 {

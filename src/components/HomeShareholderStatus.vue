@@ -483,7 +483,7 @@ export default {
 
                       thead tr td {
                           padding: 10px 10px;
-                          font-size: 14px;
+                          font-size: 19px;
                           text-align: right;
                           color: #8E8E93;
 
@@ -493,7 +493,7 @@ export default {
                       }
                       tbody tr td ,
                       tfoot tr td {
-                          font-size: 14px;
+                          font-size: 19px;
                           color: $font-color-base;
                           padding: 20px 10px;
                           text-align: right;
@@ -526,7 +526,7 @@ export default {
 
                  thead tr td {
                      padding: 10px 10px;
-                     font-size: 14px;
+                     font-size: 19px;
                      text-align: right;
                      color: #8E8E93;
 
@@ -542,7 +542,7 @@ export default {
                  }
                  tbody tr td ,
                  tfoot tr td {
-                     font-size: 14px;
+                     font-size: 19px;
                      color: $font-color-base;
                      padding: 20px 10px;
                      text-align: right;
