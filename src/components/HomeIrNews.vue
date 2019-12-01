@@ -413,7 +413,7 @@ export default {
                     overflow: hidden;
                     flex-basis: 30%;
                     flex-shrink: 0;
-                    margin-bottom: 14px;
+                    margin-bottom: 0;
                     margin-right: 20px;
                 }
                 & .information {
