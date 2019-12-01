@@ -201,9 +201,6 @@ export default {
         }
 
         .number {
-          display: flex;
-          justify-content: center;
-          align-items: center;
           width: 36px;
           flex-basis: 36px;
           height: 36px;
@@ -214,6 +211,9 @@ export default {
           letter-spacing: -0.5px;
           color: $font-color-base;
           border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
         .title {
           flex-basis: calc(100% - 68px);
@@ -237,6 +237,9 @@ export default {
     }
 
     @media ( max-width: 899px ) {
+    padding: 44px 0;
+    border-top: 8px solid #EFEFF4;
+
     .FAQ-type-B {
       padding: 44px 16px;
       list-style: none;
@@ -277,7 +280,9 @@ export default {
         }
 
         .number {
-          display: inline-block;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           width: 24px;
           flex-basis: 24px;
           height: 24px;

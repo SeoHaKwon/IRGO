@@ -226,11 +226,14 @@ export default {
 
             & .image {
                 flex-basis: 274px;
+                margin-right: 40px;
                 flex-shrink: 0;
+                border-bottom: 1px solid transparent;
             }
             & .information {
-                flex-basis: calc(100% - 274px);
-                padding-left: 41px;
+                padding: 34px 15px;
+                border-bottom: 1px solid #1B1D20;
+                flex: 1;
 
                 & h5 {
                     color: $brand-color;
@@ -407,10 +410,11 @@ export default {
                     flex-basis: 274px;
                     flex-shrink: 0;
                     margin-bottom: 14px;
+                    margin-right: 0;
                 }
                 & .information {
                     flex-basis: calc(100% - 274px);
-                    padding-left: 0;
+                    padding: 0 0 30px 0;
 
                     & h5 {
                         color: $brand-color;

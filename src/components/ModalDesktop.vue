@@ -103,7 +103,7 @@ export default {
 
             .modal-wrapper {
                 width: 100%;
-                padding: 0 16px 30px 16px;
+                padding: 54px 16px 30px 16px;
                 border: 0;
                 border-radius: 6px;
                 background: #fff;
