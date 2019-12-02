@@ -7,7 +7,7 @@
       <MobileNavigaterBar />
     </div>
     <div 
-      :class="{'global-body': !isMobile && $route.fullPath !== '/join', 'mobile-global-body': !isMobile && $route.fullPath !== '/join'}"
+      :class="{'global-body': widths >= 900 && $route.fullPath !== '/join', 'mobile-global-body': widths < 900 && $route.fullPath !== '/join'}"
       style="overflow: hidden"
     >
       <router-view />
@@ -59,6 +59,7 @@ export default {
         isMobile: false,
         fullPath: '',
         isAppDownloadModal: true,
+        widths: window.innerWidth
       };
   },
   props: [
@@ -72,18 +73,22 @@ export default {
   methods: {
     appDownloadModalClose() {
       this.isAppDownloadModal = false;
+    },
+    handleResize() {
+      this.widths = window.innerWidth
     }
   },
   created() {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
   },
   mounted() {
     const filter = 'win16|win32|win64|mac|macintel';
-    const _web = filter.indexOf(navigator.platform.toLowerCase()) < 0 !== true;
-    const _iOS = navigator.userAgent.match(/iPhone|iPad|iPod/i) !== null;
-    const _android = navigator.userAgent.match(/Android/i) !== null;
-
-    if (_iOS || _android || ((_iOS || _android) && _web)) {
-      this.isMobile = true;
+    const _web = filter.indexOf(navigator.platform.toLowerCase()) < 0 !== true
+    const _iOS = navigator.userAgent.match(/iPhone|iPad|iPod/i) !== null
+    const _android = navigator.userAgent.match(/Android/i) !== null
+    if (window.outerWidth < 900) {
+      this.isMobile = true
     }
     this.fullPath = this.$route.fullPath
   }

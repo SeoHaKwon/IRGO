@@ -410,6 +410,7 @@ export default {
                     flex-shrink: 0;
                     margin-bottom: 0;
                     margin-right: 20px;
+                    height:100%;
                 }
                 & .information {
                     flex-basis: calc(100% - 274px);

@@ -17,7 +17,7 @@
           class="header-navigation"
         >
           <ul>
-            <li>
+            <li class="active">
               <a href="javascript: void(0)">
                 실적발표
               </a>
@@ -130,6 +130,14 @@ export default {
       padding: 15px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.8);
       margin: 0 auto;
+
+      &.active {
+        & a {
+          color: $brand-color;
+          font-size: 18px;
+          font-weight: 600;
+        }
+      }
 
       & a {
         color: #fff;

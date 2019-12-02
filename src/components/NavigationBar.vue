@@ -97,7 +97,11 @@
         border-bottom: 4px solid transparent;
 
         &.active {
-          border-bottom: 4px solid $brand-color;
+          // border-bottom: 4px solid $brand-color;
+          & a {
+            color: $brand-color;
+            font-weight:600;
+          }
         }
 
         & a {
@@ -112,7 +116,7 @@
       background: #E91E63;
       border-radius: 4px;
       width: 140px;
-      margin-left: 20%;
+      margin-left: -2%;
       text-decoration: none;
       text-align: center;
       color: #fff;

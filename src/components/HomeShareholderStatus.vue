@@ -374,7 +374,11 @@ export default {
                color: #8E8E93;
 
                &:first-child {
-                   text-align: left;
+                 font-size: 14px;
+                 text-align: left;
+               }
+               &:nth-child(3) {
+                 font-size: 14px;
                }
            }
            tbody tr td {
@@ -392,6 +396,7 @@ export default {
 
                &:first-child {
                    text-align: left;
+                   font-size: 19px;
                }
 
                &:nth-child(2) {
@@ -400,6 +405,7 @@ export default {
 
                & h5 {
                     padding: 10px 0;
+                    font-size: 19px;
                }
            }
            .member-color {
@@ -493,7 +499,7 @@ export default {
                       }
                       tbody tr td ,
                       tfoot tr td {
-                          font-size: 19px;
+                          font-size: 14px;
                           color: $font-color-base;
                           padding: 20px 10px;
                           text-align: right;
@@ -549,6 +555,7 @@ export default {
 
                      &:first-child {
                          text-align: left;
+                         font-size: 14px;
                      }
 
                      &:nth-child(2) {
@@ -557,6 +564,7 @@ export default {
 
                      & h5 {
                           padding: 10px 0;
+                          font-size:14px;
                      }
                  }
                  .member-color {
