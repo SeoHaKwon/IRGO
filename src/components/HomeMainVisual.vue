@@ -135,7 +135,7 @@
 	  				margin-top: 14px;
 	  			}
 	  			.curtion {
-	  				margin-top: 10px;
+	  				margin-top: 4px;
 	  				font-size: 10px;
 	  			}
 	  		}
@@ -144,8 +144,10 @@
 	  	& h2 {
 	  		color: #ffffff;
 	  		font-size: 24px;
-	  		margin-bottom: 20%;
 	  		font-weight: bold;
+			height: calc(100% - 81px);
+			display: flex;
+			align-items: center;
 	  	}
 	  }
 	}

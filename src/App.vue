@@ -58,7 +58,7 @@ export default {
       return {
         isMobile: false,
         fullPath: '',
-        isAppDownloadModal: true,
+        isAppDownloadModal: false,
         widths: window.innerWidth
       };
   },

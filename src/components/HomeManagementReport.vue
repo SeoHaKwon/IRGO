@@ -124,10 +124,10 @@ export default {
     }
 
     @media ( max-width: 899px ) {
-    padding: 44px 0;
+    padding: 38px 0;
     border-top: 8px solid #EFEFF4;
       .management-report {
-          margin-top: 40px;
+          margin-top: 50px;
           list-style: none;
           padding: 0 16px;
 
@@ -135,8 +135,9 @@ export default {
               display: flex;
               justify-content: space-between;
               align-items: center;
-              padding: 30px 15px;
+              padding: 16px 0;
               border-bottom: 1px solid $border-color;
+              height: auto;
 
               &:first-child {
                   border-top: 1px solid $border-color;

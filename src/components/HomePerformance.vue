@@ -96,10 +96,11 @@ export default {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-top: 40px;
   }
 
   @media ( max-width: 899px ) {
-    padding: 50px 0;
+    padding: 38px 0;
 
     .performance-select {
       display: none;
@@ -113,7 +114,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 30px;
+        margin-top: 50px;
 
         li {
             flex-basis: calc(20% - 11px);

@@ -302,13 +302,14 @@ export default {
     }
     .shareholder-group-items {
         padding-top: 80px;
-        padding-bottom: 100px;
+        padding-bottom: 40px;
         display: flex;
         justify-content: space-between;
 
          .shareholder-group-chart {
             flex-basis: 50%;
             padding-left: 60px;
+            padding-top: 60px;
          }
 
          .shareholder-group-table {
@@ -359,7 +360,7 @@ export default {
        table {
            width: 100%;
            border-collapse: collapse;
-           margin-bottom: 40px;
+           padding-bottom: 40px;
            margin-top: 60px;
 
            thead,
@@ -391,7 +392,28 @@ export default {
            tfoot tr td {
                font-size: 19px;
                color: $font-color-base;
-               padding: 20px 15px;
+               padding: 10px 15px;
+               text-align: right;
+               vertical-align: baseline;
+
+               &:first-child {
+                   text-align: left;
+                   font-size: 19px;
+               }
+
+               &:nth-child(2) {
+                    color: #8E8E93;
+               }
+
+               & h5 {
+                    padding: 10px 0;
+                    font-size: 19px;
+               }
+           }
+           tfoot tr td {
+               font-size: 19px;
+               color: $font-color-base;
+               padding: 0 15px 20px 15px;
                text-align: right;
 
                &:first-child {
@@ -426,11 +448,15 @@ export default {
 
       .title {
           margin-right: 20px;
+          font-size: 12px;
+      }
+      .description {
+          font-size: 12px;
       }
   }
 
   @media ( max-width: 899px ) {
-        padding: 44px 0;
+        padding: 38px 0;
         border-top: 8px solid #EFEFF4;
 
         .performance-select {
@@ -439,7 +465,7 @@ export default {
 
         .shareholder-data,
         .shareholder-group {
-          margin-top: 70px;
+          margin-top: 50px;
 
           .shareholder-group-title {
               font-size: 22px;
@@ -488,8 +514,8 @@ export default {
                       }
 
                       thead tr td {
-                          padding: 10px 10px;
-                          font-size: 19px;
+                          padding: 16px 0;
+                          font-size: 14px;
                           text-align: right;
                           color: #8E8E93;
 
@@ -501,7 +527,7 @@ export default {
                       tfoot tr td {
                           font-size: 14px;
                           color: $font-color-base;
-                          padding: 20px 10px;
+                          padding: 16px 0;
                           text-align: right;
 
                           &:first-child {
@@ -522,7 +548,7 @@ export default {
              table {
                  width: 100%;
                  border-collapse: collapse;
-                 margin-bottom: 40px;
+                 margin-bottom: 20px;
                  margin-top: 20px;
 
                  thead,
@@ -531,7 +557,7 @@ export default {
                  }
 
                  thead tr td {
-                     padding: 10px 10px;
+                     padding: 16px 0;
                      font-size: 19px;
                      text-align: right;
                      color: #8E8E93;
@@ -546,11 +572,30 @@ export default {
                  tbody tr:last-child td {
                   border-bottom: 0;
                  }
-                 tbody tr td ,
-                 tfoot tr td {
-                     font-size: 19px;
+                 tbody tr td {
+                     font-size: 14px;
                      color: $font-color-base;
-                     padding: 20px 10px;
+                     padding: 16px 0;
+                     text-align: right;
+
+                     &:first-child {
+                         text-align: left;
+                         font-size: 14px;
+                     }
+
+                     &:nth-child(2) {
+                          color: #8E8E93;
+                     }
+
+                     & h5 {
+                          padding: 10px 0;
+                          font-size:14px;
+                     }
+                 }
+                 tfoot tr td {
+                     font-size: 14px;
+                     color: $font-color-base;
+                     padding: 0 0 16px 0;
                      text-align: right;
 
                      &:first-child {
@@ -578,18 +623,25 @@ export default {
         }
         .shareholder-group-caption {
             display: flex;
-            font-size: 14px;
+            font-size: 12px;
             letter-spacing: -0.005em;
             color: #545454;
-            margin-top: 30px;
+            margin-top: 0;
+            margin-bottom: 30px;
             padding: 0 16px;
+
+            &:first-child {
+                margin-top: 0;
+            }
 
             .title {
                 margin-right: 10px;
                 flex-basis: 26px;
+                font-size: 12px;
             }
             .description {
                 flex-basis: calc(100% - 26px);
+                font-size: 12px;
             }
         }
   }

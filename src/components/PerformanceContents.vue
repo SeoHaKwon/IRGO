@@ -69,7 +69,10 @@
                   </div>
               </div>
                 <ul>
-                    <li v-for="data in datas">
+                    <li 
+                        v-for="data in datas"
+                        :class="{'less-length': datas.length < 4}"
+                    >
                         <h5>{{ data.title }}</h5>
                         <h6>
                             <img
@@ -119,6 +122,7 @@ export default {
         margin-top: 53px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
 
         .performance-main {
             flex-basis: 50%;
@@ -157,16 +161,22 @@ export default {
                 list-style: none;
 
                 li {
-                    padding-bottom: 33px;
-                    border-bottom: 1px solid #999;
+                    padding-bottom: 38px;
+                    border-bottom: 1px solid $border-color;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    margin-bottom: 33px;
+                    margin-bottom: 38px;
+
+                    &.less-length {
+                        padding-bottom: 28px;
+                        margin-bottom: 28px;
+                    }
 
                     &:last-child {
                         margin-bottom: 0;
                         border-bottom: 0;
+                        padding-bottom: 0;
                     }
 
                     & h5 {
@@ -237,16 +247,48 @@ export default {
               flex-basis: 50%;
               padding-left: 0;
               margin-top: 27px;
+
+              .main-title {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 30px;
+
+                    & .title {
+                        font-size: 22px;
+                        font-weight: normal;
+                        text-decoration-line: underline;
+                        color: #1B1D20;
+                    }
+
+                    .download {
+                        background: #FFFFFF;
+                        border: 1px solid #D2D3D3;
+                        box-sizing: border-box;
+                        border-radius: 4px;
+                        padding: 15px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 64px !important;
+                        height: 64px !important;
+                    }
+                }
               ul {
                   list-style: none;
 
                   li {
-                      padding-bottom: 20px;
-                      border-bottom: 1px solid #999;
+                      padding-bottom: 16px;
+                      border-bottom: 1px solid $border-color;
                       display: flex;
                       justify-content: space-between;
                       align-items: center;
-                      margin-bottom: 20px;
+                      margin-bottom: 16px;
+
+                      &.less-length {
+                        padding-bottom: 16px;
+                        margin-bottom: 16px;
+                    }
 
                       &:last-child {
                           margin-bottom: 0;
@@ -282,7 +324,7 @@ export default {
               margin-bottom: 30px;
 
               & .title {
-                  font-size: 22px !important;
+                  font-size: 22px;
                   font-weight: normal;
                   text-decoration-line: underline;
                   color: #1B1D20;
@@ -303,31 +345,6 @@ export default {
           }
       }
   }
-  .main-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-
-      & .title {
-          font-size: 22px !important;
-          font-weight: normal;
-          text-decoration-line: underline;
-          color: #1B1D20;
-      }
-
-      .download {
-          background: #FFFFFF;
-          border: 1px solid #D2D3D3;
-          box-sizing: border-box;
-          border-radius: 4px;
-          padding: 15px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 64px !important;
-          height: 64px !important;
-      }
-  }
+  
 }
 </style>

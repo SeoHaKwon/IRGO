@@ -166,7 +166,7 @@ export default {
       list-style: none;
 
       li {
-        padding: 40px;
+        padding: 40px 20px;
         border-bottom: 1px solid $border-color;
         
 
@@ -214,6 +214,7 @@ export default {
           display: flex;
           justify-content: center;
           align-items: center;
+          font-weight: bold;
         }
         .title {
           flex-basis: calc(100% - 68px);
@@ -237,15 +238,15 @@ export default {
     }
 
     @media ( max-width: 899px ) {
-    padding: 44px 0;
+    padding: 38px 0;
     border-top: 8px solid #EFEFF4;
 
     .FAQ-type-B {
-      padding: 44px 16px;
+      padding: 50px 16px;
       list-style: none;
 
       li {
-        padding: 15px;
+        padding: 15px 0;
         border-bottom: 1px solid $border-color;
         
 
@@ -287,16 +288,17 @@ export default {
           flex-basis: 24px;
           height: 24px;
           flex-shrink: 0;
-          border: 3px solid $border-color;
+          border: 2px solid $font-color-base;
           font-size: 14px;
           text-align: center;
           letter-spacing: -0.5px;
           color: $font-color-base;
           border-radius: 50%;
+          font-weight: bold;
         }
         .title {
           flex-basis: calc(100% - 68px);
-          padding-left: 15px;
+          padding-left: 0;
           font-weight: bold;
           font-size: 18px;
           letter-spacing: -0.5px;

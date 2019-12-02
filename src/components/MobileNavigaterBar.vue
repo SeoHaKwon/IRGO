@@ -92,11 +92,15 @@ export default {
 .MobileNavigaterBar {
   position: fixed;
   top: 0;
-  lef: 0;
+  left: 0;
   width: 100vw;
   background: #ffffff;
   z-index: 1500;
   border-bottom: 1px solid $border-color;
+
+  .header-logo {
+    height: 21px;
+  }
 
   header {
     padding: 16px;

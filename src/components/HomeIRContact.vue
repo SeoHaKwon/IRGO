@@ -95,7 +95,7 @@ export default {
     }
 
     @media ( max-width: 899px ) {
-        padding: 44px 0;
+        padding: 38px 0;
         border-top: 8px solid #EFEFF4;
 
         .section-sube {

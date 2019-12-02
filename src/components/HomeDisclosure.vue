@@ -86,7 +86,7 @@ export default {
               color: $font-color-base;
           }
           h6 {
-              ont-size: 12px;
+              font-size: 12px;
               text-align: right;
               letter-spacing: -0.5px; 
               color: #8E8E93;
@@ -95,11 +95,11 @@ export default {
   }
 
   @media ( max-width: 899px ) {
-    padding: 40px 0;
+    padding: 38px 0;
     border-top: 8px solid #EFEFF4;
 
     .disclosure-info {
-        margin-top: 70px;
+        margin-top: 50px;
         list-style: none;
         padding: 0 16px;
 
@@ -107,8 +107,9 @@ export default {
             display: block;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 16px 0;
             border-bottom: 1px solid $border-color;
+            height: auto;
 
             &:first-child {
                 border-top: 1px solid $border-color;

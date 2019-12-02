@@ -118,7 +118,7 @@ export default {
     position: relative;
 
     & select {
-        background: #FAFAFA;
+        background: #ffffff;
         border-radius: 4px;
         padding: 10px 20px;
         font-weight: bold;
@@ -235,7 +235,7 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 30px;
+      margin-top: 50px;
 
       li {
           flex-basis: calc(20% - 11px);

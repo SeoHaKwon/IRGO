@@ -83,7 +83,7 @@ export default {
     .finance-select {
         display: flex;
         justify-content: flex-end;
-        margin-top: 13px;
+        margin-top: 40px;
     }
 
     .finance-info {
@@ -118,7 +118,7 @@ export default {
     }
 
     @media ( max-width: 899px ) {
-        padding: 44px 0;
+        padding: 38px 0;
         border-top: 8px solid #EFEFF4;
 
         .finance-select {
@@ -137,8 +137,9 @@ export default {
               display: flex;
               justify-content: space-between;
               align-items: center;
-              padding: 30px 15px;
+              padding: 16px 0;
               border-bottom: 1px solid $border-color;
+              height: auto;
 
               &:first-child {
                   border-top: 0;

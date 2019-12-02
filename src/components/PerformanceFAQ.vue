@@ -2,7 +2,7 @@
   <div class="PerformanceFAQ">
     <div class="FAQ-title">
       <h4>FAQ</h4>
-      <div class="performance-select">
+      <div class="performance-faq-select">
           <div class="select-warp">
               <select>
                   <option>2019.2Q</option>
@@ -244,7 +244,11 @@ export default {
             color: $font-color-base;
         }
     }
-
+    .performance-faq-select {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
     .performance-FAQ {
         list-style: none;
 
@@ -252,7 +256,7 @@ export default {
             display: flex;
             justify-content: space-between;
             border-bottom: 1px solid $border-color;
-            padding: 40px 0;
+            padding: 40px 20px;
 
             &:first-child {
                 border-top: 1px solid $border-color;
@@ -289,11 +293,14 @@ export default {
       .performance-select {
         display: none !important;
       }
+      .performance-faq-select {
+      display: none;
+    }
       .FAQ-title {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-top: 41px;
+          margin-top: 38px;
           padding: 0 16px;
 
           & h4 {
@@ -308,12 +315,13 @@ export default {
               display: flex;
               justify-content: space-between;
               border-bottom: 1px solid $border-color;
-              margin-top: 34px;
-              margin: 0 21px;
+              margin: 0 16px 0 16px;
               cursor: pointer;
+              padding: 16px 0;
 
               &:first-child {
                   border-top: 0;
+                  margin-top: 16px;
               }
 
               & h5 {

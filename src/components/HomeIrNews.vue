@@ -208,7 +208,7 @@ export default {
         list-style: none;
 
         li {
-            padding: 40px 0;
+            padding-top: 40px;
             display: flex;
             justify-content: space-between;
             cursor: pointer;
@@ -219,7 +219,7 @@ export default {
 
             & .image {
                 flex-basis: 274px;
-                margin-right: 40px;
+                margin-right: 20px;
                 flex-shrink: 0;
                 border-bottom: 1px solid transparent;
             }
@@ -227,6 +227,7 @@ export default {
                 padding-bottom: 34px;
                 border-bottom: 1px solid $border-color;
                 flex: 1;
+                padding-left: 20px;
 
                 & h5.PC {
                     color: $brand-color;
@@ -385,16 +386,16 @@ export default {
 
 
     @media ( max-width: 899px ) {
-        padding: 44px 0;
+        padding: 38px 0;
         border-top: 8px solid #EFEFF4;
 
         .ir-news-content {
-            margin-top: 30px;
+            margin-top: 50px;
             list-style: none;
             padding: 0 16px;
 
             li {
-                padding: 40px 0;
+                padding: 16px 0;
                 border-bottom: 1px solid $border-color;
                 display: flex;
                 justify-content: space-between;
