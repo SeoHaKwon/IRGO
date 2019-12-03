@@ -60,7 +60,7 @@
 .NavigationBar {
   position: fixed;
   top: 0;
-  lef: 0;
+  left: 0;
   width: 100%;
   background: #ffffff;
   z-index: 1500;

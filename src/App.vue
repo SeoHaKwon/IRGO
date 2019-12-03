@@ -6,7 +6,7 @@
     <div class="mobile-header" v-if="$route.fullPath !== '/join'">
       <MobileNavigaterBar />
     </div>
-    <div 
+    <div
       :class="{'global-body': widths >= 900 && $route.fullPath !== '/join', 'mobile-global-body': widths < 900 && $route.fullPath !== '/join'}"
       style="overflow: hidden"
     >
@@ -15,22 +15,14 @@
     <template v-if="$route.fullPath !== '/join'">
       <footerBody />
     </template>
-    <div 
-      v-if="isAppDownloadModal"
-      class="app-download-modal"
-    >
+    <div v-if="isAppDownloadModal" class="app-download-modal">
       <div class="content">
         <h3>주주와 함께하는 LG디스플레이</h3>
         <h4>LG디스플레이 IR앱에서 투자정보/소식을 받아보고, <br /> IR담당자와 소통할 수 있습니다.</h4>
-        <div 
-          class="app-download-btn"
-          @click="appDownloadModalClose()"
-          >
+        <div class="app-download-btn" @click="appDownloadModalClose()">
             앱 다운로드
           </div>
-        <h5
-          @click="appDownloadModalClose()"
-        >
+        <h5 @click="appDownloadModalClose()">
           모바일 웹에서 계속보기
         </h5>
       </div>
@@ -41,11 +33,11 @@
 // @ is an alias to /src
 import Vue from 'vue'
 
-Vue.component('modal-desktop', ModalDesktop);
 import NavigationBar from '@/components/NavigationBar.vue'
 import MobileNavigaterBar from '@/components/MobileNavigaterBar.vue'
 import FooterBody from '@/components/FooterBody.vue'
 import ModalDesktop from '@/components/ModalDesktop.vue'
+Vue.component('modal-desktop', ModalDesktop)
 
 export default {
   name: 'app',
@@ -54,13 +46,13 @@ export default {
     MobileNavigaterBar,
     FooterBody
   },
-  data() {
-      return {
-        isMobile: false,
-        fullPath: '',
-        isAppDownloadModal: false,
-        widths: window.innerWidth
-      };
+  data () {
+    return {
+      isMobile: false,
+      fullPath: '',
+      isAppDownloadModal: false,
+      widths: window.innerWidth
+    }
   },
   props: [
   ],
@@ -71,22 +63,22 @@ export default {
   watch: {
   },
   methods: {
-    appDownloadModalClose() {
-      this.isAppDownloadModal = false;
+    appDownloadModalClose () {
+      this.isAppDownloadModal = false
     },
-    handleResize() {
+    handleResize () {
       this.widths = window.innerWidth
     }
   },
-  created() {
+  created () {
     window.addEventListener('resize', this.handleResize)
     this.handleResize()
   },
-  mounted() {
-    const filter = 'win16|win32|win64|mac|macintel';
-    const _web = filter.indexOf(navigator.platform.toLowerCase()) < 0 !== true
-    const _iOS = navigator.userAgent.match(/iPhone|iPad|iPod/i) !== null
-    const _android = navigator.userAgent.match(/Android/i) !== null
+  mounted () {
+    // const filter = 'win16|win32|win64|mac|macintel';
+    // const _web = filter.indexOf(navigator.platform.toLowerCase()) < 0 !== true
+    // const _iOS = navigator.userAgent.match(/iPhone|iPad|iPod/i) !== null
+    // const _android = navigator.userAgent.match(/Android/i) !== null
     if (window.outerWidth < 900) {
       this.isMobile = true
     }

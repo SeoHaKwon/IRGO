@@ -1,40 +1,40 @@
 <template>
   <div class="home">
-    	<!-- 메인 -->
-    	<HomeMainVisual />
+    <!-- 메인 -->
+    <HomeMainVisual />
 
-    	<!-- 스케줄 -->
-    	<HomeSchedule />
+    <!-- 스케줄 -->
+    <HomeSchedule />
 
-    	<!-- 실적발표 -->
-        <HomePerformance />
+    <!-- 실적발표 -->
+    <HomePerformance />
 
-        <!-- IR 뉴스 -->
-        <HomeIrNews />
+    <!-- IR 뉴스 -->
+    <HomeIrNews />
 
-        <!-- 경영 보고서 -->
-        <HomeManagementReport />
+    <!-- 경영 보고서 -->
+    <HomeManagementReport />
 
-        <!-- 재무 정보 -->
-        <HomeFinanceInfo />
+    <!-- 재무 정보 -->
+    <HomeFinanceInfo />
 
-        <!-- 공시 -->
-        <HomeDisclosure />
+    <!-- 공시 -->
+    <HomeDisclosure />
 
-        <!-- 주주 현황 -->
-        <HomeShareholderStatus />
+    <!-- 주주 현황 -->
+    <HomeShareholderStatus />
 
-        <!-- IR CONTANT -->
-        <HomeIRContact />
+    <!-- IR CONTANT -->
+    <HomeIRContact />
 
-        <!-- APP BANNER -->
-        <HomeAppBanner />
+    <!-- APP BANNER -->
+    <HomeAppBanner />
   </div>
 </template>
 
 <script>
 import HomeMainVisual from '@/components/HomeMainVisual.vue'
-import HomeMainInformation from '@/components/HomeMainInformation.vue'
+// import HomeMainInformation from '@/components/HomeMainInformation.vue'
 import HomeSchedule from '@/components/HomeSchedule.vue'
 import HomePerformance from '@/components/HomePerformance.vue'
 import HomeIrNews from '@/components/HomeIrNews.vue'
@@ -45,13 +45,11 @@ import HomeShareholderStatus from '@/components/HomeShareholderStatus.vue'
 import HomeIRContact from '@/components/HomeIRContact.vue'
 import HomeAppBanner from '@/components/HomeAppBanner.vue'
 
-
-
 export default {
   name: 'home',
   components: {
     HomeMainVisual,
-    HomeMainInformation,
+    // HomeMainInformation,
     HomeSchedule,
     HomePerformance,
     HomeIrNews,
@@ -67,8 +65,8 @@ export default {
 <style lang="scss">
 @import "@/style/_variables.scss";
 .contaner {
-	width: 1150px;
-	margin: 0 auto;
+  width: 1150px;
+  margin: 0 auto;
 }
 .performance-group-tab {
     display: none;
@@ -77,13 +75,13 @@ export default {
 .home-more-btn {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   margin-top: 45px;
 
   & button {
       display: flex;
       justify-content: center;
-      align-items: center; 
+      align-items: center;
       appearance: none;
       padding: 15px;
       text-align: center;
@@ -92,7 +90,6 @@ export default {
       background: #FFFFFF;
       border: 1px solid $border-color;
       border-radius: 4px;
-      
       & h6 {
         font-size: 16px;
         color: #8E8E93;
@@ -130,6 +127,8 @@ export default {
         appearance:none;
         width: 100%;
         position: relative;
+        border-width: 1px;
+        border-color: rgb(169, 169, 169);
     }
 
     .select-arrow {
@@ -142,6 +141,9 @@ export default {
     }
 }
 
+select::-ms-expand {
+  display:none;
+}
 .section-title {
   padding-top: 36px;
   font-weight: bold;
@@ -165,7 +167,6 @@ export default {
   font-size: 16px;
   color: #8E8E93;
 }
-
 
 @media (min-width: 900px) and (max-width: 1149px) {
   .contaner {
@@ -201,22 +202,20 @@ export default {
   .home-more-btn {
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     margin-top: 12px;
 
     & button {
         display: flex;
         justify-content: center;
-        align-items: center; 
+        align-items: center;
         appearance: none;
         padding: 15px;
         text-align: center;
         width: 200px;
-
         background: transparent;
         border: 0;
         border-radius: 4px;
-        
         & h6 {
           font-size: 12px;
           color: #8E8E93;
