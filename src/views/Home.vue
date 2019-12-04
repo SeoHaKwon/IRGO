@@ -94,6 +94,7 @@ export default {
         font-size: 16px;
         color: #8E8E93;
         font-weight: bold;
+        margin-bottom: 0;
       }
 
       & img {
@@ -113,6 +114,7 @@ export default {
 .select-warp {
     width: 200px;
     position: relative;
+    font-family: 'Open Sans', sans-serif;
 
     & select {
         background: #ffffff;
@@ -150,6 +152,8 @@ select::-ms-expand {
   font-size: 46px;
   color: $font-color-base;
   position: relative;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
 
   &::after {
     width: 20000px;
@@ -166,6 +170,8 @@ select::-ms-expand {
 .section-sube {
   font-size: 16px;
   color: #8E8E93;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
 }
 
 @media (min-width: 900px) and (max-width: 1149px) {

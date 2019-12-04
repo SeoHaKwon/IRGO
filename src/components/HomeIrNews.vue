@@ -260,14 +260,14 @@ export default {
         font-weight: bold;
         font-size: 16px;
         color: #E91E63;
-        margin-top: 80px;
+        margin-top: 60px;
     }
     .IR-modal-title {
         font-weight: bold;
         font-size: 34px;
         letter-spacing: -0.5px;
         color: $font-color-base;
-        margin-top: 17px;
+        padding-top: 23px;
     }
     
     .IR-modal-main {

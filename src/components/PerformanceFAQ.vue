@@ -352,10 +352,6 @@ export default {
       }
         
     }
-    .FAQ-modal-anser {
-      padding-top: 60px;
-      border-top: 1px solid $border-color;
-    }
     .FAQ-modal-anser,
     .FAQ-modal-question {
         display: flex;
@@ -386,12 +382,18 @@ export default {
           }
         }
       }
+      .FAQ-modal-anser {
+        padding-top: 60px;
+        border-top: 1px solid $border-color;
+        margin-top: 20px;
+      }
       .FAQ-modal-title {
           font-weight: bold;
           font-size: 34px;
           margin-top: 18px;
           letter-spacing: -0.5px;
           color: $font-color-base;
+          padding-bottom: 23px;
       }
       .IR-main-description {
           margin-top: 57px;
