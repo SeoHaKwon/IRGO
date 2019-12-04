@@ -114,7 +114,7 @@ export default {
 .select-warp {
     width: 200px;
     position: relative;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 
     & select {
         background: #ffffff;
@@ -152,7 +152,7 @@ select::-ms-expand {
   font-size: 46px;
   color: $font-color-base;
   position: relative;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
 
   &::after {
@@ -170,7 +170,7 @@ select::-ms-expand {
 .section-sube {
   font-size: 16px;
   color: #8E8E93;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
 }
 
