@@ -62,7 +62,7 @@
   	        </div>
   	        <div class="ir-modal-title">
   	        	LG Display 2019년 2분기 <br />
-  	        	기업설명회(IR) 개최
+  	        	기업설명회(IR) 개최 <br />
   	        </div>
   	        <div class="social-info">
   	            <h5 class="date">
@@ -265,6 +265,7 @@ export default {
 		letter-spacing: -0.5px;
 		color: $font-color-base;
 		margin-top: 18px;
+		height: 153px;
 	}
 	.schedule-table {
 		display: flex;

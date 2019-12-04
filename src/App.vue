@@ -117,7 +117,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 72px;
+    margin-top: 21px;
 
     .date {
         font-size: 14px;

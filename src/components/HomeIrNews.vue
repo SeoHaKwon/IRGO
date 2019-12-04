@@ -100,7 +100,7 @@
             <h5 class="modal-map">Investor Relations > IR News</h5>
             <h5 class="IR-modal-category">보도자료</h5>
             <h5 class="IR-modal-title">
-                '중국 광저우 OLED 패널 공장 준공, LG디스플레이, OLED TV 1,000만대 시대 가속화
+                '중국 광저우 OLED 패널 공장 준공, LG디스플레이, OLED TV 1,000만대 시대 가속화 , 
             </h5>
             <div class="social-info">
                 <h5 class="date">
@@ -267,7 +267,9 @@ export default {
         font-size: 34px;
         letter-spacing: -0.5px;
         color: $font-color-base;
-        padding-top: 23px;
+        margin-top: 23px;
+        margin-bottom: 33px;
+        height: 120px;
     }
     
     .IR-modal-main {

@@ -391,9 +391,10 @@ export default {
           font-weight: bold;
           font-size: 34px;
           margin-top: 18px;
+          margin-bottom: 10px;
           letter-spacing: -0.5px;
           color: $font-color-base;
-          padding-bottom: 23px;
+          height: 143px;
       }
       .IR-main-description {
           margin-top: 57px;
