@@ -1,22 +1,28 @@
 <template>
-  <div class="main-visual">
-    <MainVisual/>
-  </div>
+    <div class="main-wrap">
+      <MainVisual/>
+      <MainContent/>
+    </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import MainVisual from '@/components/MainVisual.vue'
+import MainContent from '@/components/MainContent.vue'
 
 export default {
   name: 'home',
   components: {
-    MainVisual
+    MainVisual,
+    MainContent
   }
 }
 </script>
-<style scoped>
- .main-visual {
-   background-color:red;
- }
+<style lang="scss">
+  @import "@/style/_mixin.scss";
+  .main-wrap {
+    min-height:100%;
+    background-color:#040713;
+  }
+
 </style>
