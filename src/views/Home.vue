@@ -21,6 +21,9 @@
     <!-- 공시 -->
     <HomeDisclosure />
 
+    <!-- IPO -->
+    <HomeIPO />
+
     <!-- 주주 현황 -->
     <HomeShareholderStatus />
 
@@ -41,6 +44,7 @@ import HomeIrNews from '@/components/HomeIrNews.vue'
 import HomeManagementReport from '@/components/HomeManagementReport.vue'
 import HomeFinanceInfo from '@/components/HomeFinanceInfo.vue'
 import HomeDisclosure from '@/components/HomeDisclosure.vue'
+import HomeIPO from '@/components/HomeIPO.vue'
 import HomeShareholderStatus from '@/components/HomeShareholderStatus.vue'
 import HomeIRContact from '@/components/HomeIRContact.vue'
 import HomeAppBanner from '@/components/HomeAppBanner.vue'
@@ -56,6 +60,7 @@ export default {
     HomeManagementReport,
     HomeFinanceInfo,
     HomeDisclosure,
+    HomeIPO,
     HomeShareholderStatus,
     HomeIRContact,
     HomeAppBanner
