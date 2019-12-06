@@ -1,6 +1,6 @@
 <template>
   <div class="HomeIrNews contaner">
-    <h2 class="section-title">IR News</h2>
+    <h2 class="section-title-roboto">IR News</h2>
     <h3 class="section-sube">
       Briefing & Press Release
     </h3>

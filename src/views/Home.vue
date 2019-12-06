@@ -76,6 +76,20 @@ export default {
 .performance-group-tab {
     display: none;
 }
+#app > div.global-body, div.mobile-global-body > div > div.HomeIRContact.contaner > h3 {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+#app > div.global-body, div.mobile-global-body > div > div.HomeIRContact.contaner > h2 {
+  font-family: 'Roboto', sans-serif;
+}
+.IR-main-description {
+  font-size: 16px;
+}
+
+.section-sube {
+  line-height: 1.5;
+}
 
 .home-more-btn {
   display: flex;
@@ -157,6 +171,27 @@ select::-ms-expand {
   font-size: 46px;
   color: $font-color-base;
   position: relative;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: bold;
+
+  &::after {
+    width: 20000px;
+    height: 2px;
+    background: $font-color-base;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    content: '';
+  }
+}
+
+.section-title-roboto {
+  padding-top: 36px;
+  font-weight: bold;
+  font-size: 46px;
+  color: $font-color-base;
+  position: relative;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
 
@@ -176,7 +211,7 @@ select::-ms-expand {
   font-size: 16px;
   color: #8E8E93;
   font-family: 'Roboto', sans-serif;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 @media (min-width: 900px) and (max-width: 1149px) {
@@ -193,6 +228,18 @@ select::-ms-expand {
   }
 
   .section-title {
+      padding: 0 16px;
+    font-weight: bold;
+    font-size: 32px;
+    color: $font-color-base;
+    position: relative;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .section-title-roboto {
       padding: 0 16px;
     font-weight: bold;
     font-size: 32px;
@@ -240,12 +287,13 @@ select::-ms-expand {
     }
   }
   .performance-group-tab {
-      padding: 0 16px;
+      padding: 0;
       list-style: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 50px;
+      margin: 50px 16px 1rem 16px;
+      border-bottom: 1px solid #E5E5EA;
 
       li {
           flex-basis: calc(20% - 11px);
@@ -258,7 +306,11 @@ select::-ms-expand {
 
           &.active {
               color: #313439;
-              border-bottom: 2px solid $border-color;
+              border-bottom: 2px solid #313439;
+          }
+          & a {
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
           }
       }
   }

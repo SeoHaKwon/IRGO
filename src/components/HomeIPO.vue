@@ -17,10 +17,10 @@
           >
             {{ ipo.title }}
           </h5>
-          <!-- <div class="IPO-arrow">
+          <div class="IPO-arrow">
             <img v-if="ipo.arrow === 'gray'" src="../assets/img/ic_gray_arrow.png" />
             <img v-else src="../assets/img/ic_black_arrow.png" />
-          </div> -->
+          </div>
         </div>
         <h6
           :style="`color: ${ipo.font}`"
@@ -137,7 +137,7 @@ export default {
         },
         {
           title: '상장',
-          days: '12/28(예정)',
+          days: '12/28 예정',
           background: 'white',
           font: '#8E8E93',
           border: '2px dashed #D1D1D6',
@@ -150,6 +150,12 @@ export default {
 </script>
 <style lang="scss">
 @import "@/style/_variables.scss";
+#app > div.global-body > div > div:nth-child(8) > div > div:nth-child(5) > div > div {
+  display: none;
+}
+#app > div.mobile-global-body > div > div:nth-child(8) > div > div:nth-child(5) > div > div {
+  display: none;
+}
 .HomeFinanceInfo {
     padding-top: 200px;
 
@@ -193,12 +199,17 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 40px;
-      margin-top: 106px;
+      // padding: 0 40px;
+      /* 추가 */
+      max-width: 900px;
+      /* 추가 */
+      margin: 106px auto 0 auto;
     }
     .IPO-items {
-      flex-basis: calc(20% - 52px);
+      // flex-basis: calc(20% - 52px);
+      flex-basis: 128px;
       width: calc(20% - 5px);
+      // width: 128px;
       flex-shrink: 0;
 
       .IPO-wrapper {
@@ -209,10 +220,12 @@ export default {
           width: 100%;
         }
         & .IPO-arrow {
-          width: 20%;
+          // width: 20%;
+          width:40px;
           position: absolute;
           top: 50%;
-          left: calc(100% + 12px);
+          // left: calc(100% + 12px);
+          left: calc(100% + 13px);
           transform: translate(0, -50%);
         }
       }
@@ -235,6 +248,50 @@ export default {
       }
     }
 
+    @media ( max-width: 899px ) {
+      .IPO-items-group {
+        .IPO-items {
+          flex-basis: 80px;
+          .IPO-wrapper{
+            & .IPO-arrow {
+              width: 30px;
+              left: calc(100% + 11px);
+            }
+          }
+        }
+      }
+      .IPO-items-group {
+        max-width:640px;
+      }
+    }
+
+    @media ( max-width: 640px ) {
+      .IPO-items-group {
+        .IPO-items {
+          flex-basis: 54px;
+          .IPO-wrapper{
+            & .IPO-arrow {
+              width: 9px;
+              left: calc(100% + 5px);
+            }
+          }
+        }
+      }
+      .IPO-items-group {
+        max-width:375px;
+      }
+    }
+
+    @media ( max-width: 1149px ) {
+      .IPO-items-group {
+        .IPO-items {
+          & .IPO-arrow {
+            width: 40px;
+            left: calc(100% + 13px);
+          }
+        }
+      }
+    }
     // .IPO-item-circle {
 
     // }
@@ -291,10 +348,11 @@ export default {
             justify-content: space-between;
             align-items: center;
             padding: 0 16px;
-            margin-top: 40px;
+            margin: 50px auto 0;
           }
           .IPO-items {
-            flex-basis: calc(20% - 9px);
+            // flex-basis: calc(20% - 9px);
+            flex-basis: 54px;
             width: calc(20% - 5px);
             flex-shrink: 0;
 

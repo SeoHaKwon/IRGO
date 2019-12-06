@@ -1,6 +1,6 @@
 <template>
   <div class="PerformanceFAQTypeB">
-    <h2 class="section-title">FAQ</h2>
+    <h2 class="section-title-roboto">FAQ</h2>
     <h3 class="section-sube">
       Frequently Asked Questions
     </h3>

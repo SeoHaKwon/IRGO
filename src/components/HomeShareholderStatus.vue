@@ -309,7 +309,8 @@ export default {
          .shareholder-group-chart {
             flex-basis: 50%;
             padding-left: 60px;
-            padding-top: 60px;
+            // padding-top: 60px;
+            padding-top: 4px;
          }
 
          .shareholder-group-table {
@@ -495,13 +496,15 @@ export default {
                .shareholder-group-chart {
                   flex-basis: 50%;
                   padding-left: 0;
+                  width: 80%;
+                  margin-left: calc(100% - 89%)
                }
 
                .shareholder-group-table {
                   flex-basis: 50%;
                   padding-left: 0;
                   padding: 0 16px;
-                  margin-top: 30px;
+                  margin-top: 24px;
 
                   table {
                       width: 100%;
