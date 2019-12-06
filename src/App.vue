@@ -97,6 +97,10 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&display=swap&subset=korean');
 @import "@/style/_variables.scss";
 
+.performance-group-tab li, .schedule-list li{
+  cursor: pointer;
+}
+
 * {
   font-family: 'Noto Sans KR', sans-serif;
   margin: 0;

@@ -13,4 +13,8 @@ async function getKrxData (code) {
   return axios.post(`${config.baseUrl}getKrxXMLData`, code)
 }
 
-export { getCOMPINFO, getKrxData }
+async function getSIlQuarter (payload) {
+  return axios.post(`${config.baseUrl}getSilQuarter`, payload)
+}
+
+export { getCOMPINFO, getKrxData, getSIlQuarter }

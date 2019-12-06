@@ -33,18 +33,15 @@ export default {
     return {
     }
   },
-  mounted () {
-    // this.getKrxData()
-  },
   computed: {
-    ...mapGetters(['getKrxXMLData'])
+    ...mapGetters(['getCompCode'])
   },
   watch: {
-    getKrxXMLData () {
+    getCompCode () {
       const _self = this
-      if (_self.getKrxXMLData) {
+      if (_self.getCompCode) {
         const param = {
-          'code': _self.getKrxXMLData
+          'code': _self.getCompCode
         }
         const krxData = this.$store.dispatch('GET_KRX', param)
       }

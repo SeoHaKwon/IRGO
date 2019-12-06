@@ -95,13 +95,36 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'PerformanceContents',
   props: [
     'datas'
   ],
+  data: () => {
+    return {
+      // flag: true
+    }
+  },
   components: {
+  },
+  mounted () {
+    // console.log('test')
+    const _self = this
+  },
+  computed: {
+    ...mapGetters(['getCompCode', 'getCompSeq'])
+  },
+  watch: {
+    getCompSeq () {
+      const _self = this
+      const param = {
+        code: _self.getCompCode,
+        seq: _self.getCompSeq
+      }
+      const res = this.$store.dispatch('GET_SILQ', param)
+    }
   }
 }
 </script>

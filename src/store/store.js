@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getCOMPINFO, getKrxData } from '../api'
+import { getCOMPINFO, getKrxData, getSIlQuarter } from '../api'
 
 Vue.use(Vuex)
 
@@ -16,11 +16,15 @@ export default new Vuex.Store({
     seq: '',
     code: '',
     name: '',
-    COMP_DATAP: ''
+    COMP_DATAP: '',
+    flag: true
   },
   getters: {
-    getKrxXMLData (state) {
+    getCompCode (state) {
       return state.code
+    },
+    getCompSeq (state) {
+      return state.seq
     }
   },
   mutations: {
@@ -43,9 +47,12 @@ export default new Vuex.Store({
       state.companyType = data
     },
     SET_DATA (state, payload) {
-      state.seq = payload.COMP_SEQ
-      state.name = payload.COMP_NAME
-      state.code = payload.COMP_CODE
+      if (state.flag) {
+        state.seq = payload.COMP_SEQ
+        state.name = payload.COMP_NAME
+        state.code = payload.COMP_CODE
+        state.flag = false
+      }
     }
   },
   actions: {
@@ -57,6 +64,11 @@ export default new Vuex.Store({
     async GET_KRX (context, payload) {
       const res = await getKrxData(payload)
       return res.data[0]
+    },
+    async GET_SILQ (context, payload) {
+      const res = await getSIlQuarter(payload)
+      console.log(res, 'test')
+      return res.data
     }
   }
 })
