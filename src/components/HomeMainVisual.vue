@@ -25,6 +25,34 @@
   </div>
 </template>
 
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  data: () => {
+    return {
+    }
+  },
+  mounted () {
+    // this.getKrxData()
+  },
+  computed: {
+    ...mapGetters(['getKrxXMLData'])
+  },
+  watch: {
+    getKrxXMLData () {
+      const _self = this
+      if (_self.getKrxXMLData) {
+        const param = {
+          'code': _self.getKrxXMLData
+        }
+        const krxData = this.$store.dispatch('GET_KRX', param)
+      }
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 @import "@/style/_variables.scss";
 .HomeMainVisual {

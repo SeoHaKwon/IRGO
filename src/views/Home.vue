@@ -48,6 +48,7 @@ import HomeIPO from '@/components/HomeIPO.vue'
 import HomeShareholderStatus from '@/components/HomeShareholderStatus.vue'
 import HomeIRContact from '@/components/HomeIRContact.vue'
 import HomeAppBanner from '@/components/HomeAppBanner.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'home',

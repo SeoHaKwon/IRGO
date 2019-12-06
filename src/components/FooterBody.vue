@@ -18,6 +18,9 @@
 export default {
   name: 'FooterBody',
   components: {
+  },
+  mounted () {
+    // console.log(this.$root.$children[0].globalData.seq)
   }
 }
 </script>

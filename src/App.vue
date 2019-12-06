@@ -70,6 +70,13 @@ export default {
       this.widths = window.innerWidth
     }
   },
+  beforeCreate () {
+    const param = {
+      'url': 'samsung.irpage.co.kr'
+    }
+    const res = this.$store.dispatch('SET_INFO', param)
+    // this.$store.commit('SET_INFO',param)
+  },
   created () {
     window.addEventListener('resize', this.handleResize)
     this.handleResize()
