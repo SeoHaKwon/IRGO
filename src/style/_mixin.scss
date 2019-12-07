@@ -71,6 +71,7 @@ $black: #000;
 $black3 :#333;
 $black4 : #444;
 
+$gray7 :#777;
 $gray8 :#888;
 
 //mixin
@@ -87,7 +88,7 @@ $gray8 :#888;
     content:"";
 }
 
-@mixin contentWidth(){
-    max-width:1580px;
+@mixin contentWidth($width:1580px){
+    max-width:$width;
     margin:0 auto;
 }

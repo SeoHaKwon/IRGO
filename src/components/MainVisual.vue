@@ -3,13 +3,6 @@
     <img src="../assets/images/img/img_visual.png" alt="메인 비주얼">
     <div class="visual-text">
       <div class="inner">
-        <div class="icon-scroll">
-          Scroll Down
-        </div>
-        <strong class="en visual-title">
-          INVESTOR<br>
-          RELATIONS
-        </strong>
         <div class="status-info">
           <p class="price">
             <span>13,750</span>
@@ -27,6 +20,13 @@
             <dd>1,800억</dd>
           </dl>
         </div>
+        <div class="icon-scroll">
+          Scroll Down
+        </div>
+        <strong class="en visual-title">
+          INVESTOR<br>
+          RELATIONS
+        </strong>
       </div>
     </div>
   </div>
@@ -86,9 +86,9 @@
         }
       }
       .status-info {
-        display:flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        position:absolute;
+        right:0;
+        bottom:0;
         .price {
           text-align: right;
           span{
