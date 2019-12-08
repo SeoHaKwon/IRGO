@@ -15,6 +15,7 @@
       </div>
     </div>
     <div class="content-top">
+      <Shareholder/>
     </div>
     <div class="content-bottom">
       <AllocationTable/>
@@ -25,6 +26,7 @@
 
 <script>
 import SubVisual from '@/components/SubVisual.vue'
+import Shareholder from '@/components/Shareholder.vue'
 import AllocationTable from '@/components/AllocationTable.vue'
 import Footer from '@/components/Footer.vue'
 
@@ -32,6 +34,7 @@ export default {
   name: 'status',
   components: {
     SubVisual,
+    Shareholder,
     AllocationTable,
     Footer
   },
