@@ -5,9 +5,11 @@ import Announcement from '../views/Announcement.vue'
 import Schedule from '../views/Schedule.vue'
 import News from '../views/News.vue'
 import Finance from '../views/Finance.vue'
-
+import Status from '../views/Status.vue'
+import Disclosure from '../views/Disclosure.vue'
+import Report from '../views/Report.vue'
+import Contact from '../views/Contact.vue'
 Vue.use(Router)
-
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
@@ -35,6 +37,26 @@ export default new Router({
             path: '/financial',
             name: 'financial',
             component: Finance
+        },
+        {
+            path: '/status',
+            name: 'status',
+            component: Status
+        },
+        {
+            path: '/disclosure',
+            name: 'disclosure',
+            component: Disclosure
+        },
+        {
+            path: '/report',
+            name: 'report',
+            component: Report
+        },
+        {
+            path: '/contact',
+            name: 'contact',
+            component: Contact
         }
     ]
 })

@@ -85,7 +85,7 @@
    border-top:1px solid $black;
    .thumbnail {
      overflow: hidden;
-     flex:1 1 auto;
+     width:50%;
      img {
        position: relative;
        left:50%;
@@ -94,7 +94,7 @@
      }
    }
    .material-box {
-     flex:1 1 auto;
+     width:50%;
      padding:80px 60px 0 60px;
      background:url(../assets/images/bg/bg_board_top.png) ,url(../assets/images/bg/bg_board_bottom.png);
      background-repeat:no-repeat , no-repeat;
@@ -118,42 +118,8 @@
        margin-top:70px;
      }
    }
- }
- .material-list {
-   margin-top:10px;
-  .material {
-    display:flex;
-    align-items: center;
-    padding:40px 60px;
-    background-color:$white;
-    & + .material{
-      margin-top:2px;
-    }
-    .material-title {
-      display: inline-block;
-      flex:1 1 auto;
-      max-width:166px;
-      font-size:23px;
-      line-height:24px;
-      color:$black3;
-      font-weight: 500;
-    }
-    .link {
-      display:inline-block;
-      width:24px;
-      height:21px;
-      margin-left:auto;
-      @include bgImg(bg/bg_more_right);
-      &.mov {
-        padding-right:26px;
-        width:auto;
-        height:auto;
-        font-size:13px;
-        line-height:26px;
-        color:#bcc0ca;
-        @include bgImg(bg/bg_play,$pos:right center);
-      }
-    }
-  } 
+   & + .material-list  {
+     margin-top:10px;
+   }
  }
 </style>

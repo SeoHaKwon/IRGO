@@ -4,21 +4,18 @@
       <SubVisual/>
       <div class="sub-info-txt">
         <div class="inner">
-          <strong class="sub-title">IR 일정</strong>
+          <strong class="sub-title">경영보고서</strong>
           <div class="history">
             <span class="icon-home">
               <img src="../assets/images/icon/icon_home.png" alt="">
             </span>
-            <span>IR 일정</span>
+            <span>경영보고서</span>
           </div>
         </div>
       </div>
     </div>
     <div class="content-top">
-      <NewSchedule/>
-    </div>
-    <div class="content-bottom">
-      <TextBoard/>
+      <RportTab/>
     </div>
     <Footer/>
   </div>
@@ -26,16 +23,14 @@
 
 <script>
 import SubVisual from '@/components/SubVisual.vue'
-import NewSchedule from '@/components/NewSchedule.vue'
-import TextBoard from '@/components/TextBoard.vue'
+import RportTab from '@/components/RportTab.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
-  name: 'schedule',
+  name: 'status',
   components: {
     SubVisual,
-    NewSchedule,
-    TextBoard,
+    RportTab,
     Footer
   },
 }
@@ -43,5 +38,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/style/_mixin.scss";
+  @import "@/style/_mixin.scss";
 </style>

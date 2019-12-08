@@ -19,28 +19,23 @@
     <div class="tab-cont active"> <!--클래스 active 주시면 활성화됩니다.-->
       <div class="material-list">
         <div class="material">
-          <strong class="material-title">보도자료</strong>
+          <strong class="material-title">재무상태</strong>
           <a href="#" class="icon-file  pdf">
-            SAMSUNG 19년 2부누기 실절발표자료
+            AMSUNG 19 2Q 재무상태표
           </a>
           <a href="#" class="link"></a>
         </div>
         <div class="material">
-          <strong class="material-title">Webcast</strong>
-            <a href="#" class="link mov">MOV</a>
+          <strong class="material-title">손익계산서</strong>
+           <a href="#" class="icon-file pdf">
+            AMSUNG 19 2Q 손익계산
+          </a>
+            <a href="#" class="link"></a>
         </div>
         <div class="material">
-          <strong class="material-title">컨퍼런스콜</strong>
-          <a href="#" class="link"></a>
-        </div>
-        <div class="material">
-          <strong class="material-title">스크립트</strong>
-          <a href="#" class="link"></a>
-        </div>
-        <div class="material">
-          <strong class="material-title">Fact sheet</strong>
-          <a href="#" class="icon-file excel">
-            SAMSUNG 19년 2부누기 실절발표자료
+          <strong class="material-title">현금흐름표</strong>
+           <a href="#" class="icon-file  pdf">
+            SAMSUNG 19 2Q 현금흐름표
           </a>
           <a href="#" class="link"></a>
         </div>
@@ -68,80 +63,5 @@
  .announcement-Tab {
    @include contentWidth(1200px);
  }
- .material-top {
-   display:flex;
-   border-top:1px solid $black;
-   .thumbnail {
-     overflow: hidden;
-     flex:1 1 auto;
-     img {
-       position: relative;
-       left:50%;
-       width: 600px;
-       margin-left:-300px;
-     }
-   }
-   .material-box {
-     flex:1 1 auto;
-     padding:80px 60px 0 60px;
-     background:url(../assets/images/bg/bg_board_top.png) ,url(../assets/images/bg/bg_board_bottom.png);
-     background-repeat:no-repeat , no-repeat;
-     background-position:left top , right bottom;
-     background-color:$white;
-     .info {
-       @include bgImg(icon/icon_material,$pos:right top 46px);
-     }
-     .date {
-       font-size:19px;
-       color:#bcc0ca;
-       font-weight: 700;
-     }
-     .title {
-       margin-top:16px;
-       font-size:27px;
-       color:#393f44;
-       font-weight: 500;
-     }
-     .icon-file  {
-       margin-top:70px;
-     }
-   }
- }
- .material-list {
-   margin-top:10px;
-  .material {
-    display:flex;
-    align-items: center;
-    padding:40px 60px;
-    background-color:$white;
-    & + .material{
-      margin-top:2px;
-    }
-    .material-title {
-      display: inline-block;
-      flex:1 1 auto;
-      max-width:166px;
-      font-size:23px;
-      line-height:24px;
-      color:$black3;
-      font-weight: 500;
-    }
-    .link {
-      display:inline-block;
-      width:24px;
-      height:21px;
-      margin-left:auto;
-      @include bgImg(bg/bg_more_right);
-      &.mov {
-        padding-right:26px;
-        width:auto;
-        height:auto;
-        font-size:13px;
-        line-height:26px;
-        color:#bcc0ca;
-        @include bgImg(bg/bg_play,$pos:right center);
-      }
-    }
-  } 
- }
+
 </style>

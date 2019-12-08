@@ -1,0 +1,144 @@
+<template>
+  <div class="table-wrap">
+    <div class="title-wrap">
+      <strong>배당내역</strong>
+    </div>
+    <div class="table">
+      <table>
+        <colgroup>
+          <col style="width:190px">
+          <col style="auto">
+          <col style="width:186px">
+          <col style="width:186px">
+          <col style="width:186px">
+          <col style="width:100px" class="is_pc">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col" colspan="2" class="textLeft">구분</th>
+            <th scope="col">2018</th>
+            <th scope="col">2017</th>
+            <th scope="col">2016</th>
+            <th scope="col" class="is_pc"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th colspan="2">당기순이익<span>(백민원)</span></th>
+            <td>224,157</td>
+            <td>224,157</td>
+            <td>224,157</td>
+            <td class="is_pc"></td>
+          </tr>
+          <tr>
+            <th colspan="2">배당성향<span>(%)</span></th>
+            <td>17.8</td>
+            <td>17.8</td>
+            <td>17.8</td>
+            <td class="is_pc"></td>
+          </tr>
+          <tr>
+            <th rowspan="2">주당 현금배당(원)</th>
+            <td class="textLeft">보통주</td>
+            <td>28,500</td>
+            <td>28,500</td>
+            <td>28,500</td>
+            <td class="is_pc"></td>
+          </tr>
+          <tr>
+            <td class="textLeft">우선주</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="is_pc"></td>
+          </tr>
+          <tr>
+            <th rowspan="2">주당 주식배당(주)</th>
+            <td class="textLeft">보통주</td>
+            <td>28,500</td>
+            <td>28,500</td>
+            <td>28,500</td>
+            <td class="is_pc"></td>
+          </tr>
+          <tr>
+            <td class="textLeft">우선주</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td class="is_pc"></td>
+          </tr>
+          <tr>
+            <th class="textLeft">배달총액<span>백만원</span></th>
+            <td class="textLeft total">소계</td>
+            <td class="total">39,919</td>
+            <td class="total">39,919</td>
+            <td class="total">39,919</td>
+            <td class="is_pc"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
+
+<script>
+
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss">
+@import "@/style/_mixin.scss";
+ .table-wrap {
+   @include contentWidth($width:1200px);
+   .table {
+     border-top:3px solid $black;
+     border-bottom:1px solid #e9e9e9;
+     .textLeft {
+       text-align: left;
+     }
+     thead {
+       tr {
+         th {
+           padding:26px 0 26px 30px;
+           font-size:17px;
+           font-weight: 700;
+           color:$black3;
+           border-bottom:1px solid #e9e9e9;
+           text-align: right;
+         }
+       }
+     }
+     tbody {
+       tr {
+         th {
+           text-align: left;
+           padding:26px 30px;
+           font-size:17px;
+           font-weight:500;
+           color:$black3;
+           vertical-align: middle;
+           span {
+             font-weight:400;
+           }
+         }
+         & + tr {
+           td,th {
+             border-top:1px solid #e9e9e9;
+           }
+         }
+          td {
+            padding:26px 0 26px 40px;
+            font-size:17px;
+            color:$gray7;
+            text-align: right;
+          &.total {
+            font-weight:500;
+            color:$black3;
+            }
+          }
+       }
+     }
+   }
+   
+ }
+</style>
