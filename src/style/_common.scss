@@ -157,7 +157,11 @@ table {
 .is_mobile {
     display: none;
 }
-
+.txt-pre {
+    white-space: pre-line;
+    font-size:18px;
+    color:#555;
+}
 @media screen and (max-width: 769px) {
     .is_pc {
         display: none;
