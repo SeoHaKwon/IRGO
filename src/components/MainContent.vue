@@ -120,7 +120,9 @@
         font-size:31px;
         line-height:36px;
         color:$black3;
-        font-weight: 900;
+        strong {
+        font-weight: 500;
+        }
         p {
           margin-top:16px;
           font-size:17px;

@@ -10,7 +10,7 @@
         <router-link to="/schedule">IR 일정</router-link>
         <router-link to="/announcement">실적발표</router-link>
         <router-link to="/news">IR News</router-link>
-        <router-link to="/financial">채무정보</router-link>
+        <router-link to="/financial">재무정보</router-link>
         <router-link to="/status">주주현황</router-link>
         <router-link to="/disclosure">공시</router-link>
         <router-link to="/report">경영보고서</router-link>
@@ -52,7 +52,7 @@
       >a {
         font-size:17px;
         color:$white;
-        font-weight: 600;
+        font-weight: 700;
         &+ a {
           margin-left:54px;
         }
@@ -65,7 +65,7 @@
       width:146px;
       height:50px;
       margin-left:64px;
-      border:3px solid #60678e;
+      border:3px solid rgba(247, 247, 247, 0.3);
       a + a {
         margin-left:37px;
       }

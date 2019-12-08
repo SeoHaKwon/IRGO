@@ -40,8 +40,8 @@
      li {
        display:flex;
        & + li {
-         padding-left:10px;
-         margin-left:10px;
+         padding-left:8px;
+         margin-left:8px;
          border-left:1px solid #cdcdd0;
        }
        span {
@@ -49,7 +49,7 @@
          font-weight: 700;
          color:$gray7;
          & + span {
-           margin-left:7px;
+           margin-left:8px;
          }
        }
      }

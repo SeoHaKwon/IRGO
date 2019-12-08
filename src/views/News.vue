@@ -4,21 +4,21 @@
       <SubVisual/>
       <div class="sub-info-txt">
         <div class="inner">
-          <strong class="sub-title">실적발표</strong>
+          <strong class="sub-title">IR NEWS</strong>
           <div class="history">
             <span class="icon-home">
               <img src="../assets/images/icon/icon_home.png" alt="">
             </span>
-            <span>실적발표</span>
+            <span>IR NEWS</span>
           </div>
         </div>
       </div>
     </div>
     <div class="content-top">
-      <AnnouncementTab/>
+      <NewsList/>
     </div>
     <div class="content-bottom">
-      <QaBoard/>
+      <ThumbnailBoard/>
     </div>
     <Footer/>
   </div>
@@ -26,16 +26,16 @@
 
 <script>
 import SubVisual from '@/components/SubVisual.vue'
-import AnnouncementTab from '@/components/AnnouncementTab.vue'
-import QaBoard from '@/components/QaBoard.vue'
+import NewsList from '@/components/NewsList.vue'
+import ThumbnailBoard from '@/components/ThumbnailBoard.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'schedule',
   components: {
     SubVisual,
-    AnnouncementTab,
-    QaBoard,
+    NewsList,
+    ThumbnailBoard,
     Footer
   },
 }

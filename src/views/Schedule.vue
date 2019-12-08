@@ -1,13 +1,57 @@
 <template>
-    <h1>일정</h1>
+  <div class="sub-wrap">
+    <div class="sub-visual-wrap">
+      <SubVisual/>
+      <div class="sub-info-txt">
+        <div class="inner">
+          <strong class="sub-title">IR 일정</strong>
+          <div class="history">
+            <span class="icon-home">
+              <img src="../assets/images/icon/icon_home.png" alt="">
+            </span>
+            <span>IR 일정</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-top">
+      <NewSchedule/>
+    </div>
+    <div class="content-bottom">
+      <TextBoard/>
+    </div>
+    <Footer/>
+  </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import SubVisual from '@/components/SubVisual.vue'
+import NewSchedule from '@/components/NewSchedule.vue'
+import TextBoard from '@/components/TextBoard.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'schedule',
   components: {
-  }
+    SubVisual,
+    NewSchedule,
+    TextBoard,
+    Footer
+  },
 }
+
 </script>
+
+<style lang="scss">
+@import "@/style/_mixin.scss";
+  .sub-wrap {
+    .title-wrap {
+      margin-bottom:40px;
+      strong {
+      font-size:30px;
+      color:$black3;
+      font-weight:700;
+      }
+    }
+  }
+</style>
