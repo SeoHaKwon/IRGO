@@ -45,14 +45,14 @@
                                 ></span>
                                 {{ data.title }}
                             </td>
-                            <td>{{ data.value }}</td>
-                            <td>{{ data.percent }}</td>
+                            <td>{{ data.value | currency}}</td>
+                            <td>{{ data.percent }}%</td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td>합계</td>
-                            <td>43,211,110</td>
+                            <td>{{ totalJu | currency}}</td>
                             <td>100.0%</td>
                         </tr>
                     </tfoot>
@@ -79,25 +79,13 @@
                             <option>2019.2Q</option>
                             <option>2019.2Q</option>
                         </select>
-                        <div class="select-arrow">▲</div>
+                        <div class="select-arrow" style="font-size:1rem!important">▲</div>
                     </div>
                 </div>
           </h3>
-              <ul class="performance-group-tab">
-                <li class="active">
-                  <a>2018</a>
-                </li>
-                <li>
-                  <a>2017</a>
-                </li>
-                <li>
-                  <a>2016</a>
-                </li>
-                <li>
-                  <a>2015</a>
-                </li>
-                <li>
-                  <a>2014</a>
+              <ul class="performance-group-tab stock">
+                <li v-for="(item, idx) in STOCK_YEAR" :class="isActive[idx]">
+                  <a v-on:click="setActive(idx)">{{ item.F_YEAR }}</a>
                 </li>
               </ul>
               <div class="shareholder-data-table">
@@ -126,7 +114,7 @@
                             </td>
                             <td>
                                 <h5 v-for="value in data.value">
-                                    {{ value }}
+                                    {{ value | currency }}
                                 </h5>
                             </td>
                         </tr>
@@ -135,7 +123,7 @@
                         <tr>
                             <td></td>
                             <td>소계</td>
-                            <td>100.0%</td>
+                            <td>{{STOCK_TOTAL | currency}}</td>
                         </tr>
                     </tfoot>
                   </table>
@@ -153,123 +141,188 @@
 
 <script>
 import Vue from 'vue'
-import Donut from 'vue-css-donut-chart';
-import 'vue-css-donut-chart/dist/vcdonut.css';
-Vue.use(Donut);
+import Donut from 'vue-css-donut-chart'
+import 'vue-css-donut-chart/dist/vcdonut.css'
+import { mapGetters } from 'vuex'
+Vue.use(Donut)
 
 export default {
   name: 'HomeShareholderStatus',
   components: {
   },
-  data() {
+  data () {
     return {
+      isActive: {
+        0: 'active',
+        1: '',
+        2: '',
+        3: '',
+        4: ''
+      },
+      ori_active: 0,
+      totalJu: 0,
+      STOCK_TOTAL: 0,
+      STOCK_YEAR: [],
       sections: [
-            { label: 'LG전자', value: 37.9, color: '#EA1E64' },
-            { label: '외국인', value: 21.3, color: '#EE4B82' },
-            { label: '국내개인', value: 20, color: '#F278A2' },
-            { label: '국내기관', value: 8.6, color: '#424347' },
-            { label: '국민연금', value: 8.7, color: '#8F8E95' },
-            { label: 'ADE', value: 3.4, color: '#D2D1D8' },
-        ],
-        memberData: [
-            {
-                title: '최대주주 외 특수관계인',
-                value: '11,111,111',
-                percent: '25.7%',
-                color: '#E91E63'
-            },
-            {
-                title: '기관주주',
-                value: '1,111,111',
-                percent: '2.6%',
-                color: '#E91E63'
-            },
-            {
-                title: '외국인주주',
-                value: '888,888',
-                percent: '2.1%',
-                color: '#E91E63'
-            },
-            {
-                title: '자사주',
-                value: '100,000',
-                percent: '0.2%',
-                color: '#313439'
-            },
-            {
-                title: '개인주주 외',
-                value: '30,000,000',
-                percent: '69.4%',
-                color: '#8E8E93'
-            },
-        ],
-        datas: [
-            {
-                title: '당기순이익(백만원)',
-                value: [
-                    '224,157'
-                ],
-                kinds: [
-                    ''
-                ],
-            },
-            {
-                title: '배당성향',
-                value: [
-                    '17.8%',
-                ],
-                kinds: '',
-            },
-            {
-                title: '주당 현금배당(원)',
-                value: [
-                    '28,500',
-                    '-'
-                ],
-                kinds: [
-                    '보통주',
-                    '우선주'
-                ],
-            },
-            {
-                title: '주당 주식배당(주)',
-                value: [
-                    '-',
-                    '-'
-                ],
-                kinds: [
-                    '보통주',
-                    '우선주'
-                ],
-            },
-            {
-                title: '배당총액(백만원)',
-                value: [
-                    '34,981',
-                    '4,937'
-                ],
-                kinds: [
-                    '보통주',
-                    '우선주'
-                ],
-            },
-        ],
-        memberCaption: [
-            {
-                title: '주1)',
-                dscription: '2018년 12월 31일 보통주 기준'
-            },
-            {
-                title: '주2)',
-                dscription: '국민연금기금의 소유주식수 및 지분율은 국민연금공단이 공시한 "주식등의대량보유상황보고서" (2019년 1월 4일 공시)를 기준으로 작성하였으며 현재 시점의 주식소유현황과 차이가 발생할 수 있습니다.'
-            },
-        ],
+        { label: '최대주주', value: 0, color: '#EA1E64' },
+        { label: '기관주주', value: 0, color: '#EE4B82' },
+        { label: '외국인주주', value: 0, color: '#F278A2' },
+        { label: '자사주', value: 0, color: '#424347' },
+        { label: '개인주주 외', value: 0, color: '#8F8E95' }
+      ],
+      memberData: [
+        {
+          title: '최대주주 외 특수관계인',
+          value: '-',
+          percent: '-',
+          color: '#E91E63'
+        },
+        {
+          title: '기관주주',
+          value: '-',
+          percent: '-',
+          color: '#E91E63'
+        },
+        {
+          title: '외국인주주',
+          value: '-',
+          percent: '-',
+          color: '#E91E63'
+        },
+        {
+          title: '자사주',
+          value: '-',
+          percent: '-',
+          color: '#313439'
+        },
+        {
+          title: '개인주주 외',
+          value: '-',
+          percent: '-',
+          color: '#8E8E93'
+        }
+      ],
+      datas: [
+        {
+          title: '당기순이익(백만원)',
+          value: [
+            '-'
+          ],
+          kinds: [
+            ''
+          ]
+        },
+        {
+          title: '배당성향',
+          value: [
+            '-'
+          ],
+          kinds: ''
+        },
+        {
+          title: '주당 현금배당(원)',
+          value: [
+            '-',
+            '-'
+          ],
+          kinds: [
+            '보통주',
+            '우선주'
+          ]
+        },
+        {
+          title: '주당 주식배당(주)',
+          value: [
+            '-',
+            '-'
+          ],
+          kinds: [
+            '보통주',
+            '우선주'
+          ]
+        },
+        {
+          title: '배당총액(백만원)',
+          value: [
+            '-',
+            '-'
+          ],
+          kinds: [
+            '보통주',
+            '우선주'
+          ]
+        }
+      ],
+      memberCaption: [
+        {
+          title: '주1)',
+          dscription: ''
+        }
+      ]
     }
   },
   computed: {
-    
+    ...mapGetters(['getCompSeq'])
   },
-  created() {
+  created () {
+  },
+  filters: {
+    currency: function (value) {
+      return Number(value).toFixed(0).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, '$1,')
+    }
+  },
+  mounted () {
+  },
+  methods: {
+    setActive (idx) {
+      const _self = this
+      _self.isActive[_self.ori_active] = ''
+      _self.isActive[idx] = 'active'
+      _self.ori_active = idx
+    }
+  },
+  watch: {
+    getCompSeq () {
+      const _self = this
+      const param = {
+        seq: _self.getCompSeq
+      }
+      _self.$store.dispatch('GET_SHOLDER', param)
+        .then(res => {
+          _self.memberData[0].value = res[0].LARGE_STOCKHOLDER
+          _self.totalJu += res[0].LARGE_STOCKHOLDER
+          _self.memberData[1].value = res[0].INST_STOCKHOLDER
+          _self.totalJu += res[0].INST_STOCKHOLDER
+          _self.memberData[2].value = res[0].FOREIGN_STOCKHOLDER
+          _self.totalJu += res[0].FOREIGN_STOCKHOLDER
+          _self.memberData[3].value = res[0].TREA_STOCKHOLDER
+          _self.totalJu += res[0].TREA_STOCKHOLDER
+          _self.memberData[4].value = res[0].INDI_STOCKHOLDER
+          _self.totalJu += res[0].INDI_STOCKHOLDER
+          _self.memberData[0].percent = (res[0].LARGE_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
+          _self.memberData[1].percent = (res[0].INST_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
+          _self.memberData[2].percent = (res[0].FOREIGN_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
+          _self.memberData[3].percent = (res[0].TREA_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
+          _self.memberData[4].percent = (res[0].INDI_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
+          for (var key in _self.sections) {
+            _self.sections[key].value = Number(_self.memberData[key].percent)
+          }
+        })
+      _self.$store.dispatch('GET_DIVI', param)
+        .then(res => {
+          _self.STOCK_YEAR = res
+          _self.datas[0]['value'][0] = Number(res[0].F_NET_PROFIT)
+          _self.datas[1]['value'][0] = Number(res[0].F_PAYOUT_RATIO)
+          _self.datas[2]['value'][0] = Number(res[0].F_CASH_DIV_COMMON)
+          _self.datas[2]['value'][1] = Number(res[0].F_CASH_DIV_PERFERRED)
+          _self.datas[3]['value'][0] = Number(res[0].F_STOCK_DIV_COMMON)
+          _self.datas[3]['value'][1] = Number(res[0].F_STOCK_DIV_PERFERRED)
+          _self.datas[4]['value'][0] = Number(res[0].F_DIV_TOT_COMMON)
+          _self.datas[4]['value'][1] = Number(res[0].F_DIV_TOT_PERFERRED)
+          _self.STOCK_TOTAL = Number(res[0].F_DIV_TOTAL)
+          _self.memberCaption[0].title = res[0].F_DIV_COMMENT
+        })
+    }
   }
 }
 </script>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getCOMPINFO, getKrxData, getSIlQuarter } from '../api'
+import { getAPIData } from '../api'
 
 Vue.use(Vuex)
 
@@ -25,6 +25,9 @@ export default new Vuex.Store({
     },
     getCompSeq (state) {
       return state.seq
+    },
+    getCompName (state) {
+      return state.name
     }
   },
   mutations: {
@@ -57,17 +60,92 @@ export default new Vuex.Store({
   },
   actions: {
     async SET_INFO ({ commit }, url) {
-      const res = await getCOMPINFO(url)
+      let param = {
+        data: url,
+        url: 'getSettingInfo'
+      }
+      const res = await getAPIData(param)
       commit('SET_DATA', res.data[0])
       return res.data[0]
     },
     async GET_KRX (context, payload) {
-      const res = await getKrxData(payload)
+      let param = {
+        data: payload,
+        url: 'getKrxXMLData'
+      }
+      const res = await getAPIData(param)
       return res.data[0]
     },
     async GET_SILQ (context, payload) {
-      const res = await getSIlQuarter(payload)
-      console.log(res, 'test')
+      let param = {
+        data: payload,
+        url: 'getSilQuarter'
+      }
+      const res = await getAPIData(param)
+      return res.data
+    },
+    async GET_SILJ (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getPerformance'
+      }
+      const res = await getAPIData(param)
+      return res.data
+    },
+    async GET_FAQ (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getFAQ'
+      }
+      const res = await getAPIData(param)
+      return res.data
+    },
+    async GET_IRNEWS (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getIrNews'
+      }
+      const res = await getAPIData(param)
+      return res.data
+    },
+    async GET_MREPORT (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getManagementReport'
+      }
+      const res = await getAPIData(param)
+      return res.data
+    },
+    async GET_FINANCE (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getFinancialStatements'
+      }
+      const res = await getAPIData(param)
+      return res.data
+    },
+    async GET_DIS (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getDisclosure'
+      }
+      const res = await getAPIData(param)
+      return res.data
+    },
+    async GET_SHOLDER (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getShareHolder'
+      }
+      const res = await getAPIData(param)
+      return res.data
+    },
+    async GET_DIVI (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getDividend'
+      }
+      const res = await getAPIData(param)
       return res.data
     }
   }

@@ -1,29 +1,14 @@
 <template>
   <div class="PerformanceContents">
       <ul class="performance-group-tab">
-        <li class="active">
-          <a>19.2Q</a>
-        </li>
-        <li>
-          <a>19.1Q</a>
-        </li>
-        <li>
-          <a>18.4Q</a>
-        </li>
-        <li>
-          <a>18.3Q</a>
-        </li>
-        <li>
-          <a>18.2Q</a>
+        <li v-for="(items, idx) in silq" v-bind:key="idx" v-on:click="getContents(items, idx)" :class="isActive[idx]">
+          <a>{{ items }}</a>
         </li>
       </ul>
         <div class="performance-select">
             <div class="select-warp">
                 <select>
-                    <option>2019.2Q</option>
-                    <option>2019.2Q</option>
-                    <option>2019.2Q</option>
-                    <option>2019.2Q</option>
+                    <option v-for="(items, idx) in silq" v-on:change="getContents(items, idx)">{{ '20' + items }}</option>
                 </select>
                 <div class="select-arrow">▲</div>
             </div>
@@ -35,10 +20,9 @@
                   class="main-title"
                 >
                     <h2 class="title">
-                        2019년 2분기 <br/>
-                        실적발표
+                        {{ silj.TITLE }}
                     </h2>
-                    <div class="download">
+                    <div class="download" v-on:click="getFiles(silj.UPLOAD_FILE1)">
                         <img 
                             src="../assets/img/ic_file_download.png"
                         />
@@ -47,7 +31,7 @@
                 <div>
                     <img 
                         width="100%"
-                        src="../assets/img/performance_main_image.png"
+                        :src="thumbnail"
                     />                    
                 </div>
             </div>
@@ -59,20 +43,16 @@
                 v-if="datas.length < 4"
               >
                   <h2 class="title">
-                      2019년 2분기 <br/>
-                      실적발표
+                      {{ silj.TITLE }}
                   </h2>
-                  <div class="download">
+                  <div class="download" v-on:click="getFiles(silj.UPLOAD_FILE1)">
                       <img 
                           src="../assets/img/ic_file_download.png"
                       />
                   </div>
               </div>
                 <ul>
-                    <li 
-                        v-for="data in datas"
-                        :class="{'less-length': datas.length < 4}"
-                    >
+                    <li v-for="(data, idx) in datas" :class="{'less-length': datas.length < 4}" v-bind:key="idx">
                         <h5>{{ data.title }}</h5>
                         <h6>
                             <img
@@ -95,42 +75,60 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'PerformanceContents',
   props: [
-    'datas'
+    'datas',
+    'silq',
+    'silj'
   ],
   data: () => {
     return {
-      // flag: true
+      nActive: 0,
+      thumbnail: '',
+      isActive: {
+        0: 'active',
+        1: '',
+        2: '',
+        3: '',
+        4: ''
+      },
+      ori_active: 0
     }
   },
   components: {
   },
   mounted () {
-    // console.log('test')
-    const _self = this
   },
-  computed: {
-    ...mapGetters(['getCompCode', 'getCompSeq'])
+  methods: {
+    getFiles (url) {
+      window.location = 'https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/' + url
+    },
+    getContents (quat, idx) {
+      const _self = this
+      _self.setActive(idx)
+      _self.$emit('changeQuarter', quat)
+    },
+    setActive (idx) {
+      const _self = this
+      _self.isActive[_self.ori_active] = ''
+      _self.isActive[idx] = 'active'
+      _self.ori_active = idx
+    }
   },
   watch: {
-    getCompSeq () {
+    silj () {
       const _self = this
-      const param = {
-        code: _self.getCompCode,
-        seq: _self.getCompSeq
-      }
-      const res = this.$store.dispatch('GET_SILQ', param)
+      _self.thumbnail = "http://file.irgo.co.kr/data/BOARD/ATTACH_IMG/" + _self.silj.UPLOAD_THUMBNAIL
     }
   }
 }
 </script>
 <style lang="scss">
 @import "@/style/_variables.scss";
-
+.download {
+  cursor: pointer;
+}
 .PerformanceContents {
   
   .performance-select {
@@ -158,6 +156,9 @@ export default {
             margin-bottom: 30px;
 
             & .title {
+                /* 추가 */
+                margin-left:20px;
+                /* 추가 */
                 font-size: 34px;
                 font-weight: normal;
                 text-decoration-line: underline;
@@ -245,6 +246,9 @@ export default {
                   margin-bottom: 30px;
 
                   & .title {
+                    /* 추가 */
+                      width: 385px;
+                    /* 추가 */
                       font-size: 22px;
                       font-weight: normal;
                       text-decoration-line: underline;

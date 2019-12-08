@@ -5,73 +5,15 @@
       Documents & Report
     </h3>
     <ul class="management-report">
-        <li>
-            <h5>정관</h5>
+        <li v-for="(item, key) in report">
+            <h5>{{ item.TITLE }}</h5>
             <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>공시정보관리규정</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>기업지배구조보고서</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>주주총회결과 (2019년)</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>사업보고서 (2019년)</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>지속가능경영보고서 (2018년)</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>연차보고서 (2018년)</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
+                <a :href="'https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/'+item.UPLOAD_FILE">
+                  <img
+                      width="30px"
+                      src="../assets/img/ic_file_download.png"
+                  />
+                </a>
                 <span class="data-type">PDF</span>
             </h6>
         </li>
@@ -80,10 +22,31 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomeManagementReport',
   components: {
+  },
+  data: () => {
+    return {
+      report: []
+    }
+  },
+  computed: {
+    ...mapGetters(['getCompSeq'])
+  },
+  watch: {
+    getCompSeq () {
+      const _self = this
+      const aram = {
+        seq: _self.getCompSeq
+      }
+      const pres = this.$store.dispatch('GET_MREPORT', aram)
+      .then(res => {
+        _self.report = res
+      })
+    }
   }
 }
 </script>

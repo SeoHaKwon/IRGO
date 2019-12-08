@@ -6,15 +6,15 @@
     </h3>
     <!-- 실적발표 -->
     <PerformanceContents
-      :datas="type_A"
+      :datas="type_D" :silq="silQ" :silj="silJ" v-on:changeQuarter="getQuarter"
     />
-    <div style="margin-top: 40px">
+    <!-- <div style="margin-top: 40px">
       <PerformanceContents
-        :datas="type_B"
+        :datas="type_B" :silq="silQ" :silj="silJ" v-on:changeQuarter="getQuarter"
       />
-    </div>
+    </div> -->
   <!-- FAQ -->
-    <PerformanceFAQ />
+    <PerformanceFAQ v-on:changeQuarterfaq="getfaqQuarter"/>
 
     <div style="margin-top: 40px">
       <PerformanceFAQTypeB />
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import PerformanceContents from '@/components/PerformanceContents.vue'
 import PerformanceFAQ from '@/components/PerformanceFAQ.vue'
 import PerformanceFAQTypeB from '@/components/PerformanceFAQTypeB.vue'
@@ -32,56 +33,90 @@ export default {
   name: 'HomePerformance',
   data() {
     return {
-      type_A: [
-        {
-         title: '보도자료(Press Release)',
-          url: '../assets/img/ic_file_download.png',
-          type: 'PDF'
-        },
-        {
-         title: '웹캐스팅',
-          url: '../assets/img/ic_arrow_forward.png',
-          type: 'URL'
-        },
-        {
-         title: '컨퍼런스콜',
-          url: '../assets/img/ic_arrow_forward.png',
-          type: 'URL'
-        },
-        {
-         title: '스크립트',
-          url: '../assets/img/ic_file_download.png',
-          type: 'PDF'
-        },
-        {
-         title: 'Factsheet',
-          url: '../assets/img/ic_file_download.png',
-          type: 'XLS'
-        },
-      ],
-      type_B: [
-        {
-         title: '컨퍼런스콜',
-          url: '../assets/img/ic_arrow_forward.png',
-          type: 'URL'
-        },
-        {
-         title: '스크립트',
-          url: '../assets/img/ic_file_download.png',
-          type: 'PDF'
-        },
-        {
-         title: 'Factsheet',
-          url: '../assets/img/ic_file_download.png',
-          type: 'XLS'
-        },
-      ]
+      type_D: [],
+      silQ: [],
+      silJ: {}
     }
   },
   components: {
     PerformanceContents,
     PerformanceFAQ,
     PerformanceFAQTypeB
+  },
+  computed: {
+    ...mapGetters(['getCompCode', 'getCompSeq'])
+  },
+  methods: {
+    getfaqQuarter (q) {
+      console.log(q)
+    },
+    getQuarter (req) {
+      this.changeQuarterData(req.split('.')[0], req.split('.')[1])
+    },
+    changeQuarterData (year, quat) {
+      const _self = this
+      const aram = {
+        seq: _self.getCompSeq,
+        year: "20" + year,
+        quarter: quat.split('Q')[0]
+      }
+      const pres = this.$store.dispatch('GET_SILJ', aram)
+      pres.then(result => {
+        _self.silJ = result[0]
+        result.splice(0, 1)
+        /* SET_DATA_TYPE */
+        _self.type_D = result
+      })
+    }
+  },
+  watch: {
+    getCompSeq () {
+      const _self = this
+      const param = {
+        code: _self.getCompCode,
+        seq: _self.getCompSeq
+      }
+      const res = this.$store.dispatch('GET_SILQ', param)
+      res.then(data => {
+        for (let i = 0; i < data.length; i++) {
+          if (i === 0) {
+            const aram = {
+              seq: _self.getCompSeq,
+              year: "20" + data[i].YEAR,
+              quarter: data[i].PERIOD
+            }
+            const pres = this.$store.dispatch('GET_SILJ', aram)
+            pres.then(result => {
+              if (result[0].SET_DATA_TYPE == 0 || result[0].SET_DATA_TYPE == 1) {
+                _self.silJ = result[0]
+                result.splice(0, 1)
+              }
+              /* SET_DATA_TYPE */
+              for (var key in result) {
+                if (result[key].SET_DATA_TYPE == 2) {
+                  result[key].TITLE = '보도자료(press Release)'
+                } else if (result[key].SET_DATA_TYPE == 3) {
+                  result[key].TITLE = '웹캐스팅'
+                } else if (result[key].SET_DATA_TYPE == 4) {
+                  result[key].TITLE = '컨퍼런스콜'
+                } else if (result[key].SET_DATA_TYPE == 5) {
+                  result[key].TITLE = '스크립트'
+                } else if (result[key].SET_DATA_TYPE == 6) {
+                  result[key].TITLE = 'Factsheet'
+                }
+              }
+              if (result.length > 3) {
+                _self.type_A = result
+              } else {
+                _self.type_B = result
+              }
+            })
+          }
+          let q = data[i].YEAR + "." + data[i].PERIOD + "Q"
+          _self.silQ.push(q)
+        }
+      })
+    }
   }
 }
 </script>

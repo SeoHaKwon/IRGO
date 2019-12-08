@@ -5,34 +5,10 @@
       Disclosure
     </h3>
     <ul class="disclosure-info">
-        <li>
-            <h5>신주인수권행사가액의조정</h5>
+        <li v-for="item in disclo" v-on:click="GSITE(item.SITEURL)">
+            <h5>{{ item.TITLE }}</h5>
             <h6>
-                2019년 10월 10일
-            </h6>
-        </li>
-        <li>
-            <h5>기업설명회(IR)개최(안내공시)</h5>
-            <h6>
-                2019년 10월 10일
-            </h6>
-        </li>
-        <li>
-            <h5>연결재무제표기준영업(잠정)실적(공정공시)</h5>
-            <h6>
-                2019년 10월 10일
-            </h6>
-        </li>
-        <li>
-            <h5>대규모기업집단현황공시[분기별공시(개별회사용)]</h5>
-            <h6>
-                2019년 10월 10일
-            </h6>
-        </li>
-        <li>
-            <h5>특수관계인에대한영업양도</h5>
-            <h6>
-                2019년 10월 10일
+                {{ item.REG_DATE}}
             </h6>
         </li>
     </ul>
@@ -52,10 +28,38 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomeDisclosure',
   components: {
+  },
+  data: () => {
+    return {
+      disclo: []
+    }
+  },
+  mounted () {},
+  computed: {
+    ...mapGetters(['getCompSeq', 'getCompCode'])
+  },
+  methods: {
+    GSITE(url) {
+      location.href= url
+    }
+  },
+  watch: {
+    getCompCode () {
+      const _self = this
+      const aram = {
+        comp_name: _self.getCompName,
+        code: _self.getCompCode
+      }
+      const pres = this.$store.dispatch('GET_DIS', aram)
+      .then(res => {
+        _self.disclo = res
+      })
+    }
   }
 }
 </script>
@@ -75,6 +79,7 @@ export default {
           padding: 40px 20px;
           border-bottom: 1px solid $border-color;
           height: 120px;
+          cursor: pointer;
 
           &:first-child {
               border-top: 1px solid $border-color;

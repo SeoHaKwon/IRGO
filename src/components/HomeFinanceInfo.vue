@@ -4,30 +4,15 @@
     <h3 class="section-sube">
       Financial Statements
     </h3>
-    <ul class="performance-group-tab">
-      <li class="active">
-        <a>19.2Q</a>
-      </li>
-      <li>
-        <a>19.1Q</a>
-      </li>
-      <li>
-        <a>18.4Q</a>
-      </li>
-      <li>
-        <a>18.3Q</a>
-      </li>
-      <li>
-        <a>18.2Q</a>
+    <ul class="performance-group-tab fin">
+      <li v-for="(item, idx) in finance" v-on:click="setQuarter(item.YEAR + '.' + item.PERIOD + 'Q', idx)" :class="isActive[idx]">
+        <a>{{ item.QUARTER }}</a>
       </li>
     </ul>
       <div class="finance-select">
           <div class="select-warp">
               <select>
-                  <option>2019.2Q</option>
-                  <option>2019.2Q</option>
-                  <option>2019.2Q</option>
-                  <option>2019.2Q</option>
+                  <option v-for="item in finance">{{ item.YEAR + '.' + item.PERIOD + 'Q' }}</option>
               </select>
               <div class="select-arrow">▲</div>
           </div>
@@ -36,30 +21,36 @@
         <li>
             <h5>재무상태표</h5>
             <h6>
+              <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/'+finance[nowQ].UPLOAD_FILE1">
                 <img
                     width="30px"
                     src="../assets/img/ic_file_download.png"
                 />
+              </a>
                 <span class="data-type">PDF</span>
             </h6>
         </li>
         <li>
             <h5>손익계산서</h5>
             <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
+                <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/'+finance[nowQ].UPLOAD_FILE2">
+                  <img
+                      width="30px"
+                      src="../assets/img/ic_file_download.png"
+                  />
+                </a>
                 <span class="data-type">PDF</span>
             </h6>
         </li>
         <li>
             <h5>현금흐름표</h5>
             <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
+                <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/'+finance[nowQ].UPLOAD_FILE3">
+                  <img
+                      width="30px"
+                      src="../assets/img/ic_file_download.png"
+                  />
+                </a>
                 <span class="data-type">PDF</span>
             </h6>
         </li>
@@ -68,10 +59,61 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomeFinanceInfo',
   components: {
+  },
+  data: () => {
+    return {
+      nowQ: '',
+      finance: [],
+      isActive: {
+        0: 'active',
+        1: '',
+        2: '',
+        3: '',
+        4: ''
+      },
+      ori_active: 0
+    }
+  },
+  computed: {
+    ...mapGetters(['getCompSeq'])
+  },
+  mounted() {
+  },
+  methods: {
+    setQuarter (Q, idx) {
+      const _self = this
+      _self.nowQ = Q
+      _self.setActive(idx)
+    },
+    setActive (idx) {
+      const _self = this
+      _self.isActive[_self.ori_active] = ''
+      _self.isActive[idx] = 'active'
+      _self.ori_active = idx
+    }
+  },
+  watch: {
+    getCompSeq () {
+      const _self = this
+      const aram = {
+        seq: _self.getCompSeq
+      }
+      const pres = this.$store.dispatch('GET_FINANCE', aram)
+      .then(res => {
+        _self.nowQ = res[0].YEAR+'.'+res[0].PERIOD+'Q'
+        for (let i = 0; i < res.length; i++) {
+          res[res[i].YEAR+'.'+res[i].PERIOD+'Q'] = res[i]
+          res[res[i].YEAR+'.'+res[i].PERIOD+'Q'].QUARTER = res[i].YEAR.substr(2,2)+'.'+res[i].PERIOD+'Q'
+          // res.splice(0, 1)
+        }
+        _self.finance = res
+      })
+    }
   }
 }
 </script>

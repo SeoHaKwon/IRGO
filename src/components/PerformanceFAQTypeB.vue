@@ -6,7 +6,7 @@
     </h3>
     <ul class="FAQ-type-B">
       <li
-        v-for="data in datas"
+        v-for="data in totalArray" @click="isShowFAQ(data.id, data.is_show);"
       >
         <div class="FAQ-header">
           <h6 class="number">{{ data.id }}</h6>
@@ -16,7 +16,6 @@
             width="32px"
             src="../assets/img/FAQ_type_B.png" 
             :class="{'active': data.is_show}"
-            @click="isShowFAQ(data.id, data.is_show);"
           />
         </div>
 
@@ -32,7 +31,7 @@
               {{ info.title }}
             </h5>
             <h6 class="info-description">
-              {{ info.description }}
+              <p v-html="info.description"/>
             </h6>
           </div>
         </div>
@@ -43,111 +42,21 @@
 
 <script>
 
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'PerformanceFAQ',
   data() {
       return {
-        datas: [
-          {
-            title: '기업정보',
-            id: 1,
-            is_show: false,
-            info: [
-              {
-                title: 'LG디스플레이 창립연도',
-                description: 'LG디스플레이는 1987년 TFT-LCD 개발을 시작으로 OLED, IPS 등의 차별화 기술을 통해, 혁신적인 디스플레이 및 관련 제품을 생산/ 판매하는 글로벌 디스플레이 회사입니다.'
-              },
-              {
-                title: '신용등급 정보',
-                description: `LG디스플레이는 해외 유수 평가기관인 무디스(Moody's) 및 S&P로부터 장기 외화채권에 대한 신용등급 평가를 받고 있습니다. 2016년말 현재 무디스(Moody's)의 삼성전자 평가등급은 AA-, 투자전망은 안정적(Stable)이고, S&P의 LG디스플레이 평가등급은 AA-이며 투자 전망은 안정적(Stable)입니다.`
-              },
-              {
-                title: '일반 조명용 올레드 사업 철수',
-                description: '신규 OLED 생산 라인에서 제품 양산을 시작한 지 1년 6개월여 만에 일반 조명용 올레드 사업에서 철수하기로 결정하였습니다. 대신 성장성이 큰 차량용 올레드 시장에 집중하기로 하였습니다.'
-              },
-              {
-                title: 'LG디스플레이 이사회구성',
-                description: 'LG디스플레이 이사회는 사외이사 6명을 포함한 총 11명의 이사로 구성되어 있습니다.'
-              },
-            ]
-          },
-          {
-            title: '주식관련사항',
-            is_show: false,
-            id: 2,
-            info: [
-              {
-                title: 'LG디스플레이 창립연도',
-                description: 'LG디스플레이는 1987년 TFT-LCD 개발을 시작으로 OLED, IPS 등의 차별화 기술을 통해, 혁신적인 디스플레이 및 관련 제품을 생산/ 판매하는 글로벌 디스플레이 회사입니다.'
-              },
-              {
-                title: '신용등급 정보',
-                description: `LG디스플레이는 해외 유수 평가기관인 무디스(Moody's) 및 S&P로부터 장기 외화채권에 대한 신용등급 평가를 받고 있습니다. 2016년말 현재 무디스(Moody's)의 삼성전자 평가등급은 AA-, 투자전망은 안정적(Stable)이고, S&P의 LG디스플레이 평가등급은 AA-이며 투자 전망은 안정적(Stable)입니다.`
-              },
-              {
-                title: '일반 조명용 올레드 사업 철수',
-                description: '신규 OLED 생산 라인에서 제품 양산을 시작한 지 1년 6개월여 만에 일반 조명용 올레드 사업에서 철수하기로 결정하였습니다. 대신 성장성이 큰 차량용 올레드 시장에 집중하기로 하였습니다.'
-              },
-              {
-                title: 'LG디스플레이 이사회구성',
-                description: 'LG디스플레이 이사회는 사외이사 6명을 포함한 총 11명의 이사로 구성되어 있습니다.'
-              },
-            ]
-          },
-          {
-            title: '재무관련사항',
-            is_show: false,
-            id: 3,
-            info: [
-              {
-                title: 'LG디스플레이 창립연도',
-                description: 'LG디스플레이는 1987년 TFT-LCD 개발을 시작으로 OLED, IPS 등의 차별화 기술을 통해, 혁신적인 디스플레이 및 관련 제품을 생산/ 판매하는 글로벌 디스플레이 회사입니다.'
-              },
-              {
-                title: '신용등급 정보',
-                description: `LG디스플레이는 해외 유수 평가기관인 무디스(Moody's) 및 S&P로부터 장기 외화채권에 대한 신용등급 평가를 받고 있습니다. 2016년말 현재 무디스(Moody's)의 삼성전자 평가등급은 AA-, 투자전망은 안정적(Stable)이고, S&P의 LG디스플레이 평가등급은 AA-이며 투자 전망은 안정적(Stable)입니다.`
-              },
-              {
-                title: '일반 조명용 올레드 사업 철수',
-                description: '신규 OLED 생산 라인에서 제품 양산을 시작한 지 1년 6개월여 만에 일반 조명용 올레드 사업에서 철수하기로 결정하였습니다. 대신 성장성이 큰 차량용 올레드 시장에 집중하기로 하였습니다.'
-              },
-              {
-                title: 'LG디스플레이 이사회구성',
-                description: 'LG디스플레이 이사회는 사외이사 6명을 포함한 총 11명의 이사로 구성되어 있습니다.'
-              },
-            ]
-          },
-          {
-            title: '신규사업관련사항',
-            is_show: false,
-            id: 4,
-            info: [
-              {
-                title: 'LG디스플레이 창립연도',
-                description: 'LG디스플레이는 1987년 TFT-LCD 개발을 시작으로 OLED, IPS 등의 차별화 기술을 통해, 혁신적인 디스플레이 및 관련 제품을 생산/ 판매하는 글로벌 디스플레이 회사입니다.'
-              },
-              {
-                title: '신용등급 정보',
-                description: `LG디스플레이는 해외 유수 평가기관인 무디스(Moody's) 및 S&P로부터 장기 외화채권에 대한 신용등급 평가를 받고 있습니다. 2016년말 현재 무디스(Moody's)의 삼성전자 평가등급은 AA-, 투자전망은 안정적(Stable)이고, S&P의 LG디스플레이 평가등급은 AA-이며 투자 전망은 안정적(Stable)입니다.`
-              },
-              {
-                title: '일반 조명용 올레드 사업 철수',
-                description: '신규 OLED 생산 라인에서 제품 양산을 시작한 지 1년 6개월여 만에 일반 조명용 올레드 사업에서 철수하기로 결정하였습니다. 대신 성장성이 큰 차량용 올레드 시장에 집중하기로 하였습니다.'
-              },
-              {
-                title: 'LG디스플레이 이사회구성',
-                description: 'LG디스플레이 이사회는 사외이사 6명을 포함한 총 11명의 이사로 구성되어 있습니다.'
-              },
-            ]
-          },
-        ]
+        totalArray: [],
+        faqContents: []
       }
   },
   components: {
   },
   methods: {
      isShowFAQ(id, isOpen) {
-        this.datas.map(data => {
+        this.totalArray.map(data => {
           data.is_show = false;
 
           if (data.id === id && !isOpen) {
@@ -155,6 +64,35 @@ export default {
           }
         });
      },
+  },
+  computed: {
+    ...mapGetters(['getCompSeq'])
+  },
+  watch: {
+    getCompSeq () {
+      const _self = this
+      const aram = {
+        seq: _self.getCompSeq
+      }
+      const pres = this.$store.dispatch('GET_FAQ', aram)
+      .then(res => {
+        _self.faqContents = res
+        for (var i = 0; i < res.length; i++) {
+          res[i].QUESTION
+          res[i].ANSWER
+          let array = {
+            'title': res[i].QUESTION,
+            'is_show': (i == 0 ? true : false),
+            'id': i+1,
+            info: [{
+              'title': res[i].QUESTION,
+              'description': res[i].ANSWER
+            }]
+          }
+          _self.totalArray.push(array)
+        }
+      })
+    }
   }
 }
 </script>
@@ -168,7 +106,7 @@ export default {
       li {
         padding: 40px 20px;
         border-bottom: 1px solid $border-color;
-        
+        cursor: pointer;
 
         &:first-child {
           border-top: 1px solid $border-color;

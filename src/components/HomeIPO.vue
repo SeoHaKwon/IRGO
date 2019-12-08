@@ -95,6 +95,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomeFinanceInfo',
@@ -144,6 +145,20 @@ export default {
           arrow: 'gray'
         },
       ]
+    }
+  },
+  methods: {},
+  computed: {
+    ...mapGetters(['getCompSeq'])
+  },
+  mounted () {},
+  watch: {
+    getCompSeq () {
+      const _self = this
+      const aram = {
+        seq: _self.getCompSeq
+      }
+      const pres = this.$store.dispatch('GET_MREPORT', aram)
     }
   }
 }
