@@ -184,6 +184,7 @@ export default {
           }
         }
         _self.NewsList = res
+        console.log(_self.NewsList)
       })
     }
   }
@@ -191,6 +192,9 @@ export default {
 </script>
 <style lang="scss">
 @import "@/style/_variables.scss";
+.IR-modal-list li h4 {
+  font-size: 16px;
+}
 .HomeIrNews {
     padding-top: 200px;
 

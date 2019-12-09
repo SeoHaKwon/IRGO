@@ -5,19 +5,19 @@
   		<div class="home-main-visual-container">
   			<h2>Inverstor Relations</h2>
 
-	  		<div class="main-information">
+	  		<div class="main-information" v-if="Price.NowJuka">
 		  		<div class="title">
 		  			<h4>
-		  				14,300원
+		  				{{ Price.NowJuka}}원
 		  			</h4>
-		  			<h5>▲ 100 (+0.7%)</h5>
+		  			<h5>{{ Price.DungRak }} {{ Price.Debi }} ({{ Price.Cent}}%)</h5>
 		  		</div>
 		  		<h5 class="information">
-		  			거래량 1,816,343 <br />
-		  			시가총액 5,631억원
+		  			거래량 {{ Price.Volume }} <br />
+		  			시가총액 {{ Price.totals }}억원
 		  		</h5>
 		  		<h6 class="curtion">
-		  			10/15 15:06 (KST) LG디스플레이 보통주
+		  			{{ Price.sumDay }} {{ Price.JongName }} 보통주
 		  		</h6>
 		  	</div>
   		</div>
@@ -31,6 +31,7 @@ import { mapGetters } from 'vuex'
 export default {
   data: () => {
     return {
+      Price: []
     }
   },
   computed: {
@@ -41,10 +42,33 @@ export default {
       const _self = this
       if (_self.getCompCode) {
         const param = {
-          'code': _self.getCompCode
+          code: _self.getCompCode
         }
-        const krxData = this.$store.dispatch('GET_KRX', param)
+        _self.$store.dispatch('GET_KRX', param)
+          .then(res => {
+            _self.Price = res
+            _self.Price.totals = (_self.removeComma(res.NowJuka) * _self.removeComma(res.Amount)/100000000).toFixed(2)
+            _self.getNowDate()
+          })
       }
+    }
+  },
+  methods: {
+    getNowDate () {
+      const _self = this
+      let month = new Date().getMonth() + 1;
+      if (month == 13) {
+        month = 1
+      }
+      let day = new Date().getDate()
+      let hour = new Date().getHours()
+      let min = new Date().getMinutes()
+      const sum = month+'/'+day+' '+hour+':'+min
+      _self.Price.sumDay = sum
+    },
+    removeComma (str) {
+      let n = parseInt(str.replace(/,/g,""))
+		  return Number(n)
     }
   }
 }

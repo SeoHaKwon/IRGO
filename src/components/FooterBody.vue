@@ -1,11 +1,11 @@
 <template>
   <div class="FooterBody">
     <h3>
-        © 2019 LG Display Co., Ltd. All rights reserved.
+        © 2019 {{ COM_NAME_E }}. All rights reserved.
     </h3>
     <h4>
-        (주)LG디스플레이 | 대표이사 한상범 | 사업자등록번호 24-81-00998 <br />
-        서울특별시 영등포구 여의대로 128, LG트윈타워
+        (주){{ COM_NAME }} | 대표이사 {{ CEO_NAME }} | 사업자등록번호 {{ SAUP }} <br />
+        {{ ADDRESS }}
     </h4>
     <h5>
         서비스 제공 ©irpage.co.kr
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'FooterBody',
@@ -21,6 +22,34 @@ export default {
   },
   mounted () {
     // console.log(this.$root.$children[0].globalData.seq)
+  },
+  data: () => {
+    return {
+      COM_NAME: '',
+      CEO_NAME: '',
+      ADDRESS: '',
+      SAUP: '',
+      COM_NAME_E: ''
+    }
+  },
+  computed: {
+    ...mapGetters(['getCompName', 'getCompSeq'])
+  },
+  watch: {
+    getCompSeq () {
+      const _self = this
+      const param = {
+        seq: _self.getCompSeq
+      }
+      _self.$store.dispatch('GET_COMINFO', param)
+        .then(res => {
+          _self.COM_NAME = res[0].COMP_NAME
+          _self.CEO_NAME = res[0].CEO_NAME
+          _self.ADDRESS = res[0].COMP_ADDR
+          _self.SAUP = res[0].COMP_REG_NUM
+          _self.COM_NAME_E = res[0].COMP_NAME_E
+        })
+    }
   }
 }
 </script>

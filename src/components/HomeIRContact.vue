@@ -1,12 +1,12 @@
 <template>
-  <div class="HomeIRContact contaner">
+  <div class="HomeIRContact contaner" v-if="compname">
     <h2 class="section-title">IR Contact</h2>
     <h3 
         class="section-sube"
         style="margin-bottom: 40px;"
     >
-      LG디스플레이 IR 페이지에 방문해 주셔서 감사합니다. <br />
-      LG디스플레이는 주주의 권리 보호를 위해 노력하며, 함께 성장하는 기업입니다.
+      {{ compname }} IR 페이지에 방문해 주셔서 감사합니다. <br />
+      {{ compname }}는 주주의 권리 보호를 위해 노력하며, 함께 성장하는 기업입니다.
     </h3>
     <div 
         v-for="contact in irContactData"
@@ -20,48 +20,88 @@
         </h5>
     </div>
     <div class="contact-sns">
+      <a v-if="naver_url" :href="naver_url">
         <img
             src="../assets/img/Naver.png"
         />
+      </a>
+      <a v-if="facebook_url" :href="facebook_url">
         <img
             src="../assets/img/Facebook.png"
         />
+      </a>
+      <a v-if="twitter_url" :href="twitter_url">
         <img
             src="../assets/img/Twitter.png"
         />
+      </a>
+      <a v-if="insta_url" :href="insta_url">
         <img
             src="../assets/img/Instagram.png"
         />
+      </a>
+      <a v-if="youtube_url" :href="youtube_url">
         <img
             src="../assets/img/Youtube.png"
         />
+      </a>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomeIRContact',
-  data() {
+  data () {
     return {
-        irContactData: [
-            {
-                title: '주소',
-                info: '서울특별시 영등포구 여의대로 128, LG트윈타워'
-            },
-            {
-                title: '전화',
-                info: '02-3773-1114'
-            },
-            {
-                title: '이메일',
-                info: 'ir@lgdisplay.co.kr'
-            },
-        ]
+      irContactData: [
+        {
+          title: '주소',
+          info: ''
+        },
+        {
+          title: '전화',
+          info: ''
+        },
+        {
+          title: '이메일',
+          info: ''
+        }
+      ],
+      naver_url: '',
+      facebook_url: '',
+      twitter_url: '',
+      insta_url: '',
+      youtube_url: '',
+      compname: ''
     }
   },
   components: {
+  },
+  computed: {
+    ...mapGetters(['getCompSeq'])
+  },
+  watch: {
+    getCompSeq () {
+      const _self = this
+      const param = {
+        seq: _self.getCompSeq
+      }
+      _self.$store.dispatch('GET_CONTACT', param)
+        .then(res => {
+          _self.compname = res[0].COMP_NAME
+          _self.irContactData[0].info = res[0].COMP_ADDR
+          _self.irContactData[1].info = res[0].IRO_EMAIL
+          _self.irContactData[2].info = res[0].IRO_TEL
+          _self.naver_url = res[0].IRPAGE_SNS_BLOG
+          _self.facebook_url = res[0].IRPAGE_SNS_FACEBOOK
+          _self.twitter_url = res[0].IRPAGE_SNS_TWITTER
+          _self.insta_url = res[0].IRPAGE_SNS_INSTA
+          _self.youtube_url = res[0].IRPAGE_SNS_YOUTUBE
+        })
+    }
   }
 }
 </script>

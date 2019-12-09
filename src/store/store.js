@@ -17,7 +17,8 @@ export default new Vuex.Store({
     code: '',
     name: '',
     COMP_DATAP: '',
-    flag: true
+    flag: true,
+    type: ''
   },
   getters: {
     getCompCode (state) {
@@ -28,6 +29,9 @@ export default new Vuex.Store({
     },
     getCompName (state) {
       return state.name
+    },
+    getCompType (state) {
+      return state.type
     }
   },
   mutations: {
@@ -74,7 +78,7 @@ export default new Vuex.Store({
         url: 'getKrxXMLData'
       }
       const res = await getAPIData(param)
-      return res.data[0]
+      return res.data
     },
     async GET_SILQ (context, payload) {
       let param = {
@@ -144,6 +148,38 @@ export default new Vuex.Store({
       let param = {
         data: payload,
         url: 'getDividend'
+      }
+      const res = await getAPIData(param)
+      return res.data
+    },
+    async GET_CONTACT (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getContactLink'
+      }
+      const res = await getAPIData(param)
+      return res.data
+    },
+    async GET_SCH (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getComeSchedule'
+      }
+      const res = await getAPIData(param)
+      return res.data
+    },
+    async GET_COMINFO (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getCompInfo'
+      }
+      const res = await getAPIData(param)
+      return res.data
+    },
+    async GET_IPO (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getIPOprocess'
       }
       const res = await getAPIData(param)
       return res.data

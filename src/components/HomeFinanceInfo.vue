@@ -21,7 +21,7 @@
         <li>
             <h5>재무상태표</h5>
             <h6>
-              <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/'+finance[nowQ].UPLOAD_FILE1">
+              <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE1">
                 <img
                     width="30px"
                     src="../assets/img/ic_file_download.png"
@@ -33,7 +33,7 @@
         <li>
             <h5>손익계산서</h5>
             <h6>
-                <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/'+finance[nowQ].UPLOAD_FILE2">
+                <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE2">
                   <img
                       width="30px"
                       src="../assets/img/ic_file_download.png"
@@ -45,7 +45,7 @@
         <li>
             <h5>현금흐름표</h5>
             <h6>
-                <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/'+finance[nowQ].UPLOAD_FILE3">
+                <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE3">
                   <img
                       width="30px"
                       src="../assets/img/ic_file_download.png"

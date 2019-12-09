@@ -1,5 +1,5 @@
 <template>
-  <div class="HomeSchedule">
+  <div class="HomeSchedule" v-if="SCHEDULE.length > 0">
   	<div class="schedule-container">
   		<h2 class="title">
   			다가오는
@@ -8,22 +8,11 @@
   		<ul class="schedule-list">
   			<li
   			      @click="clickModal(true)"
+              v-for="item in SCHEDULE"
   			  >
   				<div>
-  					<h4 class="item-date">2019년 10월 28일 13:00</h4>
-  					<h3 class="item-title">LG디스플레이, 3분기 실적발표 컨퍼런스콜</h3>
-  				</div>
-  				<img
-  					width="11px" 
-  					src="../assets/img/schedule_arrow.png"
-  				/>
-  			</li>
-  			<li
-  			      @click="clickModal(true)"
-  			  >
-  				<div>
-	  				<h4 class="item-date">2019. 09. 27</h4>
-	  				<h3 class="item-title">2019년 3분기 실적 가이던스 공시</h3>
+  					<h4 class="item-date">{{ item.S_DATE }}</h4>
+  					<h3 class="item-title">{{ item.TITLE }}</h3>
   				</div>
   				<img
   					width="11px" 
@@ -98,6 +87,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
@@ -120,10 +110,16 @@ export default {
         		title: '추가내용',
         		description: 'Morgan Stanley Annual Asia Pacific Summit 참가 상기 IR자료는 당사 IR페이지 IR News에 게재될 예정입니다. (게제 일시 : 2019년 11월 5일)'
         	},
-        ]
+        ],
+        SCHEDULE: [],
+        S_DATE: [],
+        TITLE: []
       }
   },
   components: {
+  },
+  computed: {
+    ...mapGetters(['getCompSeq'])
   },
   methods: {
       clickModal(isOpen) {
@@ -134,9 +130,24 @@ export default {
       	} else {
       		globalBody.style.overflow = 'inherit'
       	}
-
         this.isIRModal = isOpen;
       },
+  },
+  watch: {
+    getCompSeq () {
+      const _self = this
+      const param = {
+        seq: _self.getCompSeq
+      }
+      _self.$store.dispatch('GET_SCH', param)
+        .then(res => {
+          if (res.length > 0) {
+            for (var key in res) {
+              _self.SCHEDULE.push({"TITLE": res[key].TITLE,"S_DATE": res[key].S_DATE})
+            }
+          }
+        })
+    }
   }
 }
 </script>

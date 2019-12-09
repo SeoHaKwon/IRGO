@@ -8,7 +8,7 @@
         <li v-for="(item, key) in report">
             <h5>{{ item.TITLE }}</h5>
             <h6>
-                <a :href="'https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/'+item.UPLOAD_FILE">
+                <a :href="'https://file.irgo.co.kr/data/IRPAGE/BIZ_REPORT/'+item.UPLOAD_FILE">
                   <img
                       width="30px"
                       src="../assets/img/ic_file_download.png"

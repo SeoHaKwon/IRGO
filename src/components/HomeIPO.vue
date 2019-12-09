@@ -1,5 +1,5 @@
 <template>
-  <div class="HomeFinanceInfo contaner">
+  <div class="HomeFinanceInfo contaner" v-if="isData">
     <h2 class="section-title">IPO 정보</h2>
     <h3 class="section-sube">
       Initial Public Offering Information
@@ -98,27 +98,31 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'HomeFinanceInfo',
+  name: 'HomeIPO',
   components: {
   },
   data() {
     return {
+      isData: true,
       IPODATA: [
+        /* background: gray or white */
+        /* font: #313439 or #8E8E93 */
+        /* arrow: black gray */
         {
           title: '청구',
           days: '09/05',
           background: 'gray',
           font: '#313439',
           border: '2px dashed transparent',
-          arrow: 'black'
+          arrow: 'gray'
         },
         {
           title: '승인',
           days: '11/07',
-          background: 'gray',
-          font: '#313439',
+          background: 'white',
+          font: '#8E8E93',
           border: '2px dashed transparent',
-          arrow: 'black'
+          arrow: 'gray'
         },
         {
           title: '수요',
@@ -158,7 +162,21 @@ export default {
       const aram = {
         seq: _self.getCompSeq
       }
-      const pres = this.$store.dispatch('GET_MREPORT', aram)
+      this.$store.dispatch('GET_IPO', aram)
+        .then(res => {
+          if (res.length === 0) {
+            _self.isData = false
+          }
+          const CAL_KIND = res[0].CAL_KIND
+          let t = (CAL_KIND == 'D' ? t = 1 : (CAL_KIND == 'A' ? t = 2 : (CAL_KIND == 'P' ? t = 3 : (CAL_KIND == 'C' ? t = 4 : (CAL_KIND == 'L' ? t = 5 : 0)))))
+          for (let i = 0; i < t; i++) {
+            _self.IPODATA[i].background = 'gray'
+            _self.IPODATA[i].font = '#313439'
+            if (i > 0) {
+              _self.IPODATA[i-1].arrow = 'black'
+            }
+          }
+        })
     }
   }
 }
@@ -169,6 +187,12 @@ export default {
   display: none;
 }
 #app > div.mobile-global-body > div > div:nth-child(8) > div > div:nth-child(5) > div > div {
+  display: none;
+}
+#app > div.global-body > div > div:nth-child(7) > div > div:nth-child(5) > div > div {
+  display: none;
+}
+#app > div.mobile-global-body > div > div:nth-child(7) > div > div:nth-child(5) > div > div {
   display: none;
 }
 .HomeFinanceInfo {
