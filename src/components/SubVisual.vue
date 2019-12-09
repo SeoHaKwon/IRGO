@@ -10,7 +10,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-@import "@/style/_mixin.scss";
  .sub-visual-wrap {
    position:relative;
    .sub-visual {

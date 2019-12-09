@@ -19,7 +19,6 @@ export default {
 }
 </script>
 <style lang="scss">
-  @import "@/style/_mixin.scss";
   .main-wrap {
     min-height:100%;
     background-color:#040713;

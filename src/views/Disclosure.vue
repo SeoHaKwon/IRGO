@@ -38,5 +38,4 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/style/_mixin.scss";
 </style>

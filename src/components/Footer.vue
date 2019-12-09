@@ -22,7 +22,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-@import "@/style/_mixin.scss";
  .footer-wrap{
    padding:58px 0;
    background-color:#f3f3f7;

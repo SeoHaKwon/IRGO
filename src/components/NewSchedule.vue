@@ -74,7 +74,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-@import "@/style/_mixin.scss";
 .content-top {
   padding:110px 0 130px 0;
   background-color:#f3f3f7;
