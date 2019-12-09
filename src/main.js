@@ -4,6 +4,7 @@ import router from './routes/router'
 import store from './store/store'
 
 Vue.config.productionTip = false
+require('@/style/_mixin.scss')
 
 new Vue({
   router,
