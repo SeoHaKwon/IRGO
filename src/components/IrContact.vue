@@ -59,6 +59,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/style/_color.scss";
+@import "@/style/_mixin.scss";
   .gray-bg {
     position:relative;
     &::after {

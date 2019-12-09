@@ -94,6 +94,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/style/_color.scss";
+@import "@/style/_mixin.scss";
   .report-direct {
     display:flex;
     border-top:2px solid $black;

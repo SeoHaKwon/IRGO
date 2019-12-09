@@ -59,6 +59,8 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+@import "@/style/_color.scss";
+@import "@/style/_mixin.scss";
  .announcement-Tab {
    @include contentWidth(1200px);
  }

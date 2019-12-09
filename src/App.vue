@@ -14,7 +14,8 @@ export default {
 }
 </script>
 <style lang="scss">
-
+@import "@/style/_color.scss";
+@import "@/style/_mixin.scss";
 .wrap {
 	max-width:1920px;
 	height:100%;
