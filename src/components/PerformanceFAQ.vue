@@ -1,5 +1,5 @@
 <template>
-  <div class="PerformanceFAQ">
+  <div class="PerformanceFAQ" v-if="faqContents.length > 0">
     <div class="FAQ-title">
       <h4>FAQ</h4>
       <div class="performance-faq-select">

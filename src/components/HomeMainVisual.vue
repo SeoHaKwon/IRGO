@@ -1,9 +1,9 @@
 <template>
   <div class="HomeMainVisual">
   	<!-- 메인 -->
-  	<div class="home-main-visual">
+  	<div class="home-main-visual" :style="{ 'background': 'url('+Banner+') no-repeat center center/cover' }">
   		<div class="home-main-visual-container">
-  			<h2>Inverstor Relations</h2>
+  			<h2 :style="BN_Text">Inverstor Relations</h2>
 
 	  		<div class="main-information" v-if="Price.NowJuka">
 		  		<div class="title">
@@ -31,11 +31,13 @@ import { mapGetters } from 'vuex'
 export default {
   data: () => {
     return {
-      Price: []
+      Price: [],
+      Banner: '',
+      BN_Text: 'background-color: rgba(0, 0, 0, 0.4);color: white;padding: 20.35% 36.202%;'
     }
   },
   computed: {
-    ...mapGetters(['getCompCode'])
+    ...mapGetters(['getCompCode', 'getBanner'])
   },
   watch: {
     getCompCode () {
@@ -51,6 +53,11 @@ export default {
             _self.getNowDate()
           })
       }
+    },
+    getBanner () {
+      const _self = this
+      _self.Banner = 'https://file.irgo.co.kr/data/IRPAGE/IMG/'+_self.getBanner
+      console.log(_self.Banner)
     }
   },
   methods: {

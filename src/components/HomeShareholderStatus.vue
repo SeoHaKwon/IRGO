@@ -163,6 +163,7 @@ export default {
       totalJu: 0,
       STOCK_TOTAL: 0,
       STOCK_YEAR: [],
+      mcolor: '',
       sections: [
         { label: '최대주주', value: 0, color: '#EA1E64' },
         { label: '기관주주', value: 0, color: '#EE4B82' },
@@ -262,7 +263,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq'])
+    ...mapGetters(['getCompSeq', 'getMainColor'])
   },
   created () {
   },
@@ -279,6 +280,21 @@ export default {
       _self.isActive[_self.ori_active] = ''
       _self.isActive[idx] = 'active'
       _self.ori_active = idx
+    },
+    changeColor(hexcolor, step) {
+      let r = parseInt(hexcolor.substr(1,2), 16)
+      let g = parseInt(hexcolor.substr(3,2), 16)
+      let b = parseInt(hexcolor.substr(5,2), 16)
+      let cr = (r - ((r / 4).toFixed(0) * step)).toString(16)
+      if (cr < 0) {cr = '00'}
+      else if (cr < 10 || cr == 'a' || cr == 'b' || cr == 'c' || cr == 'd' || cr =='e' || cr == 'f') {cr = '0'+cr}
+      let cg = (g - ((g / 4).toFixed(0) * step)).toString(16)
+      if (cg < 0) {cg = '00'}
+      else if (cg < 10 || cg == 'a' || cg == 'b' || cg == 'c' || cg == 'd' || cg =='e' || cg == 'f') {cg = '0'+cg}
+      let cb = (b - ((b / 4).toFixed(0) * step)).toString(16)
+      if (cb < 0) {cb = '00'}
+      else if (cb < 10 || cb == 'a' || cb == 'b' || cb == 'c' || cb == 'd' || cb =='e' || cb == 'f') {cb = '0'+cb}
+      return '#'+cr+cg+cb
     }
   },
   watch: {
@@ -322,6 +338,16 @@ export default {
           _self.STOCK_TOTAL = Number(res[0].F_DIV_TOTAL)
           _self.memberCaption[0].title = res[0].F_DIV_COMMENT
         })
+    },
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#'+_self.getMainColor
+      _self.sections[0].color = '#'+_self.getMainColor
+      _self.memberData[0].color = '#'+_self.getMainColor
+      for (var i =0; i < 5; i++) {
+        _self.sections[i].color = _self.changeColor(_self.mcolor, i)
+        _self.memberData[i].color = _self.changeColor(_self.mcolor, i)
+      }
     }
   }
 }

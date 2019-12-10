@@ -8,11 +8,12 @@
       <li v-for="(item, idx) in finance" v-on:click="setQuarter(item.YEAR + '.' + item.PERIOD + 'Q', idx)" :class="isActive[idx]">
         <a>{{ item.QUARTER }}</a>
       </li>
+      <li v-for="n in 5-finance.length" v-bind:key="n"></li>
     </ul>
       <div class="finance-select">
           <div class="select-warp">
-              <select>
-                  <option v-for="item in finance">{{ item.YEAR + '.' + item.PERIOD + 'Q' }}</option>
+              <select v-on:change="zsetQuarter($event)">
+                  <option v-for="(item, idx) in finance" :value="idx">{{ item.YEAR + '.' + item.PERIOD + 'Q' }}</option>
               </select>
               <div class="select-arrow">▲</div>
           </div>
@@ -22,36 +23,33 @@
             <h5>재무상태표</h5>
             <h6>
               <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE1">
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
+                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                  <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+                </svg>
               </a>
-                <span class="data-type">PDF</span>
+                <span class="data-type" :style="{ color: mcolor}">PDF</span>
             </h6>
         </li>
         <li>
             <h5>손익계산서</h5>
             <h6>
                 <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE2">
-                  <img
-                      width="30px"
-                      src="../assets/img/ic_file_download.png"
-                  />
+                  <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+                  </svg>
                 </a>
-                <span class="data-type">PDF</span>
+                <span class="data-type" :style="{ color: mcolor}">PDF</span>
             </h6>
         </li>
         <li>
             <h5>현금흐름표</h5>
             <h6>
                 <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE3">
-                  <img
-                      width="30px"
-                      src="../assets/img/ic_file_download.png"
-                  />
+                  <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+                  </svg>
                 </a>
-                <span class="data-type">PDF</span>
+                <span class="data-type" :style="{ color: mcolor}">PDF</span>
             </h6>
         </li>
     </ul>
@@ -76,11 +74,12 @@ export default {
         3: '',
         4: ''
       },
-      ori_active: 0
+      ori_active: 0,
+      mcolor: ''
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq'])
+    ...mapGetters(['getCompSeq', 'getMainColor'])
   },
   mounted() {
   },
@@ -89,6 +88,12 @@ export default {
       const _self = this
       _self.nowQ = Q
       _self.setActive(idx)
+    },
+    zsetQuarter (e) {
+      // console.log(e.target.value.substr(2))
+      const _self = this
+      _self.nowQ = e.target.value
+      _self.setActive(e.target.value)
     },
     setActive (idx) {
       const _self = this
@@ -106,6 +111,7 @@ export default {
       const pres = this.$store.dispatch('GET_FINANCE', aram)
       .then(res => {
         _self.nowQ = res[0].YEAR+'.'+res[0].PERIOD+'Q'
+        const cons = 5 - res.length
         for (let i = 0; i < res.length; i++) {
           res[res[i].YEAR+'.'+res[i].PERIOD+'Q'] = res[i]
           res[res[i].YEAR+'.'+res[i].PERIOD+'Q'].QUARTER = res[i].YEAR.substr(2,2)+'.'+res[i].PERIOD+'Q'
@@ -113,6 +119,10 @@ export default {
         }
         _self.finance = res
       })
+    },
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#'+_self.getMainColor
     }
   }
 }

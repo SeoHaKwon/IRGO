@@ -182,7 +182,7 @@ export default {
       const pres = this.$store.dispatch('GET_FAQ', aram)
       .then(res => {
         _self.faqContents = res
-        console.log(res)
+        console.log(res, 'dsfsdfsdfdsf')
       })
     }
   }

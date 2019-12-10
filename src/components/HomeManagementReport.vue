@@ -9,12 +9,11 @@
             <h5>{{ item.TITLE }}</h5>
             <h6>
                 <a :href="'https://file.irgo.co.kr/data/IRPAGE/BIZ_REPORT/'+item.UPLOAD_FILE">
-                  <img
-                      width="30px"
-                      src="../assets/img/ic_file_download.png"
-                  />
+                  <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+                  </svg>
                 </a>
-                <span class="data-type">PDF</span>
+                <span class="data-type" :style="{ color: mcolor }">PDF</span>
             </h6>
         </li>
     </ul>
@@ -30,11 +29,12 @@ export default {
   },
   data: () => {
     return {
-      report: []
+      report: [],
+      mcolor: ''
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq'])
+    ...mapGetters(['getCompSeq', 'getMainColor'])
   },
   watch: {
     getCompSeq () {
@@ -46,6 +46,10 @@ export default {
       .then(res => {
         _self.report = res
       })
+    },
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#'+_self.getMainColor
     }
   }
 }

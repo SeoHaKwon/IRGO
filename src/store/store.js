@@ -18,7 +18,10 @@ export default new Vuex.Store({
     name: '',
     COMP_DATAP: '',
     flag: true,
-    type: ''
+    type: '',
+    mainColor: '',
+    logo: '',
+    banner: ''
   },
   getters: {
     getCompCode (state) {
@@ -32,6 +35,15 @@ export default new Vuex.Store({
     },
     getCompType (state) {
       return state.type
+    },
+    getMainColor (state) {
+      return state.mainColor
+    },
+    getLogo (state) {
+      return state.logo
+    },
+    getBanner (state) {
+      return state.banner
     }
   },
   mutations: {
@@ -58,6 +70,9 @@ export default new Vuex.Store({
         state.seq = payload.COMP_SEQ
         state.name = payload.COMP_NAME
         state.code = payload.COMP_CODE
+        state.mainColor = payload.IRPAGE_MAIN_COLOR
+        state.logo = payload.IRPAGE_LOGO
+        state.banner = payload.IRPAGE_MAIN_IMG
         state.flag = false
       }
     }

@@ -194,7 +194,6 @@ select::-ms-expand {
   color: $font-color-base;
   position: relative;
   font-family: 'Roboto', sans-serif;
-  font-weight: bold;
 
   &::after {
     width: 20000px;

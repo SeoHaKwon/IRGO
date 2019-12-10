@@ -2,7 +2,7 @@
   <div class="MobileNavigaterBar">
     <header>
       <div class="header-logo">
-        <img width="118px" src="../assets/img/img_header_logo.png" />
+        <img width="118px" :src="logo" />
       </div>
 
       <img 
@@ -58,6 +58,7 @@
   </div>
 </template>
 <script type="text/javascript">
+import { mapGetters } from 'vuex'
 export default {
     name: 'MobileNavigaterBar',
     components: {
@@ -65,15 +66,21 @@ export default {
     data() {
         return {
           isMenuShow: false,
-        };
+          logo: ''
+        }
     },
     props: [
     ],
     filters: {
     },
     computed: {
+      ...mapGetters(['getLogo'])
     },
     watch: {
+      getLogo () {
+        const _self = this
+        _self.logo = 'http://file.irgo.co.kr/data/IRPAGE/IMG/'+_self.getLogo
+      }
     },
     methods: {
       headerMenuBtn() {
@@ -83,7 +90,7 @@ export default {
     created() {
     },
     mounted() {
-    },
+    }
 };
 </script>
 <style lang="scss">
@@ -122,7 +129,7 @@ export default {
     width: 100%;
     background: rgba(0, 0, 0, 0.8);
     left: 0;
-    top: 58px;
+    top: 54px;
     text-align: center;
     padding: 0 16px;
 
@@ -137,13 +144,13 @@ export default {
 
       &.active {
         & a {
-          color: $brand-color;
           font-size: 18px;
-          font-weight: 600;
+          font-weight: normal;
         }
       }
 
       & a {
+        font-weight: normal;
         color: #fff;
         font-size: 18px;
       }

@@ -166,14 +166,15 @@ export default {
         .then(res => {
           if (res.length === 0) {
             _self.isData = false
-          }
-          const CAL_KIND = res[0].CAL_KIND
-          let t = (CAL_KIND == 'D' ? t = 1 : (CAL_KIND == 'A' ? t = 2 : (CAL_KIND == 'P' ? t = 3 : (CAL_KIND == 'C' ? t = 4 : (CAL_KIND == 'L' ? t = 5 : 0)))))
-          for (let i = 0; i < t; i++) {
-            _self.IPODATA[i].background = 'gray'
-            _self.IPODATA[i].font = '#313439'
-            if (i > 0) {
-              _self.IPODATA[i-1].arrow = 'black'
+          } else {
+            const CAL_KIND = res[0].CAL_KIND
+            let t = (CAL_KIND == 'D' ? t = 1 : (CAL_KIND == 'A' ? t = 2 : (CAL_KIND == 'P' ? t = 3 : (CAL_KIND == 'C' ? t = 4 : (CAL_KIND == 'L' ? t = 5 : 0)))))
+            for (let i = 0; i < t; i++) {
+              _self.IPODATA[i].background = 'gray'
+              _self.IPODATA[i].font = '#313439'
+              if (i > 0) {
+                _self.IPODATA[i-1].arrow = 'black'
+              }
             }
           }
         })

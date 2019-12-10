@@ -7,8 +7,8 @@
       </ul>
         <div class="performance-select">
             <div class="select-warp">
-                <select>
-                    <option v-for="(items, idx) in silq" v-on:change="getContents(items, idx)">{{ '20' + items }}</option>
+                <select v-on:change="SelectContent($event)">
+                    <option v-for="(items, idx) in silq">{{ '20' + items }}</option>
                 </select>
                 <div class="select-arrow">▲</div>
             </div>
@@ -23,9 +23,9 @@
                         {{ silj.TITLE }}
                     </h2>
                     <div class="download" v-on:click="getFiles(silj.UPLOAD_FILE1)">
-                        <img 
-                            src="../assets/img/ic_file_download.png"
-                        />
+                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                          <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+                        </svg>
                     </div>
                 </div>
                 <div>
@@ -46,9 +46,9 @@
                       {{ silj.TITLE }}
                   </h2>
                   <div class="download" v-on:click="getFiles(silj.UPLOAD_FILE1)">
-                      <img 
-                          src="../assets/img/ic_file_download.png"
-                      />
+                      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+                      </svg>
                   </div>
               </div>
                 <ul>
@@ -75,6 +75,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'PerformanceContents',
   props: [
@@ -93,12 +94,16 @@ export default {
         3: '',
         4: ''
       },
-      ori_active: 0
+      ori_active: 0,
+      mcolor: ''
     }
   },
   components: {
   },
   mounted () {
+  },
+  computed: {
+    ...mapGetters(['getMainColor'])
   },
   methods: {
     getFiles (url) {
@@ -108,6 +113,11 @@ export default {
       const _self = this
       _self.setActive(idx)
       _self.$emit('changeQuarter', quat)
+    },
+    SelectContent (e) {
+      const _self = this
+      _self.setActive(e.target.selectedIndex)
+      _self.$emit('changeQuarter', e.target.value.substr(2))
     },
     setActive (idx) {
       const _self = this
@@ -120,6 +130,10 @@ export default {
     silj () {
       const _self = this
       _self.thumbnail = "http://file.irgo.co.kr/data/BOARD/ATTACH_IMG/" + _self.silj.UPLOAD_THUMBNAIL
+    },
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#'+_self.getMainColor
     }
   }
 }

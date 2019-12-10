@@ -2,43 +2,13 @@
   <div class="NavigationBar">
     <header>
       <div class="header-logo">
-        <img width="155px" src="../assets/img/img_header_logo.png" />
+        <img width="155px" :src="logo" />
       </div>
       <div class="header-navigation-box">
         <ul class="header-navigation">
-          <li class="active">
+          <li v-for="(item, idx) in h_list" :class="{active: item.isActive}" v-on:click="moveCategory(idx)">
             <a href="javascript: void(0)">
-              실적발표
-            </a>
-          </li>
-          <li>
-            <a href="javascript: void(0)">
-              IR뉴스
-            </a>
-          </li>
-          <li>
-            <a href="javascript: void(0)">
-              경영보고서
-            </a>
-          </li>
-          <li>
-            <a href="javascript: void(0)">
-              재무정보
-            </a>
-          </li>
-          <li>
-            <a href="javascript: void(0)">
-              공시
-            </a>
-          </li>
-          <li>
-            <a href="javascript: void(0)">
-              주주현황
-            </a>
-          </li>
-          <li>
-            <a href="javascript: void(0)">
-              IR Contact
+              {{ item.title }}
             </a>
           </li>
         </ul>
@@ -46,7 +16,7 @@
       <div class="header-mobile-icon">
 
         <router-link to="/join">
-          <div class="app-join">
+          <div class="app-join" :style="{ 'background-color': mcolor }">
             앱 다운로드
           </div>
         </router-link>
@@ -54,6 +24,50 @@
     </header>
   </div>
 </template>
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  data: () => {
+    return {
+      mcolor: '',
+      logo: '',
+      h_list: [
+        {'title': '실적발표', 'isActive': true}, 
+        {'title': 'IRNews', 'isActive': false}, 
+        {'title': '경영보고서', 'isActive': false}, 
+        {'title': '재무정보', 'isActive': false}, 
+        {'title': '공시', 'isActive': false}, 
+        {'title': '주주현황', 'isActive': false}, 
+        {'title': 'IR Contact', 'isActive': false}
+      ],
+      ori_Active: 0
+    }
+  },
+  methods: {
+    moveCategory (idx) {
+      const _self = this
+      _self.h_list[_self.ori_Active].isActive = false
+      console.log(idx)
+      _self.h_list[idx].isActive = true
+      _self.ori_Active = idx
+    }
+  },
+  computed: {
+    ...mapGetters(['getMainColor', 'getLogo'])
+  },
+  watch: {
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#'+_self.getMainColor
+    },
+    getLogo () {
+      const _self = this
+      _self.logo = 'http://file.irgo.co.kr/data/IRPAGE/IMG/'+_self.getLogo
+    }
+  }
+}
+</script>
 <style lang="scss">
 @import "@/style/_variables.scss";
 
@@ -89,6 +103,7 @@
       display: flex;
       justify-content: left;
       align-items: center;
+      margin-bottom: 0px;
 
       & li {
         list-style: none;
@@ -113,10 +128,8 @@
       }
     }
     .app-join {
-      background: #E91E63;
       border-radius: 4px;
       width: 140px;
-      margin-left: -2%;
       text-decoration: none;
       text-align: center;
       color: #fff;

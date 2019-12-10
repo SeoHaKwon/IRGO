@@ -1,31 +1,51 @@
 <template>
   <div class="HomeAppBanner">
     <h2 class="app-banner-title">
-        <span>LG디스플레이</span> 앱에서 투자정보/소식을 받아보고, <br />
+        <span v-bind:style="{ color: mcolor }">{{ name }}</span> 앱에서 투자정보/소식을 받아보고, <br />
          IR담당자와 소통할 수 있습니다.
     </h2>
     <div class="app-banner-banner">
+      <a>
         <img 
           width="213px" 
           src="../assets/img/Google_Play.png" 
         />
+      </a>
+      <a>
         <img 
           width="213px" 
           src="../assets/img/Apple_Store.png" 
         />
+      </a>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomeAppBanner',
   data() {
     return {
+      mcolor: '',
+      name: ''
     }
   },
   components: {
+  },
+  computed: {
+    ...mapGetters(['getMainColor', 'getCompName'])
+  },
+  watch: {
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#'+_self.getMainColor
+    },
+    getCompName () {
+      const _self = this
+      _self.name = _self.getCompName
+    }
   }
 }
 </script>
@@ -40,23 +60,19 @@ export default {
         text-align: center;
         letter-spacing: -0.5px;
         color: $font-color-base;
-
-        span {
-            color: $brand-color;
-        }
     }
     .app-banner-banner {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-top: 50px;
-
+        
         img {
             margin-right: 18px;
-
-            &:last-child {
-                margin-right: 0;
-            }
+            cursor: pointer;
+            // &:last-child {
+            //     margin-right: 0;
+            // }
         }
     }
     

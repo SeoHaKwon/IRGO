@@ -1,5 +1,5 @@
 <template>
-  <div class="PerformanceFAQTypeB">
+  <div class="PerformanceFAQTypeB" v-if="totalArray.length > 0">
     <h2 class="section-title-roboto">FAQ</h2>
     <h3 class="section-sube">
       Frequently Asked Questions

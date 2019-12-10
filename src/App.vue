@@ -17,8 +17,8 @@
     </template>
     <div v-if="isAppDownloadModal" class="app-download-modal">
       <div class="content">
-        <h3>주주와 함께하는 LG디스플레이</h3>
-        <h4>LG디스플레이 IR앱에서 투자정보/소식을 받아보고, <br /> IR담당자와 소통할 수 있습니다.</h4>
+        <h3>주주와 함께하는 {{ cname }}</h3>
+        <h4>{{ cname }} IR앱에서 투자정보/소식을 받아보고, <br /> IR담당자와 소통할 수 있습니다.</h4>
         <div class="app-download-btn" @click="appDownloadModalClose()">
             앱 다운로드
           </div>
@@ -32,7 +32,7 @@
 <script>
 // @ is an alias to /src
 import Vue from 'vue'
-
+import { mapGetters } from 'vuex'
 import NavigationBar from '@/components/NavigationBar.vue'
 import MobileNavigaterBar from '@/components/MobileNavigaterBar.vue'
 import FooterBody from '@/components/FooterBody.vue'
@@ -51,7 +51,8 @@ export default {
       isMobile: false,
       fullPath: '',
       isAppDownloadModal: false,
-      widths: window.innerWidth
+      widths: window.innerWidth,
+      cname: ''
     }
   },
   props: [
@@ -59,8 +60,13 @@ export default {
   filters: {
   },
   computed: {
+    ...mapGetters(['getCompName'])
   },
   watch: {
+    getCompName () {
+      const _self = this
+      _self.cname = _self.getCompName
+    }
   },
   methods: {
     appDownloadModalClose () {
@@ -72,7 +78,8 @@ export default {
   },
   beforeCreate () {
     const param = {
-      'url': 'samsung.irpage.co.kr'
+      'url': 'adtek.irpage.co.kr'
+      // 'url': 'samsung.irpage.co.kr'
     }
     const res = this.$store.dispatch('SET_INFO', param)
     // this.$store.commit('SET_INFO',param)
