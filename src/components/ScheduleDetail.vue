@@ -35,7 +35,14 @@
           <img src="../assets/images/img/img_detail.png" alt="">
         </p>
       </div>
-      <div class="txt-pre">한국전력의 2019년도 3분기 잠정 결산실적발표 컨퍼런스콜 일정이 11월 13일 (수) 에 실시됩니다.</div>
+      <div class="desc">한국전력의 2019년도 3분기 잠정 결산실적발표 컨퍼런스콜 일정이 11월 13일 (수) 에 실시됩니다.</div>
+      <div class="conference-wrap">
+       <p class="conference-tit">[컨퍼런스 콜 이용안내]</p>
+        <p class="desc call">접속번호</p>
+        <p class="desc num">-국내에서 접속시 : 031-688-7002</p>
+        <p class="desc num">-해외에서 접속시 : 82-31-688-7001</p>
+      </div>
+      <a href="#" class="box-link site-link"><span>사이트 링크</span></a> 
       <div class="list-btn">
         <div class="link-box prev">
           <span>이전글</span>
@@ -47,6 +54,9 @@
           <p>SAMSUNG, 회사실적, 전략, 업황 등 주요경영현황(유럽)</p>
           <a href="#" class="link"></a>
         </div>
+      </div>
+      <div class="btn-wrap center">
+        <a href="#" class="box-link back active"><span>목록</span></a>
       </div>
     </div>
   </div>
@@ -204,9 +214,10 @@
       }
     }
     .list-btn {
+      margin-top:160px;
       .link-box {
         position:relative;
-        padding:46px 70px 46px 0;
+        padding:40px 70px 40px 0;
         display:flex;
         border-top:1px solid #ececec;
         align-items: center;
@@ -246,6 +257,61 @@
       }
       border-bottom:1px solid #ececec;
       
+    }
+    .conference-wrap {
+      margin-top:76px;
+      .conference-tit {
+        margin-bottom:12px;
+        font-size:18px;
+        line-height:20px;
+        color:$blue;
+        font-weight: 500;
+      }
+      .desc {
+        &.desc {
+          margin-top:14px;
+        }
+      }
+    }
+    .box-link {
+      display:inline-block;
+      padding: 19px 20px;
+      border:3px solid #ebeef4;
+      span {
+        position:relative;
+        display:inline-block;
+        width:100%;
+        font-size:15px;
+        color:#9c9ea9;
+        font-weight: 500;
+        &::after {
+          display:block;
+          position: absolute;
+          right:0;
+          top:50%;
+          width:10px;
+          height:3px;
+          background-color:#d9dce1;
+          content:"";
+          transform: translateY(-50%);
+        }
+      }
+      &.site-link {
+        margin-top:72px;
+        width:182px;
+      }
+      &.back {
+        width:144px;
+      }
+      &.active {
+        border-color:$blue;
+        span {
+          color:$blue;
+          &::after {
+            background-color:$blue;
+          }
+        }
+      }
     }
   }
 </style>

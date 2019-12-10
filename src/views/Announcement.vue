@@ -4,7 +4,7 @@
       <SubVisual/>
       <div class="sub-info-txt">
         <div class="inner">
-          <strong class="sub-title">실적발표</strong>
+          <strong class="sub-title">실적발표 <span>자주 하는 질문(2뎁스용입니다)</span></strong>
           <div class="history">
             <span class="icon-home">
               <img src="../assets/images/icon/icon_home.png" alt="">

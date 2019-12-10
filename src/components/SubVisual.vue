@@ -28,7 +28,8 @@
      display:flex;
    }
    .sub-title {
-     display:inline-block;
+     display:flex;
+     align-items: flex-end;
      position:relative;
      padding-top:18px;
      font-size:56px;
@@ -40,6 +41,16 @@
         width:54px;
         height:2px;
         background-color:$white;
+       }
+       span {
+         display:inline-block;
+         padding-left:30px;
+         margin-left:30px;
+         font-weight: 700;
+         font-size:30px;
+         line-height:32px;
+         color:$white;
+         @include bgImg(arrow/arrow_2depth,$pos:left center);
        }
     }
    .sub-info-txt {
