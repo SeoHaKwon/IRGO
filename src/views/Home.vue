@@ -21,7 +21,7 @@ export default {
 <style lang="scss">
 @import "@/style/_mixin.scss";
   .main-wrap {
-    padding:0 30px;
+    padding:0 40px;
     min-height:100%;
     background-color:#040713;
     @include bgImg(img/img_visual);

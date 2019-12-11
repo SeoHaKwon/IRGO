@@ -153,7 +153,7 @@
     .detail-cont {
       border:1px solid #e9e9ee;
       border-top:2px solid $black;
-      box-shadow: 3px 3px 9px 5px #ededed;
+      @include shadow();
       margin-bottom:90px;
       .list {
         padding:90px 104px;

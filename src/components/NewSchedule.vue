@@ -83,7 +83,7 @@
 .newSchedule {
   @include contentWidth($width:1200px);
   .list {
-    box-shadow: 3px 3px 10px #eaeaee;
+    @include shadow();
     li  {
       position:relative;
       background-color:$white;

@@ -42,6 +42,7 @@
     left:0;
     top:36px;
     width:100%;
+    padding:0 40px;
     z-index: 10;
     .gnb {
       @include contentWidth();

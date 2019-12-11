@@ -71,7 +71,7 @@
     li {
       position:relative;
       width:calc(33.33% - 15px);
-      box-shadow: 3px 3px 6px 6px #eaeaee;
+      @include shadow();
       background-color:$white;
       & + li {
         margin-left:45px;

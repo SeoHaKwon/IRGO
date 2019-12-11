@@ -4,22 +4,22 @@
       <div class="inner">
         <div class="status-info">
           <p class="price">
-            <span>13,750</span>
+            <span class="en">13,750</span>
            </p>
           <dl>
             <dt>전일 대비</dt>
-            <dd class="up">750</dd>
+            <dd class="up en">750</dd>
           </dl>
           <dl>
             <dt>등락률</dt>
-            <dd>+ 5.73%</dd>
+            <dd class="en">+ 5.73%</dd>
           </dl>
           <dl>
             <dt>시가총액</dt>
             <dd>1,800억</dd>
           </dl>
         </div>
-        <div class="icon-scroll">
+        <div class="icon-scroll en">
           Scroll Down
         </div>
         <strong class="en visual-title">

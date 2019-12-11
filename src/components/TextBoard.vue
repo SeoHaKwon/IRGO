@@ -108,7 +108,7 @@
     display: flex;
     @include contentWidth($width: 1200px);
     margin-bottom: 50px;
-    box-shadow: 3px 3px 3px 0px #dbdbdf;
+    box-shadow: 3px 3px 2px 0px #dbdbdf;
     .select {
         flex: 0 0 auto;
         max-width: 246px;

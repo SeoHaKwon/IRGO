@@ -101,6 +101,7 @@ export default {
     border-top:2px solid $black;
     background-color:$white;
     @include contentWidth($width:1200px);
+    @include shadow();
     li {
       position: relative;
       width:33.33%;

@@ -132,7 +132,7 @@ export default {
       padding:90px 100px;
       border-top:3px solid $black;
       background-color:$white;
-      box-shadow:3px 3px 9px 5px #ededed;
+      @include shadow();
       p {
         width:50%;
         padding-left:44px;

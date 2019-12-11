@@ -122,14 +122,14 @@
         line-height:36px;
         color:$black3;
         strong {
-        font-weight: 500;
+        font-weight: 700;
         }
         p {
           margin-top:16px;
           font-size:17px;
           line-height:18px;
           color:$gray8;
-          font-weight: 700;
+          font-weight: 500;
         }
       }
       .sub-txt {
@@ -140,6 +140,7 @@
         .sub-tit {
           font-size:18px;
           color:$black4;
+          font-weight: 700;
         }
         .date {
           margin-top:16px;
@@ -165,10 +166,11 @@
       .schedule-box {
         position: absolute;
         right:90px;
-        top:90px;
+        top:50%;
         padding:80px;
         width:595px;
         height:309px;
+        transform: translateY(-50%);
         background:url(../assets/images/bg/bg_board_top.png) ,url(../assets/images/bg/bg_board_bottom.png);
         background-repeat:no-repeat , no-repeat;
         background-position:left top , right bottom;
@@ -177,6 +179,7 @@
           display:flex;
           font-size:22px;
           color:$black3;
+          font-weight: 700;
         }
         .sub-txt {
           padding-top:80px;
@@ -185,6 +188,7 @@
           strong {
             font-size:18px;
             color:$black4;
+            font-weight: 700;
           }
           p {
             margin-top:18px;
@@ -223,7 +227,7 @@
           strong {
             font-size:21px;
             color:$black3;
-            font-weight: 700;
+            font-weight: 500;
           }
           p {
             margin-top:10px;
