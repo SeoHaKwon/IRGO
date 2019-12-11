@@ -1,6 +1,5 @@
 <template>
   <div class="main-visual">
-    <img src="../assets/images/img/img_visual.png" alt="메인 비주얼">
     <div class="visual-text">
       <div class="inner">
         <div class="status-info">
@@ -42,6 +41,7 @@
 @import "@/style/_mixin.scss";
   .main-visual {
     position: relative;
+    padding-top:280px;
     overflow: hidden;
     img {
       position:relative;
@@ -50,7 +50,6 @@
       width:1920px;
     }
     .visual-text {
-      position:absolute;
       left:0;
       bottom:0;
       width:100%;
