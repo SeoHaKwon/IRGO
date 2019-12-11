@@ -94,6 +94,7 @@
 @import "@/style/_mixin.scss";
   .main-contents {
     position:relative;
+    z-index: 10;
     @include contentWidth();
     background-color:$white;
     .board-wrap {

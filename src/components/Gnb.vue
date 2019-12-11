@@ -7,14 +7,16 @@
             <img src="../assets/images/logo/logo_main.png" alt="">
           </router-link>
         </h1>
-        <router-link to="/schedule">IR 일정</router-link>
-        <router-link to="/announcement">실적발표</router-link>
-        <router-link to="/news">IR News</router-link>
-        <router-link to="/financial">재무정보</router-link>
-        <router-link to="/status">주주현황</router-link>
-        <router-link to="/disclosure">공시</router-link>
-        <router-link to="/report">경영보고서</router-link>
-        <router-link to="/contact">IR Contact</router-link>
+        <div class="menu">
+          <router-link to="/schedule">IR 일정</router-link>
+          <router-link to="/announcement">실적발표</router-link>
+          <router-link to="/news">IR News</router-link>
+          <router-link to="/financial">재무정보</router-link>
+          <router-link to="/status">주주현황</router-link>
+          <router-link to="/disclosure">공시</router-link>
+          <router-link to="/report">경영보고서</router-link>
+          <router-link to="/contact">IR Contact</router-link>
+        </div>
         <div class="app">
           <a href="#">
             <img src="../assets/images/icon/android.png" alt="">
@@ -22,6 +24,7 @@
           <a href="#">
             <img src="../assets/images/icon/googlePlay.png" alt="">
           </a>
+        <a href="#" class="btn-menu is-mobile"></a>
         </div>
       </div>
     </div>
@@ -51,7 +54,10 @@
       .logo {
         margin-right:auto;
       }
-      >a {
+    }
+    .menu {
+      display:flex;
+      a {
         font-size:17px;
         color:$white;
         font-weight: 700;
@@ -74,4 +80,40 @@
     }
   }
 
+@media screen and (max-width: 750px) {
+    .gnb-wrap {
+      top:30px;
+      padding:0 30px;
+      .menu {
+        display:none;
+        &.active {
+          display:flex;
+        }
+      }
+      .app {
+        width:auto;
+        height:auto;
+        border:none;
+        .btn-menu {
+          width:23px;
+          height:19px;
+          @include bgImg(btn/btn_m_menu);
+          background-size:cover;
+        }
+        a {
+          & + a {
+            margin-left:25px;
+          }
+          &.btn-menu {
+            margin-left:22px;
+          }
+        }
+      }
+      .logo {
+        img {
+          height:19px;
+        }
+      }
+    }
+}
 </style>

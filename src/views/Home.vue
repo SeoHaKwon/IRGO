@@ -21,14 +21,25 @@ export default {
 <style lang="scss">
 @import "@/style/_mixin.scss";
   .main-wrap {
+    position:relative;
     padding:0 40px;
     min-height:100%;
     background-color:#040713;
-    @include bgImg(img/img_visual);
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-size: contain;
-      background-attachment: fixed;
+      &::after {
+        display:block;
+        position:absolute;
+        left:50%;
+        top:0;
+        width:1920px;
+        height:100%;
+        left:50%;
+        margin-left:-960px;
+        @include bgImg(img/img_visual);
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-attachment: fixed;
+        content:"";
+      }
   }
 
 </style>

@@ -43,6 +43,7 @@
     position: relative;
     padding-top:280px;
     overflow: hidden;
+    z-index: 10;
     img {
       position:relative;
       left:50%;
@@ -124,6 +125,48 @@
           }
           & + dl {
             margin-top:17px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .main-visual {
+      padding-top:163px;
+      .visual-text {
+        .inner {
+          display:block;
+          .status-info {
+            position: static;
+            .price {
+              padding-top:16px;
+              text-align: left;
+              &::after {
+                @include virtual();
+                width:14px;
+                height:2px;
+                background-color:#fff;
+              }
+              span {
+                padding-left:22px;
+                 margin-bottom:20px;
+                @include bgImg(bg/bg_dollar_m,$pos:left bottom 3px);
+                background-size:14px auto;
+                font-size:20px;
+              }
+            }
+            dl {
+              dt {
+                font-size:11px;
+                line-height:12px;
+                color:#fff;
+                text-align: left;
+              }
+              dd {
+                font-size:11px;
+                line-height:12px;
+              }
+            }
           }
         }
       }
