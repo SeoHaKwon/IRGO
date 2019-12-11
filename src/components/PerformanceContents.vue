@@ -13,7 +13,7 @@
                 <div class="select-arrow">▲</div>
             </div>
         </div>
-        <div class="performance-contents container">
+        <div class="performance-contents container" v-if="datas.length > 1">
             <div class="performance-main">
                 <div 
                   v-if="datas.length > 3"
@@ -71,6 +71,30 @@
                 </ul>
             </div>
         </div>
+      <ul class="SmallType-Performance" v-else>
+        <li v-on:click="getFiles(silj.UPLOAD_FILE1)">
+          <h5>{{ silj.TITLE }}</h5>
+          <h6>
+            <a>
+              <svg viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+                <path :fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"></path>
+              </svg>
+            <span class="data-type" :style="{color: mcolor}">PDF</span>
+            </a>
+          </h6>
+        </li>
+        <li>
+          <h5>공정공시</h5>
+          <h6>
+            <a>
+              <svg viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+                <path :fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"></path>
+              </svg>
+            <span class="data-type" :style="{color: mcolor}">PDF</span>
+            </a>
+          </h6>
+        </li>
+      </ul>
   </div>
 </template>
 
@@ -101,6 +125,7 @@ export default {
   components: {
   },
   mounted () {
+    const _self = this
   },
   computed: {
     ...mapGetters(['getMainColor'])
@@ -142,6 +167,53 @@ export default {
 @import "@/style/_variables.scss";
 .download {
   cursor: pointer;
+}
+.PerformanceContents {
+  .SmallType-Performance {
+    // margin-top:106px;
+    margin-top:60px;
+    list-style:none;
+    margin-bottom:0;
+    
+    & li:first-child {
+      border-top: 1px solid #E5E5EA;
+    }
+
+    li {
+      display:flex;
+      justify-content: space-between;
+      padding: 40px 20px;
+      align-items: center;
+      -webkit-box-pack: justify;
+      border-bottom: 1px solid #E5E5EA;
+      height: 120px;
+      font-weight: inherit;
+      cursor: pointer;
+    }
+  }
+  @media ( max-width: 899px ) {
+    .SmallType-Performance {
+      padding: 0 16px;
+      margin-top:40px;
+
+      & li:first-child {
+        border-top: 0;
+      }
+      
+      li {
+        padding: 16px 0;
+        height: auto;
+      }
+
+      h5, h6 {
+        font-size: 16px;
+      }
+
+      .data-type {
+        display: none;
+      }
+    }
+  }
 }
 .PerformanceContents {
   

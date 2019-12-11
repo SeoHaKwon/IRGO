@@ -1,10 +1,10 @@
 <template>
-  <div class="HomeShareholderStatus contaner">
+  <div class="HomeShareholderStatus contaner" v-if="isShareHolder && TOTAL_STOCK_DATA.length > 0">
       <h2 class="section-title">주주현황</h2>
       <h3 class="section-sube">
         Shareholders Status
       </h3>
-      <div class="shareholder-group">
+      <div class="shareholder-group" v-if="isShareHolder">
           <h3 class="shareholder-group-title">
               주주구성
           </h3>
@@ -68,23 +68,20 @@
             <h5 class="description">{{ caption.dscription }}</h5>
         </div>
       </div>
-      <div class="shareholder-data">
+      <div class="shareholder-data" v-if="TOTAL_STOCK_DATA.length > 0">
           <h3 class="shareholder-data-title">
               <span>배당내역</span>
                 <div class="performance-select">
                     <div class="select-warp">
-                        <select>
-                            <option>2019.2Q</option>
-                            <option>2019.2Q</option>
-                            <option>2019.2Q</option>
-                            <option>2019.2Q</option>
+                        <select v-on:change="SET_DIVI($event)">
+                            <option v-for="(item, idx) in TOTAL_STOCK_DATA" :value="idx">{{ item.F_YEAR }}</option>
                         </select>
                         <div class="select-arrow" style="font-size:1rem!important">▲</div>
                     </div>
                 </div>
           </h3>
               <ul class="performance-group-tab stock">
-                <li v-for="(item, idx) in STOCK_YEAR" :class="isActive[idx]">
+                <li v-for="(item, idx) in TOTAL_STOCK_DATA" :class="isActive[idx]">
                   <a v-on:click="setActive(idx)">{{ item.F_YEAR }}</a>
                 </li>
               </ul>
@@ -152,6 +149,7 @@ export default {
   },
   data () {
     return {
+      isShareHolder: true,
       isActive: {
         0: 'active',
         1: '',
@@ -162,7 +160,7 @@ export default {
       ori_active: 0,
       totalJu: 0,
       STOCK_TOTAL: 0,
-      STOCK_YEAR: [],
+      TOTAL_STOCK_DATA: [],
       mcolor: '',
       sections: [
         { label: '최대주주', value: 0, color: '#EA1E64' },
@@ -281,20 +279,38 @@ export default {
       _self.isActive[idx] = 'active'
       _self.ori_active = idx
     },
+    SET_DIVI (e) {
+      const idx = e.target.value
+      const _self = this
+      _self.setDividend(_self.TOTAL_STOCK_DATA[idx])
+    },
     changeColor(hexcolor, step) {
       let r = parseInt(hexcolor.substr(1,2), 16)
       let g = parseInt(hexcolor.substr(3,2), 16)
       let b = parseInt(hexcolor.substr(5,2), 16)
-      let cr = (r - ((r / 4).toFixed(0) * step)).toString(16)
+      let cr = (r - ((r / 8).toFixed(0) * step)).toString(16)
       if (cr < 0) {cr = '00'}
       else if (cr < 10 || cr == 'a' || cr == 'b' || cr == 'c' || cr == 'd' || cr =='e' || cr == 'f') {cr = '0'+cr}
-      let cg = (g - ((g / 4).toFixed(0) * step)).toString(16)
+      let cg = (g - ((g / 8).toFixed(0) * step)).toString(16)
       if (cg < 0) {cg = '00'}
       else if (cg < 10 || cg == 'a' || cg == 'b' || cg == 'c' || cg == 'd' || cg =='e' || cg == 'f') {cg = '0'+cg}
-      let cb = (b - ((b / 4).toFixed(0) * step)).toString(16)
+      let cb = (b - ((b / 8).toFixed(0) * step)).toString(16)
       if (cb < 0) {cb = '00'}
       else if (cb < 10 || cb == 'a' || cb == 'b' || cb == 'c' || cb == 'd' || cb =='e' || cb == 'f') {cb = '0'+cb}
       return '#'+cr+cg+cb
+    },
+    setDividend (req) {
+      const _self = this
+      _self.datas[0]['value'][0] = Number(req.F_NET_PROFIT)
+      _self.datas[1]['value'][0] = Number(req.F_PAYOUT_RATIO)
+      _self.datas[2]['value'][0] = Number(req.F_CASH_DIV_COMMON)
+      _self.datas[2]['value'][1] = Number(req.F_CASH_DIV_PERFERRED)
+      _self.datas[3]['value'][0] = Number(req.F_STOCK_DIV_COMMON)
+      _self.datas[3]['value'][1] = Number(req.F_STOCK_DIV_PERFERRED)
+      _self.datas[4]['value'][0] = Number(req.F_DIV_TOT_COMMON)
+      _self.datas[4]['value'][1] = Number(req.F_DIV_TOT_PERFERRED)
+      _self.STOCK_TOTAL = Number(req.F_DIV_TOTAL)
+      _self.memberCaption[0].title = req.F_DIV_COMMENT
     }
   },
   watch: {
@@ -305,38 +321,38 @@ export default {
       }
       _self.$store.dispatch('GET_SHOLDER', param)
         .then(res => {
-          _self.memberData[0].value = res[0].LARGE_STOCKHOLDER
-          _self.totalJu += res[0].LARGE_STOCKHOLDER
-          _self.memberData[1].value = res[0].INST_STOCKHOLDER
-          _self.totalJu += res[0].INST_STOCKHOLDER
-          _self.memberData[2].value = res[0].FOREIGN_STOCKHOLDER
-          _self.totalJu += res[0].FOREIGN_STOCKHOLDER
-          _self.memberData[3].value = res[0].TREA_STOCKHOLDER
-          _self.totalJu += res[0].TREA_STOCKHOLDER
-          _self.memberData[4].value = res[0].INDI_STOCKHOLDER
-          _self.totalJu += res[0].INDI_STOCKHOLDER
-          _self.memberData[0].percent = (res[0].LARGE_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
-          _self.memberData[1].percent = (res[0].INST_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
-          _self.memberData[2].percent = (res[0].FOREIGN_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
-          _self.memberData[3].percent = (res[0].TREA_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
-          _self.memberData[4].percent = (res[0].INDI_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
-          for (var key in _self.sections) {
-            _self.sections[key].value = Number(_self.memberData[key].percent)
+          if (res.length !== 0) {
+            _self.memberData[0].value = res[0].LARGE_STOCKHOLDER
+            _self.totalJu += res[0].LARGE_STOCKHOLDER
+            _self.memberData[1].value = res[0].INST_STOCKHOLDER
+            _self.totalJu += res[0].INST_STOCKHOLDER
+            _self.memberData[2].value = res[0].FOREIGN_STOCKHOLDER
+            _self.totalJu += res[0].FOREIGN_STOCKHOLDER
+            _self.memberData[3].value = res[0].TREA_STOCKHOLDER
+            _self.totalJu += res[0].TREA_STOCKHOLDER
+            _self.memberData[4].value = res[0].INDI_STOCKHOLDER
+            _self.totalJu += res[0].INDI_STOCKHOLDER
+            _self.memberData[0].percent = (res[0].LARGE_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
+            _self.memberData[1].percent = (res[0].INST_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
+            _self.memberData[2].percent = (res[0].FOREIGN_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
+            _self.memberData[3].percent = (res[0].TREA_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
+            _self.memberData[4].percent = (res[0].INDI_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
+            for (var key in _self.sections) {
+              _self.sections[key].value = Number(_self.memberData[key].percent)
+              if (key > 2) {
+                break
+              }
+            }
+          } else {
+            _self.isShareHolder = false
           }
         })
       _self.$store.dispatch('GET_DIVI', param)
         .then(res => {
-          _self.STOCK_YEAR = res
-          _self.datas[0]['value'][0] = Number(res[0].F_NET_PROFIT)
-          _self.datas[1]['value'][0] = Number(res[0].F_PAYOUT_RATIO)
-          _self.datas[2]['value'][0] = Number(res[0].F_CASH_DIV_COMMON)
-          _self.datas[2]['value'][1] = Number(res[0].F_CASH_DIV_PERFERRED)
-          _self.datas[3]['value'][0] = Number(res[0].F_STOCK_DIV_COMMON)
-          _self.datas[3]['value'][1] = Number(res[0].F_STOCK_DIV_PERFERRED)
-          _self.datas[4]['value'][0] = Number(res[0].F_DIV_TOT_COMMON)
-          _self.datas[4]['value'][1] = Number(res[0].F_DIV_TOT_PERFERRED)
-          _self.STOCK_TOTAL = Number(res[0].F_DIV_TOTAL)
-          _self.memberCaption[0].title = res[0].F_DIV_COMMENT
+          if (res.length !== 0) {
+            _self.TOTAL_STOCK_DATA = res
+            _self.setDividend(res[0])
+          }
         })
     },
     getMainColor () {
@@ -344,7 +360,7 @@ export default {
       _self.mcolor = '#'+_self.getMainColor
       _self.sections[0].color = '#'+_self.getMainColor
       _self.memberData[0].color = '#'+_self.getMainColor
-      for (var i =0; i < 5; i++) {
+      for (var i =0; i < 3; i++) {
         _self.sections[i].color = _self.changeColor(_self.mcolor, i)
         _self.memberData[i].color = _self.changeColor(_self.mcolor, i)
       }
@@ -427,6 +443,10 @@ export default {
                         text-align: left;
                     }
                 }
+                tbody tr td:nth-child(2), tbody tr td:nth-child(3),
+                tfoot tr td:nth-child(2), tfoot tr td:nth-child(3) {
+                  font-family: 'Roboto', sans-serif;
+                }
                 .member-color {
                     width: 14px;
                     height: 14px;
@@ -483,6 +503,12 @@ export default {
 
                &:nth-child(2) {
                     color: #8E8E93;
+               }
+               &:nth-child(3) h5{
+                 font-family: 'Roboto', sans-serif;
+               }
+               &:nth-child(3) {
+                 font-family: 'Roboto', sans-serif;
                }
 
                & h5 {
@@ -655,24 +681,24 @@ export default {
                   border-bottom: 0;
                  }
                  tbody tr td {
-                     font-size: 14px;
-                     color: $font-color-base;
-                     padding: 16px 0;
-                     text-align: right;
+                    font-size: 14px;
+                    color: $font-color-base;
+                    padding: 16px 0;
+                    text-align: right;
 
-                     &:first-child {
-                         text-align: left;
-                         font-size: 14px;
-                     }
+                    &:first-child {
+                        text-align: left;
+                        font-size: 14px;
+                    }
 
-                     &:nth-child(2) {
-                          color: #8E8E93;
-                     }
+                    &:nth-child(2) {
+                      color: #8E8E93;
+                    }
 
-                     & h5 {
-                          padding: 10px 0;
-                          font-size:14px;
-                     }
+                    & h5 {
+                        padding: 10px 0;
+                        font-size:14px;
+                    }
                  }
                  tfoot tr td {
                      font-size: 14px;

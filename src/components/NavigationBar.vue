@@ -1,13 +1,13 @@
 <template>
   <div class="NavigationBar">
     <header>
-      <div class="header-logo">
-        <img width="155px" :src="logo" />
+      <div class="header-logo" v-on:click="moveMain()">
+        <img width="130px" v-if="isImg" :src="logo" />
       </div>
       <div class="header-navigation-box">
         <ul class="header-navigation">
-          <li v-for="(item, idx) in h_list" :class="{active: item.isActive}" v-on:click="moveCategory(idx)">
-            <a href="javascript: void(0)">
+          <li v-for="(item, idx) in h_list" :class="{active: item.isActive}" v-on:click="moveCategory(idx, item.c_name)">
+            <a href="javascript: void(0)" :style="{color: item.color}">
               {{ item.title }}
             </a>
           </li>
@@ -15,7 +15,7 @@
       </div>
       <div class="header-mobile-icon">
 
-        <router-link to="/join">
+        <router-link to="/join" v-if="false">
           <div class="app-join" :style="{ 'background-color': mcolor }">
             앱 다운로드
           </div>
@@ -31,26 +31,36 @@ export default {
   data: () => {
     return {
       mcolor: '',
+      baseColor: '#545454',
       logo: '',
       h_list: [
-        {'title': '실적발표', 'isActive': true}, 
-        {'title': 'IRNews', 'isActive': false}, 
-        {'title': '경영보고서', 'isActive': false}, 
-        {'title': '재무정보', 'isActive': false}, 
-        {'title': '공시', 'isActive': false}, 
-        {'title': '주주현황', 'isActive': false}, 
-        {'title': 'IR Contact', 'isActive': false}
+        {'title': '실적발표', 'isActive': true, 'color': '', 'c_name': 'performance'}, 
+        {'title': 'IR News', 'isActive': false, 'color': '', 'c_name': 'news'}, 
+        {'title': '경영보고서', 'isActive': false, 'color': '', 'c_name': 'report'}, 
+        {'title': '재무정보', 'isActive': false, 'color': '', 'c_name': 'finance'}, 
+        {'title': '공시', 'isActive': false, 'color': '', 'c_name': 'disclosure'}, 
+        {'title': '주주현황', 'isActive': false, 'color': '', 'c_name': 'share'}, 
+        {'title': 'IR Contact', 'isActive': false, 'color': '', 'c_name': 'contact'}
       ],
-      ori_Active: 0
+      ori_Active: 0,
+      isImg: true
     }
   },
   methods: {
-    moveCategory (idx) {
+    moveCategory (idx, cname) {
       const _self = this
+      console.log(cname)
       _self.h_list[_self.ori_Active].isActive = false
-      console.log(idx)
+      _self.h_list[_self.ori_Active].color = _self.baseColor
       _self.h_list[idx].isActive = true
+      _self.h_list[idx].color = _self.mcolor
       _self.ori_Active = idx
+      location.href="#"+cname
+      console.log(document.body.scrollHeight)
+      document.body.scrollTop = document.body.scrollHeight
+    },
+    moveMain () {
+      location.href="/"
     }
   },
   computed: {
@@ -60,10 +70,15 @@ export default {
     getMainColor () {
       const _self = this
       _self.mcolor = '#'+_self.getMainColor
+      _self.h_list[0].color = _self.mcolor
     },
     getLogo () {
       const _self = this
-      _self.logo = 'http://file.irgo.co.kr/data/IRPAGE/IMG/'+_self.getLogo
+      if (_self.getLogo == null) { 
+        _self.isImg = false 
+      } else {
+        _self.logo = 'http://file.irgo.co.kr/data/IRPAGE/IMG/'+_self.getLogo
+      }
     }
   }
 }
@@ -89,6 +104,7 @@ export default {
 
     .header-logo {
       flex-basis: 155px;
+      cursor: pointer;
     }
 
     .header-navigation-box {
@@ -115,7 +131,7 @@ export default {
           // border-bottom: 4px solid $brand-color;
           & a {
             color: $brand-color;
-            font-weight:600;
+            // font-weight:600;
           }
         }
 

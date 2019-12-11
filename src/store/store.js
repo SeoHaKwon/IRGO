@@ -21,7 +21,9 @@ export default new Vuex.Store({
     type: '',
     mainColor: '',
     logo: '',
-    banner: ''
+    banner: '',
+    qaType: '',
+    isIPO: ''
   },
   getters: {
     getCompCode (state) {
@@ -44,6 +46,12 @@ export default new Vuex.Store({
     },
     getBanner (state) {
       return state.banner
+    },
+    getQaType (state) {
+      return state.qaType
+    },
+    getIsIPO (state) {
+      return state.isIPO
     }
   },
   mutations: {
@@ -73,6 +81,8 @@ export default new Vuex.Store({
         state.mainColor = payload.IRPAGE_MAIN_COLOR
         state.logo = payload.IRPAGE_LOGO
         state.banner = payload.IRPAGE_MAIN_IMG
+        state.qaType = payload.IRPAGE_QNA_YN
+        state.isIPO = payload.COMP_TYPE
         state.flag = false
       }
     }
@@ -107,6 +117,14 @@ export default new Vuex.Store({
       let param = {
         data: payload,
         url: 'getPerformance'
+      }
+      const res = await getAPIData(param)
+      return res.data
+    },
+    async GET_IPOJ (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getIPOperform'
       }
       const res = await getAPIData(param)
       return res.data

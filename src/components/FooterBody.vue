@@ -61,6 +61,7 @@ export default {
   margin: 0 auto;
 
   h3 {
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     color: #1B1D20;
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="HomeFinanceInfo contaner">
+  <div class="HomeFinanceInfo contaner" v-if="finance.length > 0">
     <h2 class="section-title">재무정보</h2>
     <h3 class="section-sube">
       Financial Statements
@@ -22,7 +22,7 @@
         <li>
             <h5>재무상태표</h5>
             <h6>
-              <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE1">
+              <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE1" target="_BLANK">
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                   <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
                 </svg>
@@ -33,7 +33,7 @@
         <li>
             <h5>손익계산서</h5>
             <h6>
-                <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE2">
+                <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE2" target="_BLANK">
                   <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                     <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
                   </svg>
@@ -44,7 +44,7 @@
         <li>
             <h5>현금흐름표</h5>
             <h6>
-                <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE3">
+                <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE3" target="_BLANK">
                   <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                     <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
                   </svg>
@@ -110,14 +110,15 @@ export default {
       }
       const pres = this.$store.dispatch('GET_FINANCE', aram)
       .then(res => {
-        _self.nowQ = res[0].YEAR+'.'+res[0].PERIOD+'Q'
-        const cons = 5 - res.length
-        for (let i = 0; i < res.length; i++) {
-          res[res[i].YEAR+'.'+res[i].PERIOD+'Q'] = res[i]
-          res[res[i].YEAR+'.'+res[i].PERIOD+'Q'].QUARTER = res[i].YEAR.substr(2,2)+'.'+res[i].PERIOD+'Q'
-          // res.splice(0, 1)
+        if (res.length !== 0 ) {
+          _self.nowQ = res[0].YEAR+'.'+res[0].PERIOD+'Q'
+          const cons = 5 - res.length
+          for (let i = 0; i < res.length; i++) {
+            res[res[i].YEAR+'.'+res[i].PERIOD+'Q'] = res[i]
+            res[res[i].YEAR+'.'+res[i].PERIOD+'Q'].QUARTER = res[i].YEAR.substr(2,2)+'.'+res[i].PERIOD+'Q'
+          }
+          _self.finance = res
         }
-        _self.finance = res
       })
     },
     getMainColor () {

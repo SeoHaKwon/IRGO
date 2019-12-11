@@ -1,5 +1,5 @@
 <template>
-  <div class="HomeDisclosure contaner">
+  <div class="HomeDisclosure contaner" v-if="isDisclo">
     <h2 class="section-title">공시</h2>
     <h3 class="section-sube">
       Disclosure
@@ -8,14 +8,14 @@
         <li v-for="item in disclo" v-on:click="GSITE(item.SITEURL)">
             <h5>{{ item.TITLE }}</h5>
             <h6>
-                {{ item.REG_DATE}}
+                {{ item.REG_DATE | v_date}}
             </h6>
         </li>
     </ul>
     <div class="home-more-btn">
       <button
         type="button"
-        class=""
+        v-on:click="moreData"
       >
       <h6>더보기</h6>
       <img 
@@ -36,16 +36,31 @@ export default {
   },
   data: () => {
     return {
-      disclo: []
+      disclo: [],
+      allData: [],
+      isDisclo: true
     }
   },
   mounted () {},
   computed: {
     ...mapGetters(['getCompSeq', 'getCompCode'])
   },
+  filters: {
+    v_date: function (date) {
+      const key = new Date(date)
+      const year = key.getFullYear()
+      const month = key.getMonth() + 1
+      const day = key.getDate()
+      return year +'년 '+ month + '월 ' + day + '일'
+    }
+  },
   methods: {
     GSITE(url) {
-      location.href= url
+      window.open(url, '_BLANK')
+    },
+    moreData () {
+      const _self = this
+      _self.disclo= _self.disclo.concat(_self.allData.splice(0, 5))
     }
   },
   watch: {
@@ -57,7 +72,12 @@ export default {
       }
       const pres = this.$store.dispatch('GET_DIS', aram)
       .then(res => {
-        _self.disclo = res
+        if (res.length == 0) {
+          _self.isDisclo = false
+        } else {
+          _self.disclo = res.splice(0,5)
+          _self.allData = res
+        }
       })
     }
   }

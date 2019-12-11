@@ -1,5 +1,5 @@
 <template>
-  <div class="HomeFinanceInfo contaner" v-if="isData">
+  <div class="HomeFinanceInfo contaner" v-if="isData && isIPO == 'CT02'">
     <h2 class="section-title">IPO 정보</h2>
     <h3 class="section-sube">
       Initial Public Offering Information
@@ -17,7 +17,7 @@
           >
             {{ ipo.title }}
           </h5>
-          <div class="IPO-arrow">
+          <div class="IPO-arrow" v-if="ipo.isarrow">
             <img v-if="ipo.arrow === 'gray'" src="../assets/img/ic_gray_arrow.png" />
             <img v-else src="../assets/img/ic_black_arrow.png" />
           </div>
@@ -30,66 +30,15 @@
       </div>
     </div>
     <ul class="finance-info">
-        <li>
-            <h5>공모개요</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>IR Book</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>웹캐스팅</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>공모분석보고서</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>기업분석보고서</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
-        <li>
-            <h5>증권신고서</h5>
-            <h6>
-                <img
-                    width="30px"
-                    src="../assets/img/ic_file_download.png"
-                />
-                <span class="data-type">PDF</span>
-            </h6>
-        </li>
+      <li v-for="item in IPOList" v-on:click="goURL(item.TYPE, item.VOD_URL, item.UPLOAD_FILE1)">
+        <h5>{{item.TITLE}}</h5>
+        <h6>
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+          </svg>
+          <span class="data-type" :style="`color: ${mcolor}`">{{item.TYPE}}</span>
+        </h6>
+      </li>
     </ul>
   </div>
 </template>
@@ -104,59 +53,85 @@ export default {
   data() {
     return {
       isData: true,
+      isIPO: '',
+      mcolor: '',
       IPODATA: [
         /* background: gray or white */
         /* font: #313439 or #8E8E93 */
         /* arrow: black gray */
         {
           title: '청구',
-          days: '09/05',
+          days: '',
           background: 'gray',
           font: '#313439',
           border: '2px dashed transparent',
-          arrow: 'gray'
+          arrow: 'gray',
+          isarrow: true
         },
         {
           title: '승인',
-          days: '11/07',
+          days: '',
           background: 'white',
           font: '#8E8E93',
           border: '2px dashed transparent',
-          arrow: 'gray'
+          arrow: 'gray',
+          isarrow: true
         },
         {
           title: '수요',
-          days: '12/12 ~ 13',
+          days: '',
           background: 'white',
           font: '#8E8E93',
           border: '2px dashed #D1D1D6',
-          arrow: 'gray'
+          arrow: 'gray',
+          isarrow: true
         },
         {
           title: '청약',
-          days: '12/12 ~ 13',
+          days: '',
           background: 'white',
           font: '#8E8E93',
           border: '2px dashed #D1D1D6',
-          arrow: 'gray'
+          arrow: 'gray',
+          isarrow: true
         },
         {
           title: '상장',
-          days: '12/28 예정',
+          days: '',
           background: 'white',
           font: '#8E8E93',
           border: '2px dashed #D1D1D6',
-          arrow: 'gray'
+          arrow: 'gray',
+          isarrow: false
         },
-      ]
+      ],
+      IPOList: []
     }
   },
-  methods: {},
-  computed: {
-    ...mapGetters(['getCompSeq'])
+  methods: {
+    goURL (type, url, file) {
+      if (type == 'URL') {
+        window.open(url, '_BLANK')
+      } else if (type == 'PDF') {
+        window.open('https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/'+file, '_BLANK')
+      }
+    }
   },
-  mounted () {},
+  computed: {
+    ...mapGetters(['getCompSeq', 'getMainColor', 'getIsIPO'])
+  },
+  mounted () {
+    document.getElementsByClassName('IPO-arrow')[4].innerHTML = ''
+  },
   watch: {
+    getIsIPO () {
+      const _self = this
+      _self.isIPO = _self.getIsIPO
+    },
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#'+_self.getMainColor
+    },
     getCompSeq () {
       const _self = this
       const aram = {
@@ -168,7 +143,7 @@ export default {
             _self.isData = false
           } else {
             const CAL_KIND = res[0].CAL_KIND
-            let t = (CAL_KIND == 'D' ? t = 1 : (CAL_KIND == 'A' ? t = 2 : (CAL_KIND == 'P' ? t = 3 : (CAL_KIND == 'C' ? t = 4 : (CAL_KIND == 'L' ? t = 5 : 0)))))
+            let t = (CAL_KIND == 'D' ? t = 1 : (CAL_KIND == 'A' ? t = 2 : (CAL_KIND == 'P' ? t = 3 : (CAL_KIND == 'C' ? t = 4 : (CAL_KIND == 'L' ? t = 5 : (CAL_KIND == 'I' ? t = 3 : 0))))))
             for (let i = 0; i < t; i++) {
               _self.IPODATA[i].background = 'gray'
               _self.IPODATA[i].font = '#313439'
@@ -177,6 +152,55 @@ export default {
               }
             }
           }
+          if (res.length > 0) {
+            if (res[0].DCAL_DATE) {
+              const DCAL_DATE = new Date(res[0].DCAL_DATE)
+              _self.IPODATA[0].days = ((DCAL_DATE.getMonth() + 1) < 10 ? '0' + (DCAL_DATE.getMonth() + 1) : (DCAL_DATE.getMonth() + 1)) + '/' + (DCAL_DATE.getDate() < 10 ? '0' + DCAL_DATE.getDate() : DCAL_DATE.getDate())
+            }
+            if (res[0].ACAL_DATE) {
+              const ACAL_DATE = new Date(res[0].ACAL_DATE)
+              _self.IPODATA[1].days = ((ACAL_DATE.getMonth() + 1) < 10 ? '0' + (ACAL_DATE.getMonth() + 1) : (ACAL_DATE.getMonth() + 1)) + '/' + (ACAL_DATE.getDate() < 10 ? '0' + ACAL_DATE.getDate() : ACAL_DATE.getDate())
+            }
+            if (res[0].DF_START_DATE && res[0].DF_END_DATE) {
+              const DF_START_DATE = new Date(res[0].DF_START_DATE)
+              const DF_END_DATE = new Date(res[0].DF_END_DATE)
+              _self.IPODATA[2].days = ((DF_START_DATE.getMonth() + 1) < 10 ? '0' + (DF_START_DATE.getMonth() + 1) : (DF_START_DATE.getMonth() + 1)) + '/' + (DF_START_DATE.getDate() < 10 ? '0' + DF_START_DATE.getDate() : DF_START_DATE.getDate()) + ' ~ ' + (DF_END_DATE.getDate() < 10 ? '0' + DF_END_DATE.getDate() : DF_END_DATE.getDate())
+            }
+            if (res[0].PO_START_DATE && res[0].PO_END_DATE) {
+              const PO_START_DATE = new Date(res[0].PO_START_DATE)
+              const PO_END_DATE = new Date(res[0].PO_END_DATE)
+              _self.IPODATA[3].days = ((PO_START_DATE.getMonth() + 1) < 10 ? '0' + (PO_START_DATE.getMonth() + 1) : (PO_START_DATE.getMonth() + 1)) + '/' + (PO_START_DATE.getDate() < 10 ? '0' + PO_START_DATE.getDate() : PO_START_DATE.getDate()) + ' ~ ' + (PO_END_DATE.getDate() < 10 ? '0' + PO_END_DATE.getDate() : PO_END_DATE.getDate())
+            }
+            if (res[0].LCAL_DATE) {
+              const LCAL_DATE = new Date(res[0].LCAL_DATE)
+              _self.IPODATA[4].days = ((LCAL_DATE.getMonth() + 1) < 10 ? '0' + (LCAL_DATE.getMonth() + 1) : (LCAL_DATE.getMonth() + 1)) + '/' + (LCAL_DATE.getDate() < 10 ? '0' + LCAL_DATE.getDate() : LCAL_DATE.getDate()) + ' 예정'
+            }
+          }
+        })
+      this.$store.dispatch('GET_IPOJ', aram)
+        .then(result => {
+          for (var key in result) {
+            if (result[key].SET_DATA_TYPE == 1) {
+              result[key].TITLE = '공모개요'
+              result[key].TYPE = 'PDF'
+            } else if (result[key].SET_DATA_TYPE == 2) {
+              result[key].TITLE = 'IR BOOK'
+              result[key].TYPE = 'PDF'
+            } else if (result[key].SET_DATA_TYPE == 3) {
+              result[key].TITLE = '웹캐스팅'
+              result[key].TYPE = 'URL'
+            } else if (result[key].SET_DATA_TYPE == 4) {
+              result[key].TITLE = '공모분석보고서'
+              result[key].TYPE = result[key].UPLOAD_FILE1.split('.')[1].toUpperCase()
+            } else if (result[key].SET_DATA_TYPE == 5) {
+              result[key].TITLE = '기업분석보고서'
+              result[key].TYPE = result[key].UPLOAD_FILE1.split('.')[1].toUpperCase()
+            } else if (result[key].SET_DATA_TYPE == 6) {
+              result[key].TITLE = '증권신고서'
+              result[key].TYPE = 'PDF'
+            }
+          }
+          _self.IPOList = result
         })
     }
   }
@@ -210,6 +234,7 @@ export default {
         list-style: none;
 
         li {
+            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -285,6 +310,7 @@ export default {
         font-size: 22px;
         color: $font-color-base;
         margin: 30px 0 0 0;
+        height: 27px;
       }
     }
 

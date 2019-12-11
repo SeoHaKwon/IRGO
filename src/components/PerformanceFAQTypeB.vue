@@ -1,5 +1,5 @@
 <template>
-  <div class="PerformanceFAQTypeB" v-if="totalArray.length > 0">
+  <div class="PerformanceFAQTypeB contaner" v-if="totalArray.length > 0 && qtype == 'N'">
     <h2 class="section-title-roboto">FAQ</h2>
     <h3 class="section-sube">
       Frequently Asked Questions
@@ -49,7 +49,8 @@ export default {
   data() {
       return {
         totalArray: [],
-        faqContents: []
+        faqContents: [],
+        qtype: ''
       }
   },
   components: {
@@ -66,9 +67,13 @@ export default {
      },
   },
   computed: {
-    ...mapGetters(['getCompSeq'])
+    ...mapGetters(['getCompSeq', 'getQaType'])
   },
   watch: {
+    getQaType () {
+      const _self = this
+      _self.qtype = _self.getQaType
+    },
     getCompSeq () {
       const _self = this
       const aram = {
@@ -99,6 +104,8 @@ export default {
 <style lang="scss">
 @import "@/style/_variables.scss";
 .PerformanceFAQTypeB {
+  padding-top: 200px;
+  margin: 0 auto;
     .FAQ-type-B {
       padding-top: 106px;
       list-style: none;

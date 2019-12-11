@@ -6,12 +6,11 @@
   			일정
   		</h2>
   		<ul class="schedule-list">
-  			<li
-  			      @click="clickModal(true)"
-              v-for="item in SCHEDULE"
+  			<li v-for="(item, idx) in SCHEDULE"
+            @click="clickModal(true, idx)" v-bind:key="idx"
   			  >
   				<div>
-  					<h4 class="item-date">{{ item.S_DATE }}</h4>
+  					<h4 class="item-date">{{ item.S_DATE | v_date}} {{ item.S_TIME }}</h4>
   					<h3 class="item-title">{{ item.TITLE }}</h3>
   				</div>
   				<img
@@ -50,10 +49,9 @@
   	        	/>
   	        </div>
   	        <div class="ir-modal-title">
-  	        	LG Display 2019년 2분기 <br />
-  	        	기업설명회(IR) 개최 <br />
+  	        	{{ SCHEDULE[idx].TITLE }}
   	        </div>
-  	        <div class="social-info">
+  	        <div class="social-info" v-if="false">
   	            <h5 class="date">
   	                
   	            </h5>
@@ -79,7 +77,11 @@
   	        	<h4 class="title">{{ data.title }}</h4>
   	        	<h5 class="description">{{ data.description }}</h5>
   	        </div>
-  	        <div class="schedule-btn">
+            <div class="schedule-table">
+              <h4 class="title">추가내용</h4>
+  	        	<h5 class="description" v-html="SCHEDULE[idx].CONTENTS"></h5>
+  	        </div>
+  	        <div class="schedule-btn" v-if="false">
   	        	<a>컨퍼런스콜 사전신청하기</a>
   	        </div>
   	    </div>
@@ -105,32 +107,49 @@ export default {
         	{
         		title: '대상',
         		description: '사전 신청한 기관투자자 대상'
-        	},
-        	{
-        		title: '추가내용',
-        		description: 'Morgan Stanley Annual Asia Pacific Summit 참가 상기 IR자료는 당사 IR페이지 IR News에 게재될 예정입니다. (게제 일시 : 2019년 11월 5일)'
-        	},
+        	}
         ],
         SCHEDULE: [],
         S_DATE: [],
-        TITLE: []
+        TITLE: [],
+        idx: 0
       }
   },
   components: {
+  },
+  filters: {
+    v_date: function (date) {
+      const key = new Date(date)
+      const year = key.getFullYear()
+      const month = key.getMonth() + 1
+      const day = key.getDate()
+      const hour = key.getHours()
+      const min = key.getMinutes()
+      const time = key.getSeconds()
+      return year +'-'+ month + '-' + day
+    }
   },
   computed: {
     ...mapGetters(['getCompSeq'])
   },
   methods: {
-      clickModal(isOpen) {
+      clickModal(isOpen, idx) {
       	const globalBody = document.getElementsByTagName('html')[0];
-      	
+      	const _self = this
       	if (isOpen) {
       		globalBody.style.overflow = 'hidden'
       	} else {
       		globalBody.style.overflow = 'inherit'
-      	}
-        this.isIRModal = isOpen;
+        }
+        if (idx) {
+          _self.idx = idx
+          const key = new Date(_self.SCHEDULE[idx].S_DATE)
+          let daty = key.getFullYear()+'년 '+(Number(key.getMonth())+1)+'월 '+key.getDate()+'일 '
+          _self.modalData[0].description = daty+ _self.SCHEDULE[idx].S_TIME
+          _self.modalData[1].description = _self.SCHEDULE[idx].PLACE
+          _self.modalData[2].description = _self.SCHEDULE[idx].ETC
+        }
+        this.isIRModal = isOpen
       },
   },
   watch: {
@@ -143,7 +162,16 @@ export default {
         .then(res => {
           if (res.length > 0) {
             for (var key in res) {
-              _self.SCHEDULE.push({"TITLE": res[key].TITLE,"S_DATE": res[key].S_DATE})
+              _self.SCHEDULE.push(
+                {
+                  "TITLE": res[key].TITLE,
+                  "S_DATE": res[key].S_DATE, 
+                  "S_TIME": res[key].S_TIME,
+                  "PLACE": res[key].PLACE,
+                  "ETC": res[key].ETC,
+                  "CONTENTS": res[key].CONTENTS
+                }
+              )
             }
           }
         })
@@ -153,6 +181,9 @@ export default {
 </script>
 <style lang="scss">
 @import "@/style/_variables.scss";
+#head_con {
+  display:none;
+}
 .overflow-hidden {
   overflow: hidden;
 }

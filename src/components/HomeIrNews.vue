@@ -19,7 +19,7 @@
                 <h4>{{ items.TITLE}}</h4>
                 <h6>
                   <span class="mobile">{{ items.TOPIC_TYPE }}</span>
-                  {{ items.REG_DATE}}
+                  {{ items.REG_DATE | v_date}}
                 </h6>
             </div>
         </li>
@@ -27,7 +27,7 @@
     <div class="home-more-btn">
       <button
         type="button"
-        class=""
+        v-on:click="moreData"
       >
       <h6>더보기</h6>
       <img 
@@ -65,7 +65,7 @@
             </h5>
             <div class="social-info">
                 <h5 class="date">
-                    {{ v_REG_DATE}}
+                    {{ v_REG_DATE | v_date}}
                 </h5>
                 <div class="social-sns">
                     <img
@@ -127,8 +127,18 @@ export default {
         v_TOPIC_TYPE: '',
         v_CONTENTS: '',
         v_REG_DATE: '',
-        mcolor: ''
+        mcolor: '',
+        allData: []
       }
+  },
+  filters: {
+    v_date: function (date) {
+      const key = new Date(date)
+      const year = key.getFullYear()
+      const month = key.getMonth() + 1
+      const day = key.getDate()
+      return year +'년 '+ month + '월 ' + day + '일'
+    }
   },
   methods: {
       clickModal(isOpen, idx) {
@@ -152,6 +162,10 @@ export default {
           _self.v_CONTENTS = _self.NewsList[idx].CONTENTS
         }
         _self.v_REG_DATE = _self.NewsList[idx].REG_DATE
+      },
+      moreData () {
+        const _self = this
+        _self.NewsList = _self.NewsList.concat(_self.allData.splice(0, 5))
       }
   },
   computed: {
@@ -178,7 +192,8 @@ export default {
             res[key].TOPIC_TYPE = '주담톡톡'
           }
         }
-        _self.NewsList = res
+        _self.NewsList = res.splice(0,4)
+        _self.allData = res
       })
     },
     getMainColor () {

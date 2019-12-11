@@ -1,5 +1,5 @@
 <template>
-  <div class="HomeManagementReport contaner">
+  <div class="HomeManagementReport contaner" v-if="report.length > 0">
     <h2 class="section-title">경영보고서</h2>
     <h3 class="section-sube">
       Documents & Report

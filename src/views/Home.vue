@@ -1,37 +1,42 @@
 <template>
   <div class="home">
     <!-- 메인 -->
-    <HomeMainVisual />
+    <HomeMainVisual id="main"/>
 
     <!-- 스케줄 -->
-    <HomeSchedule />
+    <HomeSchedule id="schedule"/>
 
     <!-- 실적발표 -->
-    <HomePerformance />
+    <HomePerformance id="performance"/>
+    
+    <!-- IPO -->
+    <HomeIPO id="ipo"/>
+
+    <!-- FAQ -->
+    <PerformanceFAQ />
+
+    <PerformanceFAQTypeB />
 
     <!-- IR 뉴스 -->
-    <HomeIrNews />
+    <HomeIrNews id="news"/>
 
     <!-- 경영 보고서 -->
-    <HomeManagementReport />
+    <HomeManagementReport id="report"/>
 
     <!-- 재무 정보 -->
-    <HomeFinanceInfo />
+    <HomeFinanceInfo id="finance"/>
 
     <!-- 공시 -->
-    <HomeDisclosure />
-
-    <!-- IPO -->
-    <HomeIPO />
+    <HomeDisclosure id="disclosure"/>
 
     <!-- 주주 현황 -->
-    <HomeShareholderStatus />
+    <HomeShareholderStatus id="share"/>
 
     <!-- IR CONTANT -->
-    <HomeIRContact />
+    <HomeIRContact id="contact"/>
 
     <!-- APP BANNER -->
-    <HomeAppBanner />
+    <HomeAppBanner id="banner"/>
   </div>
 </template>
 
@@ -48,10 +53,17 @@ import HomeIPO from '@/components/HomeIPO.vue'
 import HomeShareholderStatus from '@/components/HomeShareholderStatus.vue'
 import HomeIRContact from '@/components/HomeIRContact.vue'
 import HomeAppBanner from '@/components/HomeAppBanner.vue'
+import PerformanceFAQ from '@/components/PerformanceFAQ.vue'
+import PerformanceFAQTypeB from '@/components/PerformanceFAQTypeB.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'home',
+  data: () => {
+    return {
+      isIPO: ''
+    }
+  },
   components: {
     HomeMainVisual,
     // HomeMainInformation,
@@ -64,7 +76,15 @@ export default {
     HomeIPO,
     HomeShareholderStatus,
     HomeIRContact,
-    HomeAppBanner
+    HomeAppBanner,
+    PerformanceFAQ,
+    PerformanceFAQTypeB
+  },
+  computed: {
+    ...mapGetters(['getIsIPO'])
+  },
+  watch: {
+    getIsIPO () {}
   }
 }
 </script>
@@ -113,7 +133,7 @@ export default {
       & h6 {
         font-size: 16px;
         color: #8E8E93;
-        font-weight: bold;
+        font-weight: 400;
         margin-bottom: 0;
       }
 
@@ -143,7 +163,7 @@ export default {
         font-weight: bold;
         font-size: 21px;
         align-items: center;
-        color: $font-color-base;
+        color: #545454;
         -webkit-appearance: none;
         -moz-appearance:none;
         appearance:none;
@@ -151,6 +171,11 @@ export default {
         position: relative;
         border-width: 1px;
         border-color: rgb(169, 169, 169);
+
+        & option {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 500;
+        }
     }
 
     .select-arrow {
@@ -277,7 +302,7 @@ select::-ms-expand {
         & h6 {
           font-size: 12px;
           color: #8E8E93;
-          font-weight: normal;
+          font-weight: 400;
         }
 
         & img {

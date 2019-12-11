@@ -1,14 +1,13 @@
 <template>
   <div class="HomeMainVisual">
   	<!-- 메인 -->
-  	<div class="home-main-visual" :style="{ 'background': 'url('+Banner+') no-repeat center center/cover' }">
+  	<div class="home-main-visual" v-if="isImg" :style="{ 'background': 'url('+Banner+') no-repeat center center/cover' }">
   		<div class="home-main-visual-container">
-  			<h2 :style="BN_Text">Inverstor Relations</h2>
-
+  			<h2>Investor Relations</h2>
 	  		<div class="main-information" v-if="Price.NowJuka">
 		  		<div class="title">
 		  			<h4>
-		  				{{ Price.NowJuka}}원
+		  				<span class='juka'>{{ Price.NowJuka}}</span><span>원</span>
 		  			</h4>
 		  			<h5>{{ Price.DungRak }} {{ Price.Debi }} ({{ Price.Cent}}%)</h5>
 		  		</div>
@@ -33,7 +32,8 @@ export default {
     return {
       Price: [],
       Banner: '',
-      BN_Text: 'background-color: rgba(0, 0, 0, 0.4);color: white;padding: 20.35% 36.202%;'
+      BN_Text: 'background-color: rgba(0, 0, 0, 0.4);color: white;padding: 20.35% 36.202%;',
+      isImg: true
     }
   },
   computed: {
@@ -56,8 +56,11 @@ export default {
     },
     getBanner () {
       const _self = this
-      _self.Banner = 'https://file.irgo.co.kr/data/IRPAGE/IMG/'+_self.getBanner
-      console.log(_self.Banner)
+      if (_self.getBanner == null) {
+        _self.isImg = false
+      } else {
+        _self.Banner = 'https://file.irgo.co.kr/data/IRPAGE/IMG/'+_self.getBanner
+      }
     }
   },
   methods: {
@@ -102,7 +105,7 @@ export default {
 				width: 274px;
 				background: $font-color-base;
 				opacity: 0.9;
-				padding: 43px 36px 30px 36px;
+				padding: 26px 36px;
 				position: absolute;
 				bottom: 0;
 				right: 0;
@@ -112,20 +115,32 @@ export default {
 
 					& h4 {
 						font-weight: bold;
-						font-size: 34px;
+            font-size: 34px;
+            
+            .juka {
+              font-family: 'Roboto', sans-serif;
+            }
+            
+            & span:nth-child(2) {
+              font-size:22px;
+              margin-left: 5px;
+              font-weight:500;
+            }
 					}
 					& h5 {
 						font-size: 16px;
-						margin-top: 9px;
+            margin-top: 9px;
+            font-family: 'Roboto', sans-serif;
 					}
 				}
 				.information {
 					font-size: 16px;
 					line-height: 24px;
-					margin-top: 14px;
+          margin-top: 14px;
+          font-weight:400;
 				}
 				.curtion {
-					margin-top: 48px;
+					margin-top: 59px;
 					font-size: 10px;
 				}
 			}
@@ -134,8 +149,9 @@ export default {
 		& h2 {
 			font-size: 34px;
 			color: #FFFFFF;
-			font-weight: bold;
-			text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
+			font-weight: 500;
+      text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
+      font-family: 'Roboto', sans-serif;
 		}
 	}
 
@@ -174,21 +190,33 @@ export default {
 	  				display: flex;
 	  				align-items: flex-end;
 	  				& h4 {
+              margin-bottom: 0;
 	  					font-weight: bold;
 	  					font-size: 24px;
-	  				}
+            }
+
+            .juka {
+              font-family: 'Roboto', sans-serif;
+            }
+            
+            & span:nth-child(2) {
+              margin-left: 5px;
+              font-weight:500;
+            }
+
 	  				& h5 {
 	  					font-size: 12px;
 	  					margin-top: 0;
 	  					margin-left: 10px;
-	  					margin-bottom: 2px;
+              margin-bottom: 2px;
+              font-family: 'Roboto', sans-serif;
 	  				}
 	  			}
 	  			.information {
 	  				display: none;
 	  				font-size: 16px;
 	  				line-height: 24px;
-	  				margin-top: 14px;
+            margin-top: 14px;
 	  			}
 	  			.curtion {
 	  				margin-top: 4px;

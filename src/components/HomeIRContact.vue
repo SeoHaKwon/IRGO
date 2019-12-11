@@ -1,8 +1,8 @@
 <template>
   <div class="HomeIRContact contaner" v-if="compname">
-    <h2 class="section-title">IR Contact</h2>
+    <h2 class="section-title-roboto">IR Contact</h2>
     <h3 
-        class="section-sube"
+        class="section-sube contact"
         style="margin-bottom: 40px;"
     >
       {{ compname }} IR 페이지에 방문해 주셔서 감사합니다. <br />
@@ -107,6 +107,9 @@ export default {
 </script>
 <style lang="scss">
 @import "@/style/_variables.scss";
+.section-sube.contact {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 .HomeIRContact {
     padding: 200px 0;
     .ir-contact-contents {

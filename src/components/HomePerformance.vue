@@ -1,5 +1,5 @@
 <template>
-  <div class="HomePerformance contaner">
+  <div class="HomePerformance contaner" v-if="ipo !== 'CT02'">
     <h2 class="section-title">실적발표</h2>
     <h3 class="section-sube">
       Quarter Earnings Results
@@ -13,21 +13,12 @@
         :datas="type_B" :silq="silQ" :silj="silJ" v-on:changeQuarter="getQuarter"
       />
     </div> -->
-  <!-- FAQ -->
-    <PerformanceFAQ v-on:changeQuarterfaq="getfaqQuarter"/>
-
-    <div style="margin-top: 40px">
-      <PerformanceFAQTypeB />
-    </div>
-
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import PerformanceContents from '@/components/PerformanceContents.vue'
-import PerformanceFAQ from '@/components/PerformanceFAQ.vue'
-import PerformanceFAQTypeB from '@/components/PerformanceFAQTypeB.vue'
 
 export default {
   name: 'HomePerformance',
@@ -35,21 +26,17 @@ export default {
     return {
       type_D: [],
       silQ: [],
-      silJ: {}
+      silJ: {},
+      ipo: ''
     }
   },
   components: {
-    PerformanceContents,
-    PerformanceFAQ,
-    PerformanceFAQTypeB
+    PerformanceContents
   },
   computed: {
-    ...mapGetters(['getCompCode', 'getCompSeq'])
+    ...mapGetters(['getCompCode', 'getCompSeq', 'getIsIPO'])
   },
   methods: {
-    getfaqQuarter (q) {
-      console.log(q)
-    },
     getQuarter (req) {
       this.changeQuarterData(req.split('.')[0], req.split('.')[1])
     },
@@ -70,6 +57,10 @@ export default {
     }
   },
   watch: {
+    getIsIPO () {
+      const _self = this
+      _self.ipo = _self.getIsIPO
+    },
     getCompSeq () {
       const _self = this
       const param = {
@@ -104,11 +95,6 @@ export default {
                 } else if (result[key].SET_DATA_TYPE == 6) {
                   result[key].TITLE = 'Factsheet'
                 }
-              }
-              if (result.length > 3) {
-                _self.type_A = result
-              } else {
-                _self.type_B = result
               }
             })
           }

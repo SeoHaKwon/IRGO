@@ -1,42 +1,32 @@
 <template>
-  <div class="PerformanceFAQ" v-if="faqContents.length > 0">
-    <div class="FAQ-title">
-      <h4>FAQ</h4>
-      <div class="performance-faq-select">
-          <div class="select-warp">
-              <select>
-                  <option>2019.2Q</option>
-                  <option>2019.2Q</option>
-                  <option>2019.2Q</option>
-                  <option>2019.2Q</option>
-              </select>
-              <div class="select-arrow">▲</div>
-          </div>
-      </div>
-    </div>
-    <ul class="performance-group-tab faq">
+  <div class="PerformanceFAQ contaner" v-if="faqContents.length > 0 && qtype == 'Y'">
+    <h2 class="section-title-roboto">FAQ</h2>
+    <h3 class="section-sube">
+      Frequently Asked Questions
+    </h3>
+    <!-- <ul class="performance-group-tab faq">
       <li v-for="(items, idx) in faQ" v-bind:key="idx" v-on:click="getContents(items, idx)" :class="isActive[idx]">
         <a>{{ items }}</a>
       </li>
-    </ul>
+    </ul> -->
     <ul class="performance-FAQ">
       <li
-            @click="clickModal(true)"
+            @click="clickModal(true, idx)"
             v-for="(items, idx) in faqContents" v-bind:key="idx"
         >
         <h5>
           Q
         </h5>
         <div class="title">
-            <h4>{{ items.QUESTION }}</h4>
-            <h6>{{ items.Q_REG_DATE }}</h6>
+            <h4>{{ items.QUESTION.substring(0, 100) }}<span v-if="items.QUESTION.length > 100">...</span></h4>
+            <h6>{{ items.Q_REG_DATE | v_date}}</h6>
         </div>
       </li>
     </ul>
     <div class="home-more-btn">
       <button
         type="button"
-        class=""
+        v-on:click="moreFaqTypeA()"
       >
       <h6>더보기</h6>
       <img 
@@ -68,20 +58,22 @@
                 <span>실적발표_ FAQ</span>
             </div>
             <h5 class="modal-map">Investor Relations > 실적발표(FAQ)</h5>
-            <h5 class="FAQ-modal-question">
+            <h5 class="FAQ-modal-question" v-if="faqContents[viewIdx].QUESTION">
                 <div class="quest-anser-icon">
                   Q
                 </div>
-                설훈 주주님의 질문입니다.
+                <span class="faq-question-title">{{faqContents[viewIdx].Q_USER}} 주주님의 질문입니다.</span>
             </h5>
             <h5 class="FAQ-modal-title">
-                중국 현지 LCD 기업이 부진하고 LCD시장의 불황인 상황인데 현 상황에서 계획이 어떻게 되시나요?
+                (서울=연합뉴스) 설승은 김여솔 기자 = 문희상 국회의장은 10일 국회 본회의에서의 내년도 예산안 처리 이후 자유한국당 의원들의 거센 항의를 받고 충격을 받아 병원으로 향했다.
+문 의장은 이날 오후 10시 40분께 직원들의 부축을 받아 집무실을 천천히 걸어 나와 인근 병원으로 출발했다. 지친 표정의 문 의장은 넥타이를 반쯤 푼 상태였다.
+의장실 관계자는 연합뉴스와의 통화에서 "한국당 의원들이 예산안 처리 과정뿐 아니라 집무실에도 찾아와 거세게 항의하는 과정에서 충격을 받아 급격히 건강이 악화됐다"며 "혈압과 심혈관계 문제인 듯하
             </h5>
             <div class="social-info">
                 <h5 class="date">
                     
                 </h5>
-                <div class="social-sns">
+                <div class="social-sns" v-if="false">
                     <img
                         width="7px"
                         src="../assets/img/modal_facebook.png"
@@ -100,24 +92,24 @@
                 <div class="quest-anser-icon anser">
                   A
                 </div>
-                2019년 10월 10일
+                <span class="faq-answer-title">{{faqContents[viewIdx].A_REG_DATE | v_date}}</span>
             </h5>
             <h4
                 class="IR-main-description"
-                v-html="modalDescription"
+                v-html="faqContents[viewIdx].ANSWER"
             >
             </h4>
-            <div class="FAQ-file-upload">
+            <div class="FAQ-file-upload" v-if="faqContents[viewIdx].UPLOAD_FILE1 == '' && faqContents[viewIdx].UPLOAD_FILE2 == ''">
               <div class="title">첨부파일</div>
               <div class="file-list">
-                <h5>
+                <h5 style="cursor:pointer;" v-if="faqContents[viewIdx].UPLOAD_FILE1">
                   <img
                       width="16px"
                       src="../assets/img/file_type_pdf_1.png"
                   />
                   첨부파일 1
                 </h5>
-                <h5>
+                <h5 style="cursor:pointer;" v-if="faqContents[viewIdx].UPLOAD_FILE2">
                   <img
                       width="16px"
                       src="../assets/img/file_type_pdf_2.png"
@@ -126,7 +118,7 @@
                 </h5>
               </div>
             </div>
-            <ul class="IR-modal-list">
+            <ul class="IR-modal-list" v-if="false">
                 <li>
                     <img
                         width="30px"
@@ -156,6 +148,7 @@ export default {
   name: 'PerformanceFAQ',
   data() {
       return {
+        viewIdx: 0,
         isIRModal: false,
         faQ: [],
         faqContents: [],
@@ -166,18 +159,30 @@ export default {
           3: '',
           4: ''
         },
+        allData: [],
         ori_active: 0,
-        modalDescription: `차세대 OLED 디스플레이로 글로벌 프리미엄 TV 시장을 선도하고 있는 LG디스플레이가 다시 한 번 대세 굳히기에 나섰습니다. 세계 최대 TV 시장인 중국의 대도시 광저우에 건설한 8.5세대 OLED 패널 공장이 본격적인 생산에 돌입한 건데요. 대형 OLED 생산량의 대폭 증가로 글로벌 OLED TV시장이 새로운 전기를 맞이하며 본격적으로 확대될 것으로 전망되고 있습니다. LG디스플레이 OLED의 무한성장을 이끌어줄 광저우 OLED 패널 공장을 함께 살펴볼까요? <br /><br /><br /><h3 class="inner-title">대륙의 스케일을 자랑하는 광저우 OLED 공장</h3><br /><br /> 광저우에 새로 자리잡은 8.5세대 OLED 패널 공장은 7만4천m²(약 2만2천평) 대지 위에 지어졌는데요. 이는 무려 축구장 10개를 합친 것과 같은 규모입니다. 기존 LCD 패널공장과 모듈공장, 협력사 단지 및 부대시설 등을 합친 LG디스플레이 광저우 클러스터의 전체 크기는 새로 지어진 패널 공장 부지의 18배(총 132만m², 약 40만평)가 넘어 가히 압도적인 스케일을 자랑합니다.<br /><br /> 앞으로 광저우 OLED 패널 공장에서는 고해상도 55, 66, 77인치 대형 OLED를 주력 생산할 예정인데요. 월 6만장(유리원판 투입 기준) 생산을 시작으로 오는 2021년까지 생산량을 월 9만장으로 끌어올릴 계획입니다. 현재 파주 OLED 공장에서 생산중인 월 7만장과 오는 2022년부터 가동되는 파주 10.5세대 OLED 공장의 월 4만5천장 규모까지 합하면 2022년부터는 연간 1000만대 이상의 OLED 제품을 만들어낼 수 있게 됩니다.<br /><br /><br /><br /> <h3 class="inner-title">세계 최대 TV 시장 중국, OLED 대세화 본격 시동!</h3 <br /><br />중국은 14억명에 육박하는 인구수를 자랑하는 만큼, 압도적인 TV 시장을 형성하고 있는데요. 지난 2011년, 전세계 TV 매출의 22.8%를 차지하며 북미를 제치고 세계 최대 TV 시장으로 올라섰습니다. 또한 2017년에는 점유율 25%를 기록하는 등 꾸준히 세계 TV 시장 흐름을 이끌어 나가는 중입니다.<br /><br /> LG디스플레이는 중국이 주도하는 세계 TV 시장 흐름을 미리 예측하고 누구보다 발빠르게 대응해 왔습니다. 지난 2002년 중국 난징 LCD 모듈 공장 진출을 신호탄으로 현지 생산 비중을 늘리는 한편, 중국 고객사들을 대거 확보하며 저변을 꾸준히 넓혀왔죠. 특히 LG디스플레이가 세계에서 유일하게 생산하고 있는 OLED 패널은 광저우 OLED 패널 공장의 가동을 계기로 중국 현지 OLED 시장의 성장을 빠르게 견인할 뿐 아니라, 이를 바탕으로 글로벌 OLED 시장의 대세화를 가속화 시킬 것으로 기대되는데요. <br /><br />이번 광저우 OLED 공장 가동을 계기로 LG디스플레이는 중국 시장에서의 대세화 굳히기에 박차를 가할 계획인데요. 광저우 OLED 패널 공장은 광둥성 지역 내 여러 LG디스플레이 고객사의 TV 공장들과 밀접해 패널 공급도 더욱 원활하게 이뤄질 수 있습니다. 게다가 고객사에게 필요한 기술을 신속히 지원할 수 있어, 제품 경쟁력도 한층 높아질 것입니다.<br /><br /> 한편, 지난 8월 29일 열린 광저우 OLED 패널 공장 준공식에서 LG디스플레이 한상범 부회장은 “광저우 OLED 공장이 가동함에 따라 파주 OLED 클러스터와 함께 투트랙으로 급성장하고 있는 OLED TV 수요에 보다 적극적으로 대응할 수 있게 됐다”며 “이를 바탕으로 고객에게 더 큰 가치를 제공해 프리미엄 TV 시장에서 OLED 대세화를 앞당기겠다”고 포부를 밝혔습니다.<br /><br /> LG디스플레이는 광저우 OLED 패널 공장 준공으로 전 세계 OLED 시장의 대세화를 앞당길 크고 단단한 두 번째 날개를 얻게 됐는데요. 이에 힘입어 중국 시장은 물론 전세계 프리미엄 TV 시장을 변화시켜 나갈 LG디스플레이의 밝은 미래를 지켜봐 주시길 바랍니다!`,
+        qtype: ''
       }
   },
   components: {
   },
   mounted () {
   },
+  filters: {
+    v_date: function (date) {
+      const key = new Date(date)
+      const year = key.getFullYear()
+      const month = key.getMonth() + 1
+      const day = key.getDate()
+      return year +'년 '+ month + '월 ' + day + '일'
+    }
+  },
   methods: {
-      clickModal(isOpen) {
+      clickModal(isOpen, idx) {
         const globalBody = document.getElementsByTagName('html')[0];
+        const _self = this
         if (isOpen) {
+          _self.viewIdx = idx
           globalBody.style.overflow = 'hidden'
         } else {
           globalBody.style.overflow = 'inherit'
@@ -194,12 +199,20 @@ export default {
       _self.isActive[_self.ori_active] = ''
       _self.isActive[idx] = 'active'
       _self.ori_active = idx
+    },
+    moreFaqTypeA () {
+      const _self = this
+      _self.faqContents = _self.faqContents.concat(_self.allData.splice(0, 5))
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq', 'getCompCode'])
+    ...mapGetters(['getCompSeq', 'getCompCode', 'getQaType'])
   },
   watch: {
+    getQaType () {
+      const _self = this
+      _self.qtype = _self.getQaType
+    },
     getCompSeq () {
       const _self = this
       const param = {
@@ -208,7 +221,7 @@ export default {
       }
       const res = this.$store.dispatch('GET_SILQ', param)
       res.then(data => {
-        for (let i = 0; i < data.length; i++) {
+        for (let i = 0; i < (data.length > 5? 5: data.length); i++) {
           let q = data[i].YEAR + "." + data[i].PERIOD + "Q"
           _self.faQ.push(q)
         }
@@ -218,7 +231,8 @@ export default {
       }
       const pres = this.$store.dispatch('GET_FAQ', aram)
       .then(res => {
-        _self.faqContents = res
+        _self.allData = res
+        _self.faqContents = res.splice(0,5)
       })
     }
   }
@@ -226,7 +240,11 @@ export default {
 </script>
 <style lang="scss">
 @import "@/style/_variables.scss";
+#performance > div.PerformanceFAQ > ul.performance-FAQ > li {
+  cursor: pointer;
+}
 .PerformanceFAQ {
+  padding-top: 200px;
     .FAQ-title {
         display: flex;
         justify-content: space-between;
@@ -245,6 +263,7 @@ export default {
     }
     .performance-FAQ {
         list-style: none;
+        margin-top: 106px;
 
         li {
             display: flex;
@@ -271,13 +290,15 @@ export default {
                     font-size: 21px;
                     letter-spacing: -0.5px;
                     color: $font-color-base;
+                    line-height: 1.4;
                 }
                 & h6 {
                     font-size: 12px;
                     letter-spacing: -0.5px;
                     color: #8E8E93;
                     opacity: 0.87;
-                    margin-top: 16px;
+                    margin-top: 20px;
+                    margin-bottom: 0;
                 }
             }
         }
@@ -304,7 +325,7 @@ export default {
       }
       .performance-FAQ {
           list-style: none;
-
+          margin-top: 0;
           li {
               display: flex;
               justify-content: space-between;
@@ -314,7 +335,7 @@ export default {
               padding: 16px 0;
 
               &:first-child {
-                  border-top: 0;
+                  // border-top: 0;
                   margin-top: 16px;
               }
 
@@ -333,6 +354,7 @@ export default {
                       font-size: 16px;
                       letter-spacing: -0.5px;
                       color: $font-color-base;
+                      line-height: 1.4;
                   }
                   & h6 {
                       font-size: 10px;
@@ -375,6 +397,9 @@ export default {
             color: $brand-color;
           }
         }
+        .faq-question-title, .faq-answer-title {
+          font-weight: 400;
+        }
       }
       .FAQ-modal-anser {
         padding-top: 60px;
@@ -382,13 +407,13 @@ export default {
         margin-top: 20px;
       }
       .FAQ-modal-title {
-          font-weight: bold;
-          font-size: 34px;
-          margin-top: 18px;
+          font-weight: 500;
+          font-size: 18px;
+          margin-top: 25px;
           margin-bottom: 10px;
           letter-spacing: -0.5px;
           color: $font-color-base;
-          height: 143px;
+          // height: 143px;
       }
       .IR-main-description {
           margin-top: 57px;
@@ -436,7 +461,10 @@ export default {
       }
 
       @media ( max-width: 899px ) {
-
+      &.contaner {
+        padding: 38px 0;
+        border-top: 8px solid #EFEFF4;
+      }
       .FAQ-modal-anser {
         padding-top: 21px;
         border-top: 1px solid $border-color;

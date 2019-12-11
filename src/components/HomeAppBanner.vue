@@ -1,5 +1,5 @@
 <template>
-  <div class="HomeAppBanner">
+  <div class="HomeAppBanner" v-if="false">
     <h2 class="app-banner-title">
         <span v-bind:style="{ color: mcolor }">{{ name }}</span> 앱에서 투자정보/소식을 받아보고, <br />
          IR담당자와 소통할 수 있습니다.
