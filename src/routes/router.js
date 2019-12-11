@@ -2,8 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home.vue'
 import Announcement from '../views/Announcement.vue'
+import AnnouncementView from '../views/AnnouncementView.vue'
 import Schedule from '../views/Schedule.vue'
+import ScheduleView from '../views/ScheduleView.vue'
 import News from '../views/News.vue'
+import NewsView from '../views/NewsView.vue'
 import Finance from '../views/Finance.vue'
 import Status from '../views/Status.vue'
 import Disclosure from '../views/Disclosure.vue'
@@ -34,6 +37,11 @@ export default new Router({
             component: News
         },
         {
+            path: '/newsView',
+            name: 'newsView',
+            component: NewsView
+        },
+        {
             path: '/financial',
             name: 'financial',
             component: Finance
@@ -57,6 +65,16 @@ export default new Router({
             path: '/contact',
             name: 'contact',
             component: Contact
+        },
+        {
+            path: '/scheduleView',
+            name: 'scheduleView',
+            component: ScheduleView
+        },
+        {
+            path: '/announcementView',
+            name: 'announcementView',
+            component: AnnouncementView
         }
     ]
 })

@@ -8,7 +8,7 @@
           <strong class="board-title">
             중국 현지 LCD 기업이 부진하고 LCD시장의 불황인 상황인데 현 상황에서 계획이 어떻게 되시나요?
           </strong>
-          <a href="" class="link"></a>
+          <a href="/AnnouncementView" class="link"></a>
         </li>
         <li>
           <strong class="board-title">

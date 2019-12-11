@@ -14,7 +14,7 @@
             과를 공유하는 삼성 투모로우 스...
           </p>
           <span class="date">2019.11.06</span>
-          <a href="#" class="link"></a>
+          <a href="/NewsView" class="link"></a>
         </div>
       </li>
       <li>

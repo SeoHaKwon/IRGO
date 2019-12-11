@@ -4,7 +4,7 @@
       <p>삼성전자 기업설명회(IR) 개최(2019.3Q)</p>
     </div>
     <div class="datail-inner">
-      <div class="top-section">
+      <div class="top-section type01">
         <dl class="files">
           <dt>첨부파일</dt>
           <dd class="icon-file pdf">시장조사기관 IDC 보고서 .pdf <button type="button" class="file-down"></button></dd>
@@ -35,7 +35,7 @@
           <img src="../assets/images/img/img_detail.png" alt="">
         </p>
       </div>
-      <div class="desc">한국전력의 2019년도 3분기 잠정 결산실적발표 컨퍼런스콜 일정이 11월 13일 (수) 에 실시됩니다.</div>
+      <div>한국전력의 2019년도 3분기 잠정 결산실적발표 컨퍼런스콜 일정이 11월 13일 (수) 에 실시됩니다.</div>
       <div class="conference-wrap">
        <p class="conference-tit">[컨퍼런스 콜 이용안내]</p>
         <p class="desc call">접속번호</p>
@@ -89,7 +89,7 @@
     @include contentWidth($width:1200px);
     .top-section {
       display:flex;
-      margin:30px 0 60px;
+      margin:30px 0 130px;
       .sns-group {
         display:flex;
         margin-left:auto;
@@ -145,6 +145,9 @@
             background-color:$white;
           }
         }
+      }
+      &.type01 {
+        margin-bottom:60px;
       }
     }
     .detail-cont {
@@ -217,16 +220,25 @@
       margin-top:160px;
       .link-box {
         position:relative;
-        padding:40px 70px 40px 0;
+        height:126px;
+        padding:0 70px 0 0;
         display:flex;
         border-top:1px solid #ececec;
         align-items: center;
         span {
           display:inline-block;
           width:128px;
+          flex:0 0 auto;
           font-size:14px;
           text-align: center;
           color:#a9acb3;
+        }
+        .catagory {
+          display:inline-block;
+          margin-bottom:10px;
+          font-size:16px;
+          color:#a9acb3;
+          font-weight: 500;
         }
         .link{
             position: absolute;
@@ -239,6 +251,7 @@
           }
         p {
           font-size:20px;
+          line-height:30px;
           font-weight: 500;
           color:$black3;
         }

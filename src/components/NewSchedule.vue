@@ -11,7 +11,7 @@
         </div>
         <div class="info-wrap">
           <strong class="title">
-            JP Global TMT Conference
+            JP Global TMT Conference 본문이동링크
           </strong>
             <dl>
               <dt>장소</dt>
@@ -22,7 +22,7 @@
               <dd>해외 기관투자자</dd>
           </dl>
         </div>
-        <a href="#" class="direct"></a>
+        <a href="../scheduleView" class="direct"></a>
       </li>
       <li> <!--클래스 active 추가시 활성화-->
         <div class="date-wrap">

@@ -11,7 +11,7 @@
           <col style="width:186px">
           <col style="width:186px">
           <col style="width:186px">
-          <col style="width:100px" class="is_pc">
+          <col style="width:70px" class="is_pc">
         </colgroup>
         <thead>
           <tr>
@@ -101,7 +101,7 @@
      thead {
        tr {
          th {
-           padding:26px 0 26px 30px;
+           padding:26px 30px 26px 30px;
            font-size:17px;
            font-weight: 700;
            color:$black3;
@@ -129,7 +129,7 @@
            }
          }
           td {
-            padding:26px 0 26px 40px;
+            padding:26px 30px 26px 40px;
             font-size:17px;
             color:$gray7;
             text-align: right;

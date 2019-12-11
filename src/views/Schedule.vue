@@ -20,7 +20,6 @@
     <div class="content-bottom">
       <TextBoard/>
     </div>
-    <ScheduleDetail/>
     <Footer/>
   </div>
 </template>
@@ -29,7 +28,6 @@
 import SubVisual from '@/components/SubVisual.vue'
 import NewSchedule from '@/components/NewSchedule.vue'
 import TextBoard from '@/components/TextBoard.vue'
-import ScheduleDetail from '@/components/ScheduleDetail.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
@@ -38,7 +36,6 @@ export default {
     SubVisual,
     NewSchedule,
     TextBoard,
-    ScheduleDetail,
     Footer
   },
 }
