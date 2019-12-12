@@ -123,4 +123,16 @@
      margin-top:10px;
    }
  }
+@media screen and (max-width: 750px) {
+  .material-top {
+    display:block;
+    .thumbnail {
+      width:100%;
+    }
+    .material-box {
+      width:100%;
+    }
+  }  
+}
+
 </style>

@@ -357,6 +357,33 @@
    .content-bottom  {
      padding:60px 30px;
    }
+   .select {
+     height:45px;
+     .selected {
+       padding:0 15px;
+       font-size:9px;
+       line-height:45px;
+       background-size:7px 4px;
+     }
+   }
+   .tab-section {
+     margin-bottom:20px;
+     .select {
+       max-width:80px;
+     }
+     .tabs {
+       .tab {
+         font-size:10px;
+         &.active {
+           &::after {
+             width:40px;
+             height:2px;
+             margin-left:-20px;
+           }
+         }
+       }
+     }
+   }
    .board-section {
     .list {
       li {
