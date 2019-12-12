@@ -76,10 +76,6 @@
 <style lang="scss">
 @import "@/style/_color.scss";
 @import "@/style/_mixin.scss";
-.content-top {
-  padding:110px 0 130px 0;
-  background-color:#f3f3f7;
-}
 .newSchedule {
   @include contentWidth($width:1200px);
   .list {

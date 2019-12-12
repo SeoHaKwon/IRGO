@@ -75,4 +75,40 @@
      }
    }
  }
+  @media screen and (max-width: 750px) {
+     .sub-visual-wrap {
+       .sub-visual {
+         img {
+           width:1200px;
+           margin-left:-600px;
+         }
+       }
+       .sub-info-txt {
+         padding:0 30px;
+         .sub-title {
+           padding-top:15px;
+           font-size:38px;
+           line-height:40px;
+           &::after {
+             width:25px;
+             height:2px;
+           }
+         }
+       }
+       .history {
+         .icon-home {
+            padding-right: 10px;
+            margin-right:10px;
+            line-height: 0;
+            background-size:5px auto;
+           img {
+             width:14px;
+           }
+         }
+         span {
+           font-size:12px;
+         }
+       }
+     }
+  }
 </style>

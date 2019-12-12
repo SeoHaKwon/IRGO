@@ -46,7 +46,7 @@
     top:36px;
     width:100%;
     padding:0 40px;
-    z-index: 10;
+    z-index: 11;
     .gnb {
       @include contentWidth();
       display:flex;

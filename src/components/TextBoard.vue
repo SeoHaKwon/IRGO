@@ -236,7 +236,10 @@
     background-color: $white;
     padding: 110px 0 175px 0;
 }
-
+.content-top {
+  padding:110px 0 130px 0;
+  background-color:#f3f3f7;
+}
 //board-style
 .board-section {
     @include contentWidth($width: 1200px);
