@@ -92,7 +92,7 @@ export default {
       _self.$store.dispatch('GET_CONTACT', param)
         .then(res => {
           _self.compname = res[0].COMP_NAME
-          _self.irContactData[0].info = res[0].COMP_ADDR
+          _self.irContactData[0].info = res[0].IR_ADDR
           _self.irContactData[1].info = res[0].IRO_EMAIL
           _self.irContactData[2].info = res[0].IRO_TEL
           _self.naver_url = res[0].IRPAGE_SNS_BLOG

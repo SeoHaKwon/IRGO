@@ -22,14 +22,14 @@
                     <h2 class="title">
                         {{ silj.TITLE }}
                     </h2>
-                    <div class="download" v-on:click="getFiles(silj.UPLOAD_FILE1)">
+                    <div class="download" v-on:click="getGoURL(silj.UPLOAD_FILE1, silj.SITEURL)">
                         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                           <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
                         </svg>
                     </div>
                 </div>
                 <div>
-                    <img 
+                    <img  v-if="silj.UPLOAD_THUMBNAIL"
                         width="100%"
                         :src="thumbnail"
                     />                    
@@ -45,15 +45,15 @@
                   <h2 class="title">
                       {{ silj.TITLE }}
                   </h2>
-                  <div class="download" v-on:click="getFiles(silj.UPLOAD_FILE1)">
+                  <div class="download" v-on:click="getGoURL(silj.UPLOAD_FILE1, silj.SITEURL)">
                       <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                         <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
                       </svg>
                   </div>
               </div>
                 <ul>
-                    <li v-for="(data, idx) in datas" :class="{'less-length': datas.length < 4}" v-bind:key="idx">
-                        <h5>{{ data.title }}</h5>
+                    <li v-for="(data, idx) in datas" :class="{'less-length': datas.length < 4}" v-bind:key="idx" v-on:click="getGoURL(data.UPLOAD_FILE1, data.SITEURL)">
+                        <h5>{{ data.TITLE }}</h5>
                         <h6>
                             <img
                               v-if="data.type === 'URL'"
@@ -72,7 +72,7 @@
             </div>
         </div>
       <ul class="SmallType-Performance" v-else>
-        <li v-on:click="getFiles(silj.UPLOAD_FILE1)">
+        <li v-on:click="getGoURL(silj.UPLOAD_FILE1, silj.SITEURL)">
           <h5>{{ silj.TITLE }}</h5>
           <h6>
             <a>
@@ -83,8 +83,8 @@
             </a>
           </h6>
         </li>
-        <li>
-          <h5>공정공시</h5>
+        <li v-for="item in datas" v-on:click="getGoURL(item.UPLOAD_FILE1, item.SITEURL)">
+          <h5>{{ item.TITLE }}</h5>
           <h6>
             <a>
               <svg viewBox="0 0 24 24" style="width: 24px; height: 24px;">
@@ -131,8 +131,14 @@ export default {
     ...mapGetters(['getMainColor'])
   },
   methods: {
-    getFiles (url) {
-      window.location = 'https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/' + url
+    getGoURL (pdf, url) {
+      const _self = this
+      console.log(pdf)
+      if (pdf) {
+        window.open('https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/' + pdf, '_BLANK')
+      } else if (url) {
+        window.open(url, '_BLANK')
+      }
     },
     getContents (quat, idx) {
       const _self = this
@@ -401,6 +407,7 @@ export default {
                       &.less-length {
                         padding-bottom: 16px;
                         margin-bottom: 16px;
+                        cursor:pointer;
                     }
 
                       &:last-child {

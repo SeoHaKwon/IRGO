@@ -18,7 +18,7 @@
                 <h5 class="PC" :style="{ color: mcolor }">{{ items.TOPIC_TYPE }}</h5>
                 <h4>{{ items.TITLE}}</h4>
                 <h6>
-                  <span class="mobile">{{ items.TOPIC_TYPE }}</span>
+                  <span class="mobile" :style="{ color: mcolor }">{{ items.TOPIC_TYPE }}</span>
                   {{ items.REG_DATE | v_date}}
                 </h6>
             </div>
@@ -51,15 +51,13 @@
                 />
             </div>
             <div class="modal-mobile-header">
-                <img
-                    width="32px"
-                    src="../assets/img/mobile_modal_close.png"
-                    @click="clickModal(false)"
-                />
-                <span>IR News</span>
+              <svg style="width:32px;height:32px" viewBox="0 0 24 24" v-on:click="clickModal(false)">
+                <path :fill="mcolor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+              </svg>
+              <span :style="{ color: mcolor }">IR News</span>
             </div>
             <h5 class="modal-map">Investor Relations > IR News</h5>
-            <h5 class="IR-modal-category">{{ v_TOPIC_TYPE}}</h5>
+            <h5 class="IR-modal-category" :style="{ color: mcolor }">{{ v_TOPIC_TYPE}}</h5>
             <h5 class="IR-modal-title">
                 {{ v_TITLE}}
             </h5>
@@ -242,7 +240,7 @@ export default {
                 padding-left: 20px;
 
                 & h5.PC {
-                    color: $brand-color;
+                    // color: $brand-color;
                     font-weight: bold;
                     font-size: 16px;
                 }
@@ -434,7 +432,7 @@ export default {
 
                     & h5.PC {
                         display: none;
-                        color: $brand-color;
+                        // color: $brand-color;
                         font-weight: bold;
                         font-size: 10px;
                     }
@@ -453,7 +451,7 @@ export default {
 
                         & span {
                             display: inline;
-                            color: $brand-color;
+                            // color: $brand-color;
                             font-weight: bold;
                             font-size: 10px;
                             margin-right: 10px;

@@ -98,9 +98,11 @@ export default {
               }
             })
           }
-          let q = data[i].YEAR + "." + data[i].PERIOD + "Q"
+          let q = data[i].YEAR + "." + data[i].PERIOD + 'Q'
+          //_self.changeQuarterData(data[i].YEAR, data[i].PERIOD+'Q')
           _self.silQ.push(q)
         }
+        _self.changeQuarterData(data[0].YEAR, data[0].PERIOD+'Q')
       })
     }
   }

@@ -216,6 +216,14 @@ export default new Vuex.Store({
       }
       const res = await getAPIData(param)
       return res.data
+    },
+    async GET_QRE (context, payload) {
+      let param = {
+        data: payload,
+        url: 'getQreport'
+      }
+      const res = await getAPIData(param)
+      return res.data
     }
   }
 })

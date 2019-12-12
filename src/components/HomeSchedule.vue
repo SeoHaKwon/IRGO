@@ -7,16 +7,15 @@
   		</h2>
   		<ul class="schedule-list">
   			<li v-for="(item, idx) in SCHEDULE"
-            @click="clickModal(true, idx)" v-bind:key="idx"
+            @click="clickModal(true, idx)" v-bind:key="idx" :style="{'border-left': '4px solid '+mcolor}"
   			  >
   				<div>
-  					<h4 class="item-date">{{ item.S_DATE | v_date}} {{ item.S_TIME }}</h4>
+  					<h4 class="item-date" :style="{color: mcolor}">{{ item.S_DATE | v_date}} {{ item.S_TIME }}</h4>
   					<h3 class="item-title">{{ item.TITLE }}</h3>
   				</div>
-  				<img
-  					width="11px" 
-  					src="../assets/img/schedule_arrow.png"
-  				/>
+  				<svg style="width:32px;height:32px" viewBox="0 0 24 24">
+            <path :fill="mcolor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+          </svg>
   			</li>
   		</ul>
   	</div>
@@ -34,19 +33,17 @@
   	            />
   	        </div>
   	        <div class="modal-mobile-header">
-  	        	<img
-  	        	    width="32px"
-  	        	    src="../assets/img/mobile_modal_close.png"
-  	        	    @click="clickModal(false)"
-  	        	/>
-  	        	<span>일정</span>
+              <svg style="width:32px;height:32px" viewBox="0 0 24 24" @click="clickModal(false)">
+                <path :fill="mcolor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+              </svg>
+  	        	<span :style="{color: mcolor}">일정</span>
   	        </div>
   	        <h5 class="modal-map">Investor Relations > 일정</h5>
   	        <div class="title-image">
-  	        	<img
+  	        	<!-- <img
   	        	    width="60px"
   	        	    src="../assets/img/IR_Modal_date.png"
-  	        	/>
+  	        	/> -->
   	        </div>
   	        <div class="ir-modal-title">
   	        	{{ SCHEDULE[idx].TITLE }}
@@ -98,21 +95,22 @@ export default {
         modalData: [
         	{
         		title: '일시',
-        		description: '2019년 10월 20일(화) 09:00'
+        		description: ''
         	},
         	{
         		title: '장소',
-        		description: '싱가포르'
+        		description: ''
         	},
         	{
         		title: '대상',
-        		description: '사전 신청한 기관투자자 대상'
+        		description: ''
         	}
         ],
         SCHEDULE: [],
         S_DATE: [],
         TITLE: [],
-        idx: 0
+        idx: 0,
+        mcolor: ''
       }
   },
   components: {
@@ -130,29 +128,33 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq'])
+    ...mapGetters(['getCompSeq', 'getMainColor'])
   },
   methods: {
       clickModal(isOpen, idx) {
       	const globalBody = document.getElementsByTagName('html')[0];
       	const _self = this
       	if (isOpen) {
-      		globalBody.style.overflow = 'hidden'
+          globalBody.style.overflow = 'hidden'
+          if (typeof idx) {
+            _self.idx = idx
+            const key = new Date(_self.SCHEDULE[idx].S_DATE)
+            let daty = key.getFullYear()+'년 '+(Number(key.getMonth())+1)+'월 '+key.getDate()+'일 '
+            _self.modalData[0].description = daty+ _self.SCHEDULE[idx].S_TIME
+            _self.modalData[1].description = _self.SCHEDULE[idx].PLACE
+            _self.modalData[2].description = _self.SCHEDULE[idx].ETC
+          }
       	} else {
       		globalBody.style.overflow = 'inherit'
-        }
-        if (idx) {
-          _self.idx = idx
-          const key = new Date(_self.SCHEDULE[idx].S_DATE)
-          let daty = key.getFullYear()+'년 '+(Number(key.getMonth())+1)+'월 '+key.getDate()+'일 '
-          _self.modalData[0].description = daty+ _self.SCHEDULE[idx].S_TIME
-          _self.modalData[1].description = _self.SCHEDULE[idx].PLACE
-          _self.modalData[2].description = _self.SCHEDULE[idx].ETC
         }
         this.isIRModal = isOpen
       },
   },
   watch: {
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#'+_self.getMainColor
+    },
     getCompSeq () {
       const _self = this
       const param = {

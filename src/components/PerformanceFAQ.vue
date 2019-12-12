@@ -50,12 +50,10 @@
 
             </div>
             <div class="modal-mobile-header">
-                <img
-                    width="32px"
-                    src="../assets/img/mobile_modal_close.png"
-                    @click="clickModal(false)"
-                />
-                <span>실적발표_ FAQ</span>
+              <svg style="width:32px;height:32px" viewBox="0 0 24 24" @click="clickModal(false)">
+                <path :fill="mcolor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+              </svg>
+              <span :style="{color: mcolor}">실적발표_ FAQ</span>
             </div>
             <h5 class="modal-map">Investor Relations > 실적발표(FAQ)</h5>
             <h5 class="FAQ-modal-question" v-if="faqContents[viewIdx].QUESTION">
@@ -89,7 +87,7 @@
                 </div>
             </div>
             <h5 class="FAQ-modal-anser">
-                <div class="quest-anser-icon anser">
+                <div class="quest-anser-icon anser" :style="{color: mcolor, border: '2px solid'+mcolor}">
                   A
                 </div>
                 <span class="faq-answer-title">{{faqContents[viewIdx].A_REG_DATE | v_date}}</span>
@@ -161,7 +159,8 @@ export default {
         },
         allData: [],
         ori_active: 0,
-        qtype: ''
+        qtype: '',
+        mcolor: ''
       }
   },
   components: {
@@ -206,9 +205,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq', 'getCompCode', 'getQaType'])
+    ...mapGetters(['getCompSeq', 'getCompCode', 'getQaType', 'getMainColor'])
   },
   watch: {
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#'+_self.getMainColor
+    },
     getQaType () {
       const _self = this
       _self.qtype = _self.getQaType
@@ -393,8 +396,8 @@ export default {
           align-items: center;
 
           &.anser {
-            border: 2px solid $brand-color;
-            color: $brand-color;
+            //border: 2px solid $brand-color;
+            //color: $brand-color;
           }
         }
         .faq-question-title, .faq-answer-title {

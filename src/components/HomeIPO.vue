@@ -121,7 +121,6 @@ export default {
     ...mapGetters(['getCompSeq', 'getMainColor', 'getIsIPO'])
   },
   mounted () {
-    document.getElementsByClassName('IPO-arrow')[4].innerHTML = ''
   },
   watch: {
     getIsIPO () {
@@ -179,28 +178,30 @@ export default {
         })
       this.$store.dispatch('GET_IPOJ', aram)
         .then(result => {
-          for (var key in result) {
-            if (result[key].SET_DATA_TYPE == 1) {
-              result[key].TITLE = '공모개요'
-              result[key].TYPE = 'PDF'
-            } else if (result[key].SET_DATA_TYPE == 2) {
-              result[key].TITLE = 'IR BOOK'
-              result[key].TYPE = 'PDF'
-            } else if (result[key].SET_DATA_TYPE == 3) {
-              result[key].TITLE = '웹캐스팅'
-              result[key].TYPE = 'URL'
-            } else if (result[key].SET_DATA_TYPE == 4) {
-              result[key].TITLE = '공모분석보고서'
-              result[key].TYPE = result[key].UPLOAD_FILE1.split('.')[1].toUpperCase()
-            } else if (result[key].SET_DATA_TYPE == 5) {
-              result[key].TITLE = '기업분석보고서'
-              result[key].TYPE = result[key].UPLOAD_FILE1.split('.')[1].toUpperCase()
-            } else if (result[key].SET_DATA_TYPE == 6) {
-              result[key].TITLE = '증권신고서'
-              result[key].TYPE = 'PDF'
+          if (result.length > 0) {
+            for (var key in result) {
+              if (result[key].SET_DATA_TYPE == 1) {
+                result[key].TITLE = '공모개요'
+                result[key].TYPE = 'PDF'
+              } else if (result[key].SET_DATA_TYPE == 2) {
+                result[key].TITLE = 'IR BOOK'
+                result[key].TYPE = 'PDF'
+              } else if (result[key].SET_DATA_TYPE == 3) {
+                result[key].TITLE = '웹캐스팅'
+                result[key].TYPE = 'URL'
+              } else if (result[key].SET_DATA_TYPE == 4) {
+                result[key].TITLE = '공모분석보고서'
+                result[key].TYPE = (result[key].UPLOAD_FILE1).split('.')[1].toUpperCase()
+              } else if (result[key].SET_DATA_TYPE == 5) {
+                result[key].TITLE = '기업분석보고서'
+                result[key].TYPE = (result[key].UPLOAD_FILE1).split('.')[1].toUpperCase()
+              } else if (result[key].SET_DATA_TYPE == 6) {
+                result[key].TITLE = '증권신고서'
+                result[key].TYPE = 'PDF'
+              }
             }
+            _self.IPOList = result
           }
-          _self.IPOList = result
         })
     }
   }
