@@ -344,4 +344,51 @@
         }
     }
 }
+ @media screen and (max-width: 750px) {
+   .sub-wrap {
+     .title-wrap {
+       margin-bottom:25px;
+       strong {
+         font-size:20px;
+       }
+     }
+   }
+   .content-top,
+   .content-bottom  {
+     padding:60px 30px;
+   }
+   .board-section {
+    .list {
+      li {
+        display:block;
+        padding:26px 15px;
+        .board-title {
+          display:inline-block;
+          width:100%;
+          margin-bottom:6px;
+          font-size:14px;
+          line-height:18px;
+        }
+        .day {
+          font-size:11px;
+        }
+        .link {
+          right:20px;
+        }
+      }
+    }
+   }
+   .btn-wrap {
+     margin-top:30px;
+     .btn_more {
+       width:150px;
+        padding:12px 0;
+       span {
+         padding-right:14px;
+         font-size:12px;
+         background-size:8px auto;
+       }
+     }
+   }
+ }
 </style>

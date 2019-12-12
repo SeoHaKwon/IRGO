@@ -174,6 +174,46 @@
     }
   }
 }
+@media screen and (max-width: 750px) { 
+  .newSchedule {
+    .list {
+      li {
+        display:block;
+        padding:44px 35px;
+      }
+      .direct {
+        right:35px;
+        top:44px;
+      }
+    }
+    .info-wrap {
+      .title {
+        margin-top:45px;
+        font-size:14px;
+        .file  {
+          display:none;
+        }
+      }
+      dl {
+        dt {
+          font-size:10px;
+        }
+        dd {
+          margin-left:12px;
+          font-size:10px;
+        }
+      }
+    }
+    .date-wrap {
+      .day {
+        font-size:19px;
+      }
+      .time {
+        margin-top:10px;
+      }
+    }
+  }
+}
 </style>
 
 
