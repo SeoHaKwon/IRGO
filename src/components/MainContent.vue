@@ -33,7 +33,7 @@
     <div class="middle-visual">
       <img src="../assets/images/img/img_main_middle.png" alt="">
       <div class="schedule-box">
-        <strong class="tit">IR 일정 <a href="" class="more"></a></strong>
+        <strong class="tit">IR 일정 <a href="" class="more is_pc"></a></strong>
         <div class="sub-txt">
           <strong>웅진코웨이,2019년 3분기 실적 리뷰...</strong>
           <p>일시:2019년 9월 12일</p>
@@ -239,5 +239,116 @@
       }
     }
   }
-  
+  @media screen and (max-width: 750px) {
+    .main-contents  {
+      .board-wrap {
+        padding:0;
+        flex-wrap: wrap;
+        .board {
+          width:100%;
+          padding:40px 30px;
+          &.left {
+            background-color:#f7f7f8;
+          }
+          & +.board {
+            margin-left:0;
+          }
+          .board-title {
+            font-size:19px;
+            line-height:20px;
+            p {
+              margin-top:10px;
+              font-size:12px;
+            }
+          }
+        }
+        .sub-txt {
+          margin-top:30px;
+          .sub-tit {
+            font-size:12px;
+          }
+          .date{
+            margin-top:7px;
+            font-size:10px;
+          }
+        }
+      }
+      .more {
+        width:25px;
+        height:25px;
+        background-size:25px auto;
+      }
+      .middle-visual {
+        img {
+          width:1047px;
+        }
+        .schedule-box{
+          width:calc(100% - 60px);
+          height:calc(100% - 160px);
+          padding:40px 30px;
+          left:30px;
+          top:80px;
+          right: auto;
+          transform: none;
+          background-size:140px auto;
+          .tit {
+            margin-bottom:36px;
+            font-size:17px;
+            align-items: center;
+          }
+          .sub-txt {
+            padding-top:0;
+            padding-left:87px;
+            background-size:35px auto;
+            background-position:left 40px center;
+            strong {
+              display:inline-block;
+              font-size:12px;
+              line-height:14px;
+            }
+            p {
+              margin-top:2px;
+              font-size:12px;
+            }
+          }
+          .more {
+            width:3px;
+            height:6px;
+            margin-left:9px;
+            @include bgImg(btn/btn_board_more_m);
+            background-size:3px 6px;
+          }
+        }
+      }
+      .direct-link {
+        padding:50px 30px;
+        ul {
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-left:-20px;
+          margin-top:-45px;
+          li {
+            width:calc(33.33% - 20px);
+            margin-left:20px;
+            margin-top:45px;
+            &:nth-child(3) ~ li{
+              display:inline-block;
+                width:auto;
+            }
+            a {
+              padding-left:37px;
+              background-size:30px auto;
+            }
+            strong {
+              font-size:11px;
+            }
+            p {
+              margin-top:0;
+              font-size:9px;
+            }
+          }
+        }
+      }
+    }
+  }
 </style>

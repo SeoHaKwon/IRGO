@@ -19,7 +19,7 @@
             <dd>1,800억</dd>
           </dl>
         </div>
-        <div class="icon-scroll en">
+        <div class="icon-scroll en is_pc">
           Scroll Down
         </div>
         <strong class="en visual-title">
@@ -132,12 +132,22 @@
   }
   @media screen and (max-width: 750px) {
     .main-visual {
-      padding-top:163px;
+      padding:163px 30px 0 30px;
       .visual-text {
+        .visual-title {
+          padding-top:17px;
+          font-size:38px;
+          line-height: 44px;
+          &::after {
+            width:14px;
+            height:2px;
+          }
+        }
         .inner {
           display:block;
           .status-info {
             position: static;
+            margin-bottom:100px;
             .price {
               padding-top:16px;
               text-align: left;
@@ -156,15 +166,22 @@
               }
             }
             dl {
+              display:flex;
+              padding-right:0;
               dt {
+                flex:0 0 60px;
                 font-size:11px;
                 line-height:12px;
                 color:#fff;
                 text-align: left;
               }
               dd {
+                position:static;
                 font-size:11px;
                 line-height:12px;
+                &.up {
+                  background-size:auto 12px;
+                }
               }
             }
           }

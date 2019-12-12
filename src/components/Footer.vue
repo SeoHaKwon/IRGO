@@ -62,4 +62,42 @@
      color:#b3b3b3;
    }
  }
+ @media screen and (max-width: 750px) {
+   .footer-wrap {
+     padding:40px 0 44px 0;
+     .footer {
+       .logo {
+         padding-bottom:16px;
+         margin-bottom:14px;
+       }
+     }
+     .foot-info {
+       margin-top:-10px;
+       justify-content: center;
+       flex-wrap: wrap;
+       li {
+         flex: 0 1 auto;
+         margin-top:10px;
+         &:nth-child(4){
+           border-left:none;
+         }
+         span {
+           font-size:9px;
+           &+ span {
+             margin-left:2px;
+           }
+         }
+         & +li {
+           margin-left:4px;
+           padding-left:4px;
+         }
+       }
+     }
+     .copy {
+       margin-top:10px;
+       font-size:9px;
+     }
+   }
+ }
+
 </style>

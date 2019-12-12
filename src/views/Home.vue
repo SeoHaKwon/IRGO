@@ -25,6 +25,7 @@ export default {
     padding:0 40px;
     min-height:100%;
     background-color:#040713;
+    overflow: hidden;
       &::after {
         display:block;
         position:absolute;
@@ -41,5 +42,9 @@ export default {
         content:"";
       }
   }
-
+@media screen and (max-width: 750px) {
+  .main-wrap {
+    padding:0;
+  }
+}
 </style>
