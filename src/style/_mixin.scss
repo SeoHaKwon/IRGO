@@ -20,10 +20,24 @@
 @mixin shadow(){
     box-shadow: 3px 3px 14px 10px #e2e2e6
 }
-@mixin textHidden {
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    word-wrap:normal;
-    width:100%;
-    overflow:hidden;
+@mixin textHidden($line :2) {
+    display: inline-block; width: 100%;
+     white-space: nowrap;
+     overflow: hidden; 
+     text-overflow: ellipsis; 
+     white-space: normal; 
+     line-height: 1.2; 
+     height: 2.6em; 
+     text-align: left; 
+     word-wrap: break-word; display: -webkit-box; 
+     -webkit-line-clamp: $line;
+      -webkit-box-orient: vertical;
+      @if $line = 3{
+        height: 3.6em;
+        
+      }@else if $line = 4{
+        height: 4.6em; 
+      }
+
 }
+

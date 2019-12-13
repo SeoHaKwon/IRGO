@@ -80,8 +80,7 @@
         .news-txt {
           padding:60px 40px 20px 40px;
           .txt {
-            height:75px;
-            overflow: hidden;
+           @include textHidden($line:3);
           }
         }
       }
@@ -110,6 +109,7 @@
         line-height:25px;
         color:$black3;
         font-weight: 500;
+        @include textHidden();
       }
       .date {
         display:inline-block;
@@ -132,9 +132,9 @@
       position:relative;
       padding:22px 40px 0 40px;
       font-size:17px;
-      line-height:32px;
       color:$gray8;
       letter-spacing: -0.25px;
+      @include textHidden($line:3);
       &::after {
         @include virtual;
         left:40px;
