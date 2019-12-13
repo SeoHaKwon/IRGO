@@ -388,6 +388,7 @@
       li {
         display: block;
         padding: 26px 15px;
+        cursor: pointer;
         .board-title {
           display: inline-block;
           width: 100%;
@@ -400,12 +401,7 @@
           font-size: 11px;
         }
         .link {
-          width:100%;
-          height:100%;
-          left:0;
-          top:0;
-          background:none;
-          transform:none;
+          display:none;
         }
       }
       &.qa {
