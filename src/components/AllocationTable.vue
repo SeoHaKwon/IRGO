@@ -8,10 +8,10 @@
         <colgroup>
           <col style="width:190px">
           <col style="auto">
-          <col style="width:186px">
-          <col style="width:186px">
-          <col style="width:186px">
-          <col style="width:70px" class="is_pc">
+          <col style="max-width:186px">
+          <col style="max-width:186px">
+          <col style="max-width:186px">
+          <col style="max-width:70px" class="is_pc">
         </colgroup>
         <thead>
           <tr>
@@ -159,6 +159,47 @@
        margin-top:-4px;
        color:$gray8;
      }
+   }
+ }
+ @media screen and (max-width: 1000px) {
+   .table-wrap  {
+     .table {
+       thead {
+         tr {
+           th {
+             padding:20px 0 20px 4px;
+             font-size:11px;
+           }
+          &:last-child{
+            th {
+              padding-right:4px;
+            }
+          }
+         }
+       }
+       tbody {
+         tr {
+           th {
+              padding:20px 0 20px 4px;
+              font-size:11px;
+           }
+           td {
+             font-size:11px;
+             padding:20px 0 20px 4px;
+             width:60px;
+           }
+         }
+          &:last-child{
+            th,td {
+              padding-right:4px;
+            }
+          }
+       }
+     }
+    .noti {
+      font-size:11px;
+      margin-top:10px;
+      }
    }
  }
 </style>

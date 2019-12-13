@@ -3,14 +3,14 @@
     <div class="title-wrap"><strong>주주구성</strong></div>
     <div class="table-wrap">
        <div class="chart-wrap">
-        <img src="../assets/images/img/img_chart.png" alt="">
+        <img src="../assets/images/img/img_chart.png" alt="" style="width:100%;">
       </div>
         <div class="table">
           <table>
             <colgroup>
               <col style="auto">
-              <col style="width:150px">
-              <col style="width:120px">
+              <col style="max-width:150px">
+              <col style="max-width:120px">
             </colgroup>
             <thead>
               <tr>
@@ -73,11 +73,12 @@
   .table-wrap {
     display:flex;
     flex-wrap: wrap;
-    .chart-wrap,.table> {
+    .chart-wrap,.table {
       width:calc(50% - 20px);
     }
     .chart-wrap {
       margin-right:40px;
+
     }
     .table {
       tbody {
@@ -119,6 +120,63 @@
         font-weight: 500;
         text-align: right;
         border-top:1px solid #dddddd;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1000px) {
+  .shareholder-wrap  {
+    .table-wrap {
+      .chart-wrap,.table {
+        width:100%;
+      }
+      .chart-wrap {
+        margin-bottom:45px;
+        margin-right:0;
+      }
+    .table {
+      thead {
+        tr {
+            th{
+              &:first-child {
+                padding-left:17px;
+              }
+              &:last-child {
+                padding-right:17px;
+              }
+            }
+          }
+        }
+      tbody {
+        tr {
+          &:first-child {
+            td,th {
+              padding-top:26px;
+            }
+          }
+          &:last-child {
+            th,td {
+              padding-bottom:30px;
+            }
+          }
+        th,td{
+            &:first-child {
+              padding-left:17px;
+            }
+            &:last-child {
+              padding-right:17px;
+            }
+          }
+        }
+      }
+      tfoot {
+        tr {
+          th,td {
+            padding:17px;
+            font-size:13px;
+          }
+        }
+      }
       }
     }
   }

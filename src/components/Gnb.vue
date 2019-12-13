@@ -7,15 +7,21 @@
             <img src="../assets/images/logo/logo_main.png" alt="">
           </router-link>
         </h1>
-        <div class="menu">
-          <router-link to="/schedule">IR 일정</router-link>
-          <router-link to="/announcement">실적발표</router-link>
-          <router-link to="/news">IR News</router-link>
-          <router-link to="/financial">재무정보</router-link>
-          <router-link to="/status">주주현황</router-link>
-          <router-link to="/disclosure">공시</router-link>
-          <router-link to="/report">경영보고서</router-link>
-          <router-link to="/contact">IR Contact</router-link>
+        <div class="menu" :class="{active:isActive}"> 
+          <h1 class="logo is_mobile">
+            <router-link to="/">
+              <img src="../assets/images/logo/logo_menu.png" alt="">
+            </router-link>
+          </h1>
+          <router-link to="/schedule" v-on:click="openMenu"> IR 일정</router-link>
+          <router-link to="/announcement" >실적발표</router-link>
+          <router-link to="/news" >IR News</router-link>
+          <router-link to="/financial" >재무정보</router-link>
+          <router-link to="/status" >주주현황</router-link>
+          <router-link to="/disclosure" >공시</router-link>
+          <router-link to="/report" >경영보고서</router-link>
+          <router-link to="/contact" >IR Contact</router-link>
+          <button tpye="button" class="close is_mobile" v-on:click="openMenu"></button>
         </div>
         <div class="app">
           <a href="#">
@@ -24,7 +30,7 @@
           <a href="#">
             <img src="../assets/images/icon/googlePlay.png" alt="">
           </a>
-        <a href="#" class="btn-menu is-mobile"></a>
+        <button type="butotn" class="btn-menu is-mobile" v-on:click="openMenu"></button>
         </div>
       </div>
     </div>
@@ -33,7 +39,18 @@
 </template>
 
 <script>
-
+  export default {
+    data : () => {
+      return {
+        isActive : false,
+      }
+    },
+    methods:{
+      openMenu(){
+        this.isActive = !this.isActive;
+      }
+    }
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -79,15 +96,74 @@
       }
     }
   }
-
+@media screen and (max-width: 1400px) {
+  .gnb-wrap {
+    .menu {
+      a {
+        & + a {
+          margin-left:45px;
+        }
+      }
+    }
+  }
+}
 @media screen and (max-width: 1000px) {
     .gnb-wrap {
       top:30px;
       padding:0 30px;
       .menu {
-        display:none;
+        display:flex;
+        flex-direction: column;
+        position:fixed;
+        left:-100%;
+        top:0;
+        width:100%;
+        height:100%;
+        padding:26px 90px;
+        justify-content: center;
+        background-color:#fff;
+        z-index: 300;
+        transition:all .5s;
         &.active {
-          display:flex;
+          left:0;
+        }
+        .logo {
+          position:absolute;
+          width:100%;
+          top:28px;
+          left:50%;
+          transform: translateX(-50%);
+          margin-right:0;
+          a {
+            display:block;
+            width:100%;
+            text-align: center;
+          }
+          img {
+            width:auto;
+            height:15px;
+          }
+        }
+        a {
+          color:#333;
+          font-size:17px;
+          text-align: center;
+          & + a {
+            padding-top:25px;
+            margin-top:25px;
+            border-top:1px solid #e4e4e4;
+            margin-left:0;
+          }
+        }
+        .close {
+          position:absolute;
+          right:30px;
+          top:30px;
+          width:20px;
+          height:20px;
+          @include bgImg(btn/btn_close_menu);
+          background-color:transparent;
+          background-size:cover;
         }
       }
       .app {
@@ -97,15 +173,14 @@
         .btn-menu {
           width:23px;
           height:19px;
+          margin-left:22px;
+          background-color: transparent;
           @include bgImg(btn/btn_m_menu);
           background-size:cover;
         }
         a {
           & + a {
             margin-left:25px;
-          }
-          &.btn-menu {
-            margin-left:22px;
           }
         }
       }

@@ -77,4 +77,15 @@
       }
     }
   }
+  @media screen and (max-width: 1000px) {
+    .question-title  {
+      p {
+        padding:57px 35px;
+        font-size:15px;
+        line-height:20px;
+        background-size:16.5px 17.5px;
+        background-position:left top 60px;
+      }
+    }
+  }
 </style>

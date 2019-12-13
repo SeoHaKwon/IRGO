@@ -174,7 +174,7 @@
     }
   }
 }
-@media screen and (max-width: 750px) { 
+@media screen and (max-width: 1000px) { 
   .newSchedule {
     .list {
       li {

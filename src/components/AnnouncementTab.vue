@@ -123,14 +123,43 @@
      margin-top:10px;
    }
  }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1000px) {
   .material-top {
     display:block;
     .thumbnail {
-      width:100%;
-    }
+      width: 100%;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      img {
+        position: relative;
+        left: 50%;
+        min-width: 300px;
+        width: 100%;
+        transform: translateX(-50%);
+        margin-left:0;
+        }
+      }
     .material-box {
       width:100%;
+      padding:30px 35px;
+      background-size:100px auto;
+      .date {
+        font-size:11px;
+      }
+      .title {
+        margin-top:6px;
+        font-size:17px;
+      }
+      .info {
+        background:none;
+      }
+      .icon-file {
+        line-height:14px;
+        font-size:10px;
+        margin-top:36px;
+        background-size:16.5px 18px;
+      }
     }
   }  
 }

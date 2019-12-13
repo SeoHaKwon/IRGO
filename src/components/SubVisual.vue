@@ -86,12 +86,22 @@
        .sub-info-txt {
          padding:0 30px;
          .sub-title {
+           align-items: flex-start;
+           flex-direction: column;
            padding-top:15px;
            font-size:38px;
            line-height:40px;
            &::after {
              width:25px;
              height:2px;
+           }
+           span {
+             padding-left:15px;
+             margin-top:18px;
+             margin-left:0;
+             font-size:17px;
+             line-height:18px;
+             background-size:4px 8px;
            }
          }
        }

@@ -20,3 +20,10 @@
 @mixin shadow(){
     box-shadow: 3px 3px 14px 10px #e2e2e6
 }
+@mixin textHidden {
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    word-wrap:normal;
+    width:100%;
+    overflow:hidden;
+}

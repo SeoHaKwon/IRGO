@@ -358,6 +358,12 @@
       background-size: 7px 4px;
     }
   }
+  .icon-file {
+    padding-right:23px;
+    font-size:12px;
+    line-height:19px;
+    background-size:16.5px 19px;
+  }
   .tab-section {
     margin-bottom: 20px;
     .select {
@@ -409,6 +415,17 @@
             background-size:16px auto;
             background-position:left top 2px;
           }
+        }
+      }
+    }
+  }
+  .material-list  {
+    .material {
+      .link{
+        &.mov {
+          padding-right:15px;
+          font-size:8px;
+          background-size:10px 13.5px;
         }
       }
     }

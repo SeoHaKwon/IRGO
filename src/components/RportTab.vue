@@ -162,9 +162,9 @@ export default {
         background-size: cover;
       }
     }
-  }
-  & + .tab-section {
-    margin-top: 54px;
+    & + .tab-section {
+      margin-top: 54px;
+    }
   }
   .material-list {
     .material {

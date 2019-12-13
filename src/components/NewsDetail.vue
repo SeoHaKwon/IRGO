@@ -32,8 +32,9 @@
         <div class="link-box prev">
           <span>이전글</span>
           <div>
-            <strong class="catagory">R자료</strong>
+            <strong class="catagory">IR자료</strong>
             <p>SAMSUNG, 회사실적, 전략, 업황 등 주요경영현황(유럽)</p>
+            <span class="date is_mobile">19. 11. 22</span>
           </div>
           <a href="#" class="link"></a>
         </div>
@@ -42,6 +43,7 @@
           <div>
             <strong class="catagory">보도자료</strong>
             <p>SAMSUNG, IR Forum</p>
+            <span class="date is_mobile">19. 11. 22</span>
           </div>
           <a href="#" class="link"></a>
         </div>

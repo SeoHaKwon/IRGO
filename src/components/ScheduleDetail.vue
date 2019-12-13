@@ -170,6 +170,7 @@
             font-size:20px;
             line-height:26px;
             color:$gray8;
+            flex: 0 0 auto;
           }
           p {
             position:relative;
@@ -281,7 +282,7 @@
         font-weight: 500;
       }
       .desc {
-        &.desc {
+        & +.desc {
           margin-top:14px;
         }
       }
@@ -322,6 +323,199 @@
           color:$blue;
           &::after {
             background-color:$blue;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .detail-section {
+    padding-bottom:100px;
+    }
+    .detail-title {
+      padding:65px 0;
+      p {
+        padding:36px 0 0;
+        font-size:18px;
+        text-align: center;
+        background-size:36px 28px;
+        background-position:center top;
+      }
+      & + .datail-inner {
+        padding:0 30px;
+      }
+    }
+    .datail-inner {
+      .top-section {
+        flex-direction: column;
+        align-items: center;
+        margin:15px 0 0; 
+        .files {
+          width:100%;
+          justify-content: center;
+          padding-bottom:15px;
+          margin-bottom:10px;
+          border-bottom:1px solid #eee;
+          dt {
+            font-size:12px;
+            padding-right: 10px;
+            margin-right:10px;
+          }
+          .icon-file {
+            padding:0 28px 0 23px;
+            .file-down  {
+              width:17px;
+              height:17px;
+              background-size: 17px 17px;
+            }
+          }
+        }
+        .sns-group {
+          margin-left:0;
+          margin-bottom:85px;
+          a {
+            width:26px;
+            height:26px;
+            background-size:cover;
+            & + a {
+              margin-left:17px;
+            }
+          }
+        }
+        &.type01 {
+          margin-bottom:0;
+        }
+      }
+      .detail-cont {
+        margin-bottom:50px;
+        .list {
+          padding:44px 35px;
+          li {
+            .tit {
+              font-size:13px;
+              line-height:20px;
+            }
+            p {
+              margin-left:15px;
+              padding-left:0;
+              font-size:13px;
+              line-height:20px;
+              &.time {
+                font-size:16px;
+                span {
+                  margin-left:9px;
+                  line-height: 20px;
+                  font-size:10px;
+                }
+              }
+              &::after {
+                display:none;
+              }
+            }
+            & + li {
+              margin-top:15px;
+              padding-top:15px;
+            }
+          }
+        }
+        .pic {
+          position:relative;
+          left:15px;
+          width:calc(100% - 30px);
+          padding:0 0 15px 0 ;
+          img {
+            width:370px;
+            margin-left:-185px;
+          }
+        }
+      }
+      .conference-wrap {
+        margin-top:64px;
+        .conference-tit {
+        font-size:14px;
+        }
+        .desc {
+          font-size:14px;
+          & + {
+            margin-top:10px;
+          }
+        }
+      }
+      .answer-section {
+        padding-left:35px;
+        background-size:16px 14px;
+        .tit {
+          font-size:14px;
+        }
+      }
+      .list-btn {
+        margin-top:85px;
+        .link-box {
+          padding-right:0;
+          padding:27px 0;
+          height:auto;
+          .catagory {
+            font-size:11px;
+          }
+          >div {
+            width:calc(100% - 35px);
+            .date {
+              width:100%;
+              padding:0;
+              margin-top:10px;
+              text-align: left;
+            }
+          }
+          p {
+            @include textHidden();
+            font-size:13px;
+            line-height:14px;
+          }
+          span {
+            width:35px;
+            font-size:9px;
+            background-size:5px 2.5px;
+          }
+          &.prev {
+            >span {
+              padding-top:9px;
+            }
+          }
+          &.next {
+            >span {
+              padding-bottom:9px;
+            }
+          }
+          .link {
+            width:100%;
+            height:100%;
+            background:none;
+            left:0;
+            top:0;
+            transform: none;
+          }
+        }
+      }
+      .box-link {
+        &.site-link {
+          width:126px;
+          padding:15px;
+          margin-top: 40px;
+          span {
+            display:block;
+            font-size:11px;
+          }
+        }
+        &.back {
+          width:80px;
+          padding:14px 15px;
+          span {
+            display:block;
+            font-size:11px;
+            &::after {
+              width:8px;
+              height:2px;
+            }
           }
         }
       }

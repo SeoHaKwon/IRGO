@@ -246,4 +246,25 @@
     }
   }
 }
+@media screen and (max-width: 1000px) {
+  .detail-section {
+    .news-title {
+      .news-txt {
+        padding:58px 0;
+        .category {
+          margin-bottom:5px;
+          font-size:12px;
+        }
+        p {
+          padding-right:0;
+          font-size:17px;
+          line-height:27px;
+          .date {
+            display:none;
+          }
+        }
+      }
+    }
+  }
+}
 </style>
