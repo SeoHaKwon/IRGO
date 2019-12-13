@@ -180,7 +180,8 @@ export default {
   .contant-wrap {
     .company-info {
       padding: 50px 30px;
-      p {
+      p.email,
+      p.call,p {
         width: 100%;
         padding-left: 25px;
         font-size: 13px;
@@ -255,7 +256,7 @@ export default {
       }
       & + .app-box {
         margin-left: 0;
-        border-top: 1px solid #e5e5e5;
+        border-top:none;
       }
     }
   }

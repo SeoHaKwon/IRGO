@@ -80,7 +80,7 @@
     }
   }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1000px) {
     .gnb-wrap {
       top:30px;
       padding:0 30px;

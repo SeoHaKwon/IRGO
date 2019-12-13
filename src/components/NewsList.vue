@@ -145,4 +145,105 @@
     }
   }
 }
+@media screen and (max-width: 1000px) {
+  .news-wrap {
+    .list {
+      display:block;
+      @include shadow();
+      li {
+        display:flex;
+        width:100%;
+        box-shadow: none;
+        & + li {
+          margin-left:0;
+          margin-top:2px;
+        }
+        >div {
+          width:50%;
+          &.news-txt  {
+            padding:36px 20px;
+            .category {
+              font-size:10px;
+            }
+            .txt {
+              height:48px;
+              overflow: hidden;
+              margin-top:5px;
+              font-size:13px;
+              line-height:16px;
+            }
+            .date {
+              margin-top:15px;
+              font-size:10px;
+            }
+            .link {
+              right:20px;
+              bottom:40px;
+              width:22px;
+              height:10.5px;
+              background-size:12px 10px;
+            }
+          }
+          &.new-img {
+            max-width:270px;
+            img {
+              width:270px;
+              margin-left:-135px;
+            }
+          }
+        }
+        &.text-box {
+          .news-bottom-txt {
+            display:none;
+          }
+          .news-txt {
+            width:100%;
+            padding:33px 20px;
+            .txt {
+              height:34px;
+            }
+            .date {
+              margin-top:23px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .board-section {
+    .thumbnail.list {
+    li {
+      padding-left:110px;
+      .thumbnail-img {
+        position:absolute;
+        left:20px;
+        top:50%;
+        transform: translateY(-50%);
+        img {
+          width:75px;
+          height:55px;
+          }
+        }
+        .thumbnail-txt{
+          margin-bottom:6px;
+          .category {
+            font-size:11px;
+            margin-bottom:6px;
+          }
+          .board-title {
+            max-height:36px;
+            overflow: hidden;
+            margin-bottom:0;
+          }
+        }
+        .day {
+          display:inline-block;
+        }
+        &.txt {
+          padding-left:20px;
+        }
+      }
+    }
+  }
+}
 </style>

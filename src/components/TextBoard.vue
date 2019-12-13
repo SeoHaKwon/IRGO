@@ -390,10 +390,25 @@
           line-height: 18px;
         }
         .day {
+          display:block;
           font-size: 11px;
         }
         .link {
-          right: 20px;
+          width:100%;
+          height:100%;
+          left:0;
+          top:0;
+          background:none;
+          transform:none;
+        }
+      }
+      &.qa {
+        li {
+          .board-title {
+            padding-left:28px;
+            background-size:16px auto;
+            background-position:left top 2px;
+          }
         }
       }
     }

@@ -40,7 +40,7 @@
           <span class="day">19. 10. 20</span>
           <a href="" class="link"></a>
         </li>
-        <li>
+        <li class="txt">
           <div class="thumbnail-txt">
             <p class="category">주주서한</p>
             <strong class="board-title">
@@ -50,7 +50,7 @@
           <span class="day">19. 10. 22</span>
           <a href="" class="link"></a>
         </li>
-        <li>
+        <li class="txt">
           <div class="thumbnail-txt">
             <p class="category">국내</p>
             <strong class="board-title">
@@ -73,7 +73,7 @@
           <span class="day">19. 10. 10</span>
           <a href="" class="link"></a>
         </li>
-        <li>
+        <li class="txt">
           <div class="thumbnail-txt">
             <p class="category">주주서한</p>
             <strong class="board-title">
