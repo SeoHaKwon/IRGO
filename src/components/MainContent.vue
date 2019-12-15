@@ -211,17 +211,18 @@
   .direct-link {
     padding:122px 100px 120px 100px;
     background-color:$white;
+    text-align:center;
     ul {
       display:flex;
       li {
         width:calc(100%/5);
         a {
           display:block;
-          padding:8px 0 10px 110px;
+          padding:80px 10px 10px 10px;
           $total: 5;
           @for $i from 1 through $total {
             &.link0#{$i} {
-              @include bgImg(icon/icon_link0#{$i}, $pos:left center);
+              @include bgImg(icon/icon_link0#{$i}, $pos:top center);
             }
           }
         }
@@ -245,7 +246,8 @@
       ul {
         li {
           a {
-            padding-left:86px;
+            // padding-left:86px;
+            padding-top: 80px;
           }
           strong {
             font-size:18px;
@@ -352,10 +354,11 @@
           margin-top:45px;
           &:nth-child(3) ~ li{
             display:inline-block;
-              width:auto;
+              // width:auto;
           }
           a {
-            padding-left:37px;
+            // padding-left:37px;
+            padding-top:40px;
             background-size:30px auto;
           }
           strong {

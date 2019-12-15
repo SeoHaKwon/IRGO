@@ -130,6 +130,17 @@
       }
     }
   }
+  @media screen and (max-width: 1300px) {
+    .main-visual {
+      .visual-text {
+        .inner {
+          .icon-scroll {
+            display: none;
+          }
+        }
+      }
+    }
+  }
   @media screen and (max-width: 1000px) {
     .main-visual {
       padding:163px 30px 0 30px;

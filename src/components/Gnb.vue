@@ -101,13 +101,21 @@
     .menu {
       a {
         & + a {
-          margin-left:45px;
+          margin-left:30px;
         }
       }
     }
   }
 }
+@media screen and (max-width: 1300px) {
+  #app > div > div.gnb-wrap > div > div.app {
+    display: none;
+  }
+}
 @media screen and (max-width: 1000px) {
+  #app > div > div.gnb-wrap > div > div.app {
+    display: flex;
+  }
     .gnb-wrap {
       top:30px;
       padding:0 30px;
