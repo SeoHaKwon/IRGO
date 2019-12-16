@@ -93,7 +93,7 @@
  .table-wrap {
    @include contentWidth($width:1200px);
    .table {
-     border-top:3px solid $black;
+     border-top:2px solid $black;
      border-bottom:1px solid #e9e9e9;
      .textLeft {
        text-align: left;

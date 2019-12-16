@@ -87,7 +87,7 @@ export default {
     width: calc(50% - 5px);
     padding: 66px 60px;
     border: 1px solid #e5e5e5;
-    border-top: 3px solid $black;
+    border-top: 2px solid $black;
     & + .app-box {
       margin-left: 10px;
     }
@@ -132,7 +132,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     padding: 90px 100px;
-    border-top: 3px solid $black;
+    border-top: 2px solid $black;
     background-color: $white;
     @include shadow();
     p {
@@ -160,7 +160,7 @@ export default {
     padding: 66px 0;
     justify-content: center;
     border: 1px solid #e5e5e5;
-    border-top: 3px solid $black;
+    border-top: 2px solid $black;
     a {
       display: inline-block;
       width: 60px;
