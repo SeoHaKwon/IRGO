@@ -142,6 +142,8 @@
         font-size:18px;
         color:$black4;
         font-weight: 700;
+        @include textHidden(1);
+        text-align: right;
       }
       .date {
         margin-top:16px;
@@ -190,6 +192,7 @@
           font-size:18px;
           color:$black4;
           font-weight: 700;
+          @include textHidden(1);
         }
         p {
           margin-top:18px;

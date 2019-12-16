@@ -95,6 +95,40 @@
         margin-left:37px;
       }
     }
+    &.type01 {
+      .gnb {
+        height:68px;
+        background-color:$white;
+      }
+      .menu {
+        a {
+          color:#535559;
+          font-size:16px;
+          font-weight: 500;
+          & + a {
+            position:relative;
+            padding-left:35px;
+            margin-left:35px;
+            &::after {
+              @include virtual();
+              background-color:#e0e0e0;
+              top:50%;
+              right:auto;
+              left:0;
+              width:1px;
+              height:10px;
+              transform: translateY(-50%);
+            }
+          }
+        }
+      }
+      .app {
+        height:68px;
+        margin-left:38px;
+        background-color:#bdc0ca;
+        border:none;
+      }
+    }
   }
 @media screen and (max-width: 1400px) {
   .gnb-wrap {
@@ -102,6 +136,19 @@
       a {
         & + a {
           margin-left:30px;
+        }
+      }
+    }
+    &.type01 {
+      .gnb {
+        padding:0 20px;
+      }
+      .menu {
+        a {
+          & +a {
+            margin-left:15px;
+            padding-left:15px;
+          }
         }
       }
     }
