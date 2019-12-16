@@ -354,12 +354,11 @@
       .top-section {
         flex-direction: column;
         align-items: center;
-        margin:15px 0 0; 
+        margin:15px 0 30px; 
         .files {
           width:100%;
           justify-content: center;
           padding-bottom:15px;
-          margin-bottom:10px;
           border-bottom:1px solid #eee;
           dt {
             font-size:12px;
@@ -476,10 +475,10 @@
             @include textHidden();
             font-size:13px;
             line-height:1.4;
-            padding-left:10px;
           }
           span {
             width:35px;
+            margin-right:10px;
             font-size:9px;
             background-size:5px 2.5px;
           }

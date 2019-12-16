@@ -135,6 +135,7 @@
         margin-right:0;
       }
     .table {
+      border-top-width: 2px;
       thead {
         tr {
             th{
@@ -172,8 +173,14 @@
       tfoot {
         tr {
           th,td {
-            padding:17px;
             font-size:13px;
+            padding:17px 0;
+            &:first-child {
+              padding-left:17px;
+            }
+            &:last-child {
+              padding-right:17px;
+            }
           }
         }
       }

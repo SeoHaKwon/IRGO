@@ -164,6 +164,7 @@
  @media screen and (max-width: 1000px) {
    .table-wrap  {
      .table {
+       border-top-width: 2px;
        thead {
          tr {
            th {

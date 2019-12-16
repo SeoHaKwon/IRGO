@@ -180,6 +180,7 @@ export default {
   .contant-wrap {
     .company-info {
       padding: 50px 30px;
+      border-top-width: 2px;
       p.email,
       p.call,p {
         width: 100%;
@@ -214,6 +215,7 @@ export default {
       padding: 10px 0 45px 0;
       justify-content: cener;
       flex-wrap: wrap;
+      border-top-width: 2px;
       a {
         width: 33.33%;
         margin-top: 35px;
@@ -235,7 +237,7 @@ export default {
     .app-box {
       width: 100%;
       padding: 30px;
-      border-top-width: 1px;
+      border-top-width: 2px;
       .txt-box {
         padding-left: 40px;
         background-size: auto 25px;
