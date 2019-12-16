@@ -2,10 +2,16 @@
   <div class="announcement-Tab">
     <div class="tab-section">
       <div class="select">
-        <span class="selected">2019</span>
-        <ul class="select-list">
+        <span class="selected" v-on:click="openSelect">2019</span>
+        <ul class="select-list" :class="{on:isActive}">
           <li>
             <a href="#">2019</a>
+          </li>
+            <li>
+            <a href="#">2018</a>
+          </li>
+            <li>
+            <a href="#">2017</a>
           </li>
         </ul>
       </div>
@@ -71,7 +77,19 @@
 </template>
 
 <script>
-
+  export default {
+    data : () => {
+      return {
+        isActive : false,
+      }
+    },
+    methods:{
+      openSelect(){
+        console.log(1111);
+        this.isActive = !this.isActive;
+      }
+    }
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

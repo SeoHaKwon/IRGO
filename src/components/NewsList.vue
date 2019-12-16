@@ -10,8 +10,7 @@
             보도자료
           </span>
           <p class="txt">
-            삼성전자, 한 해 사회공헌 공모전 성
-            과를 공유하는 삼성 투모로우 스...
+            두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트
           </p>
           <span class="date">2019.11.06</span>
           <a href="/NewsView" class="link"></a>
@@ -132,6 +131,7 @@
       position:relative;
       padding:22px 40px 0 40px;
       font-size:17px;
+      line-height:26px;
       color:$gray8;
       letter-spacing: -0.25px;
       @include textHidden($line:3);
@@ -166,8 +166,7 @@
               font-size:10px;
             }
             .txt {
-              height:48px;
-              overflow: hidden;
+              -webkit-line-clamp: 3;
               margin-top:5px;
               font-size:13px;
               line-height:16px;
@@ -199,9 +198,6 @@
           .news-txt {
             width:100%;
             padding:33px 20px;
-            .txt {
-              height:34px;
-            }
             .date {
               margin-top:23px;
             }

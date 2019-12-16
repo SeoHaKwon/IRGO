@@ -11,7 +11,7 @@
         </div>
         <div class="info-wrap">
           <strong class="title">
-            JP Global TMT Conference 본문이동링크
+            한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트한줄테스트
           </strong>
             <dl>
               <dt>장소</dt>
@@ -134,6 +134,7 @@
       font-size:22px;
       color:$black3;
       font-weight: 500;
+      @include textHidden($line:1);
       .file {
         display:inline-block;
         width:25px;

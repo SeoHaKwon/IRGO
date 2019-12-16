@@ -6,7 +6,7 @@
     <ul class="list">
       <li>
         <strong class="board-title">
-          SAMSUNG, IR Forum
+          두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트두줄테스트
         </strong>
         <span class="day">19. 10. 22</span>
         <a href="" class="link"></a>
@@ -180,8 +180,17 @@
     left: 0;
     top: 60px;
     width: 100%;
+    z-index: 2;
+    li {
+      background-color:$blue;
+    }
     a {
       display: block;
+      padding: 0 20px;
+      font-size: 15px;
+      line-height: 60px;
+      font-weight: 700;
+      color: #fff;
     }
     &.on {
       display: block;
@@ -251,11 +260,14 @@
         color: $black3;
         font-weight: 500;
         letter-spacing: -0.7px;
+        @include textHidden();
       }
       .day {
         margin-left: auto;
+        flex:0 0 100px;
         font-size: 16px;
         color: #a9acb3;
+        text-align: right;
       }
       .link {
         position: absolute;
@@ -270,7 +282,6 @@
     &.qa {
       li {
         .board-title {
-          display: inline-block;
           padding-left: 60px;
           @include bgImg(bg/bg_qa_q, $pos: left center);
         }
@@ -357,6 +368,16 @@
       line-height: 45px;
       background-size: 7px 4px;
     }
+    .select-list {
+      top:45px;
+      li {
+        a {
+        padding: 0 15px;
+        font-size: 9px;
+        line-height: 45px;
+        }
+      }
+    }
   }
   .icon-file {
     padding-right:23px;
@@ -390,7 +411,6 @@
         padding: 26px 15px;
         cursor: pointer;
         .board-title {
-          display: inline-block;
           width: 100%;
           margin-bottom: 6px;
           font-size: 14px;
@@ -398,6 +418,7 @@
         }
         .day {
           display:block;
+          text-align: left;
           font-size: 11px;
         }
         .link {
