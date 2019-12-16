@@ -1,5 +1,5 @@
 <template>
-  <div class="HomeDisclosure contaner" v-if="isDisclo">
+  <div class="HomeDisclosure contaner" v-if="isDisclo && is_view == 'Y'">
     <h2 class="section-title">공시</h2>
     <h3 class="section-sube">
       Disclosure
@@ -12,7 +12,7 @@
             </h6>
         </li>
     </ul>
-    <div class="home-more-btn">
+    <div class="home-more-btn" v-if="allData.length !== 0">
       <button
         type="button"
         v-on:click="moreData"
@@ -38,12 +38,13 @@ export default {
     return {
       disclo: [],
       allData: [],
-      isDisclo: true
+      isDisclo: true,
+      is_view: 'N'
     }
   },
   mounted () {},
   computed: {
-    ...mapGetters(['getCompSeq', 'getCompCode'])
+    ...mapGetters(['getCompSeq', 'getCompCode', 'GETISVIEW'])
   },
   filters: {
     v_date: function (date) {
@@ -64,6 +65,10 @@ export default {
     }
   },
   watch: {
+    GETISVIEW () {
+      const _self = this
+      _self.is_view = _self.GETISVIEW[0].Disclosure
+    },
     getCompCode () {
       const _self = this
       const aram = {
@@ -120,7 +125,8 @@ export default {
   }
 
   @media ( max-width: 899px ) {
-    padding: 38px 0;
+    // padding: 38px 0;
+    padding: 55px 0;
     border-top: 8px solid #EFEFF4;
 
     .disclosure-info {

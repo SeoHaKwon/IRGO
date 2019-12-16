@@ -23,7 +23,17 @@ export default new Vuex.Store({
     logo: '',
     banner: '',
     qaType: '',
-    isIPO: ''
+    isIPO: '',
+    IRPAGE_STOCK_YN: '',
+    IRPAGE_FINANCE_YN: '',
+    IRPAGE_DIVIDEND_YN: '',
+    IRPAGE_SHOLDER_YN: '',
+    IRPAGE_DISCLOSURE_YN: '',
+    IRPAGE_IRMEETING_YN: '',
+    IRPAGE_ISVIEW: [],
+    MReportLength: 0,
+    QALEN: 0,
+    FINLEN: 0
   },
   getters: {
     getCompCode (state) {
@@ -52,6 +62,18 @@ export default new Vuex.Store({
     },
     getIsIPO (state) {
       return state.isIPO
+    },
+    GETISVIEW (state) {
+      return state.IRPAGE_ISVIEW
+    },
+    getmReportlen (state) {
+      return state.MReportLength
+    },
+    getQALEN (state) {
+      return state.QALEN
+    },
+    getFINLEN (state) {
+      return state.FINLEN
     }
   },
   mutations: {
@@ -84,7 +106,26 @@ export default new Vuex.Store({
         state.qaType = payload.IRPAGE_QNA_YN
         state.isIPO = payload.COMP_TYPE
         state.flag = false
+        state.IRPAGE_STOCK_YN = payload.IRPAGE_STOCK_YN
+        const arrays = {
+          'stock': payload.IRPAGE_STOCK_YN,
+          'Finance': payload.IRPAGE_FINANCE_YN,
+          'dividend': payload.IRPAGE_DIVIDEND_YN,
+          'ShareHolder': payload.IRPAGE_SHOLDER_YN,
+          'Disclosure': payload.IRPAGE_DISCLOSURE_YN,
+          'irmeeting': payload.IRPAGE_IRMEETING_YN
+        }
+        state.IRPAGE_ISVIEW.push(arrays)
       }
+    },
+    SET_REPORTLEN (state, payload) {
+      state.MReportLength = payload
+    },
+    SET_QALEN (state, payload) {
+      state.QALEN = payload
+    },
+    SET_FINLEN (state, payload) {
+      state.FINLEN = payload
     }
   },
   actions: {
@@ -145,12 +186,13 @@ export default new Vuex.Store({
       const res = await getAPIData(param)
       return res.data
     },
-    async GET_MREPORT (context, payload) {
+    async GET_MREPORT ({ commit }, payload) {
       let param = {
         data: payload,
         url: 'getManagementReport'
       }
       const res = await getAPIData(param)
+      commit('SET_REPORTLEN', res.data.length)
       return res.data
     },
     async GET_FINANCE (context, payload) {

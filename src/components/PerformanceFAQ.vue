@@ -23,7 +23,7 @@
         </div>
       </li>
     </ul>
-    <div class="home-more-btn">
+    <div class="home-more-btn" v-if="allData.length !== 0">
       <button
         type="button"
         v-on:click="moreFaqTypeA()"
@@ -63,9 +63,7 @@
                 <span class="faq-question-title">{{faqContents[viewIdx].Q_USER}} 주주님의 질문입니다.</span>
             </h5>
             <h5 class="FAQ-modal-title">
-                (서울=연합뉴스) 설승은 김여솔 기자 = 문희상 국회의장은 10일 국회 본회의에서의 내년도 예산안 처리 이후 자유한국당 의원들의 거센 항의를 받고 충격을 받아 병원으로 향했다.
-문 의장은 이날 오후 10시 40분께 직원들의 부축을 받아 집무실을 천천히 걸어 나와 인근 병원으로 출발했다. 지친 표정의 문 의장은 넥타이를 반쯤 푼 상태였다.
-의장실 관계자는 연합뉴스와의 통화에서 "한국당 의원들이 예산안 처리 과정뿐 아니라 집무실에도 찾아와 거세게 항의하는 과정에서 충격을 받아 급격히 건강이 악화됐다"며 "혈압과 심혈관계 문제인 듯하
+              {{faqContents[viewIdx].QUESTION}}
             </h5>
             <div class="social-info">
                 <h5 class="date">
@@ -234,6 +232,9 @@ export default {
       }
       const pres = this.$store.dispatch('GET_FAQ', aram)
       .then(res => {
+        if (_self.qtype == 'Y' && res.length > 0) {
+          _self.$store.commit('SET_QALEN', res.length)
+        }
         _self.allData = res
         _self.faqContents = res.splice(0,5)
       })
@@ -243,7 +244,7 @@ export default {
 </script>
 <style lang="scss">
 @import "@/style/_variables.scss";
-#performance > div.PerformanceFAQ > ul.performance-FAQ > li {
+#FAQ > ul > li {
   cursor: pointer;
 }
 .PerformanceFAQ {
@@ -416,6 +417,7 @@ export default {
           margin-bottom: 10px;
           letter-spacing: -0.5px;
           color: $font-color-base;
+          line-height: 1.4;
           // height: 143px;
       }
       .IR-main-description {
@@ -465,7 +467,8 @@ export default {
 
       @media ( max-width: 899px ) {
       &.contaner {
-        padding: 38px 0;
+        // padding: 38px 0;
+        padding: 55px 0;
         border-top: 8px solid #EFEFF4;
       }
       .FAQ-modal-anser {

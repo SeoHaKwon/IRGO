@@ -5,10 +5,9 @@
       Documents & Report
     </h3>
     <ul class="management-report">
-        <li v-for="(item, key) in report">
+        <li v-for="(item, key) in report" v-on:click="openData(item.UPLOAD_FILE)">
             <h5>{{ item.TITLE }}</h5>
             <h6>
-                <a :href="'https://file.irgo.co.kr/data/IRPAGE/BIZ_REPORT/'+item.UPLOAD_FILE">
                   <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                     <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
                   </svg>
@@ -51,6 +50,11 @@ export default {
       const _self = this
       _self.mcolor = '#'+_self.getMainColor
     }
+  },
+  methods: {
+    openData (FILENAME) {
+      window.open("https://file.irgo.co.kr/data/IRPAGE/BIZ_REPORT/" + FILENAME, '_BLANK')
+    }
   }
 }
 </script>
@@ -70,6 +74,7 @@ export default {
             padding: 40px 20px;
             border-bottom: 1px solid $border-color;
             height: 120px;
+            cursor: pointer;
 
             &:first-child {
                 border-top: 1px solid $border-color;
@@ -91,7 +96,8 @@ export default {
     }
 
     @media ( max-width: 899px ) {
-    padding: 38px 0;
+    // padding: 38px 0;
+    padding: 55px 0;
     border-top: 8px solid #EFEFF4;
       .management-report {
           margin-top: 50px;

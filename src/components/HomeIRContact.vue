@@ -6,7 +6,7 @@
         style="margin-bottom: 40px;"
     >
       {{ compname }} IR 페이지에 방문해 주셔서 감사합니다. <br />
-      {{ compname }}는 주주의 권리 보호를 위해 노력하며, 함께 성장하는 기업입니다.
+      {{ compname }}는 주주의 권리 보호를 위해 노력하며 함께 성장하는 기업입니다.
     </h3>
     <div 
         v-for="contact in irContactData"
@@ -93,8 +93,8 @@ export default {
         .then(res => {
           _self.compname = res[0].COMP_NAME
           _self.irContactData[0].info = res[0].IR_ADDR
-          _self.irContactData[1].info = res[0].IRO_EMAIL
-          _self.irContactData[2].info = res[0].IRO_TEL
+          _self.irContactData[2].info = res[0].IRO_EMAIL
+          _self.irContactData[1].info = res[0].IRO_TEL
           _self.naver_url = res[0].IRPAGE_SNS_BLOG
           _self.facebook_url = res[0].IRPAGE_SNS_FACEBOOK
           _self.twitter_url = res[0].IRPAGE_SNS_TWITTER
@@ -138,7 +138,8 @@ export default {
     }
 
     @media ( max-width: 899px ) {
-        padding: 38px 0;
+        // padding: 38px 0;
+        padding: 55px 0;
         border-top: 8px solid #EFEFF4;
 
         .section-sube {

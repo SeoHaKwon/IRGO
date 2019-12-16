@@ -1,5 +1,5 @@
 <template>
-  <div class="HomeFinanceInfo contaner" v-if="finance.length > 0">
+  <div class="HomeFinanceInfo contaner" v-if="finance.length > 0 && is_view == 'Y'">
     <h2 class="section-title">재무정보</h2>
     <h3 class="section-sube">
       Financial Statements
@@ -19,10 +19,10 @@
           </div>
       </div>
     <ul class="finance-info">
-        <li>
-            <h5>재무상태표</h5>
+        <li v-on:click="getData(finance[nowQ].UPLOAD_FILE1)">
+            <h5>재무상태표 ({{finance[nowQ].QUARTER}})</h5>
             <h6>
-              <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE1" target="_BLANK">
+              <a>
                 <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                   <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
                 </svg>
@@ -30,10 +30,10 @@
                 <span class="data-type" :style="{ color: mcolor}">PDF</span>
             </h6>
         </li>
-        <li>
-            <h5>손익계산서</h5>
+        <li v-on:click="getData(finance[nowQ].UPLOAD_FILE2)">
+            <h5>손익계산서 ({{finance[nowQ].QUARTER}})</h5>
             <h6>
-                <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE2" target="_BLANK">
+                <a>
                   <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                     <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
                   </svg>
@@ -41,10 +41,10 @@
                 <span class="data-type" :style="{ color: mcolor}">PDF</span>
             </h6>
         </li>
-        <li>
-            <h5>현금흐름표</h5>
+        <li v-on:click="getData(finance[nowQ].UPLOAD_FILE3)">
+            <h5>현금흐름표 ({{finance[nowQ].QUARTER}})</h5>
             <h6>
-                <a v-if="nowQ" :href="'https://file.irgo.co.kr/data/IRPAGE/FINANCE/'+finance[nowQ].UPLOAD_FILE3" target="_BLANK">
+                <a>
                   <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                     <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
                   </svg>
@@ -75,15 +75,19 @@ export default {
         4: ''
       },
       ori_active: 0,
-      mcolor: ''
+      mcolor: '',
+      is_view: 'N'
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq', 'getMainColor'])
+    ...mapGetters(['getCompSeq', 'getMainColor', 'GETISVIEW'])
   },
   mounted() {
   },
   methods: {
+    getData (FILE) {
+      window.open("https://file.irgo.co.kr/data/IRPAGE/FINANCE/"+FILE, '_BLANK')
+    },
     setQuarter (Q, idx) {
       const _self = this
       _self.nowQ = Q
@@ -103,6 +107,10 @@ export default {
     }
   },
   watch: {
+    GETISVIEW () {
+      const _self = this
+      _self.is_view = _self.GETISVIEW[0].Finance
+    },
     getCompSeq () {
       const _self = this
       const aram = {
@@ -171,7 +179,8 @@ export default {
     }
 
     @media ( max-width: 899px ) {
-        padding: 38px 0;
+        // padding: 38px 0;
+        padding: 55px 0;
         border-top: 8px solid #EFEFF4;
 
         .finance-select {

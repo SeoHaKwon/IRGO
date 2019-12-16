@@ -33,8 +33,11 @@
       <li v-for="item in IPOList" v-on:click="goURL(item.TYPE, item.VOD_URL, item.UPLOAD_FILE1)">
         <h5>{{item.TITLE}}</h5>
         <h6>
-          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24" v-if="item.TYPE == 'PDF'">
             <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+          </svg>
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24" v-else>
+            <path :fill="mcolor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
           </svg>
           <span class="data-type" :style="`color: ${mcolor}`">{{item.TYPE}}</span>
         </h6>
@@ -191,10 +194,18 @@ export default {
                 result[key].TYPE = 'URL'
               } else if (result[key].SET_DATA_TYPE == 4) {
                 result[key].TITLE = '공모분석보고서'
-                result[key].TYPE = (result[key].UPLOAD_FILE1).split('.')[1].toUpperCase()
+                if (result[key].TYPE) {
+                  result[key].TYPE = (result[key].UPLOAD_FILE1).split('.')[1].toUpperCase()
+                } else {
+                  result[key].TYPE = 'PDF'
+                }
               } else if (result[key].SET_DATA_TYPE == 5) {
                 result[key].TITLE = '기업분석보고서'
-                result[key].TYPE = (result[key].UPLOAD_FILE1).split('.')[1].toUpperCase()
+                if (result[key].TYPE) {
+                  result[key].TYPE = (result[key].UPLOAD_FILE1).split('.')[1].toUpperCase()
+                } else {
+                  result[key].TYPE = 'PDF'
+                }
               } else if (result[key].SET_DATA_TYPE == 6) {
                 result[key].TITLE = '증권신고서'
                 result[key].TYPE = 'PDF'
@@ -364,7 +375,8 @@ export default {
     // }
 
     @media ( max-width: 899px ) {
-        padding: 38px 0;
+        // padding: 38px 0;
+        padding: 55px 0;
         border-top: 8px solid #EFEFF4;
 
         .finance-select {

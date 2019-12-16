@@ -12,11 +12,10 @@
                 v-if="items.UPLOAD_THUMBNAIL"
                 class="image"
                 :src="'https://file.irgo.co.kr/data/BOARD/ATTACH_IMG/' + items.UPLOAD_THUMBNAIL"
-                style="width:0%"
             />
             <div class="information">
                 <h5 class="PC" :style="{ color: mcolor }">{{ items.TOPIC_TYPE }}</h5>
-                <h4>{{ items.TITLE}}</h4>
+                <h4>{{ items.TITLE }}</h4>
                 <h6>
                   <span class="mobile" :style="{ color: mcolor }">{{ items.TOPIC_TYPE }}</span>
                   {{ items.REG_DATE | v_date}}
@@ -24,7 +23,7 @@
             </div>
         </li>
     </ul>
-    <div class="home-more-btn">
+    <div class="home-more-btn" v-if="allData.length !== 0">
       <button
         type="button"
         v-on:click="moreData"
@@ -65,7 +64,7 @@
                 <h5 class="date">
                     {{ v_REG_DATE | v_date}}
                 </h5>
-                <div class="social-sns">
+                <!-- <div class="social-sns">
                     <img
                         width="7px"
                         src="../assets/img/modal_facebook.png"
@@ -78,7 +77,7 @@
                         width="80px"
                         src="../assets/img/modal_share.png"
                     />
-                </div>
+                </div> -->
             </div>
             <h4
                 class="IR-main-description"
@@ -136,6 +135,10 @@ export default {
       const month = key.getMonth() + 1
       const day = key.getDate()
       return year +'년 '+ month + '월 ' + day + '일'
+    },
+    v_titlecut: function (title) {
+      return title
+      // return title.substr(0,100)
     }
   },
   methods: {
@@ -179,15 +182,15 @@ export default {
       .then(res => {
         for (var key in res) {
           if ( res[key].TOPIC_TYPE == 'P' ) {
-            res[key].TOPIC_TYPE = 'IR 일정'
+            res[key].TOPIC_TYPE = 'IR 자료'
           } else if (res[key].TOPIC_TYPE == 'N') {
             res[key].TOPIC_TYPE = '보도자료'
           } else if (res[key].TOPIC_TYPE == 'O') {
             res[key].TOPIC_TYPE = 'IR 자료'
           } else if (res[key].TOPIC_TYPE == 'R') {
-            res[key].TOPIC_TYPE = '리포트'
+            res[key].TOPIC_TYPE = 'IR 브리핑'
           } else if (res[key].TOPIC_TYPE == 'T') {
-            res[key].TOPIC_TYPE = '주담톡톡'
+            res[key].TOPIC_TYPE = '주주서한'
           }
         }
         _self.NewsList = res.splice(0,4)
@@ -218,7 +221,7 @@ export default {
         list-style: none;
 
         li {
-            padding-top: 40px;
+            padding-top: 20px;
             display: flex;
             justify-content: space-between;
             cursor: pointer;
@@ -241,6 +244,7 @@ export default {
 
                 & h5.PC {
                     // color: $brand-color;
+                    padding-top: 20px;
                     font-weight: bold;
                     font-size: 16px;
                 }
@@ -250,7 +254,6 @@ export default {
                     color: $font-color-base;
                     margin-top: 14px;
                     height: 64px;
-                    overflow: hidden;
                 }
                 & h6 {
                     font-size: 12px;
@@ -398,7 +401,8 @@ export default {
 
 
     @media ( max-width: 899px ) {
-        padding: 38px 0;
+        // padding: 38px 0;
+        padding: 55px 0;
         border-top: 8px solid #EFEFF4;
 
         .ir-news-content {
@@ -442,6 +446,13 @@ export default {
                         color: $font-color-base;
                         margin-top: 0;
                         height: 50px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        line-height: 1.2em;
+                        height: 2.4em;
                     }
                     & h6 {
                         font-size: 10px;

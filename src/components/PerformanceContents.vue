@@ -18,11 +18,12 @@
                 <div 
                   v-if="datas.length > 3"
                   class="main-title"
+                   v-on:click="getGoURL(silj.UPLOAD_FILE1, silj.SITEURL)"
                 >
                     <h2 class="title">
                         {{ silj.TITLE }}
                     </h2>
-                    <div class="download" v-on:click="getGoURL(silj.UPLOAD_FILE1, silj.SITEURL)">
+                    <div class="download">
                         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                           <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
                         </svg>
@@ -41,11 +42,12 @@
               <div 
                 class="main-title"
                 v-if="datas.length < 4"
+                v-on:click="getGoURL(silj.UPLOAD_FILE1, silj.SITEURL)"
               >
                   <h2 class="title">
                       {{ silj.TITLE }}
                   </h2>
-                  <div class="download" v-on:click="getGoURL(silj.UPLOAD_FILE1, silj.SITEURL)">
+                  <div class="download">
                       <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                         <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
                       </svg>
@@ -55,17 +57,13 @@
                     <li v-for="(data, idx) in datas" :class="{'less-length': datas.length < 4}" v-bind:key="idx" v-on:click="getGoURL(data.UPLOAD_FILE1, data.SITEURL)">
                         <h5>{{ data.TITLE }}</h5>
                         <h6>
-                            <img
-                              v-if="data.type === 'URL'"
-                            width="30px"
-                             src="../assets/img/ic_arrow_forward.png"
-                            />
-                            <img
-                              v-else
-                            width="30px"
-                             src="../assets/img/ic_file_download.png"
-                            />
-                            <span class="data-type">{{ data.type }}</span>
+                          <svg style="width:30px;height:30px" viewBox="0 0 24 24" v-if="data.TYPE == 'URL'">
+                            <path :fill="mcolor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+                          </svg>
+                          <svg viewBox="0 0 24 24" style="width: 30px; height: 30px;" v-else>
+                            <path :fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"></path>
+                          </svg>
+                          <span class="data-type" :style="{color: mcolor}">{{ data.TYPE }}</span>
                         </h6>
                     </li>
                 </ul>
@@ -76,10 +74,13 @@
           <h5>{{ silj.TITLE }}</h5>
           <h6>
             <a>
-              <svg viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24" v-if="silj.TYPE == 'URL'">
+                <path :fill="mcolor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+              </svg>
+              <svg viewBox="0 0 24 24" style="width: 24px; height: 24px;" v-else>
                 <path :fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"></path>
               </svg>
-            <span class="data-type" :style="{color: mcolor}">PDF</span>
+            <span class="data-type" :style="{color: mcolor}">{{ (silj.TYPE)?silj.TYPE:'PDF' }}</span>
             </a>
           </h6>
         </li>
@@ -87,10 +88,13 @@
           <h5>{{ item.TITLE }}</h5>
           <h6>
             <a>
-              <svg viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24" v-if="item.TYPE == 'URL'">
+                <path :fill="mcolor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+              </svg>
+              <svg viewBox="0 0 24 24" style="width: 24px; height: 24px;" v-else>
                 <path :fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"></path>
               </svg>
-            <span class="data-type" :style="{color: mcolor}">PDF</span>
+            <span class="data-type" :style="{color: mcolor}">{{ item.TYPE }}</span>
             </a>
           </h6>
         </li>
@@ -245,11 +249,13 @@ export default {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 56px;
+            margin-top: 14px;
+            cursor: pointer;
 
             & .title {
                 /* 추가 */
-                margin-left:20px;
+                // margin-left:20px;
                 /* 추가 */
                 font-size: 34px;
                 font-weight: normal;
@@ -287,6 +293,7 @@ export default {
                     &.less-length {
                         padding-bottom: 28px;
                         margin-bottom: 28px;
+                        cursor: pointer;
                     }
 
                     &:last-child {

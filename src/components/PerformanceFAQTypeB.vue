@@ -81,6 +81,9 @@ export default {
       }
       const pres = this.$store.dispatch('GET_FAQ', aram)
       .then(res => {
+        if (_self.qtype == 'N' && res.length > 0) {
+          _self.$store.commit('SET_QALEN', res.length)
+        }
         _self.faqContents = res
         for (var i = 0; i < res.length; i++) {
           res[i].QUESTION
@@ -183,7 +186,8 @@ export default {
     }
 
     @media ( max-width: 899px ) {
-    padding: 38px 0;
+    // padding: 38px 0;
+    padding: 55px 0;
     border-top: 8px solid #EFEFF4;
 
     .FAQ-type-B {

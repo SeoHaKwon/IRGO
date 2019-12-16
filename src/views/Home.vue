@@ -1,42 +1,42 @@
 <template>
   <div class="home">
     <!-- 메인 -->
-    <HomeMainVisual id="main"/>
+    <HomeMainVisual id="MainVisual"/>
 
     <!-- 스케줄 -->
-    <HomeSchedule id="schedule"/>
+    <HomeSchedule id="Schedule"/>
 
     <!-- 실적발표 -->
-    <HomePerformance id="performance"/>
+    <HomePerformance id="Performance"/>
     
     <!-- IPO -->
-    <HomeIPO id="ipo"/>
+    <HomeIPO id="IPO"/>
 
     <!-- FAQ -->
-    <PerformanceFAQ />
+    <PerformanceFAQ id="FAQ"/>
 
-    <PerformanceFAQTypeB />
+    <PerformanceFAQTypeB id="FAQ"/>
 
     <!-- IR 뉴스 -->
-    <HomeIrNews id="news"/>
+    <HomeIrNews id="IrNews"/>
 
     <!-- 경영 보고서 -->
-    <HomeManagementReport id="report"/>
+    <HomeManagementReport id="Report"/>
 
     <!-- 재무 정보 -->
-    <HomeFinanceInfo id="finance"/>
+    <HomeFinanceInfo id="Finance"/>
 
     <!-- 공시 -->
-    <HomeDisclosure id="disclosure"/>
+    <HomeDisclosure id="Disclosure"/>
 
     <!-- 주주 현황 -->
-    <HomeShareholderStatus id="share"/>
+    <HomeShareholderStatus id="ShareHolder"/>
 
     <!-- IR CONTANT -->
-    <HomeIRContact id="contact"/>
+    <HomeIRContact id="Contact"/>
 
     <!-- APP BANNER -->
-    <HomeAppBanner id="banner"/>
+    <HomeAppBanner/>
   </div>
 </template>
 
@@ -61,7 +61,7 @@ export default {
   name: 'home',
   data: () => {
     return {
-      isIPO: ''
+      // isirpage: []
     }
   },
   components: {
@@ -79,17 +79,14 @@ export default {
     HomeAppBanner,
     PerformanceFAQ,
     PerformanceFAQTypeB
-  },
-  computed: {
-    ...mapGetters(['getIsIPO'])
-  },
-  watch: {
-    getIsIPO () {}
   }
 }
 </script>
 <style lang="scss">
 @import "@/style/_variables.scss";
+select {
+  cursor: pointer;
+}
 .contaner {
   width: 1150px;
   margin: 0 auto;

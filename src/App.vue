@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" v-on:mousewheel="onScroll($event)">
     <div class="desktop-header" v-if="$route.fullPath !== '/join'">
-      <NavigationBar />
+      <NavigationBar :scrollResult="scrollTemp"/>
     </div>
     <div class="mobile-header" v-if="$route.fullPath !== '/join'">
       <MobileNavigaterBar />
@@ -10,7 +10,7 @@
       :class="{'global-body': widths >= 900 && $route.fullPath !== '/join', 'mobile-global-body': widths < 900 && $route.fullPath !== '/join'}"
       style="overflow: hidden"
     >
-      <router-view />
+      <router-view/>
     </div>
     <template v-if="$route.fullPath !== '/join'">
       <footerBody />
@@ -27,6 +27,7 @@
         </h5>
       </div>
     </div>
+    <Spinner :loading="loadingStatus"></Spinner>
   </div>
 </template>
 <script>
@@ -37,6 +38,8 @@ import NavigationBar from '@/components/NavigationBar.vue'
 import MobileNavigaterBar from '@/components/MobileNavigaterBar.vue'
 import FooterBody from '@/components/FooterBody.vue'
 import ModalDesktop from '@/components/ModalDesktop.vue'
+import bus from './utils/bus'
+import Spinner from './components/Spinner'
 Vue.component('modal-desktop', ModalDesktop)
 
 export default {
@@ -44,7 +47,8 @@ export default {
   components: {
     NavigationBar,
     MobileNavigaterBar,
-    FooterBody
+    FooterBody,
+    Spinner
   },
   data () {
     return {
@@ -52,19 +56,30 @@ export default {
       fullPath: '',
       isAppDownloadModal: false,
       widths: window.innerWidth,
-      cname: ''
+      cname: '',
+      scrollTemp: 0,
+      loadingStatus: false
     }
   },
   props: [
   ],
   filters: {
   },
+  created () {
+    bus.$on('start:spinner', this.startSpinner)
+    bus.$on('end:spinner', this.endSpinner)
+  },
+	beforeDestroy() {
+		bus.$off('start:spinner', this.startSpinner)
+    bus.$off('end:spinner', this.endSpinner)
+	},
   computed: {
     ...mapGetters(['getCompName'])
   },
   watch: {
     getCompName () {
       const _self = this
+      bus.$emit('start:spinner')
       _self.cname = _self.getCompName
     }
   },
@@ -74,13 +89,30 @@ export default {
     },
     handleResize () {
       this.widths = window.innerWidth
-    }
+    },
+    onScroll (e) {
+      const _self = this
+      let _scrollTop = window.scrollY || document.documentElement.scrollTop
+      if (_self.width > 899) {
+        // console.log(_scrollTop, 'PC')
+      } else {
+        // console.log(_scrollTop, 'mobile')
+      }
+      _self.scrollTemp = _scrollTop
+    },
+    startSpinner() {
+			this.loadingStatus = true
+		},
+		endSpinner() {
+			this.loadingStatus = false
+		}
   },
   beforeCreate () {
     const param = {
-      // 'url': 'adtek.irpage.co.kr'
        'url': 'shinsungeng.irpage.co.kr'
+      // 'url': 'samsung.irpage.co.kr'
       // 'url': 'shinsungeng.irpage.co.kr'
+      // 'url': 'bridgebiorx.irpage.co.kr'
     }
     const res = this.$store.dispatch('SET_INFO', param)
     // this.$store.commit('SET_INFO',param)
@@ -98,6 +130,7 @@ export default {
       this.isMobile = true
     }
     this.fullPath = this.$route.fullPath
+    // this.startSpinner()
   }
 }
 </script>

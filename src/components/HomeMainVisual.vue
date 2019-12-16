@@ -9,14 +9,14 @@
 		  			<h4>
 		  				<span class='juka'>{{ Price.NowJuka}}</span><span>원</span>
 		  			</h4>
-		  			<h5>{{ Price.DungRak }} {{ Price.Debi }} ({{ Price.Cent}}%)</h5>
+		  			<h5><span v-html="Price.DungRak"></span> {{ Price.Debi }} ({{ Price.Cent}}%)</h5>
 		  		</div>
 		  		<h5 class="information">
 		  			거래량 {{ Price.Volume }} <br />
-		  			시가총액 {{ Price.totals }}억원
+		  			시가총액 {{ Price.totals | currency}}억원
 		  		</h5>
 		  		<h6 class="curtion">
-		  			{{ Price.sumDay }} {{ Price.JongName }} 보통주
+		  			{{ Price.sumDay }} {{ Price.JongName | botong }} 보통주
 		  		</h6>
 		  	</div>
   		</div>
@@ -38,6 +38,22 @@ export default {
   },
   computed: {
     ...mapGetters(['getCompCode', 'getBanner'])
+  },
+  filters: {
+    currency: function (value) {
+      if (Number(value) > 0) {
+        return Number(value).toFixed(2).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, '$1,')
+      } else {
+        return '-'
+      }
+    },
+    botong: function (value) {
+      if (value.indexOf('보통주') !== -1) {
+        return value.replace('보통주', '')
+      } else {
+        return value
+      }
+    }
   },
   watch: {
     getCompCode () {
@@ -229,9 +245,10 @@ export default {
 	  		color: #ffffff;
 	  		font-size: 24px;
 	  		font-weight: bold;
-			height: calc(100% - 81px);
-			display: flex;
-			align-items: center;
+        height: calc(100% - 0px);
+        display: flex;
+        align-items: center;
+        // margin-bottom: 2.5rem;
 	  	}
 	  }
 	}

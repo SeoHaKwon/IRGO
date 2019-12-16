@@ -1,10 +1,10 @@
 <template>
-  <div class="HomeShareholderStatus contaner" v-if="isShareHolder && TOTAL_STOCK_DATA.length > 0">
+  <div class="HomeShareholderStatus contaner" v-if="isShareHolder == 'Y' && TOTAL_STOCK_DATA.length > 0">
       <h2 class="section-title">주주현황</h2>
       <h3 class="section-sube">
         Shareholders Status
       </h3>
-      <div class="shareholder-group" v-if="isShareHolder">
+      <div class="shareholder-group" v-if="isShareHolder == 'Y'">
           <h3 class="shareholder-group-title">
               주주구성
           </h3>
@@ -32,8 +32,8 @@
                     <thead>
                         <tr>
                             <td>구분</td>
-                            <td>주식수</td>
-                            <td>비율</td>
+                            <td>주식수(주)</td>
+                            <td>비율(%)</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,14 +46,14 @@
                                 {{ data.title }}
                             </td>
                             <td>{{ data.value | currency}}</td>
-                            <td>{{ data.percent }}%</td>
+                            <td>{{ data.percent | v_number }}</td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td>합계</td>
                             <td>{{ totalJu | currency}}</td>
-                            <td>100.0%</td>
+                            <td>100.0</td>
                         </tr>
                     </tfoot>
                   </table>
@@ -68,7 +68,7 @@
             <h5 class="description">{{ caption.dscription }}</h5>
         </div>
       </div>
-      <div class="shareholder-data" v-if="TOTAL_STOCK_DATA.length > 0">
+      <div class="shareholder-data" v-if="isDividend == 'Y' && TOTAL_STOCK_DATA.length > 0">
           <h3 class="shareholder-data-title">
               <span>배당내역</span>
                 <div class="performance-select">
@@ -96,7 +96,7 @@
                         <tr>
                             <td>구분</td>
                             <td></td>
-                            <td>주식종류</td>
+                            <td>배당내역</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -149,7 +149,8 @@ export default {
   },
   data () {
     return {
-      isShareHolder: true,
+      isShareHolder: 'Y',
+      isDividend: 'Y',
       isActive: {
         0: 'active',
         1: '',
@@ -212,7 +213,7 @@ export default {
           ]
         },
         {
-          title: '배당성향',
+          title: '배당성향(%)',
           value: [
             '-'
           ],
@@ -261,13 +262,24 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq', 'getMainColor'])
+    ...mapGetters(['getCompSeq', 'getMainColor', 'GETISVIEW'])
   },
   created () {
   },
   filters: {
     currency: function (value) {
-      return Number(value).toFixed(0).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, '$1,')
+      if (Number(value) > 0) {
+        return Number(value).toFixed(0).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, '$1,')
+      } else {
+        return '-'
+      }
+    },
+    v_number: function (num) {
+      if (Number(num) > 0) {
+        return num
+      } else {
+        return '-'
+      }
     }
   },
   mounted () {
@@ -344,7 +356,7 @@ export default {
               }
             }
           } else {
-            _self.isShareHolder = false
+            _self.isShareHolder = 'N'
           }
         })
       _self.$store.dispatch('GET_DIVI', param)
@@ -514,6 +526,7 @@ export default {
                & h5 {
                     padding: 10px 0;
                     font-size: 19px;
+                    font-weight:400;
                }
            }
            tfoot tr td {
@@ -562,7 +575,8 @@ export default {
   }
 
   @media ( max-width: 899px ) {
-        padding: 38px 0;
+        // padding: 38px 0;
+        padding: 55px 0;
         border-top: 8px solid #EFEFF4;
 
         .performance-select {

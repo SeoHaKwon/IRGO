@@ -50,8 +50,32 @@ export default {
       const pres = this.$store.dispatch('GET_SILJ', aram)
       pres.then(result => {
         _self.silJ = result[0]
+        if (_self.silJ) {
+          _self.silJ.TYPE = 'PDF'
+        }
         result.splice(0, 1)
         /* SET_DATA_TYPE */
+        for (var key in result) {
+          if (result[key].SET_DATA_TYPE == 2) {
+            result[key].TITLE = '보도자료(press Release)'
+            result[key].TYPE = 'PDF'
+          } else if (result[key].SET_DATA_TYPE == 3) {
+            result[key].TITLE = '웹캐스팅'
+            result[key].TYPE = 'URL'
+          } else if (result[key].SET_DATA_TYPE == 4) {
+            result[key].TITLE = '컨퍼런스콜'
+            result[key].TYPE = 'URL'
+          } else if (result[key].SET_DATA_TYPE == 5) {
+            result[key].TITLE = '스크립트'
+            result[key].TYPE = 'PDF'
+          } else if (result[key].SET_DATA_TYPE == 6) {
+            result[key].TITLE = 'Factsheet'
+            result[key].TYPE = 'PDF'
+            // result[key].TYPE = result[key].SITEURL.split('.')[1]
+          } else if (result[key].SET_DATA_TYPE == 7){
+            result[key].TYPE = 'URL'
+          }
+      }
         _self.type_D = result
       })
     }
@@ -78,22 +102,24 @@ export default {
             }
             const pres = this.$store.dispatch('GET_SILJ', aram)
             pres.then(result => {
-              if (result[0].SET_DATA_TYPE == 0 || result[0].SET_DATA_TYPE == 1) {
-                _self.silJ = result[0]
-                result.splice(0, 1)
-              }
-              /* SET_DATA_TYPE */
-              for (var key in result) {
-                if (result[key].SET_DATA_TYPE == 2) {
-                  result[key].TITLE = '보도자료(press Release)'
-                } else if (result[key].SET_DATA_TYPE == 3) {
-                  result[key].TITLE = '웹캐스팅'
-                } else if (result[key].SET_DATA_TYPE == 4) {
-                  result[key].TITLE = '컨퍼런스콜'
-                } else if (result[key].SET_DATA_TYPE == 5) {
-                  result[key].TITLE = '스크립트'
-                } else if (result[key].SET_DATA_TYPE == 6) {
-                  result[key].TITLE = 'Factsheet'
+              if (result.length) {
+                if (result[0].SET_DATA_TYPE == 0 || result[0].SET_DATA_TYPE == 1) {
+                  _self.silJ = result[0]
+                  result.splice(0, 1)
+                }
+                /* SET_DATA_TYPE */
+                for (var key in result) {
+                  if (result[key].SET_DATA_TYPE == 2) {
+                    result[key].TITLE = '보도자료(press Release)'
+                  } else if (result[key].SET_DATA_TYPE == 3) {
+                    result[key].TITLE = '웹캐스팅'
+                  } else if (result[key].SET_DATA_TYPE == 4) {
+                    result[key].TITLE = '컨퍼런스콜'
+                  } else if (result[key].SET_DATA_TYPE == 5) {
+                    result[key].TITLE = '스크립트'
+                  } else if (result[key].SET_DATA_TYPE == 6) {
+                    result[key].TITLE = 'Factsheet'
+                  }
                 }
               }
             })
@@ -123,7 +149,8 @@ export default {
   }
 
   @media ( max-width: 899px ) {
-    padding: 38px 0;
+    // padding: 38px 0;
+    padding: 63px 0;
 
     .performance-select {
       display: none;
