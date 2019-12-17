@@ -35,7 +35,7 @@
           <img src="../assets/images/img/img_detail.png" alt="">
         </p>
       </div>
-      <div>한국전력의 2019년도 3분기 잠정 결산실적발표 컨퍼런스콜 일정이 11월 13일 (수) 에 실시됩니다.</div>
+      <div class="desc">한국전력의 2019년도 3분기 잠정 결산실적발표 컨퍼런스콜 일정이 11월 13일 (수) 에 실시됩니다.</div>
       <div class="conference-wrap">
        <p class="conference-tit">[컨퍼런스 콜 이용안내]</p>
         <p class="desc call">접속번호</p>
@@ -255,15 +255,20 @@
           line-height:30px;
           font-weight: 500;
           color:$black3;
+          @include textHidden(2);
+        }
+        .date {
+          margin-top:6px;
+          text-align: left;
         }
         &.prev {
-          span{
+          >span{
             padding-top:16px;
             @include bgImg(arrow/arrow_prev,$pos:center top);
           }
         }
         &.next {
-            span{
+            >span{
             padding-bottom:16px;
             @include bgImg(arrow/arrow_next,$pos:center bottom);
           }
@@ -371,6 +376,7 @@
           }
         }
         .sns-group {
+          display:none;
           margin-left:0;
           margin-bottom:85px;
           a {
@@ -383,7 +389,7 @@
           }
         }
         &.type01 {
-          margin-bottom:0;
+          margin-bottom:30px;
         }
       }
       .detail-cont {
@@ -469,7 +475,8 @@
           p {
             @include textHidden();
             font-size:13px;
-            line-height:14px;
+            line-height:1.4;
+            padding-left:10px;
           }
           span {
             width:35px;

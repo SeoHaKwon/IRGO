@@ -4,7 +4,7 @@
       <strong>다가오는 일정</strong>
     </p>
     <ul class="list">
-      <li class="active"> <!--클래스 active 추가시 활성화-->
+      <li> 
         <div class="date-wrap">
           <p class="day">2019.10.18 ~19</p>
           <span class="time">10:00 ~ 11:00</span>
@@ -89,7 +89,7 @@
       & +li {
         border-top:2px solid #e2e2e6;
       }
-      &.active {
+      &:hover {
         @include bgImg(bg/bg_pattern);
         background-color:$blue;
         .day {
@@ -183,8 +183,12 @@
         padding:44px 35px;
       }
       .direct {
-        right:35px;
-        top:44px;
+        background-position:right 35px top 40px;
+        width:100%;
+        height:100%;
+        right:0;
+        top:0;
+        transform:none;
       }
     }
     .info-wrap {

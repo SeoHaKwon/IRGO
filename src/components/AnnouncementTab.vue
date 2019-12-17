@@ -25,6 +25,7 @@
     <div class="tab-cont active"> <!--클래스 active 주시면 활성화됩니다.-->
       <div class="material-top">
         <div class="thumbnail">
+            <p class="txt"><strong class="en">2019 Samsung</strong></p>
             <img src="../assets/images/img/img_material_thumbnail.png" alt="">
         </div>
         <div class="material-box">
@@ -103,8 +104,25 @@
    display:flex;
    border-top:1px solid $black;
    .thumbnail {
+     position:relative;
      overflow: hidden;
      width:50%;
+     .txt {
+       display:flex;
+       align-items: center;
+       justify-content: center;
+       position:absolute;
+       left:0;
+       top:0;
+       width:100%;
+       height:100%;
+       z-index: 2;
+       strong {
+        font-size:28px;
+        font-weight:700;
+        color:$white;
+       }
+     }
      img {
        position: relative;
        left:50%;
@@ -149,6 +167,11 @@
       position: relative;
       left: 50%;
       transform: translateX(-50%);
+      .txt {
+        strong {
+          font-size:18px;
+        }
+      }
       img {
         position: relative;
         left: 50%;

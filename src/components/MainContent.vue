@@ -33,7 +33,7 @@
     <div class="middle-visual">
       <img src="../assets/images/img/img_main_middle.png" alt="">
       <div class="schedule-box">
-        <strong class="tit">IR 일정 <a href="" class="more is_pc"></a></strong>
+        <strong class="tit">IR 일정 <a href="../scheduleView" class="more is_pc"></a></strong>
         <div class="sub-txt">
           <strong>웅진코웨이,2019년 3분기 실적 리뷰...</strong>
           <p>일시:2019년 9월 12일</p>
@@ -326,20 +326,20 @@
           background-size:35px auto;
           background-position:left 40px center;
           strong {
-            display:inline-block;
             font-size:12px;
             line-height:14px;
           }
           p {
-            margin-top:2px;
+            margin-top:4px;
             font-size:12px;
           }
         }
         .more {
-          width:3px;
-          height:6px;
-          margin-left:9px;
-          @include bgImg(btn/btn_board_more_m);
+          position:absolute;
+          left:0;
+          top:0;
+          width:100%;
+          height:100%;
           background-size:3px 6px;
         }
       }
