@@ -18,6 +18,9 @@ export default {
 @import "@/style/_mixin.scss";
 .wrap {
 	max-width:1920px;
-	height:100%;
+  height:100%;
+  &.active {
+    overflow:hidden;
+  }
 }
 </style>

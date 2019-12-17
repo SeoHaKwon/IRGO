@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap">
+  <div class="wrap" :class="{active:isActive}">
     <div class="gnb-wrap">
       <div class="gnb">
         <h1 class="logo">
@@ -174,12 +174,11 @@
         top:0;
         width:100%;
         height:100%;
-        padding:26px 90px;
-        justify-content: center;
+        padding:86px 90px 0 90px;
         background-color:#fff;
         z-index: 300;
         transition:all .5s;
-         padding-top:100px;
+        overflow:hidden;
         &.active {
           left:0;
         }
