@@ -63,7 +63,7 @@
         <li>
           <a href="#" class="link04">
             <strong class="tit">경영보고서</strong>
-            <p class="sub">경영보거서 다운로드</p>
+            <p class="sub">경영보고서 다운로드</p>
           </a>
         </li>
         <li>

@@ -31,7 +31,7 @@
           <div class="info">
             <span class="date">2019. 1Q</span>
             <p class="title">실적발표자료</p>
-            <a href="#" class="icon-file pdf">SAMSUNG 19년 2부누기 실절발표자료</a>
+            <a href="#" class="icon-file pdf">SAMSUNG 19년 2분기 실절발표자료</a>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@
         <div class="material">
           <strong class="material-title">보도자료</strong>
           <a href="#" class="icon-file  pdf">
-            SAMSUNG 19년 2부누기 실절발표자료
+            SAMSUNG 19년 2분기 실절발표자료
           </a>
           <a href="#" class="link"></a>
         </div>
@@ -58,7 +58,7 @@
         <div class="material">
           <strong class="material-title">Fact sheet</strong>
           <a href="#" class="icon-file excel">
-            SAMSUNG 19년 2부누기 실절발표자료
+            SAMSUNG 19년 2분기 실절발표자료
           </a>
           <a href="#" class="link"></a>
         </div>

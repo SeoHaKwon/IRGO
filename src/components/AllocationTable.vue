@@ -24,7 +24,7 @@
         </thead>
         <tbody>
           <tr>
-            <th colspan="2">당기순이익<span>(백민원)</span></th>
+            <th colspan="2">당기순이익<span>(백만원)</span></th>
             <td>224,157</td>
             <td>224,157</td>
             <td>224,157</td>
@@ -68,7 +68,7 @@
             <td class="is_pc"></td>
           </tr>
           <tr>
-            <th class="textLeft">배달총액<span>백만원</span></th>
+            <th class="textLeft">배당총액<span>(백만원)</span></th>
             <td class="textLeft total">소계</td>
             <td class="total">39,919</td>
             <td class="total">39,919</td>

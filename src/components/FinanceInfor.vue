@@ -27,14 +27,14 @@
         <div class="material">
           <strong class="material-title">재무상태</strong>
           <a href="#" class="icon-file  pdf">
-            AMSUNG 19 2Q 재무상태표
+            SAMSUNG 19 2Q 재무상태표
           </a>
           <a href="#" class="link"></a>
         </div>
         <div class="material">
           <strong class="material-title">손익계산서</strong>
            <a href="#" class="icon-file pdf">
-            AMSUNG 19 2Q 손익계산
+            SAMSUNG 19 2Q 손익계산
           </a>
             <a href="#" class="link"></a>
         </div>
