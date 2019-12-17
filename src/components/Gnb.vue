@@ -179,6 +179,7 @@
         background-color:#fff;
         z-index: 300;
         transition:all .5s;
+         padding-top:100px;
         &.active {
           left:0;
         }
