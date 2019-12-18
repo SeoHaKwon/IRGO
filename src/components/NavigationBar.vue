@@ -39,14 +39,14 @@ export default {
       logo: '',
       v_list: [],
       h_list: [
-        {'title': '실적발표', 'isActive': true, 'color': '', 'c_name': 'Performance', 'isView': true}, 
-        {'title': 'FAQ', 'isActive': false, 'color': '', 'c_name': 'FAQ', 'isView': false}, 
-        {'title': 'IR News', 'isActive': false, 'color': '', 'c_name': 'IrNews', 'isView': true}, 
-        {'title': '경영보고서', 'isActive': false, 'color': '', 'c_name': 'Report', 'isView': false}, 
-        {'title': '재무정보', 'isActive': false, 'color': '', 'c_name': 'Finance', 'isView': true}, 
-        {'title': '공시', 'isActive': false, 'color': '', 'c_name': 'Disclosure', 'isView': true}, 
-        {'title': '주주현황', 'isActive': false, 'color': '', 'c_name': 'ShareHolder', 'isView': true}, 
-        {'title': 'IR Contact', 'isActive': false, 'color': '', 'c_name': 'Contact', 'isView': true}
+        { 'title': '실적발표', 'isActive': true, 'color': '', 'c_name': 'Performance', 'isView': true },
+        { 'title': 'FAQ', 'isActive': false, 'color': '', 'c_name': 'FAQ', 'isView': false },
+        { 'title': 'IR News', 'isActive': false, 'color': '', 'c_name': 'IrNews', 'isView': true },
+        { 'title': '경영보고서', 'isActive': false, 'color': '', 'c_name': 'Report', 'isView': false },
+        { 'title': '재무정보', 'isActive': false, 'color': '', 'c_name': 'Finance', 'isView': true },
+        { 'title': '공시', 'isActive': false, 'color': '', 'c_name': 'Disclosure', 'isView': true },
+        { 'title': '주주현황', 'isActive': false, 'color': '', 'c_name': 'ShareHolder', 'isView': true },
+        { 'title': 'IR Contact', 'isActive': false, 'color': '', 'c_name': 'Contact', 'isView': true }
       ],
       ori_Active: 0,
       isImg: true
@@ -54,7 +54,7 @@ export default {
   },
   mounted: () => {
     // console.log(document.getElementById('Performance').offsetTop)
-    const _self = this
+    // const _self = this
     // _self.h_list[0].offSet = document.getElementById(_self.h_list[0].c_name).offsetTop
   },
   methods: {
@@ -68,7 +68,7 @@ export default {
       // location.href='#'+cname
     },
     moveMain () {
-      location.href="/"
+      location.href = '/'
     }
   },
   computed: {
@@ -77,7 +77,7 @@ export default {
   watch: {
     getIsIPO () {
       const _self = this
-      if (_self.getIsIPO == 'CT02') {
+      if (_self.getIsIPO === 'CT02') {
         _self.h_list[0].title = 'IPO정보'
         _self.h_list[0].c_name = 'IPO'
       }
@@ -85,7 +85,7 @@ export default {
     GETISVIEW () {
       const _self = this
       for (let i = 0; i < _self.h_list.length; i++) {
-        if (_self.GETISVIEW[0][_self.h_list[i].c_name] == 'N') {
+        if (_self.GETISVIEW[0][_self.h_list[i].c_name] === 'N') {
           _self.h_list[i].isView = false
         }
       }
@@ -93,15 +93,15 @@ export default {
     },
     getMainColor () {
       const _self = this
-      _self.mcolor = '#'+_self.getMainColor
+      _self.mcolor = '#' + _self.getMainColor
       _self.h_list[0].color = _self.mcolor
     },
     getLogo () {
       const _self = this
-      if (_self.getLogo == null) { 
-        _self.isImg = false 
+      if (_self.getLogo == null) {
+        _self.isImg = false
       } else {
-        _self.logo = 'http://file.irgo.co.kr/data/IRPAGE/IMG/'+_self.getLogo
+        _self.logo = 'http://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getLogo
       }
     },
     getmReportlen () {
@@ -113,7 +113,7 @@ export default {
     },
     getQALEN () {
       const _self = this
-      if(_self.getQALEN > 0) {
+      if (_self.getQALEN > 0) {
         _self.h_list[1].isView = true
       }
       _self.v_list = _.filter(_self.h_list, ['isView', true])

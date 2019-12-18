@@ -11,16 +11,15 @@
           <div class="shareholder-group-items">
               <div class="shareholder-group-chart">
                   <vc-donut
-                      background="#ffffff" 
+                      background="#ffffff"
                       foreground="grey"
                       :size="70"
-                      unit="%" 
+                      unit="%"
                       :thickness="40"
                       legend-placement="bottom"
                       :sections="sections"
                       :total="100"
-                      :start-angle="0"
-                    />      
+                      :start-angle="0"/>
               </div>
               <div class="shareholder-group-table">
                   <table>
@@ -37,12 +36,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="data in memberData">
+                        <tr v-for="(data, idx) in memberData" v-bind:key="idx">
                             <td>
-                                <span 
-                                    class="member-color"
-                                    :style="`background: ${data.color}`"
-                                ></span>
+                                <span class="member-color" :style="`background: ${data.color}`"></span>
                                 {{ data.title }}
                             </td>
                             <td>{{ data.value | currency}}</td>
@@ -59,11 +55,7 @@
                   </table>
               </div>
           </div>
-          
-        <div
-            class="shareholder-group-caption"
-             v-for="caption in memberCaption"
-         >
+        <div class="shareholder-group-caption" v-for="(caption, idx) in memberCaption" v-bind:key="idx">
             <h5 class="title">{{ caption.title }}</h5>
             <h5 class="description">{{ caption.dscription }}</h5>
         </div>
@@ -74,14 +66,14 @@
                 <div class="performance-select">
                     <div class="select-warp">
                         <select v-on:change="SET_DIVI($event)">
-                            <option v-for="(item, idx) in TOTAL_STOCK_DATA" :value="idx">{{ item.F_YEAR }}</option>
+                            <option v-for="(item, idx) in TOTAL_STOCK_DATA" :value="idx" v-bind:key="item.F_YEAR">{{ item.F_YEAR }}</option>
                         </select>
                         <div class="select-arrow" style="font-size:1rem!important">▲</div>
                     </div>
                 </div>
           </h3>
               <ul class="performance-group-tab stock">
-                <li v-for="(item, idx) in TOTAL_STOCK_DATA" :class="isActive[idx]">
+                <li v-for="(item, idx) in TOTAL_STOCK_DATA" :class="isActive[idx]" v-bind:key="idx">
                   <a v-on:click="setActive(idx)">{{ item.F_YEAR }}</a>
                 </li>
               </ul>
@@ -100,17 +92,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="data in datas">
+                        <tr v-for="(data, idx) in datas" v-bind:key="idx">
                             <td>
                                 {{ data.title }}
                             </td>
                             <td>
-                                <h5 v-for="kind in data.kinds">
+                                <h5 v-for="(kind, idx) in data.kinds" v-bind:key="idx">
                                     {{ kind }}
                                 </h5>
                             </td>
                             <td>
-                                <h5 v-for="value in data.value">
+                                <h5 v-for="(value, idx) in data.value" v-bind:key="idx">
                                     {{ value | currency }}
                                 </h5>
                             </td>
@@ -126,10 +118,7 @@
                   </table>
               </div>
           </div>
-        <div
-            class="shareholder-group-caption"
-             v-for="caption in memberCaption"
-         >
+        <div class="shareholder-group-caption" v-for="(caption, idx) in memberCaption" v-bind:key="idx">
             <h5 class="title">{{ caption.title }}</h5>
             <h5 class="description">{{ caption.dscription }}</h5>
         </div>
@@ -296,20 +285,23 @@ export default {
       const _self = this
       _self.setDividend(_self.TOTAL_STOCK_DATA[idx])
     },
-    changeColor(hexcolor, step) {
-      let r = parseInt(hexcolor.substr(1,2), 16)
-      let g = parseInt(hexcolor.substr(3,2), 16)
-      let b = parseInt(hexcolor.substr(5,2), 16)
+    changeColor (hexcolor, step) {
+      let r = parseInt(hexcolor.substr(1, 2), 16)
+      let g = parseInt(hexcolor.substr(3, 2), 16)
+      let b = parseInt(hexcolor.substr(5, 2), 16)
       let cr = (r - ((r / 8).toFixed(0) * step)).toString(16)
-      if (cr < 0) {cr = '00'}
-      else if (cr < 10 || cr == 'a' || cr == 'b' || cr == 'c' || cr == 'd' || cr =='e' || cr == 'f') {cr = '0'+cr}
+      if (cr < 0) {
+        cr = '00'
+      } else if (cr < 10 || cr === 'a' || cr === 'b' || cr === 'c' || cr === 'd' || cr === 'e' || cr === 'f') { cr = '0' + cr }
       let cg = (g - ((g / 8).toFixed(0) * step)).toString(16)
-      if (cg < 0) {cg = '00'}
-      else if (cg < 10 || cg == 'a' || cg == 'b' || cg == 'c' || cg == 'd' || cg =='e' || cg == 'f') {cg = '0'+cg}
+      if (cg < 0) {
+        cg = '00'
+      } else if (cg < 10 || cg === 'a' || cg === 'b' || cg === 'c' || cg === 'd' || cg === 'e' || cg === 'f') { cg = '0' + cg }
       let cb = (b - ((b / 8).toFixed(0) * step)).toString(16)
-      if (cb < 0) {cb = '00'}
-      else if (cb < 10 || cb == 'a' || cb == 'b' || cb == 'c' || cb == 'd' || cb =='e' || cb == 'f') {cb = '0'+cb}
-      return '#'+cr+cg+cb
+      if (cb < 0) {
+        cb = '00'
+      } else if (cb < 10 || cb === 'a' || cb === 'b' || cb === 'c' || cb === 'd' || cb === 'e' || cb === 'f') { cb = '0' + cb }
+      return '#' + cr + cg + cb
     },
     setDividend (req) {
       const _self = this
@@ -369,10 +361,10 @@ export default {
     },
     getMainColor () {
       const _self = this
-      _self.mcolor = '#'+_self.getMainColor
-      _self.sections[0].color = '#'+_self.getMainColor
-      _self.memberData[0].color = '#'+_self.getMainColor
-      for (var i =0; i < 3; i++) {
+      _self.mcolor = '#' + _self.getMainColor
+      _self.sections[0].color = '#' + _self.getMainColor
+      _self.memberData[0].color = '#' + _self.getMainColor
+      for (var i = 0; i < 3; i++) {
         _self.sections[i].color = _self.changeColor(_self.mcolor, i)
         _self.memberData[i].color = _self.changeColor(_self.mcolor, i)
       }
@@ -390,382 +382,382 @@ export default {
     margin-top: 106px;
 
     .shareholder-group-title {
-        font-size: 32px;
-        color: $font-color-base;
-        border-bottom: 1px solid $border-color;
-        padding-bottom: 42px;
+      font-size: 32px;
+      color: $font-color-base;
+      border-bottom: 1px solid $border-color;
+      padding-bottom: 42px;
     }
     .shareholder-data-title {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid $border-color;
-        padding-bottom: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid $border-color;
+      padding-bottom: 42px;
 
-        span {
-            font-size: 32px;
-            color: $font-color-base;
-        }
+      span {
+        font-size: 32px;
+        color: $font-color-base;
+      }
     }
     .shareholder-group-items {
-        padding-top: 80px;
-        padding-bottom: 40px;
-        display: flex;
-        justify-content: space-between;
+      padding-top: 80px;
+      padding-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
 
-         .shareholder-group-chart {
-            flex-basis: 50%;
-            padding-left: 60px;
-            // padding-top: 60px;
-            padding-top: 4px;
-         }
+      .shareholder-group-chart {
+        flex-basis: 50%;
+        padding-left: 60px;
+        // padding-top: 60px;
+        padding-top: 4px;
+      }
 
-         .shareholder-group-table {
-            flex-basis: 50%;
-            padding-left: 60px;
+      .shareholder-group-table {
+        flex-basis: 50%;
+        padding-left: 60px;
 
-            table {
-                width: 100%;
-                border-collapse: collapse;
+        table {
+          width: 100%;
+          border-collapse: collapse;
 
-                thead,
-                tbody,
-                tfoot{
-                    border-bottom: 1px solid $border-color;
-                }
+          thead,
+          tbody,
+          tfoot{
+            border-bottom: 1px solid $border-color;
+          }
 
-                thead tr td {
-                    padding: 10px 15px;
-                    font-size: 19px;
-                    text-align: right;
-                    color: #8E8E93;
+          thead tr td {
+            padding: 10px 15px;
+            font-size: 19px;
+            text-align: right;
+            color: #8E8E93;
 
-                    &:first-child {
-                        text-align: left;
-                    }
-                }
-                tbody tr td ,
-                tfoot tr td {
-                    font-size: 19px;
-                    color: $font-color-base;
-                    padding: 20px 15px;
-                    text-align: right;
-
-                    &:first-child {
-                        text-align: left;
-                    }
-                }
-                tbody tr td:nth-child(2), tbody tr td:nth-child(3),
-                tfoot tr td:nth-child(2), tfoot tr td:nth-child(3) {
-                  font-family: 'Roboto', sans-serif;
-                }
-                .member-color {
-                    width: 14px;
-                    height: 14px;
-                    display: inline-block;
-                    border-radius: 50%;
-                }
+            &:first-child {
+              text-align: left;
             }
-         }
+          }
+          tbody tr td ,
+          tfoot tr td {
+            font-size: 19px;
+            color: $font-color-base;
+            padding: 20px 15px;
+            text-align: right;
+
+            &:first-child {
+              text-align: left;
+            }
+          }
+          tbody tr td:nth-child(2), tbody tr td:nth-child(3),
+          tfoot tr td:nth-child(2), tfoot tr td:nth-child(3) {
+            font-family: 'Roboto', sans-serif;
+          }
+          .member-color {
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            border-radius: 50%;
+          }
+        }
+      }
     }
     .shareholder-data-table {
-       table {
-           width: 100%;
-           border-collapse: collapse;
-           padding-bottom: 40px;
-           margin-top: 60px;
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        padding-bottom: 40px;
+        margin-top: 60px;
 
-           thead,
-           tfoot{
-               border-bottom: 1px solid $border-color;
-           }
-
-           thead tr td {
-               padding: 10px 15px;
-               font-size: 19px;
-               text-align: right;
-               color: #8E8E93;
-
-               &:first-child {
-                 font-size: 14px;
-                 text-align: left;
-               }
-               &:nth-child(3) {
-                 font-size: 14px;
-               }
-           }
-           tbody tr td {
+          thead,
+          tfoot{
             border-bottom: 1px solid $border-color;
-           }
-           tbody tr:last-child td {
+          }
+
+          thead tr td {
+            padding: 10px 15px;
+            font-size: 19px;
+            text-align: right;
+            color: #8E8E93;
+
+            &:first-child {
+              font-size: 14px;
+              text-align: left;
+            }
+            &:nth-child(3) {
+              font-size: 14px;
+            }
+          }
+          tbody tr td {
+            border-bottom: 1px solid $border-color;
+          }
+          tbody tr:last-child td {
             border-bottom: 0;
-           }
-           tbody tr td ,
-           tfoot tr td {
-               font-size: 19px;
-               color: $font-color-base;
-               padding: 10px 15px;
-               text-align: right;
-               vertical-align: baseline;
+          }
+          tbody tr td ,
+          tfoot tr td {
+            font-size: 19px;
+            color: $font-color-base;
+            padding: 10px 15px;
+            text-align: right;
+            vertical-align: baseline;
 
-               &:first-child {
-                   text-align: left;
-                   font-size: 19px;
-               }
+          &:first-child {
+            text-align: left;
+            font-size: 19px;
+          }
 
-               &:nth-child(2) {
-                    color: #8E8E93;
-               }
-               &:nth-child(3) h5{
-                 font-family: 'Roboto', sans-serif;
-               }
-               &:nth-child(3) {
-                 font-family: 'Roboto', sans-serif;
-               }
+          &:nth-child(2) {
+            color: #8E8E93;
+          }
+          &:nth-child(3) h5{
+            font-family: 'Roboto', sans-serif;
+          }
+          &:nth-child(3) {
+            font-family: 'Roboto', sans-serif;
+          }
 
-               & h5 {
-                    padding: 10px 0;
-                    font-size: 19px;
-                    font-weight:400;
-               }
-           }
-           tfoot tr td {
-               font-size: 19px;
-               color: $font-color-base;
-               padding: 0 15px 20px 15px;
-               text-align: right;
+          & h5 {
+            padding: 10px 0;
+            font-size: 19px;
+            font-weight:400;
+          }
+        }
+        tfoot tr td {
+          font-size: 19px;
+          color: $font-color-base;
+          padding: 0 15px 20px 15px;
+          text-align: right;
 
-               &:first-child {
-                   text-align: left;
-                   font-size: 19px;
-               }
+          &:first-child {
+            text-align: left;
+            font-size: 19px;
+          }
 
-               &:nth-child(2) {
-                    color: #8E8E93;
-               }
+          &:nth-child(2) {
+            color: #8E8E93;
+          }
 
-               & h5 {
-                    padding: 10px 0;
-                    font-size: 19px;
-               }
-           }
-           .member-color {
-               width: 14px;
-               height: 14px;
-               display: inline-block;
-               border-radius: 50%;
-           }
-       }
+          & h5 {
+            padding: 10px 0;
+            font-size: 19px;
+          }
+        }
+        .member-color {
+          width: 14px;
+          height: 14px;
+          display: inline-block;
+          border-radius: 50%;
+        }
+      }
     }
   }
   .shareholder-group-caption {
-      display: flex;
-      font-size: 14px;
-      letter-spacing: -0.005em;
-      color: #545454;
-      margin-top: 20px;
+    display: flex;
+    font-size: 14px;
+    letter-spacing: -0.005em;
+    color: #545454;
+    margin-top: 20px;
 
-      .title {
-          margin-right: 20px;
-          font-size: 12px;
-      }
-      .description {
-          font-size: 12px;
-      }
+    .title {
+      margin-right: 20px;
+      font-size: 12px;
+    }
+    .description {
+      font-size: 12px;
+    }
   }
 
   @media ( max-width: 899px ) {
-        // padding: 38px 0;
-        padding: 55px 0;
-        border-top: 8px solid #EFEFF4;
+      // padding: 38px 0;
+      padding: 55px 0;
+      border-top: 8px solid #EFEFF4;
 
-        .performance-select {
-            display: none;
-        }
+      .performance-select {
+        display: none;
+      }
 
         .shareholder-data,
-        .shareholder-group {
-          margin-top: 50px;
+    .shareholder-group {
+      margin-top: 50px;
 
-          .shareholder-group-title {
-              font-size: 22px;
-              color: $font-color-base;
-              border-bottom: 0;
-              padding-bottom: 0;
-              padding: 0 16px;
+    .shareholder-group-title {
+      font-size: 22px;
+      color: $font-color-base;
+      border-bottom: 0;
+      padding-bottom: 0;
+      padding: 0 16px;
+    }
+    .shareholder-data-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 0;
+      padding: 0 16px;
+
+      span {
+        font-size: 22px;
+        color: $font-color-base;
+      }
+    }
+    .shareholder-group-items {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: block;
+        justify-content: space-between;
+
+      .shareholder-group-chart {
+        flex-basis: 50%;
+        padding-left: 0;
+        width: 80%;
+        margin-left: calc(100% - 89%)
+      }
+
+      .shareholder-group-table {
+        flex-basis: 50%;
+        padding-left: 0;
+        padding: 0 16px;
+        margin-top: 24px;
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+
+          thead,
+          tbody,
+          tfoot{
+            border-bottom: 1px solid $border-color;
           }
-          .shareholder-data-title {
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              border-bottom: 0;
-                padding: 0 16px;
 
-              span {
-                  font-size: 22px;
-                  color: $font-color-base;
-              }
-          }
-          .shareholder-group-items {
-              padding-top: 20px;
-              padding-bottom: 20px;
-              display: block;
-              justify-content: space-between;
-
-               .shareholder-group-chart {
-                  flex-basis: 50%;
-                  padding-left: 0;
-                  width: 80%;
-                  margin-left: calc(100% - 89%)
-               }
-
-               .shareholder-group-table {
-                  flex-basis: 50%;
-                  padding-left: 0;
-                  padding: 0 16px;
-                  margin-top: 24px;
-
-                  table {
-                      width: 100%;
-                      border-collapse: collapse;
-
-                      thead,
-                      tbody,
-                      tfoot{
-                          border-bottom: 1px solid $border-color;
-                      }
-
-                      thead tr td {
-                          padding: 16px 0;
-                          font-size: 14px;
-                          text-align: right;
-                          color: #8E8E93;
-
-                          &:first-child {
-                              text-align: left;
-                          }
-                      }
-                      tbody tr td ,
-                      tfoot tr td {
-                          font-size: 14px;
-                          color: $font-color-base;
-                          padding: 16px 0;
-                          text-align: right;
-
-                          &:first-child {
-                              text-align: left;
-                          }
-                      }
-                      .member-color {
-                          width: 8px;
-                          height: 8px;
-                          display: inline-block;
-                          border-radius: 50%;
-                      }
-                  }
-               }
-          }
-          .shareholder-data-table {
-            padding: 0 16px;
-             table {
-                 width: 100%;
-                 border-collapse: collapse;
-                 margin-bottom: 20px;
-                 margin-top: 20px;
-
-                 thead,
-                 tfoot{
-                     border-bottom: 1px solid $border-color;
-                 }
-
-                 thead tr td {
-                     padding: 16px 0;
-                     font-size: 19px;
-                     text-align: right;
-                     color: #8E8E93;
-
-                     &:first-child {
-                         text-align: left;
-                     }
-                 }
-                 tbody tr td {
-                  border-bottom: 1px solid $border-color;
-                 }
-                 tbody tr:last-child td {
-                  border-bottom: 0;
-                 }
-                 tbody tr td {
-                    font-size: 14px;
-                    color: $font-color-base;
-                    padding: 16px 0;
-                    text-align: right;
-
-                    &:first-child {
-                        text-align: left;
-                        font-size: 14px;
-                    }
-
-                    &:nth-child(2) {
-                      color: #8E8E93;
-                    }
-
-                    & h5 {
-                        padding: 10px 0;
-                        font-size:14px;
-                    }
-                 }
-                 tfoot tr td {
-                     font-size: 14px;
-                     color: $font-color-base;
-                     padding: 0 0 16px 0;
-                     text-align: right;
-
-                     &:first-child {
-                         text-align: left;
-                         font-size: 14px;
-                     }
-
-                     &:nth-child(2) {
-                          color: #8E8E93;
-                     }
-
-                     & h5 {
-                          padding: 10px 0;
-                          font-size:14px;
-                     }
-                 }
-                 .member-color {
-                     width: 14px;
-                     height: 14px;
-                     display: inline-block;
-                     border-radius: 50%;
-                 }
-             }
-          }
-        }
-        .shareholder-group-caption {
-            display: flex;
-            font-size: 12px;
-            letter-spacing: -0.005em;
-            color: #545454;
-            margin-top: 0;
-            margin-bottom: 30px;
-            padding: 0 16px;
+          thead tr td {
+            padding: 16px 0;
+            font-size: 14px;
+            text-align: right;
+            color: #8E8E93;
 
             &:first-child {
-                margin-top: 0;
+              text-align: left;
+            }
+          }
+          tbody tr td ,
+          tfoot tr td {
+            font-size: 14px;
+            color: $font-color-base;
+            padding: 16px 0;
+            text-align: right;
+
+            &:first-child {
+              text-align: left;
+            }
+          }
+          .member-color {
+            width: 8px;
+            height: 8px;
+            display: inline-block;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+    .shareholder-data-table {
+      padding: 0 16px;
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 20px;
+          margin-top: 20px;
+
+          thead,
+          tfoot{
+            border-bottom: 1px solid $border-color;
+          }
+
+          thead tr td {
+            padding: 16px 0;
+            font-size: 19px;
+            text-align: right;
+            color: #8E8E93;
+
+            &:first-child {
+              text-align: left;
+            }
+          }
+          tbody tr td {
+            border-bottom: 1px solid $border-color;
+          }
+          tbody tr:last-child td {
+            border-bottom: 0;
+          }
+          tbody tr td {
+            font-size: 14px;
+            color: $font-color-base;
+            padding: 16px 0;
+            text-align: right;
+
+            &:first-child {
+              text-align: left;
+              font-size: 14px;
             }
 
-            .title {
-                margin-right: 10px;
-                flex-basis: 26px;
-                font-size: 12px;
+            &:nth-child(2) {
+              color: #8E8E93;
             }
-            .description {
-                flex-basis: calc(100% - 26px);
-                font-size: 12px;
+
+            & h5 {
+              padding: 10px 0;
+              font-size:14px;
             }
+          }
+          tfoot tr td {
+            font-size: 14px;
+            color: $font-color-base;
+            padding: 0 0 16px 0;
+            text-align: right;
+
+            &:first-child {
+              text-align: left;
+              font-size: 14px;
+            }
+
+            &:nth-child(2) {
+              color: #8E8E93;
+            }
+
+            & h5 {
+              padding: 10px 0;
+              font-size:14px;
+            }
+          }
+          .member-color {
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            border-radius: 50%;
+          }
         }
+      }
+    }
+    .shareholder-group-caption {
+      display: flex;
+      font-size: 12px;
+      letter-spacing: -0.005em;
+      color: #545454;
+      margin-top: 0;
+      margin-bottom: 30px;
+      padding: 0 16px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      .title {
+        margin-right: 10px;
+        flex-basis: 26px;
+        font-size: 12px;
+      }
+      .description {
+        flex-basis: calc(100% - 26px);
+        font-size: 12px;
+      }
+    }
   }
 }
 </style>

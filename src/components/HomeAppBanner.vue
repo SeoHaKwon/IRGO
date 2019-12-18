@@ -6,16 +6,10 @@
     </h2>
     <div class="app-banner-banner">
       <a>
-        <img 
-          width="213px" 
-          src="../assets/img/Google_Play.png" 
-        />
+        <img width="213px" src="../assets/img/Google_Play.png" />
       </a>
       <a>
-        <img 
-          width="213px" 
-          src="../assets/img/Apple_Store.png" 
-        />
+        <img width="213px" src="../assets/img/Apple_Store.png"/>
       </a>
     </div>
   </div>
@@ -26,7 +20,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomeAppBanner',
-  data() {
+  data () {
     return {
       mcolor: '',
       name: ''
@@ -40,7 +34,7 @@ export default {
   watch: {
     getMainColor () {
       const _self = this
-      _self.mcolor = '#'+_self.getMainColor
+      _self.mcolor = '#' + _self.getMainColor
     },
     getCompName () {
       const _self = this
@@ -66,7 +60,6 @@ export default {
         justify-content: center;
         align-items: center;
         margin-top: 50px;
-        
         img {
             margin-right: 18px;
             cursor: pointer;
@@ -75,7 +68,6 @@ export default {
             // }
         }
     }
-    
 
     @media ( max-width: 899px ) {
     }

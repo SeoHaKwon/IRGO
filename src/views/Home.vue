@@ -8,7 +8,7 @@
 
     <!-- 실적발표 -->
     <HomePerformance id="Performance"/>
-    
+
     <!-- IPO -->
     <HomeIPO id="IPO"/>
 
@@ -55,7 +55,6 @@ import HomeIRContact from '@/components/HomeIRContact.vue'
 import HomeAppBanner from '@/components/HomeAppBanner.vue'
 import PerformanceFAQ from '@/components/PerformanceFAQ.vue'
 import PerformanceFAQTypeB from '@/components/PerformanceFAQTypeB.vue'
-import { mapGetters } from 'vuex'
 
 export default {
   name: 'home',
@@ -149,40 +148,40 @@ select {
 }
 
 .select-warp {
-    width: 200px;
+  width: 200px;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+
+  & select {
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 21px;
+    align-items: center;
+    color: #545454;
+    -webkit-appearance: none;
+    -moz-appearance:none;
+    appearance:none;
+    width: 100%;
     position: relative;
+    border-width: 1px;
+    border-color: rgb(169, 169, 169);
+
+    & option {
     font-family: 'Roboto', sans-serif;
-
-    & select {
-        background: #ffffff;
-        border-radius: 4px;
-        padding: 10px 20px;
-        font-weight: bold;
-        font-size: 21px;
-        align-items: center;
-        color: #545454;
-        -webkit-appearance: none;
-        -moz-appearance:none;
-        appearance:none;
-        width: 100%;
-        position: relative;
-        border-width: 1px;
-        border-color: rgb(169, 169, 169);
-
-        & option {
-          font-family: 'Roboto', sans-serif;
-          font-weight: 500;
-        }
+    font-weight: 500;
     }
+  }
 
-    .select-arrow {
-        transform: rotate(180deg);
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        margin-top: -12px;
-        z-index: 2;
-    }
+  .select-arrow {
+    transform: rotate(180deg);
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -12px;
+    z-index: 2;
+  }
 }
 
 select::-ms-expand {
@@ -275,7 +274,7 @@ select::-ms-expand {
 
   .section-sube {
   padding: 0 16px;
-    font-size: 16px;
+    font-size: 12px;
     color: #8E8E93;
   }
 
@@ -303,38 +302,38 @@ select::-ms-expand {
         }
 
         & img {
-          margin-left: 5px;
-          width: 10px !important;
+        margin-left: 5px;
+        width: 10px !important;
       }
     }
   }
   .performance-group-tab {
-      padding: 0;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 50px 16px 1rem 16px;
-      border-bottom: 1px solid #E5E5EA;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 16px 1rem 16px;
+    border-bottom: 1px solid #E5E5EA;
 
-      li {
-          flex-basis: calc(20% - 11px);
-          font-size: 18px;
-          letter-spacing: -0.24px;
-          color: #8E8E93;
-          padding-bottom: 13px;
-          border-bottom: 2px solid transparent;
-          text-align: center;
+    li {
+      flex-basis: calc(20% - 11px);
+      font-size: 18px;
+      letter-spacing: -0.24px;
+      color: #8E8E93;
+      padding-bottom: 13px;
+      border-bottom: 2px solid transparent;
+      text-align: center;
 
-          &.active {
-              color: #313439;
-              border-bottom: 2px solid #313439;
-          }
-          & a {
-            font-weight: bold;
-            font-family: 'Roboto', sans-serif;
-          }
+      &.active {
+        color: #313439;
+        border-bottom: 2px solid #313439;
       }
+      & a {
+      font-weight: bold;
+      font-family: 'Roboto', sans-serif;
+      }
+    }
   }
 }
 </style>

@@ -3,10 +3,10 @@
     <h3>
         © 2019 {{ COM_NAME_E }}. All rights reserved.
     </h3>
-    <h4>
+    <!-- <h4>
         (주){{ COM_NAME }} | 대표이사 {{ CEO_NAME }} | 사업자등록번호 {{ SAUP }} <br />
         {{ ADDRESS }}
-    </h4>
+    </h4> -->
     <h5>
         서비스 제공 ©irpage.co.kr
     </h5>
@@ -55,7 +55,7 @@ export default {
 </script>
 <style lang="scss">
 @import "@/style/_variables.scss";
-.FooterBody { 
+.FooterBody {
   padding: 60px 0;
   width: 1150px;
   margin: 0 auto;
@@ -84,7 +84,7 @@ export default {
         padding: 20px 16px;
         width: 100%;
         margin: 0 auto;
-        margin-top: 75px;
+        // margin-top: 75px;
         border-top: 1px solid $border-color;
 
         h3 {

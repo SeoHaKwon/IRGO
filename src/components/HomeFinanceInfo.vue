@@ -5,7 +5,7 @@
       Financial Statements
     </h3>
     <ul class="performance-group-tab fin">
-      <li v-for="(item, idx) in finance" v-on:click="setQuarter(item.YEAR + '.' + item.PERIOD + 'Q', idx)" :class="isActive[idx]">
+      <li v-for="(item, idx) in finance" v-on:click="setQuarter(item.YEAR + '.' + item.PERIOD + 'Q', idx)" :class="isActive[idx]" v-bind:key="item.QUARTER">
         <a>{{ item.QUARTER }}</a>
       </li>
       <li v-for="n in 5-finance.length" v-bind:key="n"></li>
@@ -13,7 +13,7 @@
       <div class="finance-select">
           <div class="select-warp">
               <select v-on:change="zsetQuarter($event)">
-                  <option v-for="(item, idx) in finance" :value="idx">{{ item.YEAR + '.' + item.PERIOD + 'Q' }}</option>
+                  <option v-for="(item, idx) in finance" :value="idx" v-bind:key="idx">{{ item.YEAR + '.' + item.PERIOD + 'Q' }}</option>
               </select>
               <div class="select-arrow">▲</div>
           </div>
@@ -82,11 +82,11 @@ export default {
   computed: {
     ...mapGetters(['getCompSeq', 'getMainColor', 'GETISVIEW'])
   },
-  mounted() {
+  mounted () {
   },
   methods: {
     getData (FILE) {
-      window.open("https://file.irgo.co.kr/data/IRPAGE/FINANCE/"+FILE, '_BLANK')
+      window.open('https://file.irgo.co.kr/data/IRPAGE/FINANCE/' + FILE, '_BLANK')
     },
     setQuarter (Q, idx) {
       const _self = this
@@ -116,22 +116,22 @@ export default {
       const aram = {
         seq: _self.getCompSeq
       }
-      const pres = this.$store.dispatch('GET_FINANCE', aram)
-      .then(res => {
-        if (res.length !== 0 ) {
-          _self.nowQ = res[0].YEAR+'.'+res[0].PERIOD+'Q'
-          const cons = 5 - res.length
-          for (let i = 0; i < res.length; i++) {
-            res[res[i].YEAR+'.'+res[i].PERIOD+'Q'] = res[i]
-            res[res[i].YEAR+'.'+res[i].PERIOD+'Q'].QUARTER = res[i].YEAR.substr(2,2)+'.'+res[i].PERIOD+'Q'
+      this.$store.dispatch('GET_FINANCE', aram)
+        .then(res => {
+          if (res.length !== 0) {
+            _self.nowQ = res[0].YEAR + '.' + res[0].PERIOD + 'Q'
+            // const cons = 5 - res.length
+            for (let i = 0; i < res.length; i++) {
+              res[res[i].YEAR + '.' + res[i].PERIOD + 'Q'] = res[i]
+              res[res[i].YEAR + '.' + res[i].PERIOD + 'Q'].QUARTER = res[i].YEAR.substr(2, 2) + '.' + res[i].PERIOD + 'Q'
+            }
+            _self.finance = res
           }
-          _self.finance = res
-        }
-      })
+        })
     },
     getMainColor () {
       const _self = this
-      _self.mcolor = '#'+_self.getMainColor
+      _self.mcolor = '#' + _self.getMainColor
     }
   }
 }
@@ -199,7 +199,7 @@ export default {
               display: flex;
               justify-content: space-between;
               align-items: center;
-              padding: 16px 0;
+              padding: 20px 0;
               border-bottom: 1px solid $border-color;
               height: auto;
 

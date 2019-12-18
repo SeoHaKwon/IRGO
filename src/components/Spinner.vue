@@ -2,7 +2,7 @@
   <div class="spinner_container" v-if="loading">
     <div class="loading-container">
       <div class="loading"></div>
-      <div id="loading-text">loading</div>
+      <div id="loading-text">{{COM_NM}}</div>
     </div>
   </div>
 </template>
@@ -13,6 +13,17 @@ export default {
     loading: {
       type: Boolean,
       required: true
+    }
+  },
+  data: () => {
+    return {
+      COM_NM: ''
+    }
+  },
+  watch: {
+    '_self.$parent.cname' () {
+      const _self = this
+      _self.COM_NM = _self.$parent.cname
     }
   }
 }
@@ -31,7 +42,7 @@ export default {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 110%;
   z-index: 99999;
   text-align: center;
   justify-content: center;

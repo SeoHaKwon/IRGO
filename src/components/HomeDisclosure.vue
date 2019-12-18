@@ -5,7 +5,7 @@
       Disclosure
     </h3>
     <ul class="disclosure-info">
-        <li v-for="item in disclo" v-on:click="GSITE(item.SITEURL)">
+        <li v-for="(item, idx) in disclo" v-on:click="GSITE(item.SITEURL)" v-bind:key="idx">
             <h5>{{ item.TITLE }}</h5>
             <h6>
                 {{ item.REG_DATE | v_date}}
@@ -18,10 +18,7 @@
         v-on:click="moreData"
       >
       <h6>더보기</h6>
-      <img 
-        width="12px" 
-        src="../assets/img/more_arrow.png" 
-      />
+      <img width="12px" src="../assets/img/more_arrow.png"/>
       </button>
     </div>
   </div>
@@ -52,16 +49,16 @@ export default {
       const year = key.getFullYear()
       const month = key.getMonth() + 1
       const day = key.getDate()
-      return year +'년 '+ month + '월 ' + day + '일'
+      return year + '년 ' + month + '월 ' + day + '일'
     }
   },
   methods: {
-    GSITE(url) {
+    GSITE (url) {
       window.open(url, '_BLANK')
     },
     moreData () {
       const _self = this
-      _self.disclo= _self.disclo.concat(_self.allData.splice(0, 5))
+      _self.disclo = _self.disclo.concat(_self.allData.splice(0, 5))
     }
   },
   watch: {
@@ -75,15 +72,15 @@ export default {
         comp_name: _self.getCompName,
         code: _self.getCompCode
       }
-      const pres = this.$store.dispatch('GET_DIS', aram)
-      .then(res => {
-        if (res.length == 0) {
-          _self.isDisclo = false
-        } else {
-          _self.disclo = res.splice(0,5)
-          _self.allData = res
-        }
-      })
+      this.$store.dispatch('GET_DIS', aram)
+        .then(res => {
+          if (res.length === 0) {
+            _self.isDisclo = false
+          } else {
+            _self.disclo = res.splice(0, 5)
+            _self.allData = res
+          }
+        })
     }
   }
 }
@@ -118,7 +115,7 @@ export default {
           h6 {
               font-size: 12px;
               text-align: right;
-              letter-spacing: -0.5px; 
+              letter-spacing: -0.5px;
               color: #8E8E93;
           }
       }
@@ -138,7 +135,7 @@ export default {
             display: block;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 0;
+            padding: 20px 0;
             border-bottom: 1px solid $border-color;
             height: auto;
 
@@ -154,7 +151,7 @@ export default {
             h6 {
                 ont-size: 10px;
                 text-align: left;
-                letter-spacing: -0.5px; 
+                letter-spacing: -0.5px;
                 color: #8E8E93;
                 margin-top: 7px;
             }

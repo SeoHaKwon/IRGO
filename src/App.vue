@@ -4,7 +4,7 @@
       <NavigationBar :scrollResult="scrollTemp"/>
     </div>
     <div class="mobile-header" v-if="$route.fullPath !== '/join'">
-      <MobileNavigaterBar />
+      <MobileNavigaterBar :scrollResult="scrollTemp"/>
     </div>
     <div
       :class="{'global-body': widths >= 900 && $route.fullPath !== '/join', 'mobile-global-body': widths < 900 && $route.fullPath !== '/join'}"
@@ -66,13 +66,15 @@ export default {
   filters: {
   },
   created () {
-    bus.$on('start:spinner', this.startSpinner)
-    bus.$on('end:spinner', this.endSpinner)
+    // bus.$on('start:spinner', this.startSpinner)
+    // bus.$on('end:spinner', this.endSpinner)
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
   },
-	beforeDestroy() {
-		bus.$off('start:spinner', this.startSpinner)
-    bus.$off('end:spinner', this.endSpinner)
-	},
+  beforeDestroy () {
+    // bus.$off('start:spinner', this.startSpinner)
+    // bus.$off('end:spinner', this.endSpinner)
+  },
   computed: {
     ...mapGetters(['getCompName'])
   },
@@ -81,6 +83,14 @@ export default {
       const _self = this
       bus.$emit('start:spinner')
       _self.cname = _self.getCompName
+    },
+    loadingStatus () {
+      const _self = this
+      if (_self.loadingStatus) {
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+      } else {
+        document.getElementsByTagName('body')[0].style.overflow = 'inherit'
+      }
     }
   },
   methods: {
@@ -100,26 +110,23 @@ export default {
       }
       _self.scrollTemp = _scrollTop
     },
-    startSpinner() {
-			this.loadingStatus = true
-		},
-		endSpinner() {
-			this.loadingStatus = false
-		}
+    startSpinner () {
+      this.loadingStatus = true
+    },
+    endSpinner () {
+      this.loadingStatus = false
+    }
   },
   beforeCreate () {
     const param = {
-       'url': 'shinsungeng.irpage.co.kr'
+      'url': 'adtek.irpage.co.kr'
       // 'url': 'samsung.irpage.co.kr'
       // 'url': 'shinsungeng.irpage.co.kr'
       // 'url': 'bridgebiorx.irpage.co.kr'
+      // 'url': 'initech.irpage.co.kr'
     }
-    const res = this.$store.dispatch('SET_INFO', param)
+    this.$store.dispatch('SET_INFO', param)
     // this.$store.commit('SET_INFO',param)
-  },
-  created () {
-    window.addEventListener('resize', this.handleResize)
-    this.handleResize()
   },
   mounted () {
     // const filter = 'win16|win32|win64|mac|macintel';
@@ -152,55 +159,55 @@ export default {
   text-decoration: none;
 }
 .modal-map {
-    font-size: 14px;
-    text-align: center;
-    color: #8E8E93;
-    opacity: 0.87;
+  font-size: 14px;
+  text-align: center;
+  color: #8E8E93;
+  opacity: 0.87;
 }
 .social-sns {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 
-    & img {
-        margin-left: 10px;
-    }
+  & img {
+    margin-left: 10px;
+  }
 }
 .social-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 21px;
 
-    .date {
-        font-size: 14px;
-        color: #8E8E93;
-    }
+  .date {
+    font-size: 14px;
+    color: #8E8E93;
+  }
 }
 .IR-modal-list {
-    list-style: none;
-    margin-top: 50px;
+  list-style: none;
+  margin-top: 50px;
 
-    li {
-        padding: 26px;
-        border-top: 1px solid $border-color;
-        display: flex;
-        justify-content: left;
-        align-items: center;
+  li {
+    padding: 26px;
+    border-top: 1px solid $border-color;
+    display: flex;
+    justify-content: left;
+    align-items: center;
 
-        &:last-child {
-            border-bottom: 1px solid $border-color;
-        }
-
-        img {
-            margin-right: 20px;
-        }
-        h5 {
-            margin-right: 50px;
-        }
-        h4 {
-        }
+    &:last-child {
+      border-bottom: 1px solid $border-color;
     }
+
+    img {
+        margin-right: 20px;
+    }
+    h5 {
+        margin-right: 50px;
+    }
+    h4 {
+    }
+  }
 }
 .modal-desktop-close {
   position: fixed;
@@ -232,58 +239,58 @@ input {
   align-items: center;
 }
 .check-box-wrap {
-    & label {
-        display: flex;
-        justify-content: left;
-        align-items: center;
+  & label {
+    display: flex;
+    justify-content: left;
+    align-items: center;
 
-        & input {
-            opacity: 0;
-            position: absolute;
-        }
-        & .checkbox {
-            flex-shrink: 0;
-            flex-basis: 24px;
-            width: 24px;
-            height: 24px;
-            border: 0.5px solid #D1D1D6;
-            border-radius: 5px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: 0.15s ease-in-out;
-        }
-        & input[type="checkbox"]:checked +  .checkbox {
-            background: #E91E63;
-            border-color: transparent;
-
-            &:after {
-                content: '';
-                display: block;
-                width: 10px;
-                height: 10px;
-                background: url('assets/img/join/ic_checked.png') center center no-repeat / contain;
-            }
-        }
-        & .text {
-            flex: 1;
-            margin-left: 11px;
-        }
+    & input {
+      opacity: 0;
+      position: absolute;
     }
-}
-.check-box-wrap.size-lg {
     & .checkbox {
-        flex-basis: 41px;
-        width: 41px;
-        height: 41px;
+      flex-shrink: 0;
+      flex-basis: 24px;
+      width: 24px;
+      height: 24px;
+      border: 0.5px solid #D1D1D6;
+      border-radius: 5px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.15s ease-in-out;
     }
     & input[type="checkbox"]:checked +  .checkbox {
-        &:after {
-            width: 21px;
-            height: 21px;
-        }
+      background: #E91E63;
+      border-color: transparent;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 10px;
+        background: url('assets/img/join/ic_checked.png') center center no-repeat / contain;
+      }
     }
+    & .text {
+      flex: 1;
+      margin-left: 11px;
+    }
+  }
+}
+.check-box-wrap.size-lg {
+  & .checkbox {
+    flex-basis: 41px;
+    width: 41px;
+    height: 41px;
+  }
+  & input[type="checkbox"]:checked +  .checkbox {
+    &:after {
+      width: 21px;
+      height: 21px;
+    }
+  }
 }
 .radio-wrap {
   width: 100%;
@@ -380,7 +387,7 @@ input {
     display: none;
   }
   .social-info {
-    display: none;
+    // display: none;
   }
   .modal-map {
     display: none;
@@ -401,6 +408,8 @@ input {
     width: 100%;
     background: #fff;
     z-index: 9999999999;
+    font-size: 20px;
+    font-weight: 700;
 
     img {
       margin-right: 10px;

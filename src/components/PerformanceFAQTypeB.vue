@@ -5,28 +5,15 @@
       Frequently Asked Questions
     </h3>
     <ul class="FAQ-type-B">
-      <li
-        v-for="data in totalArray" @click="isShowFAQ(data.id, data.is_show);"
-      >
+      <li v-for="(data, idx) in totalArray" @click="isShowFAQ(data.id, data.is_show)" v-bind:key="idx">
         <div class="FAQ-header">
           <h6 class="number">{{ data.id }}</h6>
           <h6 class="title">{{ data.title }}</h6>
-          <img 
-          class="arrow"
-            width="32px"
-            src="../assets/img/FAQ_type_B.png" 
-            :class="{'active': data.is_show}"
-          />
+          <img class="arrow" width="32px" src="../assets/img/FAQ_type_B.png" :class="{'active': data.is_show}"/>
         </div>
 
-        <div 
-          v-if="data.is_show"
-          class="FAQ-contents"
-        >
-          <div 
-            v-for="info in data.info"
-            class="info-box"
-            >
+        <div v-if="data.is_show" class="FAQ-contents">
+          <div v-for="(info, idx) in data.info" class="info-box" v-bind:key="idx">
             <h5 class="info-title">
               {{ info.title }}
             </h5>
@@ -46,25 +33,23 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'PerformanceFAQ',
-  data() {
-      return {
-        totalArray: [],
-        faqContents: [],
-        qtype: ''
-      }
-  },
-  components: {
+  data () {
+    return {
+      totalArray: [],
+      faqContents: [],
+      qtype: ''
+    }
   },
   methods: {
-     isShowFAQ(id, isOpen) {
-        this.totalArray.map(data => {
-          data.is_show = false;
+    isShowFAQ (id, isOpen) {
+      this.totalArray.map(data => {
+        data.is_show = false
 
-          if (data.id === id && !isOpen) {
-            data.is_show = true;
-          }
-        });
-     },
+        if (data.id === id && !isOpen) {
+          data.is_show = true
+        }
+      })
+    }
   },
   computed: {
     ...mapGetters(['getCompSeq', 'getQaType'])
@@ -79,27 +64,28 @@ export default {
       const aram = {
         seq: _self.getCompSeq
       }
-      const pres = this.$store.dispatch('GET_FAQ', aram)
-      .then(res => {
-        if (_self.qtype == 'N' && res.length > 0) {
-          _self.$store.commit('SET_QALEN', res.length)
-        }
-        _self.faqContents = res
-        for (var i = 0; i < res.length; i++) {
-          res[i].QUESTION
-          res[i].ANSWER
-          let array = {
-            'title': res[i].QUESTION,
-            'is_show': (i == 0 ? true : false),
-            'id': i+1,
-            info: [{
-              'title': res[i].QUESTION,
-              'description': res[i].ANSWER
-            }]
+      this.$store.dispatch('GET_FAQ', aram)
+        .then(response => {
+          if (_self.qtype === 'N' && response.length > 0) {
+            _self.$store.commit('SET_QALEN', response.length)
           }
-          _self.totalArray.push(array)
-        }
-      })
+          _self.faqContents = response
+          for (var i = 0; i < response.length; i++) {
+            let array = {
+              'title': response[i].QUESTION,
+              'is_show': false,
+              'id': i + 1,
+              info: [{
+                'title': response[i].QUESTION,
+                'description': response[i].ANSWER
+              }]
+            }
+            if (i === 0) {
+              array.is_show = true
+            }
+            _self.totalArray.push(array)
+          }
+        })
     }
   }
 }
@@ -109,83 +95,83 @@ export default {
 .PerformanceFAQTypeB {
   padding-top: 200px;
   margin: 0 auto;
-    .FAQ-type-B {
-      padding-top: 106px;
-      list-style: none;
+  .FAQ-type-B {
+    padding-top: 106px;
+    list-style: none;
 
-      li {
-        padding: 40px 20px;
-        border-bottom: 1px solid $border-color;
+    li {
+      padding: 40px 20px;
+      border-bottom: 1px solid $border-color;
+      cursor: pointer;
+
+      &:first-child {
+        border-top: 1px solid $border-color;
+      }
+
+      .FAQ-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .FAQ-contents {
+        padding: 20px;
+        margin-top: 40px;
+        .info-box {
+          margin-bottom: 40px;
+        }
+        .info-title {
+          font-weight: bold;
+          font-size: 19px;
+          letter-spacing: -0.5px;
+          color: $font-color-base;
+        }
+        .info-description {
+          font-size: 16px;
+          margin-top: 20px;
+          letter-spacing: -0.5px;
+          color: #8E8E93;
+        }
+      }
+
+      .number {
+        width: 36px;
+        flex-basis: 36px;
+        height: 36px;
+        flex-shrink: 0;
+        border: 2px solid $font-color-base;
+        font-size: 20px;
+        text-align: center;
+        letter-spacing: -0.5px;
+        color: $font-color-base;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+      }
+      .title {
+        flex-basis: calc(100% - 68px);
+        padding-left: 18px;
+        font-weight: bold;
+        font-size: 26px;
+        letter-spacing: -0.5px;
+        color: $font-color-base;
+      }
+      .arrow {
+        width: 32px;
+        flex-basis: 32px;
+        transform: rotate(180deg);
         cursor: pointer;
 
-        &:first-child {
-          border-top: 1px solid $border-color;
-        }
-
-        .FAQ-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .FAQ-contents {
-          padding: 20px;
-          margin-top: 40px;
-          .info-box {
-            margin-bottom: 40px;
-          }
-          .info-title {
-            font-weight: bold;
-            font-size: 19px;
-            letter-spacing: -0.5px;
-            color: $font-color-base;
-          }
-          .info-description {
-            font-size: 16px;
-            margin-top: 20px;
-            letter-spacing: -0.5px;
-            color: #8E8E93;
-          }
-        }
-
-        .number {
-          width: 36px;
-          flex-basis: 36px;
-          height: 36px;
-          flex-shrink: 0;
-          border: 2px solid $font-color-base;
-          font-size: 20px;
-          text-align: center;
-          letter-spacing: -0.5px;
-          color: $font-color-base;
-          border-radius: 50%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-weight: bold;
-        }
-        .title {
-          flex-basis: calc(100% - 68px);
-          padding-left: 18px;
-          font-weight: bold;
-          font-size: 26px;
-          letter-spacing: -0.5px;
-          color: $font-color-base;
-        }
-        .arrow {
-          width: 32px;
-          flex-basis: 32px;
-          transform: rotate(180deg);
-          cursor: pointer;
-
-          &.active {
-            transform: rotate(0);
-          }
+        &.active {
+          transform: rotate(0);
         }
       }
     }
+  }
 
-    @media ( max-width: 899px ) {
+  @media ( max-width: 899px ) {
     // padding: 38px 0;
     padding: 55px 0;
     border-top: 8px solid #EFEFF4;
@@ -197,7 +183,6 @@ export default {
       li {
         padding: 16px 0;
         border-bottom: 1px solid $border-color;
-        
 
         &:first-child {
           border-top: 1px solid $border-color;

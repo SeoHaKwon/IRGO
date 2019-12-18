@@ -5,16 +5,11 @@
       Initial Public Offering Information
     </h3>
     <div class="IPO-items-group">
-      <div 
-        v-for="ipo in IPODATA"
-        class="IPO-items"
-      >
+      <div v-for="(ipo, idx) in IPODATA" class="IPO-items" v-bind:key="idx">
         <div class="IPO-wrapper">
           <img v-if="ipo.background === 'gray'" src="../assets/img/gray_circle.png" />
           <img v-else src="../assets/img/white_circle.png" />
-          <h5
-            :style="`color: ${ipo.font}`"
-          >
+          <h5 :style="`color: ${ipo.font}`">
             {{ ipo.title }}
           </h5>
           <div class="IPO-arrow" v-if="ipo.isarrow">
@@ -22,15 +17,13 @@
             <img v-else src="../assets/img/ic_black_arrow.png" />
           </div>
         </div>
-        <h6
-          :style="`color: ${ipo.font}`"
-        >
+        <h6 :style="`color: ${ipo.font}`">
           {{ ipo.days }}
         </h6>
       </div>
     </div>
     <ul class="finance-info">
-      <li v-for="item in IPOList" v-on:click="goURL(item.TYPE, item.VOD_URL, item.UPLOAD_FILE1)">
+      <li v-for="(item, key) in IPOList" v-on:click="goURL(item.TYPE, item.VOD_URL, item.UPLOAD_FILE1)" v-bind:key="key">
         <h5>{{item.TITLE}}</h5>
         <h6>
           <svg style="width:24px;height:24px" viewBox="0 0 24 24" v-if="item.TYPE == 'PDF'">
@@ -53,7 +46,7 @@ export default {
   name: 'HomeIPO',
   components: {
   },
-  data() {
+  data () {
     return {
       isData: true,
       isIPO: '',
@@ -106,17 +99,17 @@ export default {
           border: '2px dashed #D1D1D6',
           arrow: 'gray',
           isarrow: false
-        },
+        }
       ],
       IPOList: []
     }
   },
   methods: {
     goURL (type, url, file) {
-      if (type == 'URL') {
+      if (type === 'URL') {
         window.open(url, '_BLANK')
-      } else if (type == 'PDF') {
-        window.open('https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/'+file, '_BLANK')
+      } else if (type === 'PDF') {
+        window.open('https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/' + file, '_BLANK')
       }
     }
   },
@@ -132,7 +125,7 @@ export default {
     },
     getMainColor () {
       const _self = this
-      _self.mcolor = '#'+_self.getMainColor
+      _self.mcolor = '#' + _self.getMainColor
     },
     getCompSeq () {
       const _self = this
@@ -145,12 +138,13 @@ export default {
             _self.isData = false
           } else {
             const CAL_KIND = res[0].CAL_KIND
-            let t = (CAL_KIND == 'D' ? t = 1 : (CAL_KIND == 'A' ? t = 2 : (CAL_KIND == 'P' ? t = 3 : (CAL_KIND == 'C' ? t = 4 : (CAL_KIND == 'L' ? t = 5 : (CAL_KIND == 'I' ? t = 3 : 0))))))
+            let t
+            t = (CAL_KIND === 'D' ? t = 1 : (CAL_KIND === 'A' ? t = 2 : (CAL_KIND === 'P' ? t = 3 : (CAL_KIND === 'C' ? t = 4 : (CAL_KIND === 'L' ? t = 5 : (CAL_KIND === 'I' ? t = 3 : 0))))))
             for (let i = 0; i < t; i++) {
               _self.IPODATA[i].background = 'gray'
               _self.IPODATA[i].font = '#313439'
               if (i > 0) {
-                _self.IPODATA[i-1].arrow = 'black'
+                _self.IPODATA[i - 1].arrow = 'black'
               }
             }
           }
@@ -183,30 +177,30 @@ export default {
         .then(result => {
           if (result.length > 0) {
             for (var key in result) {
-              if (result[key].SET_DATA_TYPE == 1) {
+              if (result[key].SET_DATA_TYPE === 1) {
                 result[key].TITLE = '공모개요'
                 result[key].TYPE = 'PDF'
-              } else if (result[key].SET_DATA_TYPE == 2) {
+              } else if (result[key].SET_DATA_TYPE === 2) {
                 result[key].TITLE = 'IR BOOK'
                 result[key].TYPE = 'PDF'
-              } else if (result[key].SET_DATA_TYPE == 3) {
+              } else if (result[key].SET_DATA_TYPE === 3) {
                 result[key].TITLE = '웹캐스팅'
                 result[key].TYPE = 'URL'
-              } else if (result[key].SET_DATA_TYPE == 4) {
+              } else if (result[key].SET_DATA_TYPE === 4) {
                 result[key].TITLE = '공모분석보고서'
                 if (result[key].TYPE) {
                   result[key].TYPE = (result[key].UPLOAD_FILE1).split('.')[1].toUpperCase()
                 } else {
                   result[key].TYPE = 'PDF'
                 }
-              } else if (result[key].SET_DATA_TYPE == 5) {
+              } else if (result[key].SET_DATA_TYPE === 5) {
                 result[key].TITLE = '기업분석보고서'
                 if (result[key].TYPE) {
                   result[key].TYPE = (result[key].UPLOAD_FILE1).split('.')[1].toUpperCase()
                 } else {
                   result[key].TYPE = 'PDF'
                 }
-              } else if (result[key].SET_DATA_TYPE == 6) {
+              } else if (result[key].SET_DATA_TYPE === 6) {
                 result[key].TITLE = '증권신고서'
                 result[key].TYPE = 'PDF'
               }
@@ -233,44 +227,44 @@ export default {
   display: none;
 }
 .HomeFinanceInfo {
-    padding-top: 200px;
+  padding-top: 200px;
 
     .finance-select {
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 40px;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 40px;
     }
 
     .finance-info {
-        margin-top: 60px;
-        list-style: none;
+      margin-top: 60px;
+      list-style: none;
 
-        li {
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 40px 20px;
-            border-bottom: 1px solid $border-color;
-            height: 120px;
+      li {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px 20px;
+        border-bottom: 1px solid $border-color;
+        height: 120px;
 
-            &:first-child {
-                border-top: 1px solid $border-color;
-            }
-
-            h5 {
-                font-size: 21px;
-                letter-spacing: -0.5px;
-                color: $font-color-base;
-            }
-            h6 {
-                font-size: 18px;
-                display: flex;
-                align-items: center;
-                text-align: right;
-                color: $brand-color;
-            }
+        &:first-child {
+          border-top: 1px solid $border-color;
         }
+
+        h5 {
+          font-size: 21px;
+          letter-spacing: -0.5px;
+          color: $font-color-base;
+        }
+        h6 {
+          font-size: 18px;
+          display: flex;
+          align-items: center;
+          text-align: right;
+          color: $brand-color;
+        }
+      }
     }
     .IPO-items-group {
       display: flex;
@@ -311,9 +305,9 @@ export default {
         color: $font-color-base;
         margin: 0;
         position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
 
       & h6 {
@@ -370,9 +364,6 @@ export default {
         }
       }
     }
-    // .IPO-item-circle {
-
-    // }
 
     @media ( max-width: 899px ) {
         // padding: 38px 0;
@@ -380,97 +371,95 @@ export default {
         border-top: 8px solid #EFEFF4;
 
         .finance-select {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 13px;
-            display: none;
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 13px;
+          display: none;
         }
 
       .finance-info {
-          margin-top: 40px;
-          list-style: none;
-          padding: 0 16px;
+        margin-top: 16px;
+        list-style: none;
+        padding: 0 16px;
 
-          li {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              padding: 16px 0;
-              border-bottom: 1px solid $border-color;
-              height: auto;
+        li {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px 0;
+          border-bottom: 1px solid $border-color;
+          height: auto;
 
-              &:first-child {
-                  border-top: 0;
-              }
-
-              h5 {
-                  font-size: 16px;
-                  letter-spacing: -0.5px;
-                  color: $font-color-base;
-              }
-              h6 {
-                  font-size: 18px;
-                  display: flex;
-                  align-items: center;
-                  text-align: right;
-                  color: $brand-color;
-
-                  span {
-                    display: none;
-                  }
-              }
+          &:first-child {
+            border-top: 0;
           }
+          h5 {
+            font-size: 16px;
+            letter-spacing: -0.5px;
+            color: $font-color-base;
+          }
+          h6 {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            text-align: right;
+            color: $brand-color;
+
+            span {
+              display: none;
+            }
+          }
+        }
       }
 
       .IPO-items-group {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 16px;
-            margin: 50px auto 0;
-          }
-          .IPO-items {
-            // flex-basis: calc(20% - 9px);
-            flex-basis: 54px;
-            width: calc(20% - 5px);
-            flex-shrink: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 16px;
+        margin: 50px auto 0;
+      }
+      .IPO-items {
+        // flex-basis: calc(20% - 9px);
+        flex-basis: 54px;
+        width: calc(20% - 5px);
+        flex-shrink: 0;
 
-            .IPO-wrapper {
-              width: 100%;
-              position: relative;
+        .IPO-wrapper {
+          width: 100%;
+          position: relative;
 
-              & img {
-                width: 100%;
-              }
-
-              & .IPO-arrow {
-                width: 50%;
-                position: absolute;
-                top: 50%;
-                left: calc(100% + 12px);
-                transform: translate(0, -50%);
-              }
-            }
-
-            & h5 {
-              color: $font-color-base;
-              font-size: 14px;
-              margin: 0;
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-            }
-
-            & h6 {
-              text-align: center;
-              margin-top: 30px;
-              font-size: 11px;
-              color: $font-color-base;
-              margin: 10px 0 0 0;
-            }
+          & img {
+            width: 100%;
           }
 
+          & .IPO-arrow {
+            width: 50%;
+            position: absolute;
+            top: 50%;
+            left: calc(100% + 12px);
+            transform: translate(0, -50%);
+          }
+        }
+
+        & h5 {
+          color: $font-color-base;
+          font-size: 14px;
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        & h6 {
+          text-align: center;
+          margin-top: 30px;
+          font-size: 11px;
+          color: $font-color-base;
+          margin: 10px 0 0 0;
+        }
+      }
 
     }
 
