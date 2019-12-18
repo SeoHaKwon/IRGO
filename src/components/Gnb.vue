@@ -174,11 +174,11 @@
         top:0;
         width:100%;
         height:100%;
-        padding:86px 90px 0 90px;
+        padding:86px 90px 26px 90px;
         background-color:#fff;
         z-index: 300;
         transition:all .5s;
-        overflow:hidden;
+        overflow:auto;
         &.active {
           left:0;
         }
