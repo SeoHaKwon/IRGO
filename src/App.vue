@@ -17,7 +17,7 @@ export default {
 @import "@/style/_color.scss";
 @import "@/style/_mixin.scss";
 .wrap {
-	max-width:1920px;
+  max-width:1920px;
   height:100%;
   &.active {
     overflow:hidden;

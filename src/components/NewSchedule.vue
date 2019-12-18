@@ -4,7 +4,7 @@
       <strong>다가오는 일정</strong>
     </p>
     <ul class="list">
-      <li> 
+      <li>
         <div class="date-wrap">
           <p class="day">2019.10.18 ~19</p>
           <span class="time">10:00 ~ 11:00</span>
@@ -102,6 +102,7 @@
         .info-wrap  {
           .title {
             color:$white;
+            width: 95%;
           }
           dl {
             dt {
@@ -135,6 +136,7 @@
       color:$black3;
       font-weight: 500;
       @include textHidden($line:1);
+      width: 95%;
       .file {
         display:inline-block;
         width:25px;
@@ -175,7 +177,7 @@
     }
   }
 }
-@media screen and (max-width: 1000px) { 
+@media screen and (max-width: 1000px) {
   .newSchedule {
     .list {
       li {
@@ -195,6 +197,7 @@
       .title {
         margin-top:45px;
         font-size:14px;
+        width: 95%;
         .file  {
           display:none;
         }
@@ -220,5 +223,3 @@
   }
 }
 </style>
-
-

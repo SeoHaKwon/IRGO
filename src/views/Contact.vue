@@ -32,7 +32,7 @@ export default {
     SubVisual,
     IrContact,
     Footer
-  },
+  }
 }
 
 </script>

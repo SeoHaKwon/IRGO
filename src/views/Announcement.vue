@@ -37,7 +37,7 @@ export default {
     AnnouncementTab,
     QaBoard,
     Footer
-  },
+  }
 }
 
 </script>

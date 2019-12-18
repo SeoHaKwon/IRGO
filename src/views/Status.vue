@@ -37,7 +37,7 @@ export default {
     Shareholder,
     AllocationTable,
     Footer
-  },
+  }
 }
 
 </script>

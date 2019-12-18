@@ -66,31 +66,27 @@
       </div>
     </div>
     <div class="tab-cont">
-      
     </div>
     <div class="tab-cont">
-      
     </div>
     <div class="tab-cont">
-      
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    data : () => {
-      return {
-        isActive : false,
-      }
-    },
-    methods:{
-      openSelect(){
-        console.log(1111);
-        this.isActive = !this.isActive;
-      }
+export default {
+  data: () => {
+    return {
+      isActive: false
+    }
+  },
+  methods: {
+    openSelect () {
+      this.isActive = !this.isActive
     }
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -202,7 +198,7 @@
         background-size:16.5px 18px;
       }
     }
-  }  
+  }
 }
 
 </style>

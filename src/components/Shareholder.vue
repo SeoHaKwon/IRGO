@@ -166,6 +166,7 @@
             }
             &:last-child {
               padding-right:17px;
+              width: 65px;
             }
           }
         }

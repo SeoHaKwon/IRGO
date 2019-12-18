@@ -37,7 +37,7 @@ export default {
     NewsList,
     ThumbnailBoard,
     Footer
-  },
+  }
 }
 
 </script>

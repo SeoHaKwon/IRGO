@@ -7,7 +7,7 @@
             <img src="../assets/images/logo/logo_main.png" alt="">
           </router-link>
         </h1>
-        <div class="menu" :class="{active:isActive}"> 
+        <div class="menu" :class="{active:isActive}">
           <h1 class="logo is_mobile">
             <router-link to="/">
               <img src="../assets/images/logo/logo_menu.png" alt="">
@@ -39,18 +39,18 @@
 </template>
 
 <script>
-  export default {
-    data : () => {
-      return {
-        isActive : false,
-      }
-    },
-    methods:{
-      openMenu(){
-        this.isActive = !this.isActive;
-      }
+export default {
+  data: () => {
+    return {
+      isActive: false
+    }
+  },
+  methods: {
+    openMenu () {
+      this.isActive = !this.isActive
     }
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

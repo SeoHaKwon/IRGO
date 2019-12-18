@@ -7,7 +7,7 @@ Vue.config.productionTip = false
 require('@/style/_common.scss')
 
 new Vue({
-    router,
-    store,
-    render: h => h(App)
+  router,
+  store,
+  render: h => h(App)
 }).$mount('#app')

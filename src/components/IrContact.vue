@@ -48,16 +48,16 @@
 </template>
 
 <script>
-import SubVisual from "@/components/SubVisual.vue";
-import Footer from "@/components/Footer.vue";
+// import SubVisual from '@/components/SubVisual'
+// import Footer from '@/components/Footer'
 
 export default {
-  name: "status",
+  name: 'status',
   components: {
-    SubVisual,
-    Footer
+    // SubVisual,
+    // Footer
   }
-};
+}
 </script>
 
 <style lang="scss">

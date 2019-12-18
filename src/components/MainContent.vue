@@ -3,7 +3,7 @@
     <div class="board-wrap">
       <div class="board left">
         <div class="board-title">
-         <strong class="en"> 
+         <strong class="en">
             Performance<br>
             Presentation
          </strong>
@@ -45,7 +45,7 @@
         <li>
           <a href="#" class="link01">
             <strong class="tit">재무정보</strong>
-            <p class="sub">기업재무정보</p>
+            <p class="sub">분기별 재무제표</p>
           </a>
         </li>
         <li>
@@ -63,13 +63,13 @@
         <li>
           <a href="#" class="link04">
             <strong class="tit">경영보고서</strong>
-            <p class="sub">경영보고서 다운로드</p>
+            <p class="sub">규정 및 보고서</p>
           </a>
         </li>
         <li>
           <a href="#" class="link05">
             <strong class="tit">IR Contact</strong>
-            <p class="sub">다운로드 및 기업정보</p>
+            <p class="sub">문의 및 앱 다운로드</p>
           </a>
         </li>
       </ul>
@@ -79,13 +79,13 @@
 </template>
 
 <script>
-  import Footer from '@/components/Footer.vue'
+import Footer from '@/components/Footer.vue'
 
-  export default {
-    components: {
-      Footer
-    }
+export default {
+  components: {
+    Footer
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

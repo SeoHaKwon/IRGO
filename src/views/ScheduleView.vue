@@ -30,7 +30,7 @@ export default {
     SubVisual,
     ScheduleDetail,
     Footer
-  },
+  }
 }
 
 </script>

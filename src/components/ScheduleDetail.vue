@@ -42,7 +42,7 @@
         <p class="desc num">-국내에서 접속시 : 031-688-7002</p>
         <p class="desc num">-해외에서 접속시 : 82-31-688-7001</p>
       </div>
-      <a href="#" class="box-link site-link"><span>사이트 링크</span></a> 
+      <a href="#" class="box-link site-link"><span>사이트 링크</span></a>
       <div class="list-btn">
         <div class="link-box prev">
           <span>이전글</span>
@@ -275,7 +275,6 @@
         }
       }
       border-bottom:1px solid #ececec;
-      
     }
     .conference-wrap {
       margin-top:76px;
@@ -354,7 +353,7 @@
       .top-section {
         flex-direction: column;
         align-items: center;
-        margin:15px 0 30px; 
+        margin:15px 0 30px;
         .files {
           width:100%;
           justify-content: center;

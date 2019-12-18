@@ -32,7 +32,7 @@ export default {
     SubVisual,
     FinanceInfor,
     Footer
-  },
+  }
 }
 
 </script>

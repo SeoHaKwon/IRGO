@@ -32,7 +32,7 @@ export default {
     SubVisual,
     AnnouncementDetail,
     Footer
-  },
+  }
 }
 
 </script>
