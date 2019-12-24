@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/Home.vue'
-import Announcement from '../views/Announcement.vue'
-import AnnouncementView from '../views/AnnouncementView.vue'
-import Schedule from '../views/Schedule.vue'
-import ScheduleView from '../views/ScheduleView.vue'
-import News from '../views/News.vue'
-import NewsView from '../views/NewsView.vue'
-import Finance from '../views/Finance.vue'
-import Status from '../views/Status.vue'
-import Disclosure from '../views/Disclosure.vue'
-import Report from '../views/Report.vue'
-import Contact from '../views/Contact.vue'
+import Home from '@/views/TypeA/Home'
+import Announcement from '@/views/TypeA/Announcement'
+import AnnouncementView from '@/views/TypeA/AnnouncementView'
+import Schedule from '@/views/TypeA/Schedule'
+import ScheduleView from '@/views/TypeA/ScheduleView'
+import News from '@/views/TypeA/News'
+import NewsView from '@/views/TypeA/NewsView'
+import Finance from '@/views/TypeA/Finance'
+import Status from '@/views/TypeA/Status'
+import Disclosure from '@/views/TypeA/Disclosure'
+import Report from '@/views/TypeA/Report'
+import Contact from '@/views/TypeA/Contact'
 Vue.use(Router)
 export default new Router({
   mode: 'history',
@@ -38,9 +38,10 @@ export default new Router({
       component: News
     },
     {
-      path: '/newsView',
+      path: '/newsView/:index',
       name: 'newsView',
-      component: NewsView
+      component: NewsView,
+      props: true
     },
     {
       path: '/financial',
@@ -68,14 +69,19 @@ export default new Router({
       component: Contact
     },
     {
-      path: '/scheduleView',
+      path: '/scheduleView/:index',
       name: 'scheduleView',
-      component: ScheduleView
+      component: ScheduleView,
+      props: true
     },
     {
-      path: '/announcementView',
+      path: '/announcementView/:index',
       name: 'announcementView',
-      component: AnnouncementView
+      component: AnnouncementView,
+      props: true
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })

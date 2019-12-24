@@ -1,6 +1,6 @@
 //mixin
 @mixin bgImg ($url, $pos:center, $repet:no-repeat, $type:png) {
-    background-image: url(../assets/images/#{$url}.#{$type});
+    background-image: url(../../assets/images/#{$url}.#{$type});
     background-repeat: $repet;
     background-position: $pos;
 }
