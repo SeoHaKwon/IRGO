@@ -61,6 +61,19 @@
             </div>
             <h4 class="IR-main-description" v-html="v_CONTENTS">
             </h4>
+            <div class="FAQ-file-upload" v-if="IS_FILE">
+              <div class="title">첨부파일</div>
+              <div class="file-list">
+                <h5 style="cursor:pointer;" v-if="FILE_NAME1" v-on:click="ViewFile(FILE1_URL)">
+                  <img width="16px" src="../assets/img/file_type_pdf_1.png"/>
+                  {{ FILE_NAME1 }}
+                </h5>
+                <h5 style="cursor:pointer;" v-if="FILE_NAME2" v-on:click="ViewFile(FILE2_URL)">
+                  <img width="16px" src="../assets/img/file_type_pdf_2.png"/>
+                  {{ FILE_NAME2 }}
+                </h5>
+              </div>
+            </div>
             <ul class="IR-modal-list" v-if="false">
                 <li>
                     <img width="30px" src="../assets/img/IR_modal_left_arrow.png"/>
@@ -96,7 +109,12 @@ export default {
       v_CONTENTS: '',
       v_REG_DATE: '',
       mcolor: '',
-      allData: []
+      allData: [],
+      FILE_NAME1: '',
+      FILE_NAME2: '',
+      FILE1_URL: '',
+      FILE2_URL: '',
+      IS_FILE: false
     }
   },
   filters: {
@@ -113,6 +131,9 @@ export default {
     }
   },
   methods: {
+    ViewFile (URL) {
+      window.open('https://file.irgo.co.kr/data/BOARD/ATTACH_PDF/' + URL, '_BLANK')
+    },
     clickModal (isOpen, idx) {
       const globalBody = document.getElementsByTagName('html')[0]
       if (isOpen) {
@@ -132,7 +153,16 @@ export default {
       } else {
         _self.v_CONTENTS = _self.NewsList[idx].CONTENTS.replace('display:inline', 'display:none')
       }
+      _self.FILE_NAME1 = _self.NewsList[idx].ORI_FILE1
+      _self.FILE1_URL = _self.NewsList[idx].UPLOAD_FILE1
+      _self.FILE_NAME2 = _self.NewsList[idx].ORI_FILE2
+      _self.FILE2_URL = _self.NewsList[idx].UPLOAD_FILE2
       _self.v_REG_DATE = _self.NewsList[idx].REG_DATE
+      if (_self.FILE1_URL || _self.FILE2_URL) {
+        _self.IS_FILE = true
+      } else {
+        _self.IS_FILE = false
+      }
     },
     moreData () {
       const _self = this
@@ -451,5 +481,76 @@ export default {
             }
         }
     }
+}
+.FAQ-file-upload {
+  background: #EFEFF4;
+  opacity: 0.6;
+  border: 1px solid #E5E5EA;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-top: 120px;
+
+  .title {
+    flex-basis: 100px;
+  }
+  .file-list {
+    flex-basis: calc(100% - 100px);
+    justify-content: left;
+    align-items: center;
+    display: flex;
+    padding: 5px 10px;;
+    border-left: 1px solid #D3D3D3;
+
+    h5 {
+      justify-content: left;
+      align-items: center;
+      display: flex;
+      margin-right: 20px;
+
+      img {
+        margin-right: 9px;
+      }
+    }
+  }
+}
+
+@media (max-width: 899px) {
+  .FAQ-file-upload {
+    background: #EFEFF4;
+    opacity: 0.6;
+    border: 1px solid #E5E5EA;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-top: 120px;
+
+    .title {
+      flex-basis: 100px;
+    }
+    .file-list {
+      flex-basis: calc(100% - 100px);
+      justify-content: left;
+      align-items: center;
+      display: flex;
+      padding: 5px 10px;;
+      border-left: 1px solid #D3D3D3;
+
+      h5 {
+        justify-content: left;
+        align-items: center;
+        display: flex;
+        margin-right: 20px;
+
+        img {
+          margin-right: 9px;
+        }
+      }
+    }
+  }
 }
 </style>

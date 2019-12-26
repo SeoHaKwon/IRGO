@@ -136,10 +136,12 @@ export default {
     getCompSeq () {
       const _self = this
       const param = {
-        seq: _self.getCompSeq
+        seq: _self.getCompSeq,
+        isTYPE: 'B'
       }
       _self.$store.dispatch('GET_SCH', param)
         .then(res => {
+          console.log(res)
           if (res.length > 0) {
             for (var key in res) {
               _self.SCHEDULE.push(

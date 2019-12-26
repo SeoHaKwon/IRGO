@@ -25,7 +25,9 @@ export default {
       type_D: [],
       silQ: [],
       silJ: {},
-      ipo: ''
+      ipo: '',
+      is_siljuk: false,
+      DeleteNumber: 0
     }
   },
   components: {
@@ -54,28 +56,45 @@ export default {
         result.splice(0, 1)
         /* SET_DATA_TYPE */
         for (var key in result) {
-          if (result[key].SET_DATA_TYPE === 2) {
+          if (result[key].SET_DATA_TYPE === '1') {
+            if (!_self.is_siljuk) {
+              result[key].TITLE = '실적 발표 자료'
+              result[key].TYPE = 'PDF'
+              _self.is_siljuk = true
+            } else {
+              _self.DeleteNumber = key
+            }
+          } else if (result[key].SET_DATA_TYPE === '0') {
+            if (!_self.is_siljuk) {
+              result[key].TITLE = '실적 발표 자료'
+              result[key].TYPE = 'PDF'
+              _self.is_siljuk = true
+            } else {
+              _self.DeleteNumber = key
+            }
+          } else if (result[key].SET_DATA_TYPE === '2') {
             result[key].TITLE = '보도자료(press Release)'
             result[key].TYPE = 'PDF'
-          } else if (result[key].SET_DATA_TYPE === 3) {
+          } else if (result[key].SET_DATA_TYPE === '3') {
             result[key].TITLE = '웹캐스팅'
             result[key].TYPE = 'URL'
-          } else if (result[key].SET_DATA_TYPE === 4) {
+          } else if (result[key].SET_DATA_TYPE === '4') {
             result[key].TITLE = '컨퍼런스콜'
             result[key].TYPE = 'URL'
-          } else if (result[key].SET_DATA_TYPE === 5) {
+          } else if (result[key].SET_DATA_TYPE === '5') {
             result[key].TITLE = '스크립트'
             result[key].TYPE = 'PDF'
-          } else if (result[key].SET_DATA_TYPE === 6) {
+          } else if (result[key].SET_DATA_TYPE === '6') {
             result[key].TITLE = 'Factsheet'
             result[key].TYPE = 'PDF'
             // result[key].TYPE = result[key].SITEURL.split('.')[1]
-          } else if (result[key].SET_DATA_TYPE === 7) {
+          } else if (result[key].SET_DATA_TYPE === '7') {
             result[key].TYPE = 'URL'
           } else {
             result[key].TYPE = 'PDF'
           }
         }
+        result.splice(_self.DeleteNumber, 1)
         _self.type_D = result
       })
     }
@@ -109,15 +128,15 @@ export default {
                 }
                 /* SET_DATA_TYPE */
                 for (var key in result) {
-                  if (result[key].SET_DATA_TYPE === 2) {
+                  if (result[key].SET_DATA_TYPE === '2') {
                     result[key].TITLE = '보도자료(press Release)'
-                  } else if (result[key].SET_DATA_TYPE === 3) {
+                  } else if (result[key].SET_DATA_TYPE === '3') {
                     result[key].TITLE = '웹캐스팅'
-                  } else if (result[key].SET_DATA_TYPE === 4) {
+                  } else if (result[key].SET_DATA_TYPE === '4') {
                     result[key].TITLE = '컨퍼런스콜'
-                  } else if (result[key].SET_DATA_TYPE === 5) {
+                  } else if (result[key].SET_DATA_TYPE === '5') {
                     result[key].TITLE = '스크립트'
-                  } else if (result[key].SET_DATA_TYPE === 6) {
+                  } else if (result[key].SET_DATA_TYPE === '6') {
                     result[key].TITLE = 'Factsheet'
                   }
                 }

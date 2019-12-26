@@ -89,8 +89,8 @@ export default {
       let day = new Date().getDate()
       let hour = new Date().getHours()
       let min = new Date().getMinutes()
-      hour = hour > 10 ? hour : '0' + hour
-      min = min > 10 ? min : '0' + min
+      hour = hour > 9 ? hour : '0' + hour
+      min = min > 9 ? min : '0' + min
       const sum = month + '/' + day + ' ' + hour + ':' + min
       _self.Price.sumDay = sum
     },

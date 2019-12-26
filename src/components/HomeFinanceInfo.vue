@@ -1,5 +1,5 @@
 <template>
-  <div class="HomeFinanceInfo contaner" v-if="finance.length > 0 && is_view == 'Y'">
+  <div class="HomeFinanceInfo contaner" v-if="finance.length > 0 && is_view === 'Y'">
     <h2 class="section-title">재무정보</h2>
     <h3 class="section-sube">
       Financial Statements
@@ -8,7 +8,7 @@
       <li v-for="(item, idx) in finance" v-on:click="setQuarter(item.YEAR + '.' + item.PERIOD + 'Q', idx)" :class="isActive[idx]" v-bind:key="item.QUARTER">
         <a>{{ item.QUARTER }}</a>
       </li>
-      <li v-for="n in 5-finance.length" v-bind:key="n"></li>
+      <li v-for="n in finlen" v-bind:key="n"></li>
     </ul>
       <div class="finance-select">
           <div class="select-warp">
@@ -19,7 +19,7 @@
           </div>
       </div>
     <ul class="finance-info">
-        <li v-on:click="getData(finance[nowQ].UPLOAD_FILE1)">
+        <li v-on:click="getData(finance[nowQ].UPLOAD_FILE1)" v-if="finance[nowQ].UPLOAD_FILE1">
             <h5>재무상태표 ({{finance[nowQ].QUARTER}})</h5>
             <h6>
               <a>
@@ -30,7 +30,7 @@
                 <span class="data-type" :style="{ color: mcolor}">PDF</span>
             </h6>
         </li>
-        <li v-on:click="getData(finance[nowQ].UPLOAD_FILE2)">
+        <li v-on:click="getData(finance[nowQ].UPLOAD_FILE2)" v-if="finance[nowQ].UPLOAD_FILE2">
             <h5>손익계산서 ({{finance[nowQ].QUARTER}})</h5>
             <h6>
                 <a>
@@ -41,7 +41,7 @@
                 <span class="data-type" :style="{ color: mcolor}">PDF</span>
             </h6>
         </li>
-        <li v-on:click="getData(finance[nowQ].UPLOAD_FILE3)">
+        <li v-on:click="getData(finance[nowQ].UPLOAD_FILE3)" v-if="finance[nowQ].UPLOAD_FILE3">
             <h5>현금흐름표 ({{finance[nowQ].QUARTER}})</h5>
             <h6>
                 <a>
@@ -58,6 +58,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import _ from 'lodash'
 
 export default {
   name: 'HomeFinanceInfo',
@@ -76,7 +77,8 @@ export default {
       },
       ori_active: 0,
       mcolor: '',
-      is_view: 'N'
+      is_view: 'N',
+      finlen: 0
     }
   },
   computed: {
@@ -118,7 +120,12 @@ export default {
       }
       this.$store.dispatch('GET_FINANCE', aram)
         .then(res => {
+          _.remove(res, { 'UPLOAD_FILE1': null, 'UPLOAD_FILE2': null, 'UPLOAD_FILE3': null })
           if (res.length !== 0) {
+            if (res.length > 5) {
+              res.splice(0, 5)
+            }
+            _self.finlen = 5 - res.length
             _self.nowQ = res[0].YEAR + '.' + res[0].PERIOD + 'Q'
             // const cons = 5 - res.length
             for (let i = 0; i < res.length; i++) {

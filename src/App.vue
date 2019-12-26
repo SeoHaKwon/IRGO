@@ -119,8 +119,8 @@ export default {
   },
   beforeCreate () {
     const param = {
-      'url': 'adtek.irpage.co.kr'
-      // 'url': 'samsung.irpage.co.kr'
+      // 'url': 'adtek.irpage.co.kr'
+      'url': 'samsung.irpage.co.kr'
       // 'url': 'shinsungeng.irpage.co.kr'
       // 'url': 'bridgebiorx.irpage.co.kr'
       // 'url': 'initech.irpage.co.kr'
