@@ -20,13 +20,16 @@
         <ul class="list">
           <li>
             <strong class="tit">일시</strong>
-            <p class="time en">{{ scheduleList.S_DATE | v_date }} ~ {{ scheduleList.E_DATE | v_edate }} <span class="en">{{ scheduleList.S_TIME }} ~ {{ scheduleList.E_TIME }}</span></p>
+            <p class="time en" :style="{color: mcolor}">
+              {{ scheduleList.S_DATE | v_date }} ~ {{ scheduleList.E_DATE | v_edate }}
+              <span class="en" :style="{color: mcolor}">{{ scheduleList.S_TIME }} ~ {{ scheduleList.E_TIME }}</span>
+            </p>
           </li>
-          <li>
+          <li v-if="scheduleList.PLACE">
             <strong class="tit">장소</strong>
             <p>{{ scheduleList.PLACE }}</p>
           </li>
-          <li>
+          <li v-if="scheduleList.ETC">
              <strong class="tit">대상</strong>
             <p>{{ scheduleList.ETC }}</p>
           </li>
@@ -56,7 +59,7 @@
         </div>
       </div>
       <div class="btn-wrap center">
-        <a href="javascript:void(0)" class="box-link back active" v-on:click="goList"><span>목록</span></a>
+        <a href="javascript:void(0)" class="box-link back active" v-on:click="goList" :style="{'border-color': mcolor}"><span :style="{color: mcolor}">목록 <span :style="{background: mcolor}"></span></span></a>
       </div>
     </div>
   </div>
@@ -74,11 +77,12 @@ export default {
       prev_seq: 0,
       is_next: false,
       next_title: '',
-      next_seq: 0
+      next_seq: 0,
+      mcolor: ''
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq'])
+    ...mapGetters(['getCompSeq', 'getMainColor'])
   },
   filters: {
     v_date: function (date) {
@@ -103,6 +107,9 @@ export default {
     if (_self.getCompSeq) {
       _self.getSData()
     }
+    if (_self.getMainColor) {
+      _self.mcolor = '#' + _self.getMainColor
+    }
   },
   watch: {
     getCompSeq () {
@@ -121,6 +128,10 @@ export default {
       _self.next_title = ''
       _self.next_seq = 0
       _self.getSData()
+    },
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#' + _self.getMainColor
     }
   },
   methods: {
@@ -404,16 +415,31 @@ dd.icon-file {
         font-size:15px;
         color:#9c9ea9;
         font-weight: 500;
-        &::after {
-          display:block;
+        // &::after {
+        //   display:block;
+        //   position: absolute;
+        //   right:0;
+        //   top:50%;
+        //   width:10px;
+        //   height:3px;
+        //   background-color:#d9dce1;
+        //   content:"";
+        //   transform: translateY(-50%);
+        // }
+        span {
           position: absolute;
-          right:0;
-          top:50%;
-          width:10px;
-          height:3px;
-          background-color:#d9dce1;
-          content:"";
+          width: 10px;
+          height: 3px;
           transform: translateY(-50%);
+          background-color: black;
+          margin-top: 8px;
+          margin-left: 61px;
+        }
+        @media screen and (max-width: 1000px){
+          span {
+            margin-top: -5px;
+            margin-left: 36px;
+          }
         }
       }
       &.site-link {

@@ -4,9 +4,9 @@
       <strong>지난일정</strong>
     </p>
     <ul class="list">
-      <li v-for="(item, idx) in ScheduleData" v-on:click="ViewPage(item.F_SEQ)" v-bind:key="idx">
+      <li v-for="(item, idx) in v_schedule" v-on:click="ViewPage(item.F_SEQ)" v-bind:key="idx">
         <strong class="board-title">
-          {{ item.CONTENTS }}
+          {{ item.TITLE }}
         </strong>
         <span class="day">{{ item.S_DATE | v_date }}</span>
         <a href="" class="link"></a>
@@ -24,6 +24,7 @@
 export default {
   data: () => {
     return {
+      v_schedule: []
     }
   },
   props: ['ScheduleData', 'allData'],
@@ -38,6 +39,12 @@ export default {
       return year + '. ' + month + '. ' + day
     }
   },
+  watch: {
+    ScheduleData () {
+      const _self = this
+      _self.v_schedule = _self.ScheduleData
+    }
+  },
   methods: {
     ViewPage (idx) {
       const _self = this
@@ -45,7 +52,7 @@ export default {
     },
     moreScheduleData () {
       const _self = this
-      _self.ScheduleData = _self.ScheduleData.concat(_self.allData.splice(0, 5))
+      _self.v_schedule = _self.v_schedule.concat(_self.allData.splice(0, 5))
     }
   }
 }
@@ -91,7 +98,18 @@ export default {
       color: #bcc0ca;
       &.active {
         color: $blue;
-        &::after {
+        // &::after {
+        //   display: block;
+        //   position: absolute;
+        //   left: 50%;
+        //   bottom: 0;
+        //   width: 80px;
+        //   height: 3px;
+        //   margin-left: -40px;
+        //   background-color: $blue;
+        //   content: "";
+        // }
+        span {
           display: block;
           position: absolute;
           left: 50%;
@@ -99,14 +117,19 @@ export default {
           width: 80px;
           height: 3px;
           margin-left: -40px;
-          background-color: $blue;
+          background-color: #157fec;
           content: "";
+        }
+        @media screen and (max-width: 500px){
+          span {
+            width: 40px;
+            margin-left: -20px;
+          }
         }
       }
     }
   }
 }
-
 .tab-cont {
   @include contentWidth($width: 1200px);
   display: none;
@@ -332,8 +355,8 @@ export default {
     height: 45px;
     .selected {
       padding: 0 15px;
-      // font-size: 9px;
-      font-size: 14px;
+      font-size: 9px;
+      // font-size: 14px;
       line-height: 45px;
       background-size: 7px 4px;
     }
@@ -342,8 +365,8 @@ export default {
       li {
         a {
         padding: 0 15px;
-        // font-size: 9px;
-        font-size: 14px;
+        font-size: 9px;
+        // font-size: 14px;
         line-height: 45px;
         }
       }
@@ -362,8 +385,8 @@ export default {
     }
     .tabs {
       .tab {
-        // font-size: 10px;
-        font-size: 14px;
+        font-size: 10px;
+        // font-size: 14px;
         height: 45px;
         &.active {
           &::after {

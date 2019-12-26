@@ -1,19 +1,19 @@
 <template>
   <div class="announcement-Tab">
     <div class="tab-section">
-      <div class="select">
+      <div class="select" :style="{background: mcolor}">
         <span class="selected" v-on:click="openSelect">20{{ nowYear }}</span>
         <ul class="select-list" :class="{on:isActive}">
-          <li v-for="(item, idx) in selectQ" v-bind:key="idx" v-on:click="changeYear(idx)">
+          <li v-for="(item, idx) in selectQ" v-bind:key="idx" v-on:click="changeYear(idx)" :style="{background: mcolor}">
             <a href="javascript:void(0);">20{{ item }}</a>
           </li>
         </ul>
       </div>
       <div class="tabs">
-        <button type="button" class="tab active" v-on:click="setQuarter(0)">1Q</button> <!--클래스 active 주시면 활성화됩니다.-->
-        <button type="button" class="tab" v-on:click="setQuarter(1)">2Q</button>
-        <button type="button" class="tab" v-on:click="setQuarter(2)">3Q</button>
-        <button type="button" class="tab" v-on:click="setQuarter(3)">4Q</button>
+        <button type="button" class="tab active" v-on:click="setQuarter(0)">1Q<span></span></button> <!--클래스 active 주시면 활성화됩니다.-->
+        <button type="button" class="tab" v-on:click="setQuarter(1)">2Q<span></span></button>
+        <button type="button" class="tab" v-on:click="setQuarter(2)">3Q<span></span></button>
+        <button type="button" class="tab" v-on:click="setQuarter(3)">4Q<span></span></button>
       </div>
     </div>
     <div class="tab-cont active"> <!--클래스 active 주시면 활성화됩니다.-->
@@ -90,16 +90,21 @@ export default {
       DeleteNumber: 0,
       nowYear: '',
       nowPeriod: 0,
-      isActive_silj: ''
+      isActive_silj: '',
+      mcolor: ''
     }
   },
   computed: {
-    ...mapGetters(['getCompCode', 'getCompSeq', 'getCompName'])
+    ...mapGetters(['getCompCode', 'getCompSeq', 'getCompName', 'getMainColor'])
   },
   watch: {
     getCompSeq () {
       const _self = this
       _self.getData()
+    },
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#' + _self.getMainColor
     }
   },
   mounted () {
@@ -107,12 +112,18 @@ export default {
     if (_self.getCompSeq) {
       _self.getData()
     }
+    if (_self.getMainColor) {
+      _self.mcolor = '#' + _self.getMainColor
+    }
   },
   methods: {
     setQuarter (idx) {
       const _self = this
       document.querySelector('.tabs').childNodes[_self.nowPeriod].classList.remove('active')
+      document.querySelector('.tabs').childNodes[_self.nowPeriod].style.color = ''
       document.querySelector('.tabs').childNodes[idx].classList.add('active')
+      document.querySelector('.tabs').childNodes[idx].style.color = _self.mcolor
+      document.querySelector('.tabs').childNodes[idx].children[0].style.background = _self.mcolor
       _self.nowPeriod = idx
       _self.changeData(_self.nowYear, _self.nowPeriod)
     },

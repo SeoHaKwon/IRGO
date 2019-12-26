@@ -62,20 +62,31 @@
         </tbody>
       </table>
     </div>
-    <p class="noti">{{ divi[0].COMMENT }}</p>
+    <p class="noti" v-if="comments">{{ comments }}</p>
   </div>
 </template>
 
 <script>
 export default {
+  data: () => {
+    return {
+      comments: ''
+    }
+  },
   props: ['divi'],
   filters: {
     v_data: (datas) => {
       if (datas) {
-        return datas
+        return datas.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
       } else {
         return '-'
       }
+    }
+  },
+  watch: {
+    divi () {
+      const _self = this
+      _self.comments = _self.divi[0].F_DIV_COMMENT
     }
   }
 }

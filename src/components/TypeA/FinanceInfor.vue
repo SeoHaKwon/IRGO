@@ -1,19 +1,19 @@
 <template>
   <div class="announcement-Tab">
     <div class="tab-section">
-      <div class="select">
+      <div class="select" :style="{background: mcolor}">
         <span class="selected" v-on:click="openSelect">{{ nowYear }}</span>
         <ul class="select-list" :class="{on:isActive}">
-          <li v-for="(item ,idx) in yearList" v-bind:key="idx">
+          <li v-for="(item ,idx) in yearList" v-bind:key="idx" :style="{background: mcolor}">
             <a href="javascript:void(0);" v-on:click="changeYear(item)">{{ item }}</a>
           </li>
         </ul>
       </div>
       <div class="tabs">
-        <button type="button" class="tab" v-on:click="changeQuarter(0)">1Q</button> <!--클래스 active 주시면 활성화됩니다.-->
-        <button type="button" class="tab" v-on:click="changeQuarter(1)">2Q</button>
-        <button type="button" class="tab" v-on:click="changeQuarter(2)">3Q</button>
-        <button type="button" class="tab" v-on:click="changeQuarter(3)">4Q</button>
+        <button type="button" class="tab" v-on:click="changeQuarter(0)">1Q<span></span></button> <!--클래스 active 주시면 활성화됩니다.-->
+        <button type="button" class="tab" v-on:click="changeQuarter(1)">2Q<span></span></button>
+        <button type="button" class="tab" v-on:click="changeQuarter(2)">3Q<span></span></button>
+        <button type="button" class="tab" v-on:click="changeQuarter(3)">4Q<span></span></button>
       </div>
     </div>
     <div class="tab-cont active"> <!--클래스 active 주시면 활성화됩니다.-->
@@ -66,11 +66,12 @@ export default {
       profitTable: '',
       cashTable: '',
       yearList: [],
-      COM_NM: ''
+      COM_NM: '',
+      mcolor: ''
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq', 'getCompName'])
+    ...mapGetters(['getCompSeq', 'getCompName', 'getMainColor'])
   },
   mounted () {
     const _self = this
@@ -79,6 +80,9 @@ export default {
     }
     if (_self.getCompName) {
       _self.COM_NM = _self.getCompName
+    }
+    if (_self.getMainColor) {
+      _self.mcolor = '#' + _self.getMainColor
     }
   },
   watch: {
@@ -89,6 +93,10 @@ export default {
     getCompName () {
       const _self = this
       _self.COM_NM = _self.getCompName
+    },
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#' + _self.getMainColor
     }
   },
   methods: {
@@ -122,10 +130,12 @@ export default {
           if (selectList.length > 3) {
             selectList.splice(0, 3)
           }
+          selectList = selectList.reverse()
+          let qList = _.uniqBy(_.map(_.filter(res, { 'YEAR': selectList[0] }), 'PERIOD'))
           _self.yearList = selectList
           _self.finance = res
-          _self.changeYear(res[0].YEAR)
-          _self.changeQuarter(Number(res[0].PERIOD) - 1)
+          _self.changeYear(selectList[0])
+          _self.changeQuarter(qList[0] - 1)
         })
     },
     changeYear (year) {
@@ -139,10 +149,15 @@ export default {
       if (_self.setFinance(_self.nowYear, Q + 1)) {
         if (_self.oriQ !== Q) {
           document.querySelector('.tabs').childNodes[Q].classList.add('active')
+          document.querySelector('.tabs').childNodes[Q].style.color = _self.mcolor
+          document.querySelector('.tabs').childNodes[Q].children[0].style.background = _self.mcolor
           document.querySelector('.tabs').childNodes[_self.oriQ].classList.remove('active')
+          document.querySelector('.tabs').childNodes[_self.oriQ].style.color = ''
+          document.querySelector('.tabs').childNodes[_self.oriQ].children[0].style.background = ''
           _self.oriQ = Q
         }
       } else {
+        document.querySelector('.tabs').childNodes[_self.oriQ].style.color = ''
         document.querySelector('.tabs').childNodes[_self.oriQ].classList.remove('active')
         _self.oriQ = 0
       }

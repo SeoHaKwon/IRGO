@@ -31,7 +31,7 @@ export default {
   beforeCreate () {
     const _self = this
     const param = {
-      'url': 'adtek.irpage.co.kr'
+      'url': 'samsung.irpage.co.kr'
     }
     this.$store.dispatch('GET_PAGETYPE', param)
       .then(res => {

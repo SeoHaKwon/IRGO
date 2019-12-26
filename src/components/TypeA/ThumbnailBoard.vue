@@ -15,7 +15,7 @@
           <a href="" class="link"></a>
         </li>
       </ul>
-      <div class="btn-wrap center">
+      <div class="btn-wrap center" v-if="isMore">
         <button type="button" class="btn_more" v-on:click="moreData">
           <span>more</span>
         </button>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  props: ['NewsList'],
+  props: ['NewsList', 'isMore'],
   data: () => {
     return {
     }

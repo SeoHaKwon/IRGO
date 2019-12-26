@@ -29,7 +29,8 @@ export default new Vuex.Store({
     MReportLength: 0,
     QALEN: 0,
     FINLEN: 0,
-    IRPAGE_TYPE: ''
+    IRPAGE_TYPE: '',
+    SubImg: ''
   },
   getters: {
     getCompCode (state) {
@@ -70,6 +71,9 @@ export default new Vuex.Store({
     },
     getFINLEN (state) {
       return state.FINLEN
+    },
+    getSUBIMG (state) {
+      return state.SubImg
     }
   },
   mutations: {
@@ -104,6 +108,7 @@ export default new Vuex.Store({
         state.flag = false
         state.IRPAGE_STOCK_YN = payload.IRPAGE_STOCK_YN
         state.IRPAGE_TYPE = payload.IRPAGE_TYPE
+        state.SubImg = payload.IRPAGE_SUB_IMG
         const arrays = {
           'stock': payload.IRPAGE_STOCK_YN,
           'Finance': payload.IRPAGE_FINANCE_YN,

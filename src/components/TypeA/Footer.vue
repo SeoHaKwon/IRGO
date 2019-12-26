@@ -2,7 +2,8 @@
   <div class="footer-wrap">
     <div class="footer">
       <h2 class="logo">
-        <img src="@/assets/images/logo/logo_footer.png" alt="로고" />
+        <!-- <img src="@/assets/images/logo/logo_footer.png" alt="로고" /> -->
+        <img :src="logo" alt="로고" />
       </h2>
       <ul class="foot-info">
         <li><span>㈜ {{ COM_NAME }}</span></li>
@@ -33,16 +34,21 @@ export default {
       ADDRESS: '',
       SAUP: '',
       COM_NAME_E: '',
-      CEO_TEL: ''
+      CEO_TEL: '',
+      logo: ''
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq'])
+    ...mapGetters(['getCompSeq', 'getLogo'])
   },
   watch: {
     getCompSeq () {
       const _self = this
       _self.getIRData()
+    },
+    getLogo () {
+      const _self = this
+      _self.logo = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getLogo
     }
   },
   methods: {
@@ -67,6 +73,9 @@ export default {
     if (_self.getCompSeq) {
       _self.getIRData()
     }
+    if (_self.getLogo) {
+      _self.logo = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getLogo
+    }
   }
 }
 </script>
@@ -89,6 +98,7 @@ export default {
   }
   .foot-info {
     display: flex;
+    justify-content: center;
     li {
       display: flex;
       & + li {

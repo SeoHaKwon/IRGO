@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="btn-wrap center">
-        <a href="#" class="box-link back active" v-on:click="returnMain"><span>목록</span></a>
+        <a href="#" class="box-link back active" v-on:click="returnMain" :style="{'border-color': mcolor}"><span :style="{color: mcolor}">목록<span :style="{background: mcolor}"></span></span></a>
       </div>
     </div>
   </div>
@@ -52,16 +52,20 @@ export default {
       prev_title: '',
       prev_idx: 0,
       next_title: '',
-      next_idx: 0
+      next_idx: 0,
+      mcolor: ''
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq'])
+    ...mapGetters(['getCompSeq', 'getMainColor'])
   },
   mounted () {
     const _self = this
     if (_self.getCompSeq) {
       _self.getFaqContent()
+    }
+    if (_self.getMainColor) {
+      _self.mcolor = '#' + _self.getMainColor
     }
   },
   watch: {
@@ -72,6 +76,10 @@ export default {
     '$route.params' (to, from) {
       const _self = this
       _self.getFaqContent()
+    },
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#' + _self.getMainColor
     }
   },
   methods: {

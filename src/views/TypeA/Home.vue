@@ -1,5 +1,5 @@
 <template>
-    <div class="main-wrap">
+    <div class="main-wrap" :style="{ backgroundImage: 'url(' + banner + ')' }">
       <MainVisual/>
       <MainContent/>
     </div>
@@ -9,12 +9,33 @@
 // @ is an alias to /src
 import MainVisual from '@/components/TypeA/MainVisual.vue'
 import MainContent from '@/components/TypeA/MainContent.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'home',
+  data: () => {
+    return {
+      banner: ''
+    }
+  },
   components: {
     MainVisual,
     MainContent
+  },
+  computed: {
+    ...mapGetters(['getBanner'])
+  },
+  watch: {
+    getBanner () {
+      const _self = this
+      _self.banner = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getBanner
+    }
+  },
+  mounted () {
+    const _self = this
+    if (_self.getBanner) {
+      _self.banner = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getBanner
+    }
   }
 }
 </script>
@@ -35,7 +56,7 @@ export default {
         height:100%;
         left:50%;
         margin-left:-960px;
-        @include bgImg(img/img_visual);
+        // @include bgImg(img/img_visual);
         background-repeat: no-repeat;
         background-position: center top;
         background-attachment: fixed;

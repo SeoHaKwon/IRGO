@@ -1,11 +1,33 @@
 <template>
   <div class="sub-visual">
-    <img src="@/assets/images/img/img_sub_visual.png" alt="">
+    <img :src="subimg" alt="">
   </div>
 </template>
 
 <script>
-
+import { mapGetters } from 'vuex'
+export default {
+  data: () => {
+    return {
+      subimg: ''
+    }
+  },
+  computed: {
+    ...mapGetters(['getSUBIMG'])
+  },
+  watch: {
+    getSUBIMG () {
+      const _self = this
+      _self.subimg = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getSUBIMG
+    }
+  },
+  mounted () {
+    const _self = this
+    if (_self.getSUBIMG) {
+      _self.subimg = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getSUBIMG
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

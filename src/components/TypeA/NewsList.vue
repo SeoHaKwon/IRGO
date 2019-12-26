@@ -6,7 +6,7 @@
           <img src="@/assets/images/img/img_news01.png" alt="">
         </div>
         <div class="news-txt" v-else>
-          <span class="category">
+          <span class="category" :style="{color: mcolor}">
             {{ item.TOPIC_TYPE }}
           </span>
           <p class="txt">
@@ -69,7 +69,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
+  data: () => {
+    return {
+      mcolor: ''
+    }
+  },
   props: ['NewsList'],
   filters: {
     v_date: function (date) {
@@ -86,6 +92,21 @@ export default {
     NewsDetail (index) {
       const _self = this
       _self.$router.replace({ name: 'newsView', params: { 'index': index } })
+    }
+  },
+  computed: {
+    ...mapGetters(['getMainColor'])
+  },
+  watch: {
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#' + _self.getMainColor
+    }
+  },
+  mounted () {
+    const _self = this
+    if (_self.getMainColor) {
+      _self.mcolor = '#' + _self.getMainColor
     }
   }
 }

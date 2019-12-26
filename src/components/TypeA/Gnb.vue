@@ -4,13 +4,14 @@
       <div class="gnb">
         <h1 class="logo">
           <router-link to="/">
-            <img src="@/assets/images/logo/logo_main.png" alt="">
+            <img :src="logo" alt="">
           </router-link>
         </h1>
         <div class="menu" :class="{active:isActive}">
           <h1 class="logo is_mobile">
-            <router-link to="/">
-              <img src="@/assets/images/logo/logo_menu.png" alt="">
+            <router-link to="/" :style="{color: mcolor}">
+              <!-- <img src="@/assets/images/logo/logo_menu.png" alt=""> -->
+              {{ compname }}
             </router-link>
           </h1>
           <a v-on:click="closeMenu('/schedule')"> IR 일정</a>
@@ -44,22 +45,46 @@ export default {
   data: () => {
     return {
       isActive: false,
-      istitle: []
+      istitle: [],
+      logo: '',
+      compname: '',
+      mcolor: ''
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq'])
+    ...mapGetters(['getCompSeq', 'getLogo', 'getCompName', 'getMainColor'])
   },
   mounted () {
     const _self = this
     if (_self.getCompSeq) {
       _self.setIsTitle()
     }
+    if (_self.getLogo) {
+      _self.logo = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getLogo
+    }
+    if (_self.getCompName) {
+      _self.compname = _self.getCompName
+    }
+    if (_self.getMainColor) {
+      _self.mcolor = '#' + _self.getMainColor
+    }
   },
   watch: {
     getCompSeq () {
       const _self = this
       _self.setIsTitle()
+    },
+    getLogo () {
+      const _self = this
+      _self.logo = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getLogo
+    },
+    getCompName () {
+      const _self = this
+      _self.compname = _self.getCompName
+    },
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#' + _self.getMainColor
     }
   },
   methods: {

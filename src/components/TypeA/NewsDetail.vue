@@ -2,7 +2,7 @@
   <div class="detail-section">
     <div class="news-title">
       <div class="news-txt">
-       <strong class="category">{{ NewsList.TOPIC_TYPE }}</strong>
+       <strong class="category" :style="{color: mcolor}">{{ NewsList.TOPIC_TYPE }}</strong>
         <p>
           {{ NewsList.TITLE }}
         <span class="date">{{ NewsList.MOD_DATE | v_date }}</span>
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="btn-wrap center">
-        <a href="javascript:void(0)" class="box-link back active" v-on:click="goList"><span>목록</span></a>
+        <a href="javascript:void(0)" class="box-link back active" v-on:click="goList" :style="{'border-color': mcolor}"><span :style="{color: mcolor}">목록<span :style="{background: mcolor}"></span></span></a>
       </div>
     </div>
   </div>
@@ -67,11 +67,12 @@ export default {
       next_date: '',
       next_seq: 0,
       is_prev: false,
-      is_next: false
+      is_next: false,
+      mcolor: ''
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq'])
+    ...mapGetters(['getCompSeq', 'getMainColor'])
   },
   filters: {
     v_date: function (date) {
@@ -89,6 +90,9 @@ export default {
     if (_self.getCompSeq) {
       _self.getNewsData()
     }
+    if (_self.getMainColor) {
+      _self.mcolor = '#' + _self.getMainColor
+    }
   },
   watch: {
     getCompSeq () {
@@ -103,6 +107,10 @@ export default {
       _self.is_prev = false
       _self.is_next = false
       _self.getNewsData()
+    },
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#' + _self.getMainColor
     }
   },
   methods: {

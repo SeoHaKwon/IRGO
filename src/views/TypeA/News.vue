@@ -18,7 +18,7 @@
       <NewsList :NewsList="topNews"/>
     </div>
     <div class="content-bottom">
-      <ThumbnailBoard :NewsList="NewsData" v-on:requestData="moreData"/>
+      <ThumbnailBoard :NewsList="NewsData" v-on:requestData="moreData" :isMore="yesMore"/>
     </div>
     <Footer/>
   </div>
@@ -43,7 +43,8 @@ export default {
     return {
       allData: [],
       NewsData: [],
-      topNews: []
+      topNews: [],
+      yesMore: true
     }
   },
   computed: {
@@ -119,6 +120,9 @@ export default {
     moreData () {
       const _self = this
       _self.NewsData = _self.NewsData.concat(_self.allData.splice(0, 5))
+      if (_self.allData.length === 0) {
+        _self.yesMore = false
+      }
     }
   }
 }

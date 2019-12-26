@@ -3,10 +3,35 @@
     <div class="contact-section">
       <p class="title-wrap"><strong>IR Team</strong></p>
       <div class="company-info">
-        <p class="call en">{{ IRO_TEL }}</p>
-        <p class="email en">{{ IRO_EMAIL }}</p>
+        <p class="call en">
+          <span>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path :fill="mcolor" d="M15,12H17A5,5 0 0,0 12,7V9A3,3 0 0,1 15,12M19,12H21C21,7 16.97,3 12,3V5C15.86,5 19,8.13 19,12M20,15.5C18.75,15.5 17.55,15.3 16.43,14.93C16.08,14.82 15.69,14.9 15.41,15.18L13.21,17.38C10.38,15.94 8.06,13.62 6.62,10.79L8.82,8.59C9.1,8.31 9.18,7.92 9.07,7.57C8.7,6.45 8.5,5.25 8.5,4A1,1 0 0,0 7.5,3H4A1,1 0 0,0 3,4A17,17 0 0,0 20,21A1,1 0 0,0 21,20V16.5A1,1 0 0,0 20,15.5Z" />
+            </svg>
+          </span>
+          <span>
+            {{ IRO_TEL }}
+          </span>
+        </p>
+        <p class="email en">
+          <span>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path :fill="mcolor" d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
+            </svg>
+          </span>
+          <span>
+            {{ IRO_EMAIL }}
+          </span>
+        </p>
         <p class="address">
-          {{ IR_ADDR }}
+          <span>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path :fill="mcolor" d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" />
+            </svg>
+          </span>
+          <span>
+            {{ IR_ADDR }}
+          </span>
         </p>
       </div>
     </div>
@@ -67,16 +92,21 @@ export default {
       facebook_url: '',
       twitter_url: '',
       insta_url: '',
-      youtube_url: ''
+      youtube_url: '',
+      mcolor: ''
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq'])
+    ...mapGetters(['getCompSeq', 'getMainColor'])
   },
   watch: {
     getCompSeq () {
       const _self = this
       _self.getIRData()
+    },
+    getMainColor () {
+      const _self = this
+      _self.mcolor = '#' + _self.getMainColor
     }
   },
   methods: {
@@ -102,6 +132,9 @@ export default {
     const _self = this
     if (_self.getCompSeq) {
       _self.getIRData()
+    }
+    if (_self.getMainColor) {
+      _self.mcolor = '#' + _self.getMainColor
     }
   }
 }
@@ -191,7 +224,10 @@ export default {
       font-weight: 500;
       @each $obj in call, email, address {
         &.#{$obj} {
-          @include bgImg(icon/icon_#{$obj}, $pos: left bottom);
+          // @include bgImg(icon/icon_#{$obj}, $pos: left bottom);
+          span:nth-child(2) {
+            padding-left: 12px;
+          }
         }
       }
       &.address {
