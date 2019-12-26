@@ -142,11 +142,13 @@ export default {
               font-size:22px;
               margin-left: 5px;
               font-weight:500;
+              line-height: 33px;
             }
 
             @media ( max-width: 899px ) {
               & span:nth-child(2) {
                 font-size:12px;
+                line-height: 25px;
               }
             }
           }

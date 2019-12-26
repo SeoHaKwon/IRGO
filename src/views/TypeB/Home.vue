@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" id="home">
     <!-- 메인 -->
     <HomeMainVisual id="MainVisual"/>
 
@@ -153,6 +153,7 @@ select {
   font-family: 'Roboto', sans-serif;
 
   & select {
+    font-family: 'Roboto', sans-serif;
     background: #ffffff;
     border-radius: 4px;
     padding: 10px 20px;
@@ -233,6 +234,7 @@ select::-ms-expand {
   color: #8E8E93;
   font-family: 'Roboto', sans-serif;
   font-weight: normal;
+  margin-top: 10px;
 }
 
 @media (min-width: 900px) and (max-width: 1149px) {

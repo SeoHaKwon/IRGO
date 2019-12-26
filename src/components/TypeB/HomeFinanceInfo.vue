@@ -125,6 +125,7 @@ export default {
             if (res.length > 5) {
               res.splice(0, 5)
             }
+            console.log(res)
             _self.finlen = 5 - res.length
             _self.nowQ = res[0].YEAR + '.' + res[0].PERIOD + 'Q'
             // const cons = 5 - res.length
@@ -132,6 +133,7 @@ export default {
               res[res[i].YEAR + '.' + res[i].PERIOD + 'Q'] = res[i]
               res[res[i].YEAR + '.' + res[i].PERIOD + 'Q'].QUARTER = res[i].YEAR.substr(2, 2) + '.' + res[i].PERIOD + 'Q'
             }
+            console.log(res)
             _self.finance = res
           }
         })

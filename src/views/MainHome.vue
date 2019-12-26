@@ -21,7 +21,8 @@ export default {
   mounted () {
     const _self = this
     const param = {
-      'url': 'adtek.irpage.co.kr'
+      'url': window.location.hostname
+      // 'url': 'adtek.irpage.co.kr'
     }
     this.$store.dispatch('GET_PAGETYPE', param)
       .then(res => {
@@ -30,6 +31,7 @@ export default {
         } else if (res.IRPAGE_TYPE === 'B') {
           _self.selectedComponents = 'BHOME'
         }
+        _self.$store.dispatch('SET_INFO', param)
       })
   }
 }

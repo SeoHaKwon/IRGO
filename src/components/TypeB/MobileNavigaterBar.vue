@@ -17,8 +17,8 @@
       <transition name="slide">
         <ul v-if="isMenuShow">
           <li class="topheader">Investor Realations</li>
-          <li v-for="item in v_list" v-bind:key="item.title" v-scroll-to="{el: '#'+item.c_name, container: 'body', duration: 500}" v-on:click="goMenuBtn(item.c_name)">
-            <a>
+          <li v-for="(item, idx) in v_list" v-bind:key="idx" v-scroll-to="{el: '#'+item.c_name, container: '#home', duration: 500}" v-on:click="goMenuBtn(item.c_name)">
+            <a href="javascript:void(0)">
               {{ item.title }}
             </a>
           </li>
@@ -132,13 +132,22 @@ export default {
     },
     goMenuBtn (cname) {
       const _self = this
-      _self.setPopup()
+      _self.changesetPopup(cname)
+    },
+    changesetPopup (cname) {
+      this.isBackMobileView ? this.isBackMobileView = false : this.isBackMobileView = true
+      this.isMenuShow ? this.isMenuShow = false : this.isMenuShow = true
+      // document.querySelector('.menu-trigger').classList.toggle('active-7')
+      document.querySelector('.menu-trigger').classList.remove('active-7')
+      document.querySelector('.menu-trigger').classList.add('type7')
+      location.href = '#'
       location.href = '#' + cname
     },
     setPopup () {
       this.isBackMobileView ? this.isBackMobileView = false : this.isBackMobileView = true
       this.isMenuShow ? this.isMenuShow = false : this.isMenuShow = true
-      document.querySelector('.menu-trigger').classList.toggle('active-7')
+      document.querySelector('.menu-trigger').classList.add('active-7')
+      document.querySelector('.menu-trigger').classList.remove('type7')
     }
   },
   created () {
@@ -199,7 +208,7 @@ export default {
   width: 24px;
   height: 24px;
   position: absolute;
-  left: 16px;
+  right: 20px;
   top: 58%;
   margin-top: -12px;
 }
@@ -341,13 +350,13 @@ export default {
 .mobile_back_view {
   background: rgba(0,0,0,0.3);
   // height: 100vh;
-  height: 9000px;
+  height: 100vh;
   width: 100vw;
   z-index: -1;
   position: fixed;
   top: 10;
   left: 0;
-  margin-top:7vh;
+  // margin-top:7vh;
 }
 .MobileNavigaterBar {
   position: fixed;

@@ -26,14 +26,14 @@
           <div class="info">
             <span class="date">{{ silQ[0] }}</span>
             <p class="title">실적발표자료</p>
-            <a href="#" class="icon-file pdf">{{ compname }} {{ silJ.TITLE }}</a>
+            <a href="#" class="icon-file pdf">{{ silJ.ORI_FILE1 }}</a>
           </div>
         </div>
       </div>
       <div class="material-list">
         <div class="material" v-for="item in type_D" v-bind:key="item.N_SEQ" v-on:click="getTypeD(item.SITEURL, item.UPLOAD_FILE1, item.TYPE)">
           <strong class="material-title">{{ item.TITLE }}</strong>
-            <a href="javascript:void(0)" class="link" v-if="item.TYPE == 'URL'"></a>
+            <a href="javascript:void(0)" class="link" v-if="item.TYPE === 'URL' || item.TYPE === 'PDF'"></a>
             <a href="javascript:void(0)" class="link mov" v-else-if="item.TYPE == 'MOV'">MOV</a>
         </div>
         <!-- <div class="material">

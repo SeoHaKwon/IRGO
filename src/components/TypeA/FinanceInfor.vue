@@ -130,7 +130,7 @@ export default {
           if (selectList.length > 3) {
             selectList.splice(0, 3)
           }
-          selectList = selectList.reverse()
+          _.remove(res, { 'UPLOAD_FILE1': null, 'UPLOAD_FILE2': null, 'UPLOAD_FILE3': null })
           let qList = _.uniqBy(_.map(_.filter(res, { 'YEAR': selectList[0] }), 'PERIOD'))
           _self.yearList = selectList
           _self.finance = res

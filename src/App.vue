@@ -35,12 +35,12 @@ export default {
   beforeCreate () {
     const _self = this
     const param = {
-      'url': 'adtek.irpage.co.kr'
+      'url': window.location.hostname
+      // 'url': 'adtek.irpage.co.kr'
     }
     this.$store.dispatch('GET_PAGETYPE', param)
       .then(res => {
         _self.IRPAGE_TYPE = res.IRPAGE_TYPE
-        this.$store.dispatch('SET_INFO', param)
       })
   },
   methods: {

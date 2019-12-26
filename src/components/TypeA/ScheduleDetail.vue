@@ -21,7 +21,7 @@
           <li>
             <strong class="tit">일시</strong>
             <p class="time en" :style="{color: mcolor}">
-              {{ scheduleList.S_DATE | v_date }} ~ {{ scheduleList.E_DATE | v_edate }}
+              {{ scheduleList.S_DATE | v_date }}<font style="font-family: 'Roboto', sans-serif;" v-if="SE_DATE_SAME"> ~ {{scheduleList.E_DATE | v_edate }}</font>
               <span class="en" :style="{color: mcolor}">{{ scheduleList.S_TIME }} ~ {{ scheduleList.E_TIME }}</span>
             </p>
           </li>
@@ -78,7 +78,8 @@ export default {
       is_next: false,
       next_title: '',
       next_seq: 0,
-      mcolor: ''
+      mcolor: '',
+      SE_DATE_SAME: true
     }
   },
   computed: {
@@ -158,6 +159,9 @@ export default {
           for (var key in res) {
             if (res[key].GUBUN === 'O') {
               _self.scheduleList = res[key]
+              if (new Date(res[key].S_DATE).getUTCDate() === new Date(res[key].E_DATE).getUTCDate()) {
+                _self.SE_DATE_SAME = false
+              }
             } else if (res[key].GUBUN === 'P') {
               _self.is_prev = true
               _self.prev_title = res[key].TITLE
@@ -271,6 +275,7 @@ dd.icon-file {
         li {
           display:flex;
           align-items: flex-start;
+          cursor: text;
           & + li {
             margin-top:26px;
             padding-top:22px;

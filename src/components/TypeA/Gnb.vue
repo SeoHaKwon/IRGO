@@ -58,6 +58,12 @@ export default {
     const _self = this
     if (_self.getCompSeq) {
       _self.setIsTitle()
+    } else {
+      const param = {
+      // 'url': window.location.hostname
+        'url': 'samsung.irpage.co.kr'
+      }
+      _self.$store.dispatch('SET_INFO', param)
     }
     if (_self.getLogo) {
       _self.logo = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getLogo

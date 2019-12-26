@@ -208,7 +208,7 @@ export default {
         .item-title {
           color: $font-color-base;
           opacity: 0.87;
-          font-size: 21px;
+          font-size: 20px;
         }
 
         &:last-child {

@@ -127,7 +127,7 @@ export default {
       const key = new Date(date)
       const year = key.getFullYear()
       const month = key.getMonth() + 1
-      const day = key.getDate()
+      const day = key.getUTCDate()
       return year + '년 ' + month + '월 ' + day + '일'
     }
   },
@@ -239,7 +239,8 @@ export default {
 
         & h5 {
           flex-basis: 25px;
-          font-size: 21px;
+          font-size: 18px;
+          line-height: 1.4;
           letter-spacing: -0.5px;
           color: #C7C7CC;
         }
@@ -248,7 +249,7 @@ export default {
           padding-left: 8px;
 
           & h4 {
-            font-size: 21px;
+            font-size: 18px;
             letter-spacing: -0.5px;
             color: $font-color-base;
             line-height: 1.4;

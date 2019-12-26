@@ -91,7 +91,7 @@ export default {
   methods: {
     NewsDetail (index) {
       const _self = this
-      _self.$router.replace({ name: 'newsView', params: { 'index': index } })
+      _self.$router.push({ name: 'newsView', params: { 'index': index } })
     }
   },
   computed: {

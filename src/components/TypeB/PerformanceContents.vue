@@ -44,10 +44,10 @@
           <li v-for="(data, idx) in datas" :class="{'less-length': datas.length < 4}" v-bind:key="idx" v-on:click="getGoURL(data.UPLOAD_FILE1, data.SITEURL)">
             <h5>{{ data.TITLE }}</h5>
             <h6>
-              <svg style="width:30px;height:30px" viewBox="0 0 24 24" v-if="data.TYPE == 'URL'">
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24" v-if="data.TYPE == 'URL'">
                 <path :fill="mcolor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
               </svg>
-              <svg viewBox="0 0 24 24" style="width: 30px; height: 30px;" v-else>
+              <svg viewBox="0 0 24 24" style="width: 24px; height: 24px;" v-else>
                 <path :fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"></path>
               </svg>
               <span class="data-type" :style="{color: mcolor}">{{ data.TYPE }}</span>
@@ -159,6 +159,9 @@ export default {
 .download {
   cursor: pointer;
 }
+svg {
+  margin-right: 5px;
+}
 .PerformanceContents {
   .SmallType-Performance {
     // margin-top:106px;
@@ -179,6 +182,10 @@ export default {
       height: 120px;
       font-weight: inherit;
       cursor: pointer;
+
+      h5, h6 {
+        font-size: 21px;
+      }
     }
   }
   @media ( max-width: 899px ) {
@@ -192,10 +199,9 @@ export default {
       li {
         padding: 20px 0;
         height: auto;
-      }
-
-      h5, h6 {
-        font-size: 16px;
+        h5, h6 {
+          font-size: 16px;
+        }
       }
 
       .data-type {
@@ -213,7 +219,7 @@ export default {
 
   .performance-contents {
     background: #F2F2F2;
-    padding: 50px;
+    padding: 40px;
     margin-top: 53px;
     display: flex;
     justify-content: space-between;
@@ -235,7 +241,8 @@ export default {
         /* 추가 */
         // margin-left:20px;
         /* 추가 */
-        font-size: 34px;
+        font-size: 30px;
+        line-height: 1.4;
         font-weight: normal;
         text-decoration-line: underline;
         color: $font-color-base;
@@ -257,38 +264,38 @@ export default {
     .performance-info {
       flex-basis: 50%;
       padding-left: 50px;
+      align-self: flex-start;
       ul {
         list-style: none;
 
         li {
-          padding-bottom: 38px;
+          cursor: pointer;
           border-bottom: 1px solid $border-color;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 38px;
+          padding: 40px 0px;
 
           &.less-length {
             padding-bottom: 28px;
             margin-bottom: 28px;
-            cursor: pointer;
           }
 
           &:last-child {
             margin-bottom: 0;
             border-bottom: 0;
-            padding-bottom: 0;
+            // padding-bottom: 0;
           }
 
           & h5 {
-            font-size: 21px;
+            font-size: 20px;
             letter-spacing: -0.5px;
             color: $font-color-base;
           }
           & h6 {
             display: flex;
             align-items: center;
-            font-size: 21px;
+            font-size: 18px;
             letter-spacing: -0.5px;
             color: $brand-color;
           }

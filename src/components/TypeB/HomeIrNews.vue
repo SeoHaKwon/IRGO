@@ -246,10 +246,10 @@ export default {
                     // color: $brand-color;
                     padding-top: 20px;
                     font-weight: bold;
-                    font-size: 16px;
+                    font-size: 14px;
                 }
                 & h4 {
-                    font-size: 21px;
+                    font-size: 18px;
                     letter-spacing: -0.5px;
                     color: $font-color-base;
                     margin-top: 14px;
