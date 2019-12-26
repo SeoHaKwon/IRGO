@@ -4,7 +4,7 @@
       <div class="gnb">
         <h1 class="logo">
           <router-link to="/">
-            <img :src="logo" alt="">
+            <img :src="logo" alt="" width="132px" height="24px;">
           </router-link>
         </h1>
         <div class="menu" :class="{active:isActive}">
@@ -116,6 +116,7 @@ export default {
 @import "@/style/_color.scss";
 @import "@/style/_mixin.scss";
 @import "@/style/_common.scss";
+
 a {
   cursor: pointer;
 }

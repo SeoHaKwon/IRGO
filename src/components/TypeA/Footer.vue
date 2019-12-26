@@ -3,7 +3,7 @@
     <div class="footer">
       <h2 class="logo">
         <!-- <img src="@/assets/images/logo/logo_footer.png" alt="로고" /> -->
-        <img :src="logo" alt="로고" />
+        <img :src="logo" alt="로고" width="132px" height="24px"/>
       </h2>
       <ul class="foot-info">
         <li><span>㈜ {{ COM_NAME }}</span></li>

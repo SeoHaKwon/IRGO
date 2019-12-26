@@ -74,6 +74,9 @@ export default new Vuex.Store({
     },
     getSUBIMG (state) {
       return state.SubImg
+    },
+    getPageType (state) {
+      return state.IRPAGE_TYPE
     }
   },
   mutations: {

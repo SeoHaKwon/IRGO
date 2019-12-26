@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/views/TypeA/Home'
+import Home from '@/views/MainHome'
 import Announcement from '@/views/TypeA/Announcement'
 import AnnouncementView from '@/views/TypeA/AnnouncementView'
 import Schedule from '@/views/TypeA/Schedule'
@@ -13,6 +13,7 @@ import Disclosure from '@/views/TypeA/Disclosure'
 import Report from '@/views/TypeA/Report'
 import Contact from '@/views/TypeA/Contact'
 Vue.use(Router)
+
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
