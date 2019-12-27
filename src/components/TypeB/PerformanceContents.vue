@@ -260,6 +260,9 @@ svg {
         align-items: center;
         width: 92px;
         height: 92px;
+        svg {
+          margin: 0;
+        }
       }
     }
     .performance-info {
