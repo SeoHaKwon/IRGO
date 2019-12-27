@@ -100,7 +100,7 @@ export default {
           align-items: center;
           padding: 40px 20px;
           border-bottom: 1px solid $border-color;
-          height: 120px;
+          height: 100px;
           cursor: pointer;
 
           &:first-child {
@@ -108,7 +108,7 @@ export default {
           }
 
           h5 {
-              font-size: 21px;
+              font-size: 18px;
               letter-spacing: -0.5px;
               color: $font-color-base;
           }

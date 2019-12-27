@@ -73,7 +73,7 @@ export default {
       align-items: center;
       padding: 40px 20px;
       border-bottom: 1px solid $border-color;
-      height: 120px;
+      height: 100px;
       cursor: pointer;
 
       &:first-child {

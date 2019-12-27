@@ -219,7 +219,7 @@ svg {
 
   .performance-contents {
     background: #F2F2F2;
-    padding: 40px;
+    padding: 50px;
     margin-top: 53px;
     display: flex;
     justify-content: space-between;
@@ -241,8 +241,9 @@ svg {
         /* 추가 */
         // margin-left:20px;
         /* 추가 */
+        margin: 0 40px 0 20px;
         font-size: 30px;
-        line-height: 1.4;
+        line-height: 1.5;
         font-weight: normal;
         text-decoration-line: underline;
         color: $font-color-base;

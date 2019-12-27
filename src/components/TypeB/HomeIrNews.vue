@@ -206,6 +206,15 @@ export default {
 </script>
 <style lang="scss">
 @import "@/style/_variables.scss";
+.modal-container {
+  .social-info {
+    border-bottom: 1px solid #E5E5EA;
+    padding-bottom: 29px;
+  }
+}
+.modal-wrapper {
+  // min-height: 100vh;
+}
 .IR-modal-list li h4 {
   font-size: 16px;
 }
@@ -280,9 +289,10 @@ export default {
         letter-spacing: -0.5px;
         color: $font-color-base;
         margin-top: 23px;
-        margin-bottom: 33px;
-        height: 120px;
-        border-bottom:1px solid #E5E5EA;
+        margin-bottom: 40px;
+        min-height: 120px;
+        line-height: 1.3;
+        // border-bottom:1px solid #E5E5EA;
     }
     .IR-modal-main {
         margin-top: 33px;

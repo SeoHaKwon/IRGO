@@ -179,7 +179,7 @@ select {
     transform: rotate(180deg);
     position: absolute;
     right: 20px;
-    top: 50%;
+    top: 60%;
     margin-top: -12px;
     z-index: 2;
   }

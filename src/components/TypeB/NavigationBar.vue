@@ -39,7 +39,7 @@ export default {
       logo: '',
       v_list: [],
       h_list: [
-        { 'title': '실적발표', 'isActive': true, 'color': '', 'c_name': 'Performance', 'isView': true },
+        { 'title': '실적발표', 'isActive': false, 'color': '', 'c_name': 'Performance', 'isView': true },
         { 'title': 'FAQ', 'isActive': false, 'color': '', 'c_name': 'FAQ', 'isView': false },
         { 'title': 'IR News', 'isActive': false, 'color': '', 'c_name': 'IrNews', 'isView': true },
         { 'title': '경영보고서', 'isActive': false, 'color': '', 'c_name': 'Report', 'isView': false },
@@ -60,11 +60,17 @@ export default {
   methods: {
     moveCategory (idx, cname) {
       const _self = this
-      _self.v_list[_self.ori_Active].isActive = false
-      _self.v_list[_self.ori_Active].color = _self.baseColor
-      _self.v_list[idx].isActive = true
-      _self.v_list[idx].color = _self.mcolor
-      _self.ori_Active = idx
+      if (idx >= 0) {
+        _self.v_list[_self.ori_Active].isActive = false
+        _self.v_list[_self.ori_Active].color = _self.baseColor
+        _self.v_list[idx].isActive = true
+        _self.v_list[idx].color = _self.mcolor
+        _self.ori_Active = idx
+      } else {
+        _self.v_list[_self.ori_Active].isActive = false
+        _self.v_list[_self.ori_Active].color = _self.baseColor
+        _self.ori_Active = 0
+      }
       // location.href='#'+cname
     },
     moveMain () {
@@ -94,7 +100,7 @@ export default {
     getMainColor () {
       const _self = this
       _self.mcolor = '#' + _self.getMainColor
-      _self.h_list[0].color = _self.mcolor
+      // _self.h_list[0].color = _self.mcolor
     },
     getLogo () {
       const _self = this
@@ -122,15 +128,20 @@ export default {
       const _self = this
       let targetData = ''
       let idx = 0
-      for (var key in _self.v_list) {
-        if (document.getElementById(_self.v_list[key].c_name) && _self.scrollResult) {
-          if (_self.scrollResult > document.getElementById(_self.v_list[key].c_name).offsetTop) {
-            targetData = _self.v_list[key].c_name
-            idx = key
+      console.log('asdsad')
+      if (_self.scrollResult < 300) {
+        _self.moveCategory(-1, targetData)
+      } else {
+        for (var key in _self.v_list) {
+          if (document.getElementById(_self.v_list[key].c_name) && _self.scrollResult) {
+            if (_self.scrollResult > document.getElementById(_self.v_list[key].c_name).offsetTop) {
+              targetData = _self.v_list[key].c_name
+              idx = key
+            }
           }
         }
+        _self.moveCategory(idx, targetData)
       }
-      _self.moveCategory(idx, targetData)
     }
   }
 }
