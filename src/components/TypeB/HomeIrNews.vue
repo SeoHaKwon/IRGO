@@ -66,11 +66,11 @@
               <div class="file-list">
                 <h5 style="cursor:pointer;" v-if="FILE_NAME1" v-on:click="ViewFile(FILE1_URL)">
                   <img width="16px" src="@/assets/Type_B/img/file_type_pdf_1.png"/>
-                  {{ FILE_NAME1 }}
+                  <span class="download_pdf">{{ FILE_NAME1 }}</span>
                 </h5>
                 <h5 style="cursor:pointer;" v-if="FILE_NAME2" v-on:click="ViewFile(FILE2_URL)">
-                  <img width="16px" src="@/assets/Type_B/img/file_type_pdf_2.png"/>
-                  {{ FILE_NAME2 }}
+                  <img width="16px" src="@/assets/Type_B/img/file_type_pdf_1.png"/>
+                  <span class="download_pdf">{{ FILE_NAME2 }}</span>
                 </h5>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default {
       const key = new Date(date)
       const year = key.getFullYear()
       const month = key.getMonth() + 1
-      const day = key.getDate()
+      const day = key.getUTCDate()
       return year + '년 ' + month + '월 ' + day + '일'
     },
     v_titlecut: function (title) {
@@ -212,6 +212,16 @@ export default {
     padding-bottom: 29px;
   }
 }
+.download_pdf {
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-height: 1.4em;
+  height: 1.4em;
+}
 .modal-wrapper {
   // min-height: 100vh;
 }
@@ -240,6 +250,7 @@ export default {
             }
 
             & .image {
+                width: 274px;
                 flex-basis: 274px;
                 margin-right: 20px;
                 flex-shrink: 0;

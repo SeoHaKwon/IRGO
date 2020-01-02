@@ -13,11 +13,10 @@
           <div class="select-arrow">▲</div>
         </div>
       </div>
-    <div class="performance-contents container" v-if="datas.length > 1">
+    <div class="performance-contents container" v-if="datas.length > 1 && silj.length > 0">
       <div class="performance-main">
-        <div v-if="datas.length > 3" class="main-title" v-on:click="getGoURL(silj.UPLOAD_FILE1, silj.SITEURL)">
-          <h2 class="title">
-            {{ silj.TITLE }}
+        <div v-if="datas.length > 2" class="main-title" v-on:click="getGoURL(silj.UPLOAD_FILE1, silj.SITEURL)">
+          <h2 class="title" v-html="silj.TITLE">
           </h2>
           <div class="download">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -26,20 +25,19 @@
           </div>
         </div>
         <div>
-          <img v-if="silj.UPLOAD_THUMBNAIL" width="100%" :src="thumbnail"/>
+          <img v-if="bimg" width="100%" :src="bimg"/>
         </div>
       </div>
-    <div class="performance-info">
-      <div class="main-title" v-if="datas.length < 4" v-on:click="getGoURL(silj.UPLOAD_FILE1, silj.SITEURL)">
-        <h2 class="title">
-          {{ silj.TITLE }}
-        </h2>
-        <div class="download">
-          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
-          </svg>
+      <div class="performance-info">
+        <div class="main-title" v-if="datas.length == 2" v-on:click="getGoURL(silj.UPLOAD_FILE1, silj.SITEURL)">
+          <h2 class="title" v-html="silj.TITLE">
+          </h2>
+          <div class="download">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+            </svg>
+          </div>
         </div>
-      </div>
         <ul>
           <li v-for="(data, idx) in datas" :class="{'less-length': datas.length < 4}" v-bind:key="idx" v-on:click="getGoURL(data.UPLOAD_FILE1, data.SITEURL)">
             <h5>{{ data.TITLE }}</h5>
@@ -101,7 +99,6 @@ export default {
   data: () => {
     return {
       nActive: 0,
-      thumbnail: '',
       isActive: {
         0: 'active',
         1: '',
@@ -110,11 +107,12 @@ export default {
         4: ''
       },
       ori_active: 0,
-      mcolor: ''
+      mcolor: '',
+      bimg: ''
     }
   },
   computed: {
-    ...mapGetters(['getMainColor'])
+    ...mapGetters(['getMainColor', 'getPerFormImg'])
   },
   methods: {
     getGoURL (pdf, url) {
@@ -143,9 +141,13 @@ export default {
     }
   },
   watch: {
-    silj () {
+    getPerFormImg () {
       const _self = this
-      _self.thumbnail = 'http://file.irgo.co.kr/data/BOARD/ATTACH_IMG/' + _self.silj.UPLOAD_THUMBNAIL
+      _self.bimg = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getPerFormImg
+    },
+    silj () {
+      // const _self = this
+      // _self.thumbnail = 'http://file.irgo.co.kr/data/BOARD/ATTACH_IMG/' + _self.silj.UPLOAD_THUMBNAIL
     },
     getMainColor () {
       const _self = this
@@ -280,11 +282,6 @@ svg {
           align-items: center;
           padding: 40px 0px;
 
-          &.less-length {
-            padding-bottom: 28px;
-            margin-bottom: 28px;
-          }
-
           &:last-child {
             margin-bottom: 0;
             border-bottom: 0;
@@ -399,8 +396,8 @@ svg {
             margin-bottom: 16px;
 
             &.less-length {
-              padding-bottom: 16px;
-              margin-bottom: 16px;
+              padding: 16px 0;
+              margin-bottom: 0;
               cursor:pointer;
             }
 

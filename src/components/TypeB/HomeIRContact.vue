@@ -14,20 +14,23 @@
         </h5>
     </div>
     <div class="contact-sns">
-      <a v-if="naver_url" :href="naver_url">
+      <a v-if="naver_url" v-on:click="goURL(naver_url)">
         <img src="@/assets/Type_B/img/Naver.png"/>
       </a>
-      <a v-if="facebook_url" :href="facebook_url">
+      <a v-if="facebook_url" v-on:click="goURL(facebook_url)">
         <img src="@/assets/Type_B/img/Facebook.png"/>
       </a>
-      <a v-if="twitter_url" :href="twitter_url">
+      <a v-if="twitter_url" v-on:click="goURL(twitter_url)">
         <img src="@/assets/Type_B/img/Twitter.png"/>
       </a>
-      <a v-if="insta_url" :href="insta_url">
+      <a v-if="insta_url" v-on:click="goURL(insta_url)">
         <img src="@/assets/Type_B/img/Instagram.png"/>
       </a>
-      <a v-if="youtube_url" :href="youtube_url">
+      <a v-if="youtube_url" v-on:click="goURL(youtube_url)">
         <img src="@/assets/Type_B/img/Youtube.png"/>
+      </a>
+      <a v-if="navertv_url" v-on:click="goURL(navertv_url)">
+        <img src="@/assets/Type_B/img/navertv.svg"/>
       </a>
     </div>
   </div>
@@ -59,10 +62,16 @@ export default {
       twitter_url: '',
       insta_url: '',
       youtube_url: '',
-      compname: ''
+      compname: '',
+      navertv_url: ''
     }
   },
   components: {
+  },
+  methods: {
+    goURL (url) {
+      window.open(url, '_BLANK')
+    }
   },
   computed: {
     ...mapGetters(['getCompSeq'])
@@ -84,6 +93,7 @@ export default {
           _self.twitter_url = res[0].IRPAGE_SNS_TWITTER
           _self.insta_url = res[0].IRPAGE_SNS_INSTA
           _self.youtube_url = res[0].IRPAGE_SNS_YOUTUBE
+          _self.navertv_url = res[0].IRPAGE_SNS_NAVERTV
         })
     }
   }

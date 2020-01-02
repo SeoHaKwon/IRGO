@@ -61,12 +61,12 @@
     <div class="contact-section">
       <p class="title-wrap"><strong>SNS</strong></p>
       <div class="sns-list">
-        <a :href="facebook_url" class="facebook" v-if="facebook_url"></a>
-        <a :href="insta_url" class="instagram" v-if="insta_url"></a>
-        <a :href="twitter_url" class="twitter" v-if="twitter_url"></a>
-        <a :href="youtube_url" class="youtube" v-if="youtube_url"></a>
-        <a href="#" class="blog"></a>
-        <a :href="naver_url" class="naver" v-if="naver_url"></a>
+        <a class="facebook" v-if="facebook_url" v-on:click="getURL(facebook_url)"></a>
+        <a class="instagram" v-if="insta_url" v-on:click="getURL(insta_url)"></a>
+        <a class="twitter" v-if="twitter_url" v-on:click="getURL(twitter_url)"></a>
+        <a class="youtube" v-if="youtube_url" v-on:click="getURL(youtube_url)"></a>
+        <a class="blog" v-if="naver_url" v-on:click="getURL(naver_url)"></a>
+        <a class="naver" v-if="navertv_url" v-on:click="getURL(navertv_url)"></a>
       </div>
     </div>
   </div>
@@ -93,7 +93,8 @@ export default {
       twitter_url: '',
       insta_url: '',
       youtube_url: '',
-      mcolor: ''
+      mcolor: '',
+      navertv_url: ''
     }
   },
   computed: {
@@ -110,6 +111,9 @@ export default {
     }
   },
   methods: {
+    getURL (url) {
+      window.open(url, '_BLANK')
+    },
     getIRData () {
       const _self = this
       const param = {
@@ -125,6 +129,7 @@ export default {
           _self.twitter_url = res[0].IRPAGE_SNS_TWITTER
           _self.insta_url = res[0].IRPAGE_SNS_INSTA
           _self.youtube_url = res[0].IRPAGE_SNS_YOUTUBE
+          _self.navertv_url = res[0].IRPAGE_SNS_NAVERTV
         })
     }
   },
@@ -300,7 +305,6 @@ export default {
       flex-wrap: wrap;
       border-top-width: 2px;
       a {
-        width: 33.33%;
         margin-top: 35px;
         background-size: cover;
         background-size: 32px 32px;

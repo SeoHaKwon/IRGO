@@ -154,17 +154,17 @@ export default {
      font-size:14px;
      line-height:16px;
      color:$gray8;
-     &::after {
-       display: inline-block;
-       position:absolute;
-       left:0;
-       top:50%;
-       content:"*";
-       font-size:15px;
-       line-height:16px;
-       margin-top:-4px;
-       color:$gray8;
-     }
+  //    &::after {
+  //      display: inline-block;
+  //      position:absolute;
+  //      left:0;
+  //      top:50%;
+  //      content:"*";
+  //      font-size:15px;
+  //      line-height:16px;
+  //      margin-top:-4px;
+  //      color:$gray8;
+  //    }
    }
  }
  @media screen and (max-width: 1000px) {

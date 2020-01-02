@@ -16,9 +16,11 @@ export default new Vuex.Store({
     type: '',
     mainColor: '',
     logo: '',
+    sublogo: '',
     banner: '',
     qaType: '',
     isIPO: '',
+    performImg: '',
     IRPAGE_STOCK_YN: '',
     IRPAGE_FINANCE_YN: '',
     IRPAGE_DIVIDEND_YN: '',
@@ -36,6 +38,9 @@ export default new Vuex.Store({
     getCompCode (state) {
       return state.code
     },
+    getPerFormImg (state) {
+      return state.performImg
+    },
     getCompSeq (state) {
       return state.seq
     },
@@ -50,6 +55,9 @@ export default new Vuex.Store({
     },
     getLogo (state) {
       return state.logo
+    },
+    getSubLogo (state) {
+      return state.sublogo
     },
     getBanner (state) {
       return state.banner
@@ -105,9 +113,11 @@ export default new Vuex.Store({
         state.code = payload.COMP_CODE
         state.mainColor = payload.IRPAGE_MAIN_COLOR
         state.logo = payload.IRPAGE_LOGO
+        state.sublogo = payload.IRPAGE_SUB_LOGO
         state.banner = payload.IRPAGE_MAIN_IMG
         state.qaType = payload.IRPAGE_QNA_YN
         state.isIPO = payload.COMP_TYPE
+        state.performImg = payload.IRPAGE_EARNING_IMG
         state.flag = false
         state.IRPAGE_STOCK_YN = payload.IRPAGE_STOCK_YN
         state.IRPAGE_TYPE = payload.IRPAGE_TYPE

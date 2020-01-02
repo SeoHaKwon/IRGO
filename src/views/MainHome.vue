@@ -7,6 +7,7 @@
 <script>
 import AHOME from '@/views/TypeA/Home'
 import BHOME from '@/views/TypeB/Home'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -18,11 +19,13 @@ export default {
       selectedComponents: ''
     }
   },
+  computed: {
+    ...mapGetters(['getCompName'])
+  },
   mounted () {
     const _self = this
     const param = {
-      // 'url': window.location.hostname
-      'url': 'adtek.irpage.co.kr'
+      'url': window.location.hostname
     }
     this.$store.dispatch('GET_PAGETYPE', param)
       .then(res => {
@@ -33,6 +36,22 @@ export default {
         }
         _self.$store.dispatch('SET_INFO', param)
       })
+    if (_self.getCompName) {
+      _self.setTITLE()
+    }
+  },
+  watch: {
+    getCompName () {
+      const _self = this
+      _self.setTITLE()
+    }
+  },
+  methods: {
+    setTITLE () {
+      const _self = this
+      let title = document.getElementsByTagName('title')[0]
+      title.innerHTML = _self.getCompName
+    }
   }
 }
 </script>

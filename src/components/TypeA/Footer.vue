@@ -3,7 +3,7 @@
     <div class="footer">
       <h2 class="logo">
         <!-- <img src="@/assets/images/logo/logo_footer.png" alt="로고" /> -->
-        <img :src="logo" alt="로고" width="132px" height="24px"/>
+        <img :src="sublogo" alt="로고" width="132px" height="24px"/>
       </h2>
       <ul class="foot-info">
         <li><span>㈜ {{ COM_NAME }}</span></li>
@@ -13,7 +13,7 @@
           ><span>{{ ADDRESS }}</span>
         </li>
         <li v-if="CEO_TEL"><span>Tel</span><span>{{ CEO_TEL }}</span></li>
-        <li><span>Fax</span><span>02-000-0000</span></li>
+        <li><span>Fax</span><span>{{ FAX }}</span></li>
       </ul>
       <p class="copy">{{ COM_NAME_E }} All rights reserved.</p>
     </div>
@@ -35,20 +35,21 @@ export default {
       SAUP: '',
       COM_NAME_E: '',
       CEO_TEL: '',
-      logo: ''
+      sublogo: '',
+      FAX: ''
     }
   },
   computed: {
-    ...mapGetters(['getCompSeq', 'getLogo'])
+    ...mapGetters(['getCompSeq', 'getSubLogo'])
   },
   watch: {
     getCompSeq () {
       const _self = this
       _self.getIRData()
     },
-    getLogo () {
+    getSubLogo () {
       const _self = this
-      _self.logo = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getLogo
+      _self.sublogo = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getSubLogo
     }
   },
   methods: {
@@ -59,13 +60,19 @@ export default {
       }
       _self.$store.dispatch('GET_COMINFO', param)
         .then(res => {
+          console.log(res)
           _self.COM_NAME = res[0].COMP_NAME
           _self.CEO_NAME = res[0].CEO_NAME
-          _self.ADDRESS = res[0].COMP_ADDR
+          _self.ADDRESS = res[0].COM_ADDR
           _self.SAUP = res[0].COMP_REG_NUM
           _self.COM_NAME_E = res[0].COMP_NAME_E
           _self.CEO_TEL = res[0].CEO_TEL
+          _self.FAX = res[0].FAX
         })
+      if (_self.getSubLogo) {
+        const _self = this
+        _self.sublogo = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getSubLogo
+      }
     }
   },
   mounted () {

@@ -20,7 +20,7 @@
       <div class="material-top" :style="{display: isActive_silj}">
         <div class="thumbnail">
             <p class="txt"><strong class="en">{{ silQ[0] }} {{ compname }}</strong></p>
-            <img src="@/assets/images/img/img_material_thumbnail.png" alt="">
+            <img :src="performimg" alt="">
         </div>
         <div class="material-box" v-on:click="getView(silJ.UPLOAD_FILE1)">
           <div class="info">
@@ -91,11 +91,13 @@ export default {
       nowYear: '',
       nowPeriod: 0,
       isActive_silj: '',
-      mcolor: ''
+      mcolor: '',
+      performimg: '',
+      changeidx: ''
     }
   },
   computed: {
-    ...mapGetters(['getCompCode', 'getCompSeq', 'getCompName', 'getMainColor'])
+    ...mapGetters(['getCompCode', 'getCompSeq', 'getCompName', 'getMainColor', 'getPerFormImg'])
   },
   watch: {
     getCompSeq () {
@@ -105,6 +107,10 @@ export default {
     getMainColor () {
       const _self = this
       _self.mcolor = '#' + _self.getMainColor
+    },
+    getPerFormImg () {
+      const _self = this
+      _self.performimg = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getPerFormImg
     }
   },
   mounted () {
@@ -115,22 +121,29 @@ export default {
     if (_self.getMainColor) {
       _self.mcolor = '#' + _self.getMainColor
     }
+    if (_self.getPerFormImg) {
+      const _self = this
+      _self.performimg = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getPerFormImg
+    }
   },
   methods: {
     setQuarter (idx) {
       const _self = this
-      document.querySelector('.tabs').childNodes[_self.nowPeriod].classList.remove('active')
-      document.querySelector('.tabs').childNodes[_self.nowPeriod].style.color = ''
-      document.querySelector('.tabs').childNodes[idx].classList.add('active')
-      document.querySelector('.tabs').childNodes[idx].style.color = _self.mcolor
-      document.querySelector('.tabs').childNodes[idx].children[0].style.background = _self.mcolor
-      _self.nowPeriod = idx
-      _self.changeData(_self.nowYear, _self.nowPeriod)
+      _self.changeidx = idx
+      // document.querySelector('.tabs').childNodes[_self.nowPeriod].classList.remove('active')
+      // document.querySelector('.tabs').childNodes[_self.nowPeriod].style.color = ''
+      // document.querySelector('.tabs').childNodes[idx].classList.add('active')
+      // document.querySelector('.tabs').childNodes[idx].style.color = _self.mcolor
+      // document.querySelector('.tabs').childNodes[idx].children[0].style.background = _self.mcolor
+      // _self.nowPeriod = idx
+      _self.changeData(_self.nowYear, _self.changeidx)
     },
     changeYear (idx) {
       const _self = this
       _self.nowYear = _self.selectQ[idx]
       _self.openSelect()
+      document.querySelector('.tabs').childNodes[_self.nowPeriod].classList.remove('active')
+      document.querySelector('.tabs').childNodes[_self.nowPeriod].style.color = ''
       _self.changeData(_self.nowYear, _self.nowPeriod)
     },
     openSelect () {
@@ -155,6 +168,16 @@ export default {
       }
       this.$store.dispatch('GET_SILJ', aram)
         .then(result => {
+          if (result.length === 0) {
+            return false
+          } else {
+            document.querySelector('.tabs').childNodes[_self.nowPeriod].classList.remove('active')
+            document.querySelector('.tabs').childNodes[_self.nowPeriod].style.color = ''
+            document.querySelector('.tabs').childNodes[_self.changeidx].classList.add('active')
+            document.querySelector('.tabs').childNodes[_self.changeidx].style.color = _self.mcolor
+            document.querySelector('.tabs').childNodes[_self.changeidx].children[0].style.background = _self.mcolor
+          }
+          _self.nowPeriod = _self.changeidx
           _self.type_D = []
           const cont = _.filter(result, { 'SET_DATA_TYPE': '0' }).length + _.filter(result, { 'SET_DATA_TYPE': '1' }).length
           if (cont > 0) {

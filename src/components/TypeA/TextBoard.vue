@@ -97,7 +97,7 @@ export default {
       font-weight: 700;
       color: #bcc0ca;
       &.active {
-        color: $blue;
+        // color: $blue;
         // &::after {
         //   display: block;
         //   position: absolute;
@@ -117,7 +117,7 @@ export default {
           width: 80px;
           height: 3px;
           margin-left: -40px;
-          background-color: #157fec;
+          // background-color: #157fec;
           content: "";
         }
         @media screen and (max-width: 500px){

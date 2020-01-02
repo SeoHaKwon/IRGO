@@ -10,55 +10,54 @@
       </li>
       <li v-for="n in finlen" v-bind:key="n"></li>
     </ul>
-      <div class="finance-select">
-          <div class="select-warp">
-              <select v-on:change="zsetQuarter($event)">
-                  <option v-for="(item, idx) in finance" :value="idx" v-bind:key="idx">{{ item.YEAR + '.' + item.PERIOD + 'Q' }}</option>
-              </select>
-              <div class="select-arrow">▲</div>
-          </div>
+    <div class="finance-select">
+      <div class="select-warp">
+        <select v-on:change="zsetQuarter($event)">
+          <option v-for="(item, idx) in finance" :value="idx" v-bind:key="idx">{{ item.YEAR + '.' + item.PERIOD + 'Q' }}</option>
+        </select>
+        <div class="select-arrow">▲</div>
       </div>
+    </div>
     <ul class="finance-info">
-        <li v-on:click="getData(finance[nowQ].UPLOAD_FILE1)" v-if="finance[nowQ].UPLOAD_FILE1">
-            <h5>재무상태표 ({{finance[nowQ].QUARTER}})</h5>
-            <h6>
-              <a>
-                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                  <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
-                </svg>
-              </a>
-                <span class="data-type" :style="{ color: mcolor}">PDF</span>
-            </h6>
-        </li>
-        <li v-on:click="getData(finance[nowQ].UPLOAD_FILE2)" v-if="finance[nowQ].UPLOAD_FILE2">
-            <h5>손익계산서 ({{finance[nowQ].QUARTER}})</h5>
-            <h6>
-                <a>
-                  <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                    <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
-                  </svg>
-                </a>
-                <span class="data-type" :style="{ color: mcolor}">PDF</span>
-            </h6>
-        </li>
-        <li v-on:click="getData(finance[nowQ].UPLOAD_FILE3)" v-if="finance[nowQ].UPLOAD_FILE3">
-            <h5>현금흐름표 ({{finance[nowQ].QUARTER}})</h5>
-            <h6>
-                <a>
-                  <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                    <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
-                  </svg>
-                </a>
-                <span class="data-type" :style="{ color: mcolor}">PDF</span>
-            </h6>
-        </li>
+      <li v-on:click="getData(finance[nowQ].UPLOAD_FILE1)" v-if="finance[nowQ].UPLOAD_FILE1">
+        <h5>재무상태표 ({{finance[nowQ].QUARTER}})</h5>
+        <h6>
+          <a>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+            </svg>
+          </a>
+          <span class="data-type" :style="{ color: mcolor}">PDF</span>
+        </h6>
+      </li>
+      <li v-on:click="getData(finance[nowQ].UPLOAD_FILE2)" v-if="finance[nowQ].UPLOAD_FILE2">
+        <h5>손익계산서 ({{finance[nowQ].QUARTER}})</h5>
+        <h6>
+          <a>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+            </svg>
+          </a>
+          <span class="data-type" :style="{ color: mcolor}">PDF</span>
+        </h6>
+      </li>
+      <li v-on:click="getData(finance[nowQ].UPLOAD_FILE3)" v-if="finance[nowQ].UPLOAD_FILE3">
+        <h5>현금흐름표 ({{finance[nowQ].QUARTER}})</h5>
+        <h6>
+          <a>
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path v-bind:fill="mcolor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+            </svg>
+          </a>
+          <span class="data-type" :style="{ color: mcolor}">PDF</span>
+        </h6>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import _ from 'lodash'
 
 export default {
   name: 'HomeFinanceInfo',
@@ -120,7 +119,7 @@ export default {
       }
       this.$store.dispatch('GET_FINANCE', aram)
         .then(res => {
-          _.remove(res, { 'UPLOAD_FILE1': null, 'UPLOAD_FILE2': null, 'UPLOAD_FILE3': null })
+          // _.remove(res, { 'UPLOAD_FILE1': null, 'UPLOAD_FILE2': null, 'UPLOAD_FILE3': null })
           if (res.length !== 0) {
             if (res.length > 5) {
               res.splice(0, 5)

@@ -100,7 +100,9 @@ export default {
             } else if (res[key].TOPIC_TYPE === 'T') {
               res[key].TOPIC_TYPE = '주주서한'
             }
-            res[key].CONTENTS = res[key].CONTENTS.replace(/(<([^>]+)>)/gi, '').replace(/&nbsp;/gi, '')
+            if (res[key].CONTENTS) {
+              res[key].CONTENTS = res[key].CONTENTS.replace(/(<([^>]+)>)/gi, '').replace(/&nbsp;/gi, '')
+            }
 
             if (!res[key].UPLOAD_THUMBNAIL) {
               res[key].li_class = 'text-box'

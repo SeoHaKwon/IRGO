@@ -17,6 +17,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import PerformanceContents from '@/components/TypeB/PerformanceContents.vue'
+import _ from 'lodash'
 
 export default {
   name: 'HomePerformance',
@@ -47,56 +48,49 @@ export default {
         year: '20' + year,
         quarter: quat.split('Q')[0]
       }
-      const pres = this.$store.dispatch('GET_SILJ', aram)
-      pres.then(result => {
-        _self.silJ = result[0]
-        if (_self.silJ) {
-          _self.silJ.TYPE = 'PDF'
-        }
-        result.splice(0, 1)
-        /* SET_DATA_TYPE */
-        for (var key in result) {
-          if (result[key].SET_DATA_TYPE === '1') {
-            if (!_self.is_siljuk) {
-              result[key].TITLE = '실적 발표 자료'
-              result[key].TYPE = 'PDF'
-              _self.is_siljuk = true
-            } else {
-              _self.DeleteNumber = key
-            }
-          } else if (result[key].SET_DATA_TYPE === '0') {
-            if (!_self.is_siljuk) {
-              result[key].TITLE = '실적 발표 자료'
-              result[key].TYPE = 'PDF'
-              _self.is_siljuk = true
-            } else {
-              _self.DeleteNumber = key
-            }
-          } else if (result[key].SET_DATA_TYPE === '2') {
-            result[key].TITLE = '보도자료(press Release)'
-            result[key].TYPE = 'PDF'
-          } else if (result[key].SET_DATA_TYPE === '3') {
-            result[key].TITLE = '웹캐스팅'
-            result[key].TYPE = 'URL'
-          } else if (result[key].SET_DATA_TYPE === '4') {
-            result[key].TITLE = '컨퍼런스콜'
-            result[key].TYPE = 'URL'
-          } else if (result[key].SET_DATA_TYPE === '5') {
-            result[key].TITLE = '스크립트'
-            result[key].TYPE = 'PDF'
-          } else if (result[key].SET_DATA_TYPE === '6') {
-            result[key].TITLE = 'Factsheet'
-            result[key].TYPE = 'PDF'
-            // result[key].TYPE = result[key].SITEURL.split('.')[1]
-          } else if (result[key].SET_DATA_TYPE === '7') {
-            result[key].TYPE = 'URL'
+      this.$store.dispatch('GET_SILJ', aram)
+        .then(result => {
+          if (_.filter(result, { 'SET_DATA_TYPE': '1' }).length > 0) {
+            _self.silJ = _.filter(result, { 'SET_DATA_TYPE': '1' })[0]
+            _self.silJ.length = 1
+          } else if (_.filter(result, { 'SET_DATA_TYPE': '0' }).length > 0) {
+            _self.silJ = _.filter(result, { 'SET_DATA_TYPE': '0' })[0]
+            _self.silJ.length = 1
           } else {
-            result[key].TYPE = 'PDF'
+            _self.silJ.length = 0
           }
-        }
-        result.splice(_self.DeleteNumber, 1)
-        _self.type_D = result
-      })
+          if (_self.silJ) {
+            _self.silJ.TYPE = 'PDF'
+            _self.silJ.TITLE = '20' + year + '년 ' + quat.split('Q')[0] + '분기 실적발표자료'
+          }
+          _.remove(result, { 'SET_DATA_TYPE': '1' })
+          _.remove(result, { 'SET_DATA_TYPE': '0' })
+          /* SET_DATA_TYPE */
+          for (var key in result) {
+            if (result[key].SET_DATA_TYPE === '2') {
+              result[key].TITLE = '보도자료(press Release)'
+              result[key].TYPE = 'PDF'
+            } else if (result[key].SET_DATA_TYPE === '3') {
+              result[key].TITLE = '웹캐스팅'
+              result[key].TYPE = 'URL'
+            } else if (result[key].SET_DATA_TYPE === '4') {
+              result[key].TITLE = '컨퍼런스콜'
+              result[key].TYPE = 'URL'
+            } else if (result[key].SET_DATA_TYPE === '5') {
+              result[key].TITLE = '스크립트'
+              result[key].TYPE = 'PDF'
+            } else if (result[key].SET_DATA_TYPE === '6') {
+              result[key].TITLE = 'Factsheet'
+              result[key].TYPE = 'PDF'
+              // result[key].TYPE = result[key].SITEURL.split('.')[1]
+            } else if (result[key].SET_DATA_TYPE === '7') {
+              result[key].TYPE = 'URL'
+            } else {
+              result[key].TYPE = 'PDF'
+            }
+          }
+          _self.type_D = result
+        })
     }
   },
   watch: {
@@ -119,29 +113,29 @@ export default {
               year: '20' + data[i].YEAR,
               quarter: data[i].PERIOD
             }
-            const pres = this.$store.dispatch('GET_SILJ', aram)
-            pres.then(result => {
-              if (result.length) {
-                if (result[0].SET_DATA_TYPE === 0 || result[0].SET_DATA_TYPE === 1) {
-                  _self.silJ = result[0]
-                  result.splice(0, 1)
-                }
-                /* SET_DATA_TYPE */
-                for (var key in result) {
-                  if (result[key].SET_DATA_TYPE === '2') {
-                    result[key].TITLE = '보도자료(press Release)'
-                  } else if (result[key].SET_DATA_TYPE === '3') {
-                    result[key].TITLE = '웹캐스팅'
-                  } else if (result[key].SET_DATA_TYPE === '4') {
-                    result[key].TITLE = '컨퍼런스콜'
-                  } else if (result[key].SET_DATA_TYPE === '5') {
-                    result[key].TITLE = '스크립트'
-                  } else if (result[key].SET_DATA_TYPE === '6') {
-                    result[key].TITLE = 'Factsheet'
+            this.$store.dispatch('GET_SILJ', aram)
+              .then(result => {
+                if (result.length) {
+                  if (result[0].SET_DATA_TYPE === 0 || result[0].SET_DATA_TYPE === 1) {
+                    _self.silJ = result[0]
+                    result.splice(0, 1)
+                  }
+                  /* SET_DATA_TYPE */
+                  for (var key in result) {
+                    if (result[key].SET_DATA_TYPE === '2') {
+                      result[key].TITLE = '보도자료(press Release)'
+                    } else if (result[key].SET_DATA_TYPE === '3') {
+                      result[key].TITLE = '웹캐스팅'
+                    } else if (result[key].SET_DATA_TYPE === '4') {
+                      result[key].TITLE = '컨퍼런스콜'
+                    } else if (result[key].SET_DATA_TYPE === '5') {
+                      result[key].TITLE = '스크립트'
+                    } else if (result[key].SET_DATA_TYPE === '6') {
+                      result[key].TITLE = 'Factsheet'
+                    }
                   }
                 }
-              }
-            })
+              })
           }
           let q = data[i].YEAR + '.' + data[i].PERIOD + 'Q'
           // _self.changeQuarterData(data[i].YEAR, data[i].PERIOD+'Q')

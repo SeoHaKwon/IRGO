@@ -1,5 +1,5 @@
 <template>
-  <div class="HomeShareholderStatus contaner" v-if="isShareHolder == 'Y' && TOTAL_STOCK_DATA.length > 0">
+  <div class="HomeShareholderStatus contaner" v-if="isShareHolder == 'Y' || isDividend == 'Y'">
       <h2 class="section-title">주주현황</h2>
       <h3 class="section-sube">
         Shareholders Status
@@ -55,9 +55,8 @@
                   </table>
               </div>
           </div>
-        <div class="shareholder-group-caption" v-for="(caption, idx) in memberCaption" v-bind:key="idx">
-            <h5 class="title">{{ caption.title }}</h5>
-            <h5 class="description">{{ caption.dscription }}</h5>
+        <div class="shareholder-group-caption" v-if="TOTAL_STOCK_DATA.length > 0">
+            <h5 class="title">{{ TOTAL_STOCK_DATA[0].F_DIV_COMMENT }}</h5>
         </div>
       </div>
       <div class="shareholder-data" v-if="isDividend == 'Y' && TOTAL_STOCK_DATA.length > 0">
@@ -73,9 +72,10 @@
                 </div>
           </h3>
               <ul class="performance-group-tab stock">
-                <li v-for="(item, idx) in TOTAL_STOCK_DATA" :class="isActive[idx]" v-bind:key="idx">
-                  <a v-on:click="setActive(idx)">{{ item.F_YEAR }}</a>
+                <li v-for="(item, idx) in TOTAL_STOCK_DATA" :class="isActive[idx]" v-bind:key="item.IDX_SEQ" v-on:click="setActive(idx)">
+                  <a>{{ item.F_YEAR }}</a>
                 </li>
+                <li v-for="item in morelen" v-bind:key="item"></li>
               </ul>
               <div class="shareholder-data-table">
                   <table>
@@ -92,7 +92,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(data, idx) in datas" v-bind:key="idx">
+                        <tr v-for="(data, idxs) in datas" v-bind:key="idxs">
                             <td>
                                 {{ data.title }}
                             </td>
@@ -103,7 +103,7 @@
                             </td>
                             <td>
                                 <h5 v-for="(value, idx) in data.value" v-bind:key="idx">
-                                    {{ value | currency }}
+                                    {{  value | currency(idxs) }}
                                 </h5>
                             </td>
                         </tr>
@@ -118,9 +118,9 @@
                   </table>
               </div>
           </div>
-        <div class="shareholder-group-caption" v-for="(caption, idx) in memberCaption" v-bind:key="idx">
-            <h5 class="title">{{ caption.title }}</h5>
-            <h5 class="description">{{ caption.dscription }}</h5>
+        <div class="shareholder-group-caption" v-if="TOTAL_STOCK_DATA.length > 0">
+            <h5 class="title">{{ TOTAL_STOCK_DATA[1].F_DIV_COMMENT }}</h5>
+            <!-- <h5 class="description">{{ caption.dscription }}</h5> -->
         </div>
   </div>
 </template>
@@ -147,42 +147,43 @@ export default {
         3: '',
         4: ''
       },
+      morelen: 0,
       ori_active: 0,
       totalJu: 0,
       STOCK_TOTAL: 0,
       TOTAL_STOCK_DATA: [],
       mcolor: '',
       sections: [
-        { label: '최대주주', value: 0, color: '#EA1E64' },
-        { label: '기관주주', value: 0, color: '#EE4B82' },
-        { label: '외국인주주', value: 0, color: '#F278A2' },
-        { label: '자사주', value: 0, color: '#424347' },
-        { label: '개인주주 외', value: 0, color: '#8F8E95' }
+        { label: '최대주주', value: 0, color: '#534582' },
+        { label: '기관주주', value: 0, color: '#387AC4' },
+        { label: '외국인주주', value: 0, color: '#37BFA7' },
+        { label: '자사주', value: 0, color: '#8FE1A1' },
+        { label: '개인주주 외', value: 0, color: '#8E8E93' }
       ],
       memberData: [
         {
           title: '최대주주 외 특수관계인',
           value: '-',
           percent: '-',
-          color: '#E91E63'
+          color: '#534582'
         },
         {
           title: '기관주주',
           value: '-',
           percent: '-',
-          color: '#E91E63'
+          color: '#387AC4'
         },
         {
           title: '외국인주주',
           value: '-',
           percent: '-',
-          color: '#E91E63'
+          color: '#37BFA7'
         },
         {
           title: '자사주',
           value: '-',
           percent: '-',
-          color: '#313439'
+          color: '#8FE1A1'
         },
         {
           title: '개인주주 외',
@@ -256,8 +257,10 @@ export default {
   created () {
   },
   filters: {
-    currency: function (value) {
-      if (Number(value) > 0) {
+    currency: function (value, idx) {
+      if (idx === 1) {
+        return Number(value).toFixed(1).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, '$1,')
+      } else if (Number(value) > 0) {
         return Number(value).toFixed(0).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, '$1,')
       } else {
         return '-'
@@ -279,6 +282,7 @@ export default {
       _self.isActive[_self.ori_active] = ''
       _self.isActive[idx] = 'active'
       _self.ori_active = idx
+      _self.setDividend(_self.TOTAL_STOCK_DATA[idx])
     },
     SET_DIVI (e) {
       const idx = e.target.value
@@ -318,6 +322,11 @@ export default {
     }
   },
   watch: {
+    GETISVIEW () {
+      const _self = this
+      _self.isShareHolder = _self.GETISVIEW.ShareHolder
+      _self.isDividend = _self.GETISVIEW.dividend
+    },
     getCompSeq () {
       const _self = this
       const param = {
@@ -353,20 +362,24 @@ export default {
         })
       _self.$store.dispatch('GET_DIVI', param)
         .then(res => {
-          if (res.length !== 0) {
+          if (res.length !== 0 && res.length < 4) {
+            _self.morelen = 5 - res.length
             _self.TOTAL_STOCK_DATA = res
             _self.setDividend(res[0])
+          } else if (res.length > 3) {
+            _self.morelen = 2
+            res.splice(3, res.length - 3)
           }
         })
     },
     getMainColor () {
       const _self = this
       _self.mcolor = '#' + _self.getMainColor
-      _self.sections[0].color = '#' + _self.getMainColor
-      _self.memberData[0].color = '#' + _self.getMainColor
+      // _self.sections[0].color = '#' + _self.getMainColor
+      // _self.memberData[0].color = '#' + _self.getMainColor
       for (var i = 0; i < 3; i++) {
-        _self.sections[i].color = _self.changeColor(_self.mcolor, i)
-        _self.memberData[i].color = _self.changeColor(_self.mcolor, i)
+        // _self.sections[i].color = _self.changeColor(_self.mcolor, i)
+        // _self.memberData[i].color = _self.changeColor(_self.mcolor, i)
       }
     }
   }
@@ -750,7 +763,7 @@ export default {
 
       .title {
         margin-right: 10px;
-        flex-basis: 26px;
+        // flex-basis: 26px;
         font-size: 12px;
       }
       .description {

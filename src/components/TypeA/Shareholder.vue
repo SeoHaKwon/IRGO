@@ -123,6 +123,9 @@ export default {
 <style lang="scss">
 @import "@/style/_color.scss";
 @import "@/style/_mixin.scss";
+.cdc-container {
+  height: 100%;
+}
 .shareholder-wrap {
   @include contentWidth($width:1200px);
   .table-wrap {

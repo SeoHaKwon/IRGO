@@ -22,7 +22,7 @@
             <strong class="tit">일시</strong>
             <p class="time en" :style="{color: mcolor}">
               {{ scheduleList.S_DATE | v_date }}<font style="font-family: 'Roboto', sans-serif;" v-if="SE_DATE_SAME"> ~ {{scheduleList.E_DATE | v_edate }}</font>
-              <span class="en" :style="{color: mcolor}">{{ scheduleList.S_TIME }} ~ {{ scheduleList.E_TIME }}</span>
+              <span class="en" :style="{color: mcolor}">{{ scheduleList.S_TIME }} ~ </span>
             </p>
           </li>
           <li v-if="scheduleList.PLACE">

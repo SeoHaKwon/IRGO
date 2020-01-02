@@ -173,6 +173,11 @@ export default {
 .desc img {
   max-width: 100%;
 }
+.desc {
+  a {
+    color: blue;
+  }
+}
   .news-title{
     .category {
       display:block;

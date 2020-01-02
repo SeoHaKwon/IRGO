@@ -60,8 +60,7 @@ export default {
       _self.setIsTitle()
     } else {
       const param = {
-      // 'url': window.location.hostname
-        'url': 'samsung.irpage.co.kr'
+        'url': window.location.hostname
       }
       _self.$store.dispatch('SET_INFO', param)
     }

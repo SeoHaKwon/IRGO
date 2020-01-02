@@ -14,7 +14,6 @@
         </ul>
       </div>
       <div class="header-mobile-icon">
-
         <router-link to="/join" v-if="false">
           <div class="app-join" :style="{ 'background-color': mcolor }">
             앱 다운로드
@@ -78,7 +77,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getMainColor', 'getLogo', 'GETISVIEW', 'getIsIPO', 'getmReportlen', 'getQALEN'])
+    ...mapGetters(['getMainColor', 'getSubLogo', 'GETISVIEW', 'getIsIPO', 'getmReportlen', 'getQALEN'])
   },
   watch: {
     getIsIPO () {
@@ -102,12 +101,12 @@ export default {
       _self.mcolor = '#' + _self.getMainColor
       // _self.h_list[0].color = _self.mcolor
     },
-    getLogo () {
+    getSubLogo () {
       const _self = this
-      if (_self.getLogo == null) {
+      if (_self.getSubLogo == null) {
         _self.isImg = false
       } else {
-        _self.logo = 'http://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getLogo
+        _self.logo = 'http://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getSubLogo
       }
     },
     getmReportlen () {
@@ -128,7 +127,6 @@ export default {
       const _self = this
       let targetData = ''
       let idx = 0
-      console.log('asdsad')
       if (_self.scrollResult < 300) {
         _self.moveCategory(-1, targetData)
       } else {

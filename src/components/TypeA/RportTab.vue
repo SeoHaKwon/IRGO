@@ -101,6 +101,7 @@ export default {
       v_reportData_FILE4: '',
       COM_NM: '',
       mcolor: '',
+      v_reportData_YEAR: '',
       styleObject: {
         'color': '',
         'background-color': ''
@@ -139,7 +140,7 @@ export default {
       const _self = this
       // document.querySelector('.tabs').childNodes[0].style.color = _self.mcolor
       // document.querySelector('.tabs').childNodes[0].children[0].style.background = _self.mcolor
-      _self.changeYearList(0)
+      _self.changeYearList(_self.oriQ)
     })
   },
   watch: {
@@ -167,8 +168,8 @@ export default {
       const _self = this
       if (_self.oriQ !== Q) {
         if (document.querySelector('.tabs').childNodes[_self.oriQ]) {
-          document.querySelector('.tabs').childNodes[_self.oriQ].classList.remove('active')
           document.querySelector('.tabs').childNodes[_self.oriQ].style.color = ''
+          document.querySelector('.tabs').childNodes[_self.oriQ].classList.remove('active')
         }
         if (document.querySelector('.tabs').childNodes[Q]) {
           document.querySelector('.tabs').childNodes[Q].classList.add('active')
@@ -176,13 +177,19 @@ export default {
           document.querySelector('.tabs').childNodes[Q].children[0].style.background = _self.mcolor
         }
       } else {
-        if (document.querySelector('.tabs').childNodes[0]) {
-          document.querySelector('.tabs').childNodes[0].style.color = _self.mcolor
-          document.querySelector('.tabs').childNodes[0].children[0].style.background = _self.mcolor
+        if (document.querySelector('.tabs').childNodes[Q]) {
+          document.querySelector('.tabs').childNodes[Q].style.color = _self.mcolor
+          document.querySelector('.tabs').childNodes[Q].children[0].style.background = _self.mcolor
         }
       }
       _self.oriQ = Q
-      _self.v_reportData = _self.reportData[Q]
+      if (_self.reportData.length > 0) {
+        _self.v_reportData_FILE1 = _self.reportData[Q].UPLOAD_FILE1
+        _self.v_reportData_FILE2 = _self.reportData[Q].UPLOAD_FILE2
+        _self.v_reportData_FILE3 = _self.reportData[Q].UPLOAD_FILE3
+        _self.v_reportData_FILE4 = _self.reportData[Q].UPLOAD_FILE4
+        _self.v_reportData_YEAR = _self.reportData[Q].YEAR
+      }
     },
     getSaveReport (URL) {
       window.open('https://file.irgo.co.kr/data/IRPAGE/BIZ_REPORT/' + URL, '_BLANK')

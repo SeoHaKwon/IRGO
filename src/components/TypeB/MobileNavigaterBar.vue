@@ -17,7 +17,7 @@
       <transition name="slide">
         <ul v-if="isMenuShow">
           <li class="topheader">Investor Realations</li>
-          <li v-for="(item, idx) in v_list" v-bind:key="idx" v-scroll-to="{el: '#'+item.c_name, container: '#home', duration: 500}" v-on:click="goMenuBtn(item.c_name)">
+          <li v-for="(item, idx) in v_list" v-bind:key="idx" v-on:click="goMenuBtn(item.c_name)">
             <a href="javascript:void(0)">
               {{ item.title }}
             </a>
@@ -69,7 +69,7 @@ export default {
   filters: {
   },
   computed: {
-    ...mapGetters(['getLogo', 'GETISVIEW', 'getIsIPO', 'getmReportlen', 'getQALEN'])
+    ...mapGetters(['getSubLogo', 'GETISVIEW', 'getIsIPO', 'getmReportlen', 'getQALEN'])
   },
   watch: {
     scrollResult () {
@@ -90,9 +90,9 @@ export default {
         bodyTag.style.overflow = 'inherit'
       }
     },
-    getLogo () {
+    getSubLogo () {
       const _self = this
-      _self.logo = 'http://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getLogo
+      _self.logo = 'http://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getSubLogo
     },
     getIsIPO () {
       const _self = this
@@ -132,22 +132,33 @@ export default {
     },
     goMenuBtn (cname) {
       const _self = this
+      location.href = '#' + cname
       _self.changesetPopup(cname)
     },
     changesetPopup (cname) {
       this.isBackMobileView ? this.isBackMobileView = false : this.isBackMobileView = true
       this.isMenuShow ? this.isMenuShow = false : this.isMenuShow = true
-      // document.querySelector('.menu-trigger').classList.toggle('active-7')
-      document.querySelector('.menu-trigger').classList.remove('active-7')
-      document.querySelector('.menu-trigger').classList.add('type7')
-      location.href = '#'
-      location.href = '#' + cname
+      if (document.querySelector('.menu-trigger').classList[1] === 'active-7') {
+        document.querySelector('.menu-trigger').classList.remove('active-7')
+        document.querySelector('.menu-trigger').classList.add('type7')
+      } else {
+        document.querySelector('.menu-trigger').classList.add('active-7')
+        document.querySelector('.menu-trigger').classList.remove('type7')
+      }
+      setTimeout(function () {
+        location.href = `#${cname}`
+      }, 50)
     },
     setPopup () {
       this.isBackMobileView ? this.isBackMobileView = false : this.isBackMobileView = true
       this.isMenuShow ? this.isMenuShow = false : this.isMenuShow = true
-      document.querySelector('.menu-trigger').classList.add('active-7')
-      document.querySelector('.menu-trigger').classList.remove('type7')
+      if (document.querySelector('.menu-trigger').classList[1] === 'active-7') {
+        document.querySelector('.menu-trigger').classList.remove('active-7')
+        document.querySelector('.menu-trigger').classList.add('type7')
+      } else {
+        document.querySelector('.menu-trigger').classList.add('active-7')
+        document.querySelector('.menu-trigger').classList.remove('type7')
+      }
     }
   },
   created () {

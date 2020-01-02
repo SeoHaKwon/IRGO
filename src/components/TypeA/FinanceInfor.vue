@@ -19,7 +19,7 @@
     <div class="tab-cont active"> <!--클래스 active 주시면 활성화됩니다.-->
       <div class="material-list">
         <div class="material" v-on:click="goURL('statusTable')" v-if="statusTable">
-          <strong class="material-title">재무상태</strong>
+          <strong class="material-title">재무상태표</strong>
           <a href="#" class="icon-file  pdf">
             {{ COM_NM }} {{nowYear.substr(2, 2)}} {{oriQ+1}}Q 재무상태표
           </a>
@@ -142,6 +142,8 @@ export default {
       const _self = this
       _self.nowYear = year
       _self.isActive = false
+      document.querySelector('.tabs').childNodes[_self.oriQ].style.color = ''
+      document.querySelector('.tabs').childNodes[_self.oriQ].classList.remove('active')
       _self.setFinance(year, Number(_self.oriQ) + 1)
     },
     changeQuarter (Q) {
@@ -157,9 +159,9 @@ export default {
           _self.oriQ = Q
         }
       } else {
-        document.querySelector('.tabs').childNodes[_self.oriQ].style.color = ''
-        document.querySelector('.tabs').childNodes[_self.oriQ].classList.remove('active')
-        _self.oriQ = 0
+        // document.querySelector('.tabs').childNodes[_self.oriQ].style.color = ''
+        // document.querySelector('.tabs').childNodes[_self.oriQ].classList.remove('active')
+        // _self.oriQ = 0
       }
     },
     setFinance (year, q) {
@@ -169,11 +171,14 @@ export default {
         _self.statusTable = _self.v_finance[0].UPLOAD_FILE1
         _self.profitTable = _self.v_finance[0].UPLOAD_FILE2
         _self.cashTable = _self.v_finance[0].UPLOAD_FILE3
+        document.querySelector('.tabs').childNodes[q - 1].classList.add('active')
+        document.querySelector('.tabs').childNodes[q - 1].style.color = _self.mcolor
+        document.querySelector('.tabs').childNodes[q - 1].children[0].style.background = _self.mcolor
         return true
       } else {
-        _self.statusTable = ''
-        _self.profitTable = ''
-        _self.cashTable = ''
+        // _self.statusTable = ''
+        // _self.profitTable = ''
+        // _self.cashTable = ''
         return false
       }
     }

@@ -44,7 +44,7 @@ export default {
   methods: {
     goDetail (index) {
       const _self = this
-      _self.$router.replace({ name: 'newsView', params: { 'index': index } })
+      _self.$router.push({ name: 'newsView', params: { 'index': index } })
     },
     moreData () {
       const _self = this

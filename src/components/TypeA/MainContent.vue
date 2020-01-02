@@ -36,7 +36,7 @@
     </div>
     <div class="middle-visual">
       <img src="@/assets/images/img/img_main_middle.png" alt="">
-      <div class="schedule-box">
+      <div class="schedule-box" v-if="Schelen > 0">
         <router-link to="/schedule">
         <strong class="tit">IR 일정 <a href="@/scheduleView" class="more is_pc"></a></strong>
         <div class="sub-txt">
@@ -48,31 +48,31 @@
     </div>
     <div class="direct-link">
       <ul>
-        <li>
+        <li :style="{width: percent + '%'}" v-if="isView.isFinance.active">
           <router-link to="/financial" class="link01">
             <strong class="tit">재무정보</strong>
             <p class="sub">분기별 재무제표</p>
           </router-link>
         </li>
-        <li>
+        <li :style="{width: percent + '%'}" v-if="isView.isStatus.active">
           <router-link to="/status" class="link02">
             <strong class="tit">주주현황</strong>
             <p class="sub">주주구성 및 배당</p>
           </router-link>
         </li>
-        <li>
+        <li :style="{width: percent + '%'}" v-if="isView.isDisclosure.active">
           <router-link to="/disclosure" class="link03">
             <strong class="tit">공시</strong>
             <p class="sub">기업 공시정보</p>
           </router-link>
         </li>
-        <li>
+        <li :style="{width: percent + '%'}" v-if="isView.isReport.active">
           <router-link to="/report" class="link04">
             <strong class="tit">경영보고서</strong>
             <p class="sub">규정 및 보고서</p>
           </router-link>
         </li>
-        <li>
+        <li :style="{width: percent + '%'}" v-if="isView.isContact.active">
           <router-link to="/contact" class="link05">
             <strong class="tit">IR Contact</strong>
             <p class="sub">문의 및 앱 다운로드</p>
@@ -97,7 +97,26 @@ export default {
     return {
       Per: [],
       News: [],
-      Sche: []
+      Sche: [],
+      Schelen: 0,
+      isView: {
+        isFinance: {
+          'active': false
+        },
+        isStatus: {
+          'active': false
+        },
+        isDisclosure: {
+          'active': false
+        },
+        isReport: {
+          'active': true
+        },
+        isContact: {
+          'active': true
+        }
+      },
+      percent: 0
     }
   },
   filters: {
@@ -136,6 +155,26 @@ export default {
           _self.Sche = _.filter(res, { 'CATE': 'IRSCHEDULE' })[0]
           _self.News = _.filter(res, { 'CATE': 'IRNEWS' })[0]
           _self.Per = _.filter(res, { 'CATE': 'PERFORMANCE' })[0]
+          _self.Schelen = _.filter(res, { 'CATE': 'IRSCHEDULE' }).length
+        })
+      _self.$store.dispatch('IS_MENU', param)
+        .then(res => {
+          if (res.IRPAGE_DISCLOURE_YN === 'Y') {
+            _self.isView.isDisclosure.active = true
+          } else {
+            _self.isView.isDisclosure.active = false
+          }
+          if (res.IRPAGE_FINANCE_YN === 'Y') {
+            _self.isView.isFinance.active = true
+          } else {
+            _self.isView.isFinance.active = false
+          }
+          if (res.IRPAGE_SHOLDER_YN === 'Y') {
+            _self.isView.isStatus.active = true
+          } else {
+            _self.isView.isStatus.active = false
+          }
+          _self.percent = (100 / _.filter(_self.isView, { 'active': true }).length)
         })
     }
   }
