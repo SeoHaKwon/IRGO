@@ -4,6 +4,7 @@
       <li v-for="(items, idx) in silq" v-bind:key="idx" v-on:click="getContents(items, idx)" :class="isActive[idx]">
         <a>{{ items }}</a>
       </li>
+      <li v-for="item in 5 - silq.length" v-bind:key="item"></li>
     </ul>
       <div class="performance-select">
         <div class="select-warp">

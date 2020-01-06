@@ -42,7 +42,7 @@
                                 {{ data.title }}
                             </td>
                             <td>{{ data.value | currency}}</td>
-                            <td>{{ data.percent | v_number }}</td>
+                            <td>{{ Number(data.percent).toFixed(1) | v_number }}</td>
                         </tr>
                     </tbody>
                     <tfoot>
@@ -55,8 +55,8 @@
                   </table>
               </div>
           </div>
-        <div class="shareholder-group-caption" v-if="TOTAL_STOCK_DATA.length > 0">
-            <h5 class="title">{{ TOTAL_STOCK_DATA[0].F_DIV_COMMENT }}</h5>
+        <div class="shareholder-group-caption" v-if="shareHolderComment">
+            <h5 class="title">{{ shareHolderComment }}</h5>
         </div>
       </div>
       <div class="shareholder-data" v-if="isDividend == 'Y' && TOTAL_STOCK_DATA.length > 0">
@@ -119,7 +119,7 @@
               </div>
           </div>
         <div class="shareholder-group-caption" v-if="TOTAL_STOCK_DATA.length > 0">
-            <h5 class="title">{{ TOTAL_STOCK_DATA[1].F_DIV_COMMENT }}</h5>
+            <h5 class="title">{{ TOTAL_STOCK_DATA[0].F_DIV_COMMENT }}</h5>
             <!-- <h5 class="description">{{ caption.dscription }}</h5> -->
         </div>
   </div>
@@ -248,7 +248,8 @@ export default {
           title: '주1)',
           dscription: ''
         }
-      ]
+      ],
+      shareHolderComment: ''
     }
   },
   computed: {
@@ -345,14 +346,15 @@ export default {
             _self.totalJu += res[0].TREA_STOCKHOLDER
             _self.memberData[4].value = res[0].INDI_STOCKHOLDER
             _self.totalJu += res[0].INDI_STOCKHOLDER
-            _self.memberData[0].percent = (res[0].LARGE_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
-            _self.memberData[1].percent = (res[0].INST_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
-            _self.memberData[2].percent = (res[0].FOREIGN_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
-            _self.memberData[3].percent = (res[0].TREA_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
-            _self.memberData[4].percent = (res[0].INDI_STOCKHOLDER / _self.totalJu * 100).toFixed(1)
+            _self.memberData[0].percent = (res[0].LARGE_STOCKHOLDER / _self.totalJu * 100).toFixed(4)
+            _self.memberData[1].percent = (res[0].INST_STOCKHOLDER / _self.totalJu * 100).toFixed(4)
+            _self.memberData[2].percent = (res[0].FOREIGN_STOCKHOLDER / _self.totalJu * 100).toFixed(4)
+            _self.memberData[3].percent = (res[0].TREA_STOCKHOLDER / _self.totalJu * 100).toFixed(4)
+            _self.memberData[4].percent = (res[0].INDI_STOCKHOLDER / _self.totalJu * 100).toFixed(4)
+	    _self.shareHolderComment = res[0].COMMENT
             for (var key in _self.sections) {
               _self.sections[key].value = Number(_self.memberData[key].percent)
-              if (key > 2) {
+              if (key > 3) {
                 break
               }
             }

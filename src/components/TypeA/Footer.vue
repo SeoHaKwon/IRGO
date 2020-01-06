@@ -60,7 +60,6 @@ export default {
       }
       _self.$store.dispatch('GET_COMINFO', param)
         .then(res => {
-          console.log(res)
           _self.COM_NAME = res[0].COMP_NAME
           _self.CEO_NAME = res[0].CEO_NAME
           _self.ADDRESS = res[0].COM_ADDR

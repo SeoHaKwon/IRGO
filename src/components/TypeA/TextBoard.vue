@@ -1,7 +1,7 @@
 <template>
   <div class="board-section">
     <p class="title-wrap">
-      <strong>지난일정</strong>
+      <strong>지난 일정</strong>
     </p>
     <ul class="list">
       <li v-for="(item, idx) in v_schedule" v-on:click="ViewPage(item.F_SEQ)" v-bind:key="idx">

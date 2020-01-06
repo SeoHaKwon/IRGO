@@ -11,7 +11,7 @@
           <p>실적발표</p>
         </div>
         <div class="sub-txt">
-          <strong class="sub-tit">{{ Per.TITLE }}</strong>
+          <strong class="sub-tit">{{ Per.PERIOD | p_title }} 실적발표가 공개 되었습니다.</strong>
           <p class="date">{{ Per.MOD_DATE | v_date }}</p>
           <a href="#" class="more"></a>
         </div>
@@ -127,6 +127,9 @@ export default {
     h_date: (date) => {
       const da = new Date(date)
       return da.getFullYear() + '년 ' + (da.getMonth() + 1) + '월 ' + da.getUTCDate() + '일'
+    },
+    p_title: (period) => {
+      return String(period).substr(0, 4) + '년 ' + String(period).substr(4, 1) + '분기 '
     }
   },
   computed: {

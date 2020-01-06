@@ -106,7 +106,7 @@ export default {
       if (_self.getSubLogo == null) {
         _self.isImg = false
       } else {
-        _self.logo = 'http://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getSubLogo
+        _self.logo = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getSubLogo
       }
     },
     getmReportlen () {

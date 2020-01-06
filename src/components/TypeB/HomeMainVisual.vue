@@ -12,7 +12,7 @@
             <h5><span v-html="Price.DungRak"></span> {{ Price.Debi }} ({{ Price.Cent}}%)</h5>
           </div>
           <h5 class="information">
-            거래량 {{ Price.Volume }} <br />
+            거래량 {{ Price.Volume }} 주<br />
             시가총액 {{ Price.totals | currency}}억원
           </h5>
           <h6 class="curtion">

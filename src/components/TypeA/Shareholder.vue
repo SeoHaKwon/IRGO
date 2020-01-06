@@ -13,7 +13,8 @@
                       legend-placement="bottom"
                       :sections="sections"
                       :total="100"
-                      :start-angle="0"/>
+                      :start-angle="0"
+		      :hasLegend="true"/>
       </div>
         <div class="table">
           <table>

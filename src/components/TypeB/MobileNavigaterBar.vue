@@ -92,7 +92,7 @@ export default {
     },
     getSubLogo () {
       const _self = this
-      _self.logo = 'http://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getSubLogo
+      _self.logo = 'https://file.irgo.co.kr/data/IRPAGE/IMG/' + _self.getSubLogo
     },
     getIsIPO () {
       const _self = this

@@ -270,7 +270,8 @@ export default {
             }
           }
           span:nth-child(2) {
-            vertical-align: -webkit-baseline-middle;
+            // vertical-align: -webkit-baseline-middle;
+            vertical-align: text-top;
           }
         }
       }
@@ -310,9 +311,16 @@ export default {
         border-top: 1px solid #e9eaec;
       }
       p {
-        padding-left: 30px;
+        // padding-left: 30px;
         font-size: 12px;
         background-size: auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+
+        span:first-child {
+          display: flex;
+        }
       }
       .link {
         width: 16px;

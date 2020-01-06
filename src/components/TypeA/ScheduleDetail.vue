@@ -159,7 +159,7 @@ export default {
           for (var key in res) {
             if (res[key].GUBUN === 'O') {
               _self.scheduleList = res[key]
-              if (new Date(res[key].S_DATE).getUTCDate() === new Date(res[key].E_DATE).getUTCDate()) {
+              if (new Date(res[key].S_DATE).getUTCDate() === new Date(res[key].E_DATE).getUTCDate() || !res[key].E_DATE) {
                 _self.SE_DATE_SAME = false
               }
             } else if (res[key].GUBUN === 'P') {

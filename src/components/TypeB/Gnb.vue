@@ -127,7 +127,7 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-weight: inherit;
-  text-decoration: none;
+/*  text-decoration: none; */
 }
 .modal-map {
   font-size: 14px;
